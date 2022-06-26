@@ -29,7 +29,7 @@ var landsat = ee.ImageCollection.fromImages([image]);
 var malaria = ee.ImageCollection.fromImages([results]);
 
 // Visualize and export the results of the proof of concept
-visualizeGms();
+visual.visualizeGms();
 visualizeResults(landsat, malaria, false);
 exporting.queueExports(results);
 
