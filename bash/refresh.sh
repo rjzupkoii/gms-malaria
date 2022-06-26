@@ -16,15 +16,15 @@ fi
 
 # Refresh from GitHub to Google
 if [ $1 = 'github' ]; then
-	git pull github
-	git push origin
+	git pull origin
+	git push google
 	exit
 fi
 
 # Refresh from Google to GitHub
 if [ $1 = 'google' ]; then
-	git pull origin master
-	git push github
+	git pull google master
+	git push origin
 	exit
 fi
 
