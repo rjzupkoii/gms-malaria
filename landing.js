@@ -96,6 +96,7 @@ function visualizeGms() {
     color: 1,
     width: 0.5,
   });
+  
   Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
 }
 
