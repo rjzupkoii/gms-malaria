@@ -6,5 +6,7 @@ exports.getGms = function() {
   
   // Filter on the country names
   var countries = ee.FeatureCollection("FAO/GAUL/2015/level0")
-    .filter(ee.Filter.inList('ADM0_NAME', admn0_names));  
+    .filter(ee.Filter.inList('ADM0_NAME', admn0_names));
+    
+  return countries;
 };
