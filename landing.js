@@ -5,12 +5,9 @@
  * Landsat imagery to generate malaria risk rasters based upon land 
  * classification and ecological characteristics.
  */
-
-// Import relevant scripts and data
 var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
-var shapefiles = require('users/rzupko/gms-malaria:imports/shapefiles.js');
 
 // Filter the USGS Landsat 8 Level 2, Collection 2, Tier 1 collection to the 
 // selected image for the proof of concept (125, 50, 2020-01-22); an 
@@ -36,20 +33,7 @@ visualizeGms();
 visualizeResults(landsat, malaria, false);
 exporting.queueExports(results);
 
-function visualizeGms() {
-  // Load the GMS borders and generate the outlines
-  var gms = shapefiles.getGms();
-  var empty = ee.Image().byte();
-  var outline = empty.paint({
-    featureCollection: gms,
-    color: 1,
-    width: 0.5,
-  });
-  
-  // Update the map
-  Map.centerObject(gms, 5);
-  Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
-}
+
 
 function visualizeResults(landsat, image, showInputs) {
   Map.addLayer(landsat, visual.landsatRGB, 'Landsat 8 (RGB, 4-3-2)', false);
