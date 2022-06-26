@@ -7,6 +7,7 @@
  */
 
 // Import relevant scripts and data
+var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var shapefiles = require('users/rzupko/gms-malaria:imports/shapefiles.js');
@@ -33,59 +34,7 @@ var malaria = ee.ImageCollection.fromImages([results]);
 // Visualize and export the results of the proof of concept
 visualizeGms();
 visualizeResults(landsat, malaria, false);
-queueExports(results);
-
-function queueExports(results) {
-  // Land cover classification, this must be it's own image since it's 
-  // classified data
-  Export.image.toDrive({
-    image: results.select('landcover'),
-    description: 'EE_Classified_LS8_Export',
-    folder: 'Earth Engine',
-    scale: 30,
-    region: results.geometry()
-  });  
-
-  // Inputs for the habitat classification, this could  be a single image but
-  // for processing in ArcGIS it is a bit easier to have each band as an image  
-  Export.image.toDrive({
-    image: results.select('annual_rainfall'),
-    description: 'EE_AnnualRainfall_CHIRPS_Export',
-    folder: 'Earth Engine',
-    scale: 5566,
-    region: results.geometry()
-  });
-  Export.image.toDrive({
-    image: results.select('mean_temperature'),
-    description: 'EE_MeanTemperature_MODIS_Export',
-    folder: 'Earth Engine',
-    scale: 1000,
-    region: results.geometry()
-  });
-  Export.image.toDrive({
-    image: results.select('temperature_bounds'),
-    description: 'EE_TemperatureBounds_Export',
-    folder: 'Earth Engine',
-    scale: 1000,
-    region: results.geometry()
-  });  
-  
-  // Final malaria risk products
-  Export.image.toDrive({
-    image: results.select('habitat'),
-    description: 'EE_Habitat_Export',
-    folder: 'Earth Engine',
-    scale: 30,
-    region: results.geometry()
-  }); 
-  Export.image.toDrive({
-    image: results.select('risk'),
-    description: 'EE_Risk_Export',
-    folder: 'Earth Engine',
-    scale: 30,
-    region: results.geometry()
-  });   
-}
+exporting.queueExports(results);
 
 function visualizeGms() {
   // Load the GMS borders and generate the outlines
