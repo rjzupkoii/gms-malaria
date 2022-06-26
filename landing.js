@@ -88,8 +88,8 @@ function queueExports(results) {
 }
 
 function visualizeGms() {
+  // Load the GMS borders and generate the outlines
   var gms = shapefiles.getGms();
-  
   var empty = ee.Image().byte();
   var outline = empty.paint({
     featureCollection: gms,
