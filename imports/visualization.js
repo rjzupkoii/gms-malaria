@@ -91,7 +91,22 @@ exports.addTrainingPolygons = function(polygons) {
   layerStyles.forEach(function(item) {
     styleTraining(polygons, item.class, item.type, item.color);  
   });
-}
+};
+
+exports.visualizeGms = function() {
+  // Load the GMS borders and generate the outlines
+  var gms = shapefiles.getGms();
+  var empty = ee.Image().byte();
+  var outline = empty.paint({
+    featureCollection: gms,
+    color: 1,
+    width: 0.5,
+  });
+  
+  // Update the map
+  Map.centerObject(gms, 5);
+  Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
+};
 
 function styleTraining(collection, value, label, color) {
   var items = collection.filter(ee.Filter.eq('class', value));
