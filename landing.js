@@ -89,7 +89,7 @@ function queueExports(results) {
 
 function visualizeGms() {
   var gms = shapefiles.getGms();
-  Map.centerObject(gms, 5);
+  
   var empty = ee.Image().byte();
   var outline = empty.paint({
     featureCollection: gms,
@@ -97,6 +97,8 @@ function visualizeGms() {
     width: 0.5,
   });
   
+  // Update the map
+  Map.centerObject(gms, 5);
   Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
 }
 
