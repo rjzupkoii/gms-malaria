@@ -4,6 +4,7 @@
  * This script is intended as a library that contains data and functions 
  * related to visualization and raster rendering.
  */
+var shapefiles = require('users/rzupko/gms-malaria:imports/shapefiles.js');
  
 // Landsat 8 visualizations
 exports.landsatRGB = { 
