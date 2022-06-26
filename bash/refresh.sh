@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # Basic script for refreshing the Google and GitHub repositories.
+# 
+# Before running, permission to access the Google Source will be needed via:
+# https://www.googlesource.com/new-password
 
 # Print usage
 if [ -z $1 ]; then
