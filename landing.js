@@ -103,7 +103,7 @@ function visualizeGms() {
 }
 
 function visualizeResults(landsat, image, showInputs) {
-  Map.addLayer(landsat, visual.landsatRGB, 'Landsat 8 (RGB, 4-3-2)');
+  Map.addLayer(landsat, visual.landsatRGB, 'Landsat 8 (RGB, 4-3-2)', false);
   Map.addLayer(image.select('habitat'), visual.habitat, 'Habitat (A. dirus)');
   Map.addLayer(image.select('risk'), visual.habitat, 'Malaria Risk');
   
