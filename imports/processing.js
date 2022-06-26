@@ -8,7 +8,7 @@
  * still a bit of hard coding in place, ideally the parameterization for the 
  * species would be passed to process() along with the relevant date ranges.
  */
-var features = require('features.js');
+var features = require('users/rzupko/gms-malaria:imports/features.js');
 
 exports.process = function(image) {
   // Note the aoi
