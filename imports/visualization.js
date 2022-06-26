@@ -7,33 +7,33 @@
 var shapefiles = require('users/rzupko/gms-malaria:imports/shapefiles.js');
  
 // Landsat 8 visualizations
-exports.landsatRGB = { 
+var landsatRGB = { 
   bands: ['SR_B4', 'SR_B3', 'SR_B2'], 
   min: 6983, 
   max: 13309 
 };
-exports.landsatCIR = { 
+var landsatCIR = { 
   bands: ['SR_B5', 'SR_B4', 'SR_B3'], 
   min: 8095, 
   max: 19581 
 };
 
 // Habitat / Risk visualization
-exports.habitat = { 
+var habitat = { 
   min: 0, 
   max: 3, 
   palette: ['blue', 'yellow', 'orange', 'red'] 
 };
 
 // Rainfall visualization
-exports.rainfall =  { 
+var rainfall =  { 
   min: 1091, 
   max: 3112, 
   palette: ['#ffffcc','#a1dab4','#41b6c4','#2c7fb8','#253494'] 
 };
 
 // Temperature visualization
-exports.temperature = {
+var temperature = {
   min: 19.1,  
   max: 36.1,
   palette: [
