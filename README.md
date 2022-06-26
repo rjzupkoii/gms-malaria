@@ -1,4 +1,4 @@
-Greater Mekong Subregion - Malaria Assessment
+Greater Mekong Subregion - Malaria Risk Assessment
 --
 
 Google Earth Engine App for assessing potential *Plasmodium falciparum* malaria risk based upon remotely sensed data and climate modeling.
