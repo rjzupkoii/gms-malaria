@@ -59,7 +59,7 @@ var layerStyles = [
 ];
 
 // Deep Pink is a sentinel value for invalid classifications
-exports.trainingPalette = { 
+var trainingPalette = { 
   min: 1, 
   max: 22, 
   palette: [
