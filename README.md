@@ -13,8 +13,6 @@ The development of this project requires two remote repositories to be configure
 
 As a practical matter this means that shapefiles and graphical resources should not be stored in the repository, and this is consistent with the practice of uploading them as Assets to Earth Engine. However, due to the scope of the collections available on Earth Engine, relevant shapefiles may already be in place through collections like the [FAO GAUL: Global Administrative Unit Layers](https://developers.google.com/earth-engine/datasets/catalog/FAO_GAUL_2015_level2).
 
----
-
 ## Deployment
 The following steps should be followed to deploy to Earth Engine, assuming that you have already [signed up](https://signup.earthengine.google.com/) for an account.
 
