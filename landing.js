@@ -32,18 +32,3 @@ var malaria = ee.ImageCollection.fromImages([results]);
 visual.visualizeGms();
 visualizeResults(landsat, malaria, false);
 exporting.queueExports(results);
-
-
-
-function visualizeResults(landsat, image, showInputs) {
-  Map.addLayer(landsat, visual.landsatRGB, 'Landsat 8 (RGB, 4-3-2)', false);
-  Map.addLayer(image.select('habitat'), visual.habitat, 'Habitat (A. dirus)');
-  Map.addLayer(image.select('risk'), visual.habitat, 'Malaria Risk');
-  
-  if (showInputs) {
-    Map.addLayer(image.select('landcover'), visual.trainingPalette, 'Land Use Classification');    
-    Map.addLayer(image.select('annual_rainfall'), visual.rainfall, 'Annual Precipitation (mm)');
-    Map.addLayer(image.select('mean_temperature'), visual.temperature, 'Mean Land Surface Temperature (C)');
-    Map.addLayer(image.select('temperature_bounds'), {min: 0, max: 366}, 'Days Outside of Temperature Bounds');
-  }
-}
