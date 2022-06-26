@@ -39,7 +39,7 @@ var outline = empty.paint({
   color: 1,
   width: 0.5,
 });
-Map.addLayer(outline, { palette: '#9f9f9f' }, 'Greater Mekong Subregion');
+Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
 
 // Visualize and export the results of the proof of concept
 visualize(landsat, malaria, false);
