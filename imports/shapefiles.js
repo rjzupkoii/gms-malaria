@@ -1,5 +1,5 @@
 /*
- * shaepfiles.js
+ * shapefiles.js
  *
  * This script contains various library functions that return shapefile
  * collections that are used in the App.
@@ -7,7 +7,7 @@
 
 // Get the countries and regions that make up the GMS
 exports.getGms = function() {
-  // Offical country and region names
+  // Official country and region names
   var admn0_names = ee.List(['Cambodia', 'Lao People\'s Democratic Republic', 'Myanmar', 'Thailand', 'Viet Nam']);
   var admin1_names = ee.List(['Guangxi Zhuangzu Zizhiqu', 'Yunnan Sheng']);  
   
