@@ -30,19 +30,9 @@ var results = processing.process(image);
 var landsat = ee.ImageCollection.fromImages([image]);
 var malaria = ee.ImageCollection.fromImages([results]);
 
-// Visualize the GMS
-var gms = shapefiles.getGms();
-Map.centerObject(gms);
-var empty = ee.Image().byte();
-var outline = empty.paint({
-  featureCollection: gms,
-  color: 1,
-  width: 0.5,
-});
-Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
-
 // Visualize and export the results of the proof of concept
-visualize(landsat, malaria, false);
+visualizeGms();
+visualizeResults(landsat, malaria, false);
 queueExports(results);
 
 function queueExports(results) {
@@ -97,7 +87,19 @@ function queueExports(results) {
   });   
 }
 
-function visualize(landsat, image, showInputs) {
+function visualizeGms() {
+  var gms = shapefiles.getGms();
+  Map.centerObject(gms, 5);
+  var empty = ee.Image().byte();
+  var outline = empty.paint({
+    featureCollection: gms,
+    color: 1,
+    width: 0.5,
+  });
+  Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
+}
+
+function visualizeResults(landsat, image, showInputs) {
   Map.addLayer(landsat, visual.landsatRGB, 'Landsat 8 (RGB, 4-3-2)');
   Map.addLayer(image.select('habitat'), visual.habitat, 'Habitat (A. dirus)');
   Map.addLayer(image.select('risk'), visual.habitat, 'Malaria Risk');
