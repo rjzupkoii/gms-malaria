@@ -7,8 +7,8 @@
  */
 
 // Import relevant scripts and data
-var visual = require('imports/visualization.js');
-var processing = require('imports/processing.js');
+var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
+var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Filter the USGS Landsat 8 Level 2, Collection 2, Tier 1 collection to the 
 // selected image for the proof of concept (125, 50, 2020-01-22); an 
