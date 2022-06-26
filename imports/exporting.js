@@ -34,7 +34,7 @@ var malaria = ee.ImageCollection.fromImages([results]);
 // Visualize and export the results of the proof of concept
 visualizeGms();
 visualizeResults(landsat, malaria, false);
-queueExports(results);
+exporting.queueExports(results);
 
 function visualizeGms() {
   // Load the GMS borders and generate the outlines
