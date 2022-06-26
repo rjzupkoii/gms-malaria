@@ -33,7 +33,13 @@ var malaria = ee.ImageCollection.fromImages([results]);
 // Visualize the GMS
 var gms = shapefiles.getGms();
 Map.centerObject(gms);
-Map.addLayer(gms, [], 'Greater Mekong Subregion');
+var empty = ee.Image().byte();
+var outline = empty.paint({
+  featureCollection: gms,
+  color: 1,
+  width: 0.5,
+});
+Map.addLayer(outline, { palette: '#9f9f9f' }, 'Greater Mekong Subregion');
 
 // Visualize and export the results of the proof of concept
 visualize(landsat, malaria, false);
