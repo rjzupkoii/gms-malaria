@@ -20,7 +20,7 @@ fi
 
 # Refresh from Google to GitHub
 if [ $1 = 'google' ]; then
-	git pull origin
+	git pull origin master
 	git push github
 	exit
 fi
