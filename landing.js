@@ -30,6 +30,11 @@ var results = processing.process(image);
 var landsat = ee.ImageCollection.fromImages([image]);
 var malaria = ee.ImageCollection.fromImages([results]);
 
+// Visualize the GMS
+var gms = shapefiles.getGms();
+Map.centerObject(gms);
+Map.addLayer(gms);
+
 // Visualize and export the results of the proof of concept
 visualize(landsat, malaria, false);
 queueExports(results);
