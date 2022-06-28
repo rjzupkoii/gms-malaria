@@ -1,4 +1,4 @@
-Greater Mekong Subregion - Malaria Assessment
+Greater Mekong Subregion - Malaria Risk Assessment
 --
 
 Google Earth Engine App for assessing potential *Plasmodium falciparum* malaria risk based upon remotely sensed data and climate modeling.
@@ -14,7 +14,7 @@ The development of this project requires two remote repositories to be configure
 As a practical matter this means that shapefiles and graphical resources should not be stored in the repository, and this is consistent with the practice of uploading them as Assets to Earth Engine. However, due to the scope of the collections available on Earth Engine, relevant shapefiles may already be in place through collections like the [FAO GAUL: Global Administrative Unit Layers](https://developers.google.com/earth-engine/datasets/catalog/FAO_GAUL_2015_level2).
 
 ## Deployment
-The following steps should be followed to deploy to Earth Engine, assuming that you have already [signed up](https://signup.earthengine.google.com/) for an account.
+Since Earth Engine requires paths and URLs that contain usernames, it will be necessary to first fork the project if you wish to deploy. Then you will be able to edit username references and paths as needed. Once that is complete, the following steps should be followed to deploy to Earth Engine:
 
 1. Create a new repository within your Earth Engine environment, using the `gms-malaria` name is recommended
 2. Sign-up for Google Source access via `git` at https://www.googlesource.com/new-password
@@ -22,7 +22,6 @@ The following steps should be followed to deploy to Earth Engine, assuming that 
 4. Using the git command line, clone the GitHub repository to your local machine, `git clone https://github.com/rjzupkoii/gms-malaria.git`
 5. Change into the newly cloned repository
 6. Add the Google Source repository, `git remote add google [URL]` where `[URL]` is the URL noted in Step 3
-
 
 Upon completing Steps 1 - 6 you can use `git remote -v` to list the remote repositories registered with the repository on your local machine. You should see two remotes listed: one with named `origin` with a GitHub URL, and a second named `google` with a Google Source URL. Upon completing this process you can use the `refresh.sh` script in the `bash` directory to synchronize repositories between both locations. 
 
