@@ -19,8 +19,6 @@ var maskClouds = function(image) {
   return image.updateMask(mask);  
 };
 
-
-
 // Get the GMS shapefile
 var gms = shapefile.getGms();
 Map.centerObject(gms, 5);
