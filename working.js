@@ -47,11 +47,4 @@ var landsat = gms_wrs2_swaths.map(function(swath) {
     .filterDate('2020-01-01', '2020-12-31');
   return landsat.mean();
 });
-
-  var viz_cir = {
-    'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
-    'min': 6131.18,
-    'max': 49339.82
-  };
-  Map.addLayer(landsat, viz_cir, 'Landsat 8, GMS (CIR)');
-
+print(landsat);
