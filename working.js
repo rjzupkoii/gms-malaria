@@ -29,8 +29,6 @@ var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filterDate('2020-01-01', '2020-12-31');
 landsat = landsat.map(maskClouds);
 
-
-
 var viz_cir = {
   'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
   'min': 6131.18,
