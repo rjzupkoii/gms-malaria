@@ -13,9 +13,7 @@ var getImages = function(swath) {
       ee.Filter.eq('WRS_PATH', swath.get('PATH')),
       ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
     .filterDate('2020-01-01', '2020-12-31');
-  image = image.map(maskClouds);
-  image = image.mean();
-  return image;
+  return image.map(maskClouds).mean();
 };
 
 
