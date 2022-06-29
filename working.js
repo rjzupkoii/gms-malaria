@@ -3,17 +3,14 @@
 var shapefile = require('users/rzupko/gms-malaria:imports/shapefiles.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
-// Based upon minimum for full cloud-masked coverage of GMS
-var CLOUD_COVER = 70;
-
 // Mask for the cloud and cloud shadow bits
-var MASK = (1 << 3) | (1 << 4);
+var CLOUD_MASK = (1 << 3);
 
 // Mask the clouds out of the Landsat 8 image
 var maskClouds = function(image) {
   // Create a mask where the QA masks are set to zero, or clear
   var qa = image.select('QA_PIXEL');
-  var mask = qa.bitwiseAnd(MASK).eq(0);
+  var mask = qa.bitwiseAnd(CLOUD_MASK).eq(0);
 
   // Return the masked image
   return image.updateMask(mask);  
@@ -38,6 +35,18 @@ function gms_constrained() {
   Map.addLayer(landsat, viz_cir, 'Landsat 8, GMS (CIR)');
 }
 
+
+// var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
+// var swath = gms_wrs2_swaths.first();
+// var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+//   .filter(ee.Filter.and(
+//     ee.Filter.eq('WRS_PATH', swath.get('PATH')),
+//     ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
+//   .filterDate('2020-01-01', '2020-12-31');
+// image = image.map(maskClouds);
+// image = image.mean();
+// Map.addLayer(image);
+
 var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
 var landsat = gms_wrs2_swaths.map(function(swath) {
   var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
@@ -45,16 +54,8 @@ var landsat = gms_wrs2_swaths.map(function(swath) {
       ee.Filter.eq('WRS_PATH', swath.get('PATH')),
       ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
     .filterDate('2020-01-01', '2020-12-31');
-  return ee.Image(image.mean());
-  
+  return image;
 });
-
-print(landsat);
-
-var image = landsat.first();
-print(image);
-
-
-Map.centerObject(image);
-Map.addLayer(image);
-
+Map.centerObject(landsat);
+Map.addLayer(landsat);
+  
