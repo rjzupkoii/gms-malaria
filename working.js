@@ -47,4 +47,6 @@ var landsat = gms_wrs2_swaths.map(function(swath) {
     .filterDate('2020-01-01', '2020-12-31');
   return image.mean();
 });
+print(landsat);
+Map.centerObject(landsat);
 Map.addLayer(landsat);
