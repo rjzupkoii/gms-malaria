@@ -33,5 +33,4 @@ var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 image = image.map(maskClouds).mean();
 
 Map.centerObject(image);
-Map.addLayer(image);
-  
+Map.addLayer(image, [], 'Working!');
