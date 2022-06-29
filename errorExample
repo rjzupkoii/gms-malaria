@@ -45,5 +45,5 @@ image = image.map(maskClouds).mean();
 Map.centerObject(image);
 Map.addLayer(image, [], 'Working!');
 
-var indicies = ee.List(["134,41", "134,42","134,43"]);
-
+var indicies = ee.List([ee.List([134,41]), ee.List([134,42]),ee.List([134,43]));
+print(indicies.get(0));
