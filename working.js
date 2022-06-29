@@ -36,26 +36,6 @@ function gms_constrained() {
 }
 
 
-// var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
-// var swath = gms_wrs2_swaths.first();
-// var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-//   .filter(ee.Filter.and(
-//     ee.Filter.eq('WRS_PATH', swath.get('PATH')),
-//     ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
-//   .filterDate('2020-01-01', '2020-12-31');
-// image = image.map(maskClouds);
-// image = image.mean();
-// Map.addLayer(image);
-
 var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
-var landsat = gms_wrs2_swaths.map(function(swath) {
-  var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-    .filter(ee.Filter.and(
-      ee.Filter.eq('WRS_PATH', swath.get('PATH')),
-      ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
-    .filterDate('2020-01-01', '2020-12-31');
-  return image;
-});
-Map.centerObject(landsat);
-Map.addLayer(landsat);
+
   
