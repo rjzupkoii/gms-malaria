@@ -48,8 +48,10 @@ var landsat = gms_wrs2_swaths.map(function(swath) {
   image = image.mean();
   return image.reproject('EPSG:32648', null, null);
 });
-print(landsat)
 
-Map.centerObject(landsat);
-Map.addLayer(landsat);
+var image = landsat.first();
+
+
+Map.centerObject(image);
+Map.addLayer(image);
 
