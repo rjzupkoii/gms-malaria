@@ -32,7 +32,7 @@ var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T2_L2')
 landsat = landsat.map(maskClouds);
 
 var viz_cir = {
-  'bands' : ['B5', 'B4', 'B3'],
+  'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
   'min': 6131.18,
   'max': 49339.82
 };
