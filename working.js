@@ -26,9 +26,14 @@ var gms = shapefile.getGms();
 Map.centerObject(gms, 5);
 
 // Filter the Landsat 8 imagery to 2020
-var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T2_L2')
   .filterBounds(gms)
   .filterDate('2020-01-01', '2020-12-31');
 landsat = landsat.map(maskClouds);
 
-Map.addLayer(landsat, visual.landsatCIR);
+var viz_cir = {
+  'bands' : ['B5', 'B4', 'B3'],
+  'min': 6131.18,
+  'max': 49339.82
+};
+Map.addLayer(landsat, viz_cir, 'Landsat 8, GMS (CIR)');
