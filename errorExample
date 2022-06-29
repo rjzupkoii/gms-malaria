@@ -37,3 +37,8 @@ image = image.map(maskClouds).mean();
 
 Map.centerObject(image);
 Map.addLayer(image, [], 'Working!');
+
+var rows = dataset.toList(dataset.size()).map(function(swath) {
+  return ee.Feature(swath.get('ROW'));
+}).distinct();
+print(rows)
