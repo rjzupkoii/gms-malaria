@@ -3,6 +3,23 @@
 var shapefile = require('users/rzupko/gms-malaria:imports/shapefiles.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
+// Mask the clouds out of the Landsat 8 image
+var maskClouds = function(image) {
+  // Prepare the masks
+  var shadow_mask = (1 << 3);
+  var cloud_mask = (1 << 5);
+  
+  // Select the QA band
+  var qa = image.select('pixel_qa');
+  
+  // Create a mask where the QA masks are set to zero, or clear
+  var mask = qa.bitwiseAnd(shadow_mask).eq(0)
+         .and(qa.bitwiseAnd(cloud_mask).eq(0));
+  
+  // Return the masked image
+  return image.updateMask(mask);  
+};
+
 // Based upon minimum for full coverage of GMS
 var CLOUD_COVER = 26;
 
