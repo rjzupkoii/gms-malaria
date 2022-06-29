@@ -35,4 +35,4 @@ var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filterMetadata('CLOUD_COVER', 'less_than', CLOUD_COVER);
 landsat = landsat.map(maskClouds);
 
-Map.addLayer(landsat)
+Map.addLayer(landsat);
