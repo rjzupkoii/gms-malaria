@@ -1,13 +1,7 @@
-// Mask for the cloud and cloud shadow bits
-var CLOUD_MASK = (1 << 3);
 
-// Mask the clouds out of the Landsat 8 image
 var maskClouds = function(image) {
-  // Create a mask where the QA masks are set to zero, or clear
   var qa = image.select('QA_PIXEL');
-  var mask = qa.bitwiseAnd(CLOUD_MASK).eq(0);
-
-  // Return the masked image
+  var mask = qa.bitwiseAnd(1 << 3).eq(0);
   return image.updateMask(mask);  
 };
 
