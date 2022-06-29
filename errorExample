@@ -16,35 +16,22 @@ var getImages = function(swath) {
   return image.map(maskClouds).mean();
 };
 
-
+// This route does not work
 var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
 var images = gms_wrs2_swaths.map(getImages);
 Map.centerObject(images);
-Map.addLayer(images);
+Map.addLayer(images, [], 'Not working!');
 
-// var swath = gms_wrs2_swaths.first();
-// var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-//   .filter(ee.Filter.and(
-//     ee.Filter.eq('WRS_PATH', swath.get('PATH')),
-//     ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
-//   .filterDate('2020-01-01', '2020-12-31');
-// image = image.map(maskClouds);
-// image = image.mean();
-// Map.addLayer(image);
 
-// var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
-// var landsat = gms_wrs2_swaths.map(function(swath) {
-//   var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-//     .filter(ee.Filter.and(
-//       ee.Filter.eq('WRS_PATH', swath.get('PATH')),
-//       ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
-//     .filterDate('2020-01-01', '2020-12-31');
-//   image = image.map(maskClouds);
-//   image = image.mean();
-//   return image;
-// });
+// This route does work
+var swath = gms_wrs2_swaths.first();
+var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+  .filter(ee.Filter.and(
+    ee.Filter.eq('WRS_PATH', swath.get('PATH')),
+    ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
+  .filterDate('2020-01-01', '2020-12-31');
+image = image.map(maskClouds).mean();
 
-// print(landsat);
-// Map.centerObject(landsat);
-// Map.addLayer(landsat);
+Map.centerObject(image);
+Map.addLayer(image);
   
