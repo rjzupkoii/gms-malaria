@@ -14,6 +14,18 @@ var maskClouds = function(image) {
   return image.updateMask(mask);  
 };
 
+// Get the collection of Landsat images that are constrained to the GMS
+var getImages = function(item) {
+  item = ee.List(item);
+  var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+  .filter(ee.Filter.and(
+    ee.Filter.eq('WRS_PATH', item.get(0)),
+    ee.Filter.eq('WRS_ROW', item.get(1))))
+  .filterDate('2020-01-01', '2020-12-31');
+  return ee.Image(
+    image.map(maskClouds).mean().clipToCollection(gms));  
+};
+
 var viz_gms_cir = {
   'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
   'min' : 7423.785454545455,
@@ -21,18 +33,7 @@ var viz_gms_cir = {
 };
 
 var gms = shapefile.getGms();
-var landsat = ee.ImageCollection(gms_wrs2.indicies.map(function(item) {
-    item = ee.List(item);
-    var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-    .filter(ee.Filter.and(
-      ee.Filter.eq('WRS_PATH', item.get(0)),
-      ee.Filter.eq('WRS_ROW', item.get(1))))
-    .filterDate('2020-01-01', '2020-12-31');
-  return ee.Image(image.map(maskClouds).mean().clip(gms));
-}));
-// landsat = landsat.map(function(image) {
-//   return image.clip(gms);
-// });
-Map.centerObject(gms);
+var landsat = ee.ImageCollection(gms_wrs2.indicies.map(getImages));
+visual.visualizeGms();
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
   
