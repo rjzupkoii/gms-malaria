@@ -49,6 +49,8 @@ var landsat = gms_wrs2_swaths.map(function(swath) {
   
 });
 
+print(landsat);
+
 var image = landsat.first();
 print(image);
 
