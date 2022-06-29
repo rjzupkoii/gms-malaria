@@ -1,3 +1,6 @@
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var dataset = ee.FeatureCollection("users/rzupko/gms_wrs2_swaths");
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
 
 // Mask the clouds out of the image
 var maskClouds = function(image) {
@@ -17,14 +20,14 @@ var getImages = function(swath) {
 };
 
 // This route does not work
-var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
-var images = gms_wrs2_swaths.map(getImages);
+//var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
+var images = dataset.map(getImages);
 Map.centerObject(images);
 Map.addLayer(images, [], 'Not working!');
 
 
 // This route does work
-var swath = gms_wrs2_swaths.first();
+var swath = dataset.first();
 var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filter(ee.Filter.and(
     ee.Filter.eq('WRS_PATH', swath.get('PATH')),
