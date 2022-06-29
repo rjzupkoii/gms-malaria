@@ -27,6 +27,12 @@ Map.addLayer(images, [], 'Not working!');
 
 
 // This route does work
+var items = dataset.map(function(feature) {
+  var row = feature.get('ROW');
+  return ee.Feature(feature).set('foo', row);
+});
+print(items);
+
 var swath = dataset.first();
 var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filter(ee.Filter.and(
@@ -37,8 +43,3 @@ image = image.map(maskClouds).mean();
 
 Map.centerObject(image);
 Map.addLayer(image, [], 'Working!');
-
-var rows = dataset.toList(dataset.size()).map(function(swath) {
-  return ee.Feature(swath.get('ROW'));
-}).distinct();
-print(rows)
