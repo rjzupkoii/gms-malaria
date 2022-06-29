@@ -19,12 +19,14 @@ var maskClouds = function(image) {
   return image.updateMask(mask);  
 };
 
+
+
 // Get the GMS shapefile
 var gms = shapefile.getGms();
 Map.centerObject(gms, 5);
 
 // Filter the Landsat 8 imagery to 2020
-var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T2_L2')
+var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filterBounds(gms)
   .filterDate('2020-01-01', '2020-12-31');
 landsat = landsat.map(maskClouds);
