@@ -38,4 +38,8 @@ function gms_constrained() {
   Map.addLayer(landsat, viz_cir, 'Landsat 8, GMS (CIR)');
 }
 
-
+var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
+var paths = data.map(function(item) {
+  return item.get('PATH');
+}).distinct();
+print(paths);
