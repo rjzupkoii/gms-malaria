@@ -45,8 +45,11 @@ var landsat = gms_wrs2_swaths.map(function(swath) {
       ee.Filter.eq('WRS_PATH', swath.get('PATH')),
       ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
     .filterDate('2020-01-01', '2020-12-31');
-  return image.mean().reproject('EPSG:32648', null, null);
+  image = image.mean();
+  return image.reproject('EPSG:32648', null, null);
 });
+print(landsat)
+
 Map.centerObject(landsat);
 Map.addLayer(landsat);
 
