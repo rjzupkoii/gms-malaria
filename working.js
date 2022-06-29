@@ -23,6 +23,8 @@ var maskClouds = function(image) {
 // Based upon minimum for full coverage of GMS
 var CLOUD_COVER = 26;
 
+visual.visualizeGms();
+
 // Get the GMS shapefile
 var gms = shapefile.getGms();
 
@@ -31,7 +33,6 @@ var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filterBounds(gms)
   .filterDate('2020-01-01', '2020-12-31')
   .filterMetadata('CLOUD_COVER', 'less_than', CLOUD_COVER);
-print(landsat);
+landsat = landsat.map(maskClouds);
 
-visual.visualizeGms();
 Map.addLayer(landsat)
