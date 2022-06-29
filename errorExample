@@ -2,6 +2,7 @@
 var dataset = ee.FeatureCollection("users/rzupko/gms_wrs2_swaths");
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 
+
 // Mask the clouds out of the image
 var maskClouds = function(image) {
   var qa = image.select('QA_PIXEL');
@@ -43,3 +44,6 @@ image = image.map(maskClouds).mean();
 
 Map.centerObject(image);
 Map.addLayer(image, [], 'Working!');
+
+var indicies = ee.List(["134,41", "134,42","134,43"]);
+
