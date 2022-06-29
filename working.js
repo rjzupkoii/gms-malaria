@@ -1,5 +1,4 @@
 // Developmental script for new GMS features / scale-up code.
-
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:imports/shapefiles.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
