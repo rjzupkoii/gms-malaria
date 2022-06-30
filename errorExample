@@ -40,6 +40,7 @@ var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 image = image.map(maskClouds).mean();
 Map.addLayer(image, [], 'Working!');
 
+// This route works by iterating over a list to generate an ImageCollection
 var indicies = ee.List(
   [
     ee.List([134,41]), 
