@@ -56,4 +56,4 @@ image = ee.ImageCollection(indicies.map(function(item) {
   return ee.Image(image.map(maskClouds).mean());
 }));
 Map.centerObject(pin, 6);
-Map.addLayer(image, [], 'Via ee.List! With ee.ImageCollectioon');
+Map.addLayer(image, [], 'Via ee.List with ee.ImageCollectioon');
