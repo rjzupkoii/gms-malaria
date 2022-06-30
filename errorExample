@@ -1,5 +1,6 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
-var dataset = ee.FeatureCollection("users/rzupko/gms_wrs2_swaths");
+var dataset = ee.FeatureCollection("users/rzupko/gms_wrs2_swaths"),
+    pin = /* color: #d63000 */ee.Geometry.Point([95.30717788409113, 28.53126258967645]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 
 
@@ -26,14 +27,11 @@ var images = dataset.map(getImages);
 Map.centerObject(images);
 Map.addLayer(images, [], 'Not working!');
 
-
 // This route does work
 var items = dataset.map(function(feature) {
   var row = feature.get('ROW');
   return ee.Feature(feature).set('foo', row);
 });
-print(items);
-
 var swath = dataset.first();
 var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filter(ee.Filter.and(
@@ -41,9 +39,22 @@ var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     ee.Filter.eq('WRS_ROW', swath.get('ROW'))))
   .filterDate('2020-01-01', '2020-12-31');
 image = image.map(maskClouds).mean();
-
-Map.centerObject(image);
 Map.addLayer(image, [], 'Working!');
 
-var indicies = ee.List([ee.List([134,41]), ee.List([134,42]),ee.List([134,43]));
-print(indicies.get(0));
+var indicies = ee.List(
+  [
+    ee.List([134,41]), 
+    ee.List([134,42]),
+    ee.List([134,43]),
+  ]);
+image = ee.ImageCollection(indicies.map(function(item) {
+    item = ee.List(item);
+    var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+    .filter(ee.Filter.and(
+      ee.Filter.eq('WRS_PATH', item.get(0)),
+      ee.Filter.eq('WRS_ROW', item.get(1))))
+    .filterDate('2020-01-01', '2020-12-31');
+  return ee.Image(image.map(maskClouds).mean());
+}));
+Map.centerObject(pin);
+Map.addLayer(image, [], 'Via ee.List! With ee.ImageCollectioon');
