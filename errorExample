@@ -22,9 +22,8 @@ var getImages = function(swath) {
 };
 
 // This route does not work
-//var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
-var images = dataset.map(getImages);
-Map.centerObject(images);
+var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
+var images = gms_wrs2_swaths.map(getImages);
 Map.addLayer(images, [], 'Not working!');
 
 // This route does work
@@ -56,5 +55,5 @@ image = ee.ImageCollection(indicies.map(function(item) {
     .filterDate('2020-01-01', '2020-12-31');
   return ee.Image(image.map(maskClouds).mean());
 }));
-Map.centerObject(pin);
+Map.centerObject(pin, 6);
 Map.addLayer(image, [], 'Via ee.List! With ee.ImageCollectioon');
