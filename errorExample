@@ -3,7 +3,6 @@ var dataset = ee.FeatureCollection("users/rzupko/gms_wrs2_swaths"),
     pin = /* color: #d63000 */ee.Geometry.Point([95.30717788409113, 28.53126258967645]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 
-
 // Mask the clouds out of the image
 var maskClouds = function(image) {
   var qa = image.select('QA_PIXEL');
@@ -22,8 +21,7 @@ var getImages = function(swath) {
 };
 
 // This route does not work
-var gms_wrs2_swaths = ee.FeatureCollection('users/rzupko/gms_wrs2_swaths');
-var images = gms_wrs2_swaths.map(getImages);
+var images = dataset.map(getImages);
 Map.addLayer(images, [], 'Not working!');
 
 // This route does work
