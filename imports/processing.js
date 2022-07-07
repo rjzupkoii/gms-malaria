@@ -40,7 +40,7 @@ exports.process = function(image) {
 };
 
 // Get the mean monthly rainfall from the CHIPS dataset for 2019
-function annualRainfall(aoi) {
+function annualRainfall(aoi, year) {
   var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
     .filterDate('2019-01-01', '2019-12-31');
   var results = collection.reduce(ee.Reducer.sum());
