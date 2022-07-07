@@ -14,7 +14,7 @@ var viz_gms_cir = {
 
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
-var rainfall = getAnnualRainfall(gms, '2020');
+var rainfall = processing.getAnnualRainfall(gms, '2020');
 
 visual.visualizeGMS();
 Map.addLayer(rainfall, visual.rainfall, 'CHIRPS/PENTAD');
