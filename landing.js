@@ -25,10 +25,10 @@ var results = processing.process(image);
 //
 // landsat = landsat.merge(ee.ImageCollection.fromImages([image]));
 // malaria = malaria.merge(ee.ImageCollection.fromImages([results]));
-// var landsat = ee.ImageCollection.fromImages([image]);
-// var malaria = ee.ImageCollection.fromImages([results]);
+var landsat = ee.ImageCollection.fromImages([image]);
+var malaria = ee.ImageCollection.fromImages([results]);
 
 // Visualize and export the results of the proof of concept
 visual.visualizeGms();
-// visual.visualizeResults(landsat, malaria, false);
-// exporting.queueExports(results);
+visual.visualizeResults(landsat, malaria, false);
+exporting.queueExports(results);
