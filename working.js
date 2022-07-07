@@ -15,5 +15,7 @@ var viz_gms_cir = {
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
 var landsat = processing.getImages(gms_wrs2.indices, gms, '2020');
+var temperature = processing.getMeanTemperature(gms, '2020');
 visual.visualizeGms();
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
+Map.addLayer(temperature, [], 'MOD11A1.006');
