@@ -37,9 +37,10 @@ var year = '2020';
 var gms = shapefile.getGms();
 var rainfall = processing.getAnnualRainfall(gms, year);
 var temperature = processing.getMeanTemperature(gms, year);
-var landsat = processing.getImages(gms_wrs2.indices, gms, '2020');
+var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 
-//visual.visualizeGms();
+// Add everything to the UI
+visual.visualizeGms();
 Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
 Map.addLayer(temperature, viz_temperature, 'MOD11A1.006');
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
