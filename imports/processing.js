@@ -15,7 +15,7 @@ exports.process = function(image) {
   var aoi = image.geometry();
   
   // Load the data needed for classification
-  var results = annualRainfall(aoi).rename('annual_rainfall');
+  var results = annualRainfall(aoi, 2019).rename('annual_rainfall');
   results = results.addBands(meanTemperature(aoi).rename('mean_temperature'));
   results = results.addBands(temperatureBounds(aoi, 11, 28).rename('temperature_bounds')); // Bounds: 11 C <= temperature <= 28 C
   results = results.addBands(classifyLandCover(image).rename('landcover'));
