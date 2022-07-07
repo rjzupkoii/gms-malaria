@@ -3,7 +3,7 @@ var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
-var processing = requrie('users/rzupko/gms-malaria:imports/processing_wip.js');
+var processing = require('users/rzupko/gms-malaria:imports/processing_wip.js');
 
 
 
@@ -16,6 +16,6 @@ var viz_gms_cir = {
 
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
-var landsat = getImages(gms_wrs2.indicies, '2020');
+var landsat = processing.getImages(gms_wrs2.indicies, '2020');
 visual.visualizeGms();
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
