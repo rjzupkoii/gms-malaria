@@ -12,12 +12,18 @@ var viz_gms_cir = {
   'max' : 22769.123636363634
 };
 
+var viz_rainfall = {
+  'min' : 24.55,
+  'max' : 4497.99,
+  'palette' : ['#ffffcc','#a1dab4','#41b6c4','#2c7fb8','#253494'],
+};
+
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
 var rainfall = processing.getAnnualRainfall(gms, '2020');
 
 visual.visualizeGms();
-Map.addLayer(rainfall, visual.rainfall, 'CHIRPS/PENTAD');
+Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
 
 //var landsat = processing.getImages(gms_wrs2.indices, gms, '2020');
 //var temperature = processing.getMeanTemperature(gms, '2020');
