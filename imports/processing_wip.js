@@ -19,7 +19,7 @@ exports.getImages = function(indices, aoi, year) {
   return ee.ImageCollection(indices.map(load));
 };
 
-// Get the mean monthly rainfall from the CHIPS dataset for 2019
+// Get the annual rainfall from the CHIPS dataset for the given AOI and year.
 exports.getAnnualRainfall = function(aoi, year) {
   var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
     .filterDate(year + '-01-01', year + '-12-31');
