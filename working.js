@@ -36,7 +36,7 @@ var year = '2020';
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
 var rainfall = processing.getAnnualRainfall(gms, year);
-var temperature = getMeanTemperature(gms, year);
+var temperature = processing.getMeanTemperature(gms, year);
 var landsat = processing.getImages(gms_wrs2.indices, gms, '2020');
 
 //visual.visualizeGms();
