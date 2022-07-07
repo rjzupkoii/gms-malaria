@@ -32,7 +32,7 @@ var temperature = {
 
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
-var rainfall = processing.getAnnualRainfall(gms, '2020');
+//var rainfall = processing.getAnnualRainfall(gms, '2020');
 var temperature = processing.getMeanTemperature(gms, '2020').rename('mean_temperature');
 
 visual.visualizeGms();
