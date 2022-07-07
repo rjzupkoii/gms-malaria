@@ -17,7 +17,7 @@ exports.getImages = function(wrs2, year) {
       image.map(maskClouds).mean().clipToCollection(gms));  
   };
   return ee.ImageCollection(gms_wrs2.indicies.map(load));
-}
+};
  
 // Mask for the cloud and cloud shadow bits
 var CLOUD_MASK = (1 << 3);
@@ -28,5 +28,3 @@ var maskClouds = function(image) {
   var mask = qa.bitwiseAnd(CLOUD_MASK).eq(0);
   return image.updateMask(mask);  
 };
-
-
