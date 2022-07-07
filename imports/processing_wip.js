@@ -4,7 +4,7 @@
  * Work-in-progress replacement for the processing.js script.
  */
 
-// Get the collection of Landsat images that are constrained to the GMS
+// Get the collection of Landsat images that are constrained to the AOI.
 exports.getImages = function(indices, aoi, year) {
   var load = function(item) {
     item = ee.List(item);
@@ -18,6 +18,24 @@ exports.getImages = function(indices, aoi, year) {
   };
   return ee.ImageCollection(indices.map(load));
 };
+
+// Get the mean temperature from the MOD11A1.006 dataset for the given year.
+exports.getMeanTemperature = function(aoi, year) {
+  var collection = ee.ImageCollection('MODIS/006/MOD11A1')
+    .filterDate('2019-01-01', '2019-12-31');
+
+  // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
+  collection = collection.map(function(image){
+    var kelvin = image.select('LST_Day_1km');
+    var celsius = ee.Image().expression('kelvin * 0.02 - 273.15', {kelvin: kelvin});
+    celsius = celsius.clip(aoi);
+    return image.addBands(celsius.rename('LST_Day_1km_celsius'));
+  });
+  collection = collection.select('LST_Day_1km_celsius');
+  
+  // Reduce and return
+  return collection.reduce(ee.Reducer.mean());
+}
  
 // Mask for the cloud and cloud shadow bits
 var CLOUD_MASK = (1 << 3);
