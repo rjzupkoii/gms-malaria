@@ -6,7 +6,7 @@
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
  
 // Get the collection of Landsat images that are constrained to the GMS
-exports.getImages = function(gms, year) {
+exports.getImages = function(aoi, year) {
   var load = function(item) {
     item = ee.List(item);
     var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
@@ -15,7 +15,7 @@ exports.getImages = function(gms, year) {
       ee.Filter.eq('WRS_ROW', item.get(1))))
     .filterDate(year + '-01-01', year + '-12-31');
     return ee.Image(
-      image.map(maskClouds).mean().clipToCollection(gms));  
+      image.map(maskClouds).mean().clipToCollection(aoi));  
   };
   return ee.ImageCollection(gms_wrs2.indicies.map(load));
 };
