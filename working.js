@@ -16,7 +16,7 @@ var viz_gms_cir = {
 var gms = shapefile.getGms();
 var rainfall = processing.getAnnualRainfall(gms, '2020');
 
-visual.visualizeGMS();
+visual.visualizeGms();
 Map.addLayer(rainfall, visual.rainfall, 'CHIRPS/PENTAD');
 
 //var landsat = processing.getImages(gms_wrs2.indices, gms, '2020');
