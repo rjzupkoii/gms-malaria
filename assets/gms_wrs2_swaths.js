@@ -1,6 +1,6 @@
 
 
-exports.indicies = ee.List([
+exports.indices = ee.List([
 ee.List([134,41]),
 ee.List([134,42]),
 ee.List([134,43]),
