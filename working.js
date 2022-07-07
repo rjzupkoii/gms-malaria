@@ -41,4 +41,3 @@ var gms = shapefile.getGms();
 var landsat = getImages(gms_wrs2.indicies, '2020');
 visual.visualizeGms();
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
-  
