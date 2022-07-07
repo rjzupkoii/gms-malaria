@@ -3,6 +3,8 @@ var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
+var processing = requrie('users/rzupko/gms-malaria:imports/processing_wip.js');
+
 // Mask for the cloud and cloud shadow bits
 var CLOUD_MASK = (1 << 3);
 
