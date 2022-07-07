@@ -12,6 +12,6 @@ var viz_gms_cir = {
 
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
-var landsat = processing.getImages('2020');
+var landsat = processing.getImages(gms, '2020');
 visual.visualizeGms();
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
