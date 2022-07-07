@@ -30,5 +30,5 @@ var malaria = ee.ImageCollection.fromImages([results]);
 
 // Visualize and export the results of the proof of concept
 visual.visualizeGms();
-visual.visualizeResults(landsat, malaria, false);
+visual.visualizeResults(landsat, malaria, true);
 exporting.queueExports(results);
