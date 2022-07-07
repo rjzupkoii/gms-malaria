@@ -1,6 +1,8 @@
 // Developmental script for new GMS features / scale-up code.
-var processing = require('users/rzupko/gms-malaria:imports/processing_wip.js');
+var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+
+var processing = require('users/rzupko/gms-malaria:imports/processing_wip.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
 // CIR visualization for the GMS
