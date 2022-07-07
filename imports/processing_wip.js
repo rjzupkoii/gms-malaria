@@ -35,7 +35,7 @@ exports.getMeanTemperature = function(aoi, year) {
   
   // Reduce and return
   return collection.reduce(ee.Reducer.mean());
-}
+};
  
 // Mask for the cloud and cloud shadow bits
 var CLOUD_MASK = (1 << 3);
