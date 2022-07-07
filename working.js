@@ -19,10 +19,10 @@ var viz_rainfall = {
 };
 
 // Temperature visualization
-var temperature = {
-  min: 19.1,  
-  max: 36.1,
-  palette: [
+var viz_temperature = {
+  'min' : 3.94,  
+  'max' : 38.0,
+  'palette' : [
     '040274', '040281', '0502a3', '0502b8', '0502ce', '0502e6',
     '0602ff', '235cb1', '307ef3', '269db1', '30c8e2', '32d3ef',
     '3be285', '3ff38f', '86e26f', '3ae237', 'b5e22e', 'd6e21f',
@@ -33,11 +33,29 @@ var temperature = {
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
 //var rainfall = processing.getAnnualRainfall(gms, '2020');
-var temperature = processing.getMeanTemperature(gms, '2020').rename('mean_temperature');
+
+var year = '2020';
+
+function getMeanTemperature(aoi, year) {
+  var temperature = ee.ImageCollection('MODIS/006/MOD11A1')
+    .filterDate(year + '-01-01', year + '-12-31');
+    
+  // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
+  temperature = temperature.map(function(image) {
+    var kelvin = image.select('LST_Day_1km');
+    var celsius = ee.Image().expression('kelvin * 0.02 - 273.15', {kelvin: kelvin});
+    return celsius.rename('LST_Day_1km_celsius');
+  });
+  
+  // Reduce, clip, and return
+  return temperature.reduce(ee.Reducer.mean()).clip(gms);
+}
+
 
 //visual.visualizeGms();
 //Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
-Map.addLayer(temperature, temperature, 'MOD11A1.006');
+var temperature = getMeanTemperature(gms, '2020');
+Map.addLayer(temperature, viz_temperature, 'MOD11A1.006');
 
 //var landsat = processing.getImages(gms_wrs2.indices, gms, '2020');
 
