@@ -19,6 +19,14 @@ exports.getImages = function(indices, aoi, year) {
   return ee.ImageCollection(indices.map(load));
 };
 
+// Get the mean monthly rainfall from the CHIPS dataset for 2019
+exports.getAnnualRainfall = function(aoi, year) {
+  var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
+    .filterDate(year + '-01-01', year + '-12-31');
+  var results = collection.reduce(ee.Reducer.sum());
+  return results.clip(aoi);
+};
+
 // Get the mean temperature from the MOD11A1.006 dataset for the AOI and given year.
 exports.getMeanTemperature = function(aoi, year) {
   var collection = ee.ImageCollection('MODIS/006/MOD11A1')
