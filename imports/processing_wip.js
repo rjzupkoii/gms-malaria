@@ -19,7 +19,7 @@ exports.getImages = function(indices, aoi, year) {
   return ee.ImageCollection(indices.map(load));
 };
 
-// Get the mean temperature from the MOD11A1.006 dataset for the given year.
+// Get the mean temperature from the MOD11A1.006 dataset for the AOI and given year.
 exports.getMeanTemperature = function(aoi, year) {
   var collection = ee.ImageCollection('MODIS/006/MOD11A1')
     .filterDate('2019-01-01', '2019-12-31');
