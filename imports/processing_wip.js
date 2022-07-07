@@ -3,10 +3,9 @@
  *
  * Work-in-progress replacement for the processing.js script.
  */
-var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
- 
+
 // Get the collection of Landsat images that are constrained to the GMS
-exports.getImages = function(aoi, year) {
+exports.getImages = function(indices, aoi, year) {
   var load = function(item) {
     item = ee.List(item);
     var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
@@ -17,7 +16,7 @@ exports.getImages = function(aoi, year) {
     return ee.Image(
       image.map(maskClouds).mean().clipToCollection(aoi));  
   };
-  return ee.ImageCollection(gms_wrs2.indicies.map(load));
+  return ee.ImageCollection(indices.map(load));
 };
  
 // Mask for the cloud and cloud shadow bits
