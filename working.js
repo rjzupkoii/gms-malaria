@@ -35,7 +35,7 @@ var gms = shapefile.getGms();
 //var rainfall = processing.getAnnualRainfall(gms, '2020');
 var temperature = processing.getMeanTemperature(gms, '2020').rename('mean_temperature');
 
-visual.visualizeGms();
+//visual.visualizeGms();
 //Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
 Map.addLayer(temperature, temperature, 'MOD11A1.006');
 
