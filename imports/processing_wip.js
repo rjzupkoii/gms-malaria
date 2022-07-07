@@ -4,6 +4,14 @@
  * Work-in-progress replacement for the processing.js script.
  */
 
+// Get the annual rainfall from the CHIPS dataset for the given AOI and year.
+exports.getAnnualRainfall = function(aoi, year) {
+  var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
+    .filterDate(year + '-01-01', year + '-12-31');
+  var results = collection.reduce(ee.Reducer.sum());
+  return results.clip(aoi);
+};
+
 // Get the collection of Landsat images that are constrained to the AOI.
 exports.getImages = function(indices, aoi, year) {
   var load = function(item) {
@@ -19,30 +27,20 @@ exports.getImages = function(indices, aoi, year) {
   return ee.ImageCollection(indices.map(load));
 };
 
-// Get the annual rainfall from the CHIPS dataset for the given AOI and year.
-exports.getAnnualRainfall = function(aoi, year) {
-  var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
-    .filterDate(year + '-01-01', year + '-12-31');
-  var results = collection.reduce(ee.Reducer.sum());
-  return results.clip(aoi);
-};
-
 // Get the mean temperature from the MOD11A1.006 dataset for the AOI and given year.
 exports.getMeanTemperature = function(aoi, year) {
-  var collection = ee.ImageCollection('MODIS/006/MOD11A1')
+  var temperature = ee.ImageCollection('MODIS/006/MOD11A1')
     .filterDate(year + '-01-01', year + '-12-31');
-
+    
   // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
-  collection = collection.map(function(image){
+  temperature = temperature.map(function(image) {
     var kelvin = image.select('LST_Day_1km');
     var celsius = ee.Image().expression('kelvin * 0.02 - 273.15', {kelvin: kelvin});
-    celsius = celsius.clip(aoi);
-    return image.addBands(celsius.rename('LST_Day_1km_celsius'));
+    return celsius.rename('LST_Day_1km_celsius');
   });
-  collection = collection.select('LST_Day_1km_celsius');
   
-  // Reduce and return
-  return collection.reduce(ee.Reducer.mean());
+  // Reduce, clip, and return
+  return temperature.reduce(ee.Reducer.mean()).clip(gms);
 };
  
 // Mask for the cloud and cloud shadow bits
