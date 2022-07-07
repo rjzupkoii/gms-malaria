@@ -3,6 +3,7 @@
  *
  * Work-in-progress replacement for the processing.js script.
  */
+var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
  
 // Get the collection of Landsat images that are constrained to the GMS
 exports.getImages = function(wrs2, year) {
