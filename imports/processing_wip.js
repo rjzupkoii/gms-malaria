@@ -40,7 +40,7 @@ exports.getMeanTemperature = function(aoi, year) {
   });
   
   // Reduce, clip, and return
-  return temperature.reduce(ee.Reducer.mean()).clip(gms);
+  return temperature.reduce(ee.Reducer.mean()).clip(aoi);
 };
  
 // Mask for the cloud and cloud shadow bits
