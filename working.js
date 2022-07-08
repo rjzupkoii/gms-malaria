@@ -29,62 +29,32 @@ var viz_temperature = {
     'fff705', 'ffd611', 'ffb613', 'ff8b13', 'ff6e08', 'ff500d',
     'ff0000', 'de0101', 'c21301', 'a71001', '911003'
   ] };
+  
+var viz_bounds = {
+  'min' : 0,
+  'max' : 366,
+  'palette' : ['#2f942e', '#b9191e'],
+};
 
 // Placeholder, will be returned by the UI
 var year = '2020';
 
+// Placeholders, will be stored in assets per species
+var minimum = 11.0;
+var maximum = 28.0;
+
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
 // var rainfall = processing.getAnnualRainfall(gms, year);
+var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
 // var temperature = processing.getMeanTemperature(gms, year);
 // var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 
 // Add everything to the UI
 visual.visualizeGms();
 // Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
+Map.addLayer(bounded, viz_bounds, 'A. dirus / Days Outside Bounds');
 // Map.addLayer(temperature, viz_temperature, 'MOD11A1.006');
 // Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
-
-var aoi = gms;
-
-
-var minimum = 11.0;
-var maximum = 28.0;
-var year = '2020';
-
-// Preform scaled conversion from C to K for the data set
-minimum = (minimum + 273.15) / 0.02;
-print(minimum)
-maximum = (maximum + 273.15) / 0.02;
-print(maximum)
-
-
-
-  var temperature = ee.ImageCollection('MODIS/061/MOD11A1')
-    .filterDate(year + '-01-01', year + '-12-31');
-  temperature = temperature.map(function(image) {
-    var kelvin = ;
-    var count = ee.Image(0).expression('(kelvin < minimum) || (maximum < kelvin)',
-      { kelvin: image.select('LST_Day_1km'), minimum: minimum, maximum: maximum });
-    return count.rename('days_outside_bounds');
-  });
-
-
-
-// // Add a band with a count of the days outside of the bounds, minimum <= temp <= maximum
-// collection = collection.map(function(image) {
-//   var kelvin = image.select('LST_Day_1km');
-//   var celsius = ee.Image(0).expression('kelvin * 0.02 - 273.15', {kelvin: kelvin});
-//   var count = ee.Image(0).expression('(celsius < minimum) || (celsius > maximum)', 
-//     {celsius: celsius, minimum: minimum, maximum: maximum});
-//   return image.addBands(count.rename('Outside_Bounds'));
-// });
-// collection = collection.select('Outside_Bounds');
-
-// // Reduce and return  
-// collection = collection.reduce(ee.Reducer.sum()).toInt();  
-Map.addLayer(temperature, [], 'Count')
-
-
 
 
