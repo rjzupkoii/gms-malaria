@@ -44,9 +44,9 @@ exports.getMeanTemperature = function(aoi, year) {
 };
 
 // Get the number of days that the temperature is outside of the bounds, minimum <= temp <= maximum
-exports.getTemperatureBounds(aoi, year, minimum, maximum) {
+exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
   
-}
+};
  
 // Mask for the cloud and cloud shadow bits
 var CLOUD_MASK = (1 << 3);
