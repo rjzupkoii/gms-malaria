@@ -45,7 +45,24 @@ exports.getMeanTemperature = function(aoi, year) {
 
 // Get the number of days that the temperature is outside of the bounds, minimum <= temp <= maximum
 exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
+  // Preform scaled conversion from C to K for the data set
+  minimum = (minimum + 273.15) / 0.02;  
+  maximum = (maximum + 273.15) / 0.02;  
   
+  // Load the data set
+  var temperature = ee.ImageCollection('MODIS/061/MOD11A1')
+    .filterDate(year + '-01-01', year + '-12-31');
+    
+  // Map an expression that sets zero if we are within bounds, one if not
+  temperature = temperature.map(function(image) {
+    var count = ee.Image(0).expression('(kelvin < minimum) || (maximum < kelvin)',
+      { kelvin: image.select('LST_Day_1km'), minimum: minimum, maximum: maximum });
+    return count.rename('days_outside_bounds');
+  });
+  
+  // Clip, sum, and return integers
+  temperature = temperature.map(function(image) { return image.clip(aoi); });
+  return temperature.reduce(ee.Reducer.sum()).toInt();  
 };
  
 // Mask for the cloud and cloud shadow bits
