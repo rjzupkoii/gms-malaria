@@ -35,12 +35,36 @@ var year = '2020';
 
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
-var rainfall = processing.getAnnualRainfall(gms, year);
-var temperature = processing.getMeanTemperature(gms, year);
-var landsat = processing.getImages(gms_wrs2.indices, gms, year);
+// var rainfall = processing.getAnnualRainfall(gms, year);
+// var temperature = processing.getMeanTemperature(gms, year);
+// var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 
 // Add everything to the UI
 visual.visualizeGms();
-Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
-Map.addLayer(temperature, viz_temperature, 'MOD11A1.006');
-Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
+// Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
+// Map.addLayer(temperature, viz_temperature, 'MOD11A1.006');
+// Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
+
+var minimum = 11.0;
+var maximum = 28.0;
+var collection = ee.ImageCollection('MODIS/006/MOD11A1')
+  .filterDate('2019-01-01', '2019-12-31');
+
+// Add a band with a count of the days outside of the bounds, minimum <= temp <= maximum
+collection = collection.map(function(image) {
+  var kelvin = image.select('LST_Day_1km');
+  var celsius = ee.Image(0).expression('kelvin * 0.02 - 273.15', {kelvin: kelvin});
+  var count = ee.Image(0).expression('(celsius < minimum) || (celsius > maximum)', 
+    {celsius: celsius, minimum: minimum, maximum: maximum});
+  count = count.clip(aoi);
+  return image.addBands(count.rename('Outside_Bounds'));
+});
+collection = collection.select('Outside_Bounds');
+
+// Reduce and return  
+collection = collection.reduce(ee.Reducer.sum()).toInt();  
+Map.addLayer(collection, [], 'Count')
+
+
+
+
