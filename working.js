@@ -54,5 +54,5 @@ var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 visual.visualizeGms();
 Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
 Map.addLayer(bounded, viz_bounds, 'A. dirus / Days Outside Bounds');
-Map.addLayer(temperature, viz_temperature, 'MOD11A1.006');
+Map.addLayer(temperature, viz_temperature, 'MOD11A1.061');
 Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
