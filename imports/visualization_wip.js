@@ -1,4 +1,4 @@
-
+var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Days outside bounds visualization for vectors
 exports.viz_bounds = {
