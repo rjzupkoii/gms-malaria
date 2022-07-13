@@ -37,6 +37,8 @@ var viz_bounds = {
   'palette' : ['#2f942e', '#b9191e'],
 };
 
+var classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+
 function getClassifier() {
   // Load the training data note that we are loading the training image each
   // time the method runs so this could be improved a bit by just passing the
@@ -48,7 +50,7 @@ function getClassifier() {
     .filterDate('2020-01-21', '2020-01-23');
   var labeled = landsat.first();
   var polygons = features.getFeatures();
-  var bands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+  
   
   // Sample the input imagery
   var training = labeled.select(bands).sampleRegions({
