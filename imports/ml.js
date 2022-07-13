@@ -3,6 +3,7 @@
  *
  * This script contains the data and functions related to machine leanring (ML).
  */
+var features = require('users/rzupko/gms-malaria:imports/features.js');
 
 // Landsat 8 bands that are used for classification
 exports.classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
