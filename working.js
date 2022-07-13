@@ -35,11 +35,11 @@ var gms = shapefile.getGms();
 // var rainfall = processing.getAnnualRainfall(gms, year);
 // var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
 // var temperature = processing.getMeanTemperature(gms, year);
-// var landsat = processing.getImages(gms_wrs2.indices, gms, year);
+var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 
 // Add everything to the UI
 visual.visualizeGms();
 // Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
 // Map.addLayer(bounded, viz_bounds, 'A. dirus / Days Outside Bounds');
 // Map.addLayer(temperature, viz_temperature, 'MOD11A1.061');
-// Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
+Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
