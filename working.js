@@ -40,9 +40,9 @@ var viz_bounds = {
 var classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
 
 function getClassifier() {
-  // Load the training data note that we are loading the training image each
-  // time the method runs so this could be improved a bit by just passing the
-  // classifier around
+  // TODO Cloud filtering, improve training data
+  
+  // Load the image for classification
   var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
