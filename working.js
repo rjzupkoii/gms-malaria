@@ -24,7 +24,7 @@ function getClassifier() {
     .mean();
 
   // Sample the labeled features
-  var training = labeled.select(bands).sampleRegions({
+  var training = image.select(bands).sampleRegions({
     collection: features.getFeatures(),
     properties: ['class'],
     scale: 30
