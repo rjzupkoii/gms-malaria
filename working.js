@@ -2,7 +2,7 @@
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
-var features = requrie('users/rzupko/gms-malaria:imports/')
+var features = requrie('users/rzupko/gms-malaria:imports/features.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing_wip.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
@@ -43,12 +43,12 @@ function getClassifier() {
   // Load the training data note that we are loading the training image each
   // time the method runs so this could be improved a bit by just passing the
   // classifier around
-  var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+  var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
-    .filterDate('2020-01-21', '2020-01-23');
-  var labeled = landsat.first();
+    .filterDate('2020-01-21', '2020-01-23')
+    .mean();
   var polygons = features.getFeatures();
   
   
