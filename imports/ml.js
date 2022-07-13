@@ -21,7 +21,7 @@ exports.getClassifier = function() {
     .mean();
 
   // Sample the labeled features
-  var training = image.select(classifiedBands).sampleRegions({
+  var training = image.select(this.classifiedBands).sampleRegions({
     collection: features.getFeatures(),
     properties: ['class'],
     scale: 30
@@ -31,6 +31,6 @@ exports.getClassifier = function() {
   return ee.Classifier.smileCart().train({
     features: training,
     classProperty: 'class',
-    inputProperties: classifiedBands
+    inputProperties: this.classifiedBands
   });  
 };
