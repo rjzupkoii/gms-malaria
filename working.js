@@ -6,37 +6,9 @@ var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 var features = require('users/rzupko/gms-malaria:imports/features.js');
 
 // Work-in-progress imports
+var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing_wip.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization_wip.js');
-
-
-var classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
-
-function getClassifier() {
-  // TODO Cloud filtering, improve training data
-  
-  // Load the image for classification
-  var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-    .filter(ee.Filter.and(
-      ee.Filter.eq('WRS_PATH', 125),
-      ee.Filter.eq('WRS_ROW', 50)))
-    .filterDate('2020-01-21', '2020-01-23')
-    .mean();
-
-  // Sample the labeled features
-  var training = image.select(classifiedBands).sampleRegions({
-    collection: features.getFeatures(),
-    properties: ['class'],
-    scale: 30
-  });
-  
-  // Make a CART classifier, train it, and return the object
-  return ee.Classifier.smileCart().train({
-    features: training,
-    classProperty: 'class',
-    inputProperties: classifiedBands
-  });  
-}
 
 
 var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
@@ -46,8 +18,8 @@ var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
   .filterDate('2020-01-21', '2020-01-23')
   .mean();
 
-var classifier = getClassifier();
-var classified = image.select(classifiedBands).classify(classifier);
+var classifier = ml.getClassifier();
+var classified = image.select(ml.classifiedBands).classify(classifier);
 Map.addLayer(classified, visual.viz_trainingPalette, 'Classified');
 
 
