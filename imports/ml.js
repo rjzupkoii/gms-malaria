@@ -18,7 +18,7 @@ exports.getClassifier = function() {
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
     .filterDate('2020-01-21', '2020-01-23')
-    .mean();
+    .first();
 
   // Sample the labeled features
   var training = image.select(this.classifiedBands).sampleRegions({
