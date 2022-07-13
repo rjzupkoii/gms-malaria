@@ -74,7 +74,7 @@ var training = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     ee.Filter.eq('WRS_ROW', 50)))
   .filterDate('2020-01-21', '2020-01-23')
   .mean();
-
+Map.addLayer(training)
 
 
 // Placeholder, will be returned by the UI
