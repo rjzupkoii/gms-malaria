@@ -2,6 +2,7 @@
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
+var features = requrie('users/rzupko/gms-malaria:imports/')
 var processing = require('users/rzupko/gms-malaria:imports/processing_wip.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
@@ -63,6 +64,17 @@ function getClassifier() {
     inputProperties: bands
   });  
 }
+
+
+// TODO Update this with cloudmasking
+// Get the training image
+var training = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+  .filter(ee.Filter.and(
+    ee.Filter.eq('WRS_PATH', 125),
+    ee.Filter.eq('WRS_ROW', 50)))
+  .filterDate('2020-01-21', '2020-01-23')
+  .mean();
+
 
 
 // Placeholder, will be returned by the UI
