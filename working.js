@@ -22,9 +22,9 @@ var classifier = ml.getClassifier();
 
 // Begin loading all of the data 
 var gms = shapefile.getGms();
-// var rainfall = processing.getAnnualRainfall(gms, year);
-// var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
-// var temperature = processing.getMeanTemperature(gms, year);
+var rainfall = processing.getAnnualRainfall(gms, year);
+var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
+var temperature = processing.getMeanTemperature(gms, year);
 var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 var classified = landsat.map(function(image) {
   return image.select(ml.classifiedBands).classify(classifier);
@@ -32,8 +32,8 @@ var classified = landsat.map(function(image) {
 
 // Add everything to the UI
 visual.visualizeGms();
-// Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD');
-// Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds');
-// Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061');
+Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', false);
+Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
+Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', false);
 Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)');
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover');
