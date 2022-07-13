@@ -1,5 +1,12 @@
 
 
+// Days outside bounds visualization for vectors
+exports.viz_bounds = {
+  'min' : 0,
+  'max' : 366,
+  'palette' : ['#2f942e', '#b9191e'],
+};
+
 // CIR visualization for the GMS
 exports.viz_gms_cir = {
   'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
@@ -26,3 +33,32 @@ exports.viz_temperature = {
     'ff0000', 'de0101', 'c21301', 'a71001', '911003'
   ]
 };
+
+// 
+exports.viz_trainingPalette = { 
+  min: 1, 
+  max: 22, 
+  palette: [
+    'black',        // 1, Burned
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink',
+    'blue',         // 10, Water
+    'darkgreen',    // 11, Forest
+    'green',        // 12, Vegetation
+    'darkseagreen', // 13, Vegetation / Scrub
+    'brown',        // 14, Barren
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink',
+    'red',          // 20, Development
+    'wheat',        // 21, Agricultural
+    'linen'         // 22, Agricultural / Fallow
+  ] };
