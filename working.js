@@ -36,6 +36,35 @@ var viz_bounds = {
   'palette' : ['#2f942e', '#b9191e'],
 };
 
+function getClassifier() {
+  // Load the training data note that we are loading the training image each
+  // time the method runs so this could be improved a bit by just passing the
+  // classifier around
+  var landsat = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+    .filter(ee.Filter.and(
+      ee.Filter.eq('WRS_PATH', 125),
+      ee.Filter.eq('WRS_ROW', 50)))
+    .filterDate('2020-01-21', '2020-01-23');
+  var labeled = landsat.first();
+  var polygons = features.getFeatures();
+  var bands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+  
+  // Sample the input imagery
+  var training = labeled.select(bands).sampleRegions({
+    collection: polygons,
+    properties: ['class'],
+    scale: 30
+  });
+  
+  // Make a SVM classifier and train it
+  var classifier = ee.Classifier.libsvm().train({
+    features: training,
+    classProperty: 'class',
+    inputProperties: bands
+  });  
+}
+
+
 // Placeholder, will be returned by the UI
 var year = '2020';
 
@@ -45,14 +74,14 @@ var maximum = 28.0;
 
 // Add the Landsat 8 imagery for the GMS to the map
 var gms = shapefile.getGms();
-var rainfall = processing.getAnnualRainfall(gms, year);
-var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
-var temperature = processing.getMeanTemperature(gms, year);
-var landsat = processing.getImages(gms_wrs2.indices, gms, year);
+// var rainfall = processing.getAnnualRainfall(gms, year);
+// var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
+// var temperature = processing.getMeanTemperature(gms, year);
+// var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 
 // Add everything to the UI
 visual.visualizeGms();
-Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
-Map.addLayer(bounded, viz_bounds, 'A. dirus / Days Outside Bounds');
-Map.addLayer(temperature, viz_temperature, 'MOD11A1.061');
-Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
+// Map.addLayer(rainfall, viz_rainfall, 'CHIRPS/PENTAD');
+// Map.addLayer(bounded, viz_bounds, 'A. dirus / Days Outside Bounds');
+// Map.addLayer(temperature, viz_temperature, 'MOD11A1.061');
+// Map.addLayer(landsat, viz_gms_cir, 'Landsat 8, 2020 (CIR)');
