@@ -64,8 +64,6 @@ exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
   temperature = temperature.map(function(image) { return image.clip(aoi); });
   return temperature.reduce(ee.Reducer.sum()).toInt();  
 };
- 
-
 
 // Mask the clouds out of the image
 exports.maskClouds = function(image) {
