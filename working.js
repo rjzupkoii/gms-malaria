@@ -25,6 +25,7 @@ var showIntermediate = ui.Checkbox({
 })
 
 // UI element values
+var environmental = false;
 var intermediate = false;
 
 
@@ -43,8 +44,8 @@ var classified = landsat.map(function(image) {
 
 // Add everything to the UI
 visual.visualizeGms();
-Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', intermediate);
-Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', intermediate);
-Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', intermediate);
-Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)');
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover', intermediate);
+Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', intermediate);
+Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', environmental);
+Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', environmental);
+Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)');
