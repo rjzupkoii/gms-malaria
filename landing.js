@@ -29,7 +29,7 @@ var gms = shapefile.getGms();
 visual.visualizeGms();
 
 // Next add the base Landsat layers
-var landsat = processing.getImages(indicies, region, year);
+var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
 Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
 
