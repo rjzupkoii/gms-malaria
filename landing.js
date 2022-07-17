@@ -26,9 +26,12 @@ gmsUi.prepareUI();
 
 var select = ui.Select({
   items: ['A. baimaii', 'A. crascens', 'A. dirus'],
-  
+  onChange: function(value) {
+    alert(value);
+  }
 });
 
+Map.add(select);
 
 // Start by drawing the GMS
 var gms = shapefile.getGms();
