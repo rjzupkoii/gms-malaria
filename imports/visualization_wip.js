@@ -1,3 +1,9 @@
+/*
+ * visualization.js
+ *
+ * This script is intended as a library that contains data and functions 
+ * related to visualization and raster rendering.
+ */
 var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Days outside bounds visualization for vectors
