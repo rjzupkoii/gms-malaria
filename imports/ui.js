@@ -4,6 +4,7 @@
  * This script contains various functions realted to setting up and working 
  * with UI elements.
  */
+var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -14,7 +15,7 @@ exports.prepareUI = function() {
 // Add a layer to the map with the GMS outlined
 exports.visualizeGms = function() {
   // Load the GMS borders and generate the outlines
-  var gms = shapefiles.getGms();
+  var gms = shapefile.getGms();
   var empty = ee.Image().byte();
   var outline = empty.paint({
     featureCollection: gms,
