@@ -30,7 +30,7 @@ var maximum = 28.0;
 gmsUi.prepareUI();
 
 // Start by loading the classifier
-var classifier = ml.getClassifier();
+var classifier = ml.getClassifier(features.getFeatures());
 
 // Begin loading all of the data 
 var gms = shapefile.getGms();
