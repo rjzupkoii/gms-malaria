@@ -1524,6 +1524,7 @@ var classified = image.select(ml.classifiedBands).classify(classifier);
 
 // Add the classified image to the map
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover');
+Map.addLayer(classified, visual.viz_simpleLandcoverPalette, 'Landcover');
 
 
 // TODO REMOVE THIS - OLD PROCESSING PIPEILINE CODE
