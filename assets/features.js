@@ -68,6 +68,21 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -246,6 +261,61 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "15"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.77922503630492, 13.136072072381257],
+                  [103.77922503630492, 13.130388242666632],
+                  [103.78437487761352, 13.130388242666632],
+                  [103.78437487761352, 13.136072072381257]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "16"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.30589331037234, 12.712996789149585],
+                  [104.30589331037234, 12.708308060806443],
+                  [104.31172979718875, 12.708308060806443],
+                  [104.31172979718875, 12.712996789149585]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "17"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.27574620106361, 13.806116759932848],
+                  [103.27574620106361, 13.802615994271969],
+                  [103.27986607411049, 13.802615994271969],
+                  [103.27986607411049, 13.806116759932848]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "18"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.31076512196205, 13.810784365716374],
+                  [103.31076512196205, 13.806950267819708],
+                  [103.3135117039933, 13.806950267819708],
+                  [103.3135117039933, 13.810784365716374]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "19"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.04316550555237, 13.088440696396164],
+                  [104.04316550555237, 13.082086942238185],
+                  [104.04934531512268, 13.082086942238185],
+                  [104.04934531512268, 13.088440696396164]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "20"
             })]),
     forest = 
     /* color: #006400 */
@@ -490,6 +560,15 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -635,10 +714,49 @@ var water =
               "class": 12,
               "type": "Vegetation",
               "system:index": "12"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.19190040787562, 12.837026674364203],
+                  [104.19190040787562, 12.835352960107002],
+                  [104.19396034439906, 12.835352960107002],
+                  [104.19396034439906, 12.837026674364203]]], null, false),
+            {
+              "class": 12,
+              "type": "Vegetation",
+              "system:index": "13"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.18529144486293, 12.847821863582668],
+                  [104.18529144486293, 12.84581349139763],
+                  [104.18743721207484, 12.84581349139763],
+                  [104.18743721207484, 12.847821863582668]]], null, false),
+            {
+              "class": 12,
+              "type": "Vegetation",
+              "system:index": "14"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.78811572879714, 13.246641505904755],
+                  [103.78811572879714, 13.245221203357655],
+                  [103.78983234256667, 13.245221203357655],
+                  [103.78983234256667, 13.246641505904755]]], null, false),
+            {
+              "class": 12,
+              "type": "Vegetation",
+              "system:index": "15"
             })]),
     scrub = 
     /* color: #8fbc8f */
     /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
       {
         "type": "rectangle"
       },
@@ -822,6 +940,28 @@ var water =
               "class": 13,
               "type": "Scrub",
               "system:index": "12"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.30306076072706, 13.831698906567649],
+                  [103.30306076072706, 13.829948722519841],
+                  [103.3051206972505, 13.829948722519841],
+                  [103.3051206972505, 13.831698906567649]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "13"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.32460426353468, 13.836782699861697],
+                  [103.32460426353468, 13.83486587281301],
+                  [103.32632087730421, 13.83486587281301],
+                  [103.32632087730421, 13.836782699861697]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "14"
             })]),
     agricultural = 
     /* color: #f5deb3 */
@@ -1094,6 +1234,7 @@ var water =
             })]),
     barren = 
     /* color: #a52a2a */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1337,6 +1478,7 @@ var water =
             })]),
     development = 
     /* color: #ff0000 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1504,6 +1646,7 @@ var water =
             })]),
     snow = 
     /* color: #f0f8ff */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1579,6 +1722,7 @@ var water =
             })]),
     shadow = 
     /* color: #808080 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
