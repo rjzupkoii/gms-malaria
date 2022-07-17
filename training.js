@@ -16,7 +16,7 @@ var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     ee.Filter.eq('WRS_PATH', 125),
     ee.Filter.eq('WRS_ROW', 50)))
   .filterDate('2020-01-21', '2020-01-23').first();
-var results = processing.process(image);
+//var results = processing.process(image);
 
 // By adding the Landsat and malaria results to image collections we have a 
 // hook for future projects to use additional images additional images can
