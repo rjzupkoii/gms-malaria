@@ -1,4 +1,8 @@
-
+/*
+ * mosquitoes.js
+ *
+ * This asset file contains data for various Anopheles genus mosquitoes.
+ */
 
 exports.aDirus = {
   'species'  : 'A. dirus',
