@@ -7,7 +7,9 @@
 
 // Export the selections for feature training data.
 exports.getFeatures = function() {
-  return water
+  return shadow
+    .merge(water)
+    .merge(snow)
     .merge(forest)
     .merge(vegetation)
     .merge(scrub)
