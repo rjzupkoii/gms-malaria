@@ -11,12 +11,8 @@ exports.classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7']
 
 // Get the trained classifer that will be used to determine the landcover class
 exports.getClassifier = function() {
-  // TODO Cloud filtering, improve training data
-  
-  
-
-
   // Sample the labeled features
+  var image = exports.getReferenceImage();
   var training = image.select(this.classifiedBands).sampleRegions({
     collection: features.getFeatures(),
     properties: ['class'],
