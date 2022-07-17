@@ -61,13 +61,13 @@ Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. 
   };
   
   // Primary habitat is completely within the environmental envelope
-  var primary = ee.Image(0).expression('(totalRainfall > speciesRainfall) && (meanTemperature >= speciesTemperature) && (bounds == 0)', variables);
+  var primary = ee.Image(0).expression('(totalRainfall > speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables);
     
   // Secondary is within the envelope for the life expectancy of an active female (43 days)
-  var secondary = ee.Image(0).expression('(rainfall > minRainfall) && (temperature >= minTemp) && (bounds < 43)', variables);
+  var secondary = ee.Image(0).expression('(totalRainfall > speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < 43)', variables);
     
   // Tertiary is within the envelope for the dormant life expectancy of a female (180 days)
-  var tertiary = ee.Image(0).expression('(rainfall > minRainfall) && (temperature >= minTemp) && (bounds < 180)', variables);
+  var tertiary = ee.Image(0).expression('(totalRainfall > speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < 180)', variables);
   
   // Merge the classifications and return
   var habitat = ee.Image(0).expression('primary + secondary + tertiary', {primary: primary, secondary: secondary, tertiary: tertiary});
