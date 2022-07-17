@@ -33,3 +33,11 @@ When pushing a commit to Google Source the following error is returned:
 > send-pack: unexpected disconnect while reading sideband packet
 
 Deleting the commit via a reset to the last known good push appears to resolve the error.
+
+
+## Works Cited
+Lehmann, T., Dao, A., Yaro, A. S., Adamou, A., Kassogue, Y., Diallo, M., Sékou, T., & Coscaron-Arias, C. (2010). Aestivation of the African Malaria Mosquito, Anopheles gambiae in the Sahel. *The American Society of Tropical Medicine and Hygiene*, 83(3), 601–606. https://doi.org/10.4269/ajtmh.2010.09-0779
+
+Obsomer, V., Defourny, P., & Coosemans, M. (2007). The Anopheles dirus complex: Spatial distribution and environmental drivers. *Malaria Journal*, 6(1), 26. https://doi.org/10.1186/1475-2875-6-26
+
+Obsomer, V., Defourny, P., & Coosemans, M. (2012). Predicted Distribution of Major Malaria Vectors Belonging to the Anopheles dirus Complex in Asia: Ecological Niche and Environmental Influences. *PLOS ONE*, 7(11), e50475. https://doi.org/10.1371/journal.pone.0050475
