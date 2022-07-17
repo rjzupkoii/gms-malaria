@@ -1390,9 +1390,7 @@ function getFeatures() {
     .merge(scrub)
     .merge(agricultural)
     .merge(barren)
-    .merge(development)
-//    .merge(burned)
-    ;
+    .merge(development);
 }
 
 // Load the and center the GMS and reference image
