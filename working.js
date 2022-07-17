@@ -28,7 +28,6 @@ var showIntermediate = ui.Checkbox({
 var environmental = false;
 var intermediate = false;
 
-
 // Start by loading the classifier
 var classifier = ml.getClassifier();
 
