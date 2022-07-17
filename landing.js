@@ -89,10 +89,12 @@ function riskAssessment(landcover, habitat) {
 
 var risk = riskAssessment(landcover, habitat);
 
-// Add everything to the UI
+// Add the enviornmental and intermediate data to the UI, note it is off by default
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
 Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
 Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
 Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
+
+// Add the species and malaria risk layers
 Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat');
 Map.addLayer(risk, vis_riskPalette, 'A. dirus / Malaria Risk');
