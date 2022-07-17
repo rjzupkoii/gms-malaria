@@ -69,7 +69,7 @@ exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
 var CLOUD_MASK = (1 << 3);
 
 // Mask the clouds out of the image
-var maskClouds = function(image) {
+exports.maskClouds = function(image) {
   var qa = image.select('QA_PIXEL');
   var mask = qa.bitwiseAnd(CLOUD_MASK).eq(0);
   return image.updateMask(mask);  
