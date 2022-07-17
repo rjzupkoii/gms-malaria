@@ -14,7 +14,7 @@ exports.viz_bounds = {
 };
 
 // RGB vizualization for the GMS
-exports.viz_gms = {
+exports.viz_gms_rgb = {
   'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
   'min' : 6100.692307692308,
   'max' : 24248.428571428572
