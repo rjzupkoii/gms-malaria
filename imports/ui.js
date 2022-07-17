@@ -5,8 +5,14 @@
  * with UI elements.
  */
 
+// Prepare the initial UI state
+exports.prepareUI = function() {
+  Map.add(gmsUi.getIntermediateCheckbox());
+  Map.add(gmsUi.getEnvironmentalCheckbox());  
+};
+
 // Return a checkbox that toggles environmental maps
-exports.getEnvironmentalCheckbox = function() {
+function getEnvironmentalCheckbox{
   return ui.Checkbox({
     label: 'Show Environmental Maps',
     onChange: function(checked) {
@@ -32,8 +38,3 @@ exports.getIntermediateCheckbox = function() {
     }
   });
 };
-
-exports.prepareUI = function() {
-Map.add(gmsUi.getIntermediateCheckbox());
-Map.add(gmsUi.getEnvironmentalCheckbox());  
-}
