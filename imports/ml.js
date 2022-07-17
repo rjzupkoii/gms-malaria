@@ -13,7 +13,7 @@ exports.classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7']
 exports.classify = function(landsat) {
   var classifier = exports.getClassifier(features.getFeatures());  
   return landsat.map(function(image) {
-    return image.select(ml.classifiedBands).classify(classifier);
+    return image.select(exports.classifiedBands).classify(classifier);
   });  
 };
 
