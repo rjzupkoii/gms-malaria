@@ -15,20 +15,26 @@ exports.getAnnualRainfall = function(aoi, year) {
 
 // Use raster algebra to score the best habitat
 exports.getHabitat = function(variables) {
-  // Primary habitat is completely within the environmental envelope
+  
   // var primary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables);
     
-  // // Secondary is within the envelope for the life expectancy
+  // 
   // var secondary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables);
     
-  // // Tertiary is within the envelope for aestivation
+  // 
   // var tertiary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables);
   
   // Merge the classifications, highest sum is best habitat
   var habitat = ee.Image(0).expression('primary + secondary + tertiary', {
+    // Primary habitat is completely within the environmental envelope
     primary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables), 
+    
+    // Secondary is within the envelope for the life expectancy
     secondary:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables), 
-    tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables)});
+    
+    // Tertiary is within the envelope for aestivation
+    tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables)
+  });
   
   // Rename the band and return
   return habitat.rename('scored_habitat');
