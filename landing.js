@@ -11,9 +11,6 @@ var features = require('users/rzupko/gms-malaria:assets/features.js');
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
-// Assets that need to be migrated
-var features = require('users/rzupko/gms-malaria:imports/features.js');
-
 // Import the various functional scripts
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
