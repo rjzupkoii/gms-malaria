@@ -1418,7 +1418,7 @@ var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
 // Get the various shapefiles that are used for training data
 function getFeatures() {
-  return shadow.
+  return shadow
     .merge(water)
     .merge(snow)
     .merge(forest)
