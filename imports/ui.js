@@ -7,8 +7,8 @@
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
-  Map.add(getIntermediateCheckbox());
   Map.add(getEnvironmentalCheckbox());  
+  Map.add(getIntermediateCheckbox());
 };
 
 // Return a checkbox that toggles environmental maps
