@@ -3,10 +3,19 @@
  *
  * This script contains the data and functions related to machine leanring (ML).
  */
+var features = require('users/rzupko/gms-malaria:assets/features.js'); 
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Landsat 8 bands that are used for classification
 exports.classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+
+exports.classify = function(indicies, region, year) {
+  var classifier = ml.getClassifier(features.getFeatures());  
+  var landsat = processing.getImages(gms_wrs2.indices, gms, year);
+  var classified = landsat.map(function(image) {
+    return image.select(ml.classifiedBands).classify(classifier);
+  });  
+};
 
 // Get the trained classifer that will be used to determine the landcover class
 exports.getClassifier = function(features) {
