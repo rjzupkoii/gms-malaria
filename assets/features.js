@@ -7,7 +7,8 @@ exports.getFeatures = function() {
     .merge(agricultural)
     .merge(barren)
     .merge(development);
-}
+};
+
 var water = 
     /* color: #003dff */
     /* shown: false */
