@@ -54,7 +54,7 @@ var habitat = processing.getHabitat({
 });
 
 // Prepare the risk assessment based upon the landcover and habitat
-var risk = processing.riskAssessment(landcover, habitat);
+var risk = processing.getRiskAssessment(landcover, habitat);
 
 // Add the enviornmental and intermediate data to the UI, note it is off by default
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
