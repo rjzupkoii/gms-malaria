@@ -60,8 +60,8 @@ exports.viz_trainingPalette = {
   min: 1, 
   max: 22, 
   palette: [
-    'black',        // 1, Burned
-    'deeppink', 
+    'deeppink',     // 1, Burned [black, Deprecated]
+    'aliceblue',    // 2, Snow
     'deeppink', 
     'deeppink', 
     'deeppink', 
@@ -81,7 +81,7 @@ exports.viz_trainingPalette = {
     'deeppink',
     'red',          // 20, Development
     'wheat',        // 21, Agricultural
-    'linen'         // 22, Agricultural / Fallow
+    'deeppink'      // 22, Agricultural / Fallow [linen, Deprecated]
   ] };
 
 // Adds a layer to the map for each of the training data polygon categories defined.
