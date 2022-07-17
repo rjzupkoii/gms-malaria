@@ -28,10 +28,17 @@ exports.getClassifier = function(features) {
 
 // Load the reference image for classification
 exports.getReferenceImage = function() {
-  var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+  var p125_r50 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
     .filterDate('2020-01-01', '2020-12-31');
+  var p132_r42 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+    .filter(ee.Filter.and(
+      ee.Filter.eq('WRS_PATH', 132),
+      ee.Filter.eq('WRS_ROW', 42)))
+    .filterDate('2020-01-01', '2020-12-31');
+
+  var image = p125_r50.merge(p132_r42);
   return image.map(processing.maskClouds).median();  
 };
