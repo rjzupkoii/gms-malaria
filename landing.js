@@ -63,7 +63,7 @@ function riskAssessment(landcover, habitat) {
     maxDistance: 1000,
   }).lt(1000);
   var masked = habitat.updateMask(buffer);
-  
+
   // High risk are areas where humans likely live along side mosquitos
 //  var high = ee.Image(0).expression('(landcover >= 20) && (habitat > 1)', {landcover: landcover, habitat: habitat});
   var high = ee.Image(0).expression('masked > 1 ? 1 : 0', {masked: masked});      
