@@ -1,9 +1,8 @@
 /*
- * landing.js
+ * training.js
  *
- * Main entry point for the GMS Malaria project. This Earth Engine App uses
- * Landsat imagery to generate malaria risk rasters based upon land 
- * classification and ecological characteristics.
+ * This page is intended to be used for training of the landcover classification
+ * and testing of the assessment maps.
  */
 var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
