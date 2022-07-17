@@ -25,8 +25,8 @@ exports.aCrascens = {
   'aestivationMax' : 212      //Lehmann et al. 2010
 };
 
-exports.aDirus = {
-  'species'  : 'A. dirus',
+exports.aBaimaii = {
+  'species'  : 'A. baimaii',
   'rainfall' : 1500,          // Obsomer et al. 2012
   'tempMin'  : 11.0,
   'tempMean' : 20.0,          
