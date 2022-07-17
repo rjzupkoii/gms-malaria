@@ -30,7 +30,7 @@ var species = mosquitoes.aDirus;
 
 // Begin loading all of the data 
 var gms = shapefile.getGms();
-var environmental = processing.getAnnualRainfall(gms, year).rename('annual_rainfal');
+var environmental = processing.getAnnualRainfall(gms, year).rename('rainfall');
 var bounded = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
 var temperature = processing.getMeanTemperature(gms, year);
 var landsat = processing.getImages(gms_wrs2.indices, gms, year);
@@ -46,7 +46,7 @@ var classified = landsat.map(function(image) {
 visual.visualizeGms();
 Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
 Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
-Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', false);
+Map.addLayer(environmental.select('rainfall'), visual.viz_rainfall, 'CHIRPS/PENTAD', false);
 Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', false);
 Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover', false);
