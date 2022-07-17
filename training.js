@@ -460,8 +460,13 @@ var water =
             })]),
     vegetation = 
     /* color: #008000 */
-    /* shown: false */
     /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
       {
         "type": "rectangle"
       },
@@ -645,6 +650,28 @@ var water =
               "class": 12,
               "type": "Vegetation",
               "system:index": "12"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.19190040787562, 12.837026674364203],
+                  [104.19190040787562, 12.835352960107002],
+                  [104.19396034439906, 12.835352960107002],
+                  [104.19396034439906, 12.837026674364203]]], null, false),
+            {
+              "class": 12,
+              "type": "Vegetation",
+              "system:index": "13"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.18529144486293, 12.847821863582668],
+                  [104.18529144486293, 12.84581349139763],
+                  [104.18743721207484, 12.84581349139763],
+                  [104.18743721207484, 12.847821863582668]]], null, false),
+            {
+              "class": 12,
+              "type": "Vegetation",
+              "system:index": "14"
             })]),
     scrub = 
     /* color: #8fbc8f */
