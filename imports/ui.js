@@ -7,8 +7,8 @@
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
-  Map.add(gmsUi.getIntermediateCheckbox());
-  Map.add(gmsUi.getEnvironmentalCheckbox());  
+  Map.add(getIntermediateCheckbox());
+  Map.add(getEnvironmentalCheckbox());  
 };
 
 // Return a checkbox that toggles environmental maps
@@ -26,7 +26,7 @@ function getEnvironmentalCheckbox(){
 }
 
 // Return a checkbox that toggles intermediate maps
-exports.getIntermediateCheckbox = function() {
+function getIntermediateCheckbox() {
   return ui.Checkbox({
     label: 'Show Intermediate Maps',
     onChange: function(checked) {
@@ -37,4 +37,4 @@ exports.getIntermediateCheckbox = function() {
       position: 'top-right'
     }
   });
-};
+}
