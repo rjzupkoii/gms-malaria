@@ -46,6 +46,9 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -213,6 +216,17 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "14"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.66593266021425, 24.720084005547033],
+                  [102.66593266021425, 24.71868062213661],
+                  [102.66739178191835, 24.71868062213661],
+                  [102.66739178191835, 24.720084005547033]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "15"
             })]),
     forest = 
     /* color: #006400 */
@@ -1304,7 +1318,6 @@ var water =
             })]),
     development = 
     /* color: #ff0000 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1326,6 +1339,9 @@ var water =
       },
       {
         "type": "polygon"
+      },
+      {
+        "type": "rectangle"
       },
       {
         "type": "rectangle"
@@ -1455,6 +1471,17 @@ var water =
               "class": 20,
               "type": "Development",
               "system:index": "9"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.60923808236872, 24.723425580378198],
+                  [102.60923808236872, 24.722782382217076],
+                  [102.61003201623713, 24.722782382217076],
+                  [102.61003201623713, 24.723425580378198]]], null, false),
+            {
+              "class": 20,
+              "type": "Development",
+              "system:index": "10"
             })]),
     snow = 
     /* color: #f0f8ff */
