@@ -54,8 +54,37 @@ exports.viz_habitatPalette = {
   palette: ['blue', 'yellow', 'orange', 'red'] 
 };
 
-// Color palette for the training data, note that deep
+// Color palette for the training data, note that Deep
 // Pink is a sentinel value for invalid classifications
+exports.viz_trainingPalette = { 
+  min: 1, 
+  max: 22, 
+  palette: [
+    'deeppink',     // 1, Burned [black, Deprecated]
+    'aliceblue',    // 2, Snow
+    'gray',         // 3, Shadow / occulted
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink',
+    'blue',         // 10, Water
+    'darkgreen',    // 11, Forest
+    'green',        // 12, Vegetation
+    'darkseagreen', // 13, Vegetation / Scrub
+    'brown',        // 14, Barren
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink', 
+    'deeppink',
+    'red',          // 20, Development
+    'wheat',        // 21, Agricultural
+    'deeppink'      // 22, Agricultural / Fallow [linen, Deprecated]
+  ] };
+
+// Simplified color palette for the training data
 exports.viz_trainingPalette = { 
   min: 1, 
   max: 22, 
