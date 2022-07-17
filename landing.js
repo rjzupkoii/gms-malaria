@@ -54,16 +54,12 @@ var habitat = processing.getHabitat({
 });
 
 function riskAssessment(landcover, habitat) {
-  // Generate the 1 km buffer based upon the land cover type, using cumulative cost 
-  // for the buffer isn't exactly the same as a buffer, but results in the same effect
-  
-  
-  
-  var buffer = ee.Image(0).expression('landcover >= 20', {landcover: landcover});
+  // Generate the buffer based upon the land cover type, using cumulative cost  for the
+  // buffer isn't exactly the same as a buffer, but results in the same effect
   var buffer = ee.Image(1).cumulativeCost({
-    source: buffer, 
-    maxDistance: 1000,
-  }).lt(1000);
+    source: landcover.gte(20),                // Development (20) or Agricultural (21)
+    maxDistance: 1500,                        // Obsomer et al. 2007, high density
+  }).lt(1500);
   var masked = habitat.updateMask(buffer);
 
   // High risk are areas where humans likely live along side mosquitos
@@ -90,7 +86,7 @@ function riskAssessment(landcover, habitat) {
 }
 
 //var risk = riskAssessment(landcover, habitat);
-var risk = landcover.gte(20);
+var risk = ;
 
 // Add the enviornmental and intermediate data to the UI, note it is off by default
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
