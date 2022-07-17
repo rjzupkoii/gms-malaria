@@ -30,4 +30,4 @@ var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
 // Visualize and export the results of the proof of concept
 // visual.visualizeGms();
 // visual.visualizeResults(landsat, malaria, true);
-exporting.queueExports(results);
+//exporting.queueExports(results);
