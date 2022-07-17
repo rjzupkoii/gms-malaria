@@ -17,15 +17,12 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
-// Placeholder, will be returned by the UI
+// Placeholders, these will (eventually) be managed by the UI itself
 var year = '2020';
+var species = mosquitoes.aDirus;
 
 // Prepare the UI
 gmsUi.prepareUI();
-
-// Start by loading the classifier
-
-var species = mosquitoes.aDirus;
 
 // Start by drawing the GMS
 var gms = shapefile.getGms();
