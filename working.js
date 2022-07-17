@@ -18,12 +18,9 @@ var year = '2020';
 var minimum = 11.0;
 var maximum = 28.0;
 
-
+// Prepare the UI
 Map.add(gmsUi.getIntermediateCheckbox());
 Map.add(gmsUi.getEnvironmentalCheckbox());
-
-// UI element values
-var intermediate = false;
 
 // Start by loading the classifier
 var classifier = ml.getClassifier();
