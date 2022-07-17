@@ -9,6 +9,7 @@
 // Import the various assets that we need
 var features = require('users/rzupko/gms-malaria:assets/features.js');
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
+var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Import the various functional scripts
@@ -29,6 +30,7 @@ gmsUi.prepareUI();
 
 // Start by loading the classifier
 var classifier = ml.getClassifier(features.getFeatures());
+var species = mosquitoes.aDirus;
 
 // Begin loading all of the data 
 var gms = shapefile.getGms();
