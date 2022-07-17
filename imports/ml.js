@@ -13,13 +13,13 @@ exports.classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7']
 exports.getClassifier = function() {
   // TODO Cloud filtering, improve training data
   
-  // Load the image for classification
+  // Load the reference image for classification
   var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
-    .filterDate('2020-01-21', '2020-01-23')
-    .first();
+    .filterDate('2020-01-01', '2020-12-31');
+  image = image.map(processing.maskClouds).median();
 
   // Sample the labeled features
   var training = image.select(this.classifiedBands).sampleRegions({
