@@ -97,4 +97,4 @@ Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
 
 // Add the species and malaria risk layers
 Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat');
-Map.addLayer(risk, vis_riskPalette, 'A. dirus / Malaria Risk');
+Map.addLayer(risk, visual.vis_riskPalette, 'A. dirus / Malaria Risk');
