@@ -984,8 +984,13 @@ var water =
             })]),
     barren = 
     /* color: #a52a2a */
-    /* shown: false */
     /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
       {
         "type": "rectangle"
       },
@@ -1127,6 +1132,28 @@ var water =
               "class": 14,
               "type": "Barren",
               "system:index": "9"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[106.53024618311983, 14.736008926110596],
+                  [106.53024618311983, 14.73451478504247],
+                  [106.53161947413545, 14.73451478504247],
+                  [106.53161947413545, 14.736008926110596]]], null, false),
+            {
+              "class": 14,
+              "type": "Barren",
+              "system:index": "10"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[106.53410856410127, 14.717331426486309],
+                  [106.53410856410127, 14.716003187801586],
+                  [106.53531019373995, 14.716003187801586],
+                  [106.53531019373995, 14.717331426486309]]], null, false),
+            {
+              "class": 14,
+              "type": "Barren",
+              "system:index": "11"
             })]),
     development = 
     /* color: #ff0000 */
