@@ -32,3 +32,8 @@ exports.getIntermediateCheckbox = function() {
     }
   });
 };
+
+exports.prepareUI = function() {
+Map.add(gmsUi.getIntermediateCheckbox());
+Map.add(gmsUi.getEnvironmentalCheckbox());  
+}
