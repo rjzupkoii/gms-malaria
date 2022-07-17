@@ -35,7 +35,7 @@ var species = mosquitoes.aDirus;
 // Begin loading all of the data 
 var gms = shapefile.getGms();
 var rainfall = processing.getAnnualRainfall(gms, year);
-var bounded = processing.getTemperatureBounds(gms, year, minimum, maximum);
+var bounded = processing.getTemperatureBounds(gms, year, species.tempMin, maximum);
 var temperature = processing.getMeanTemperature(gms, year);
 var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 var classified = landsat.map(function(image) {
