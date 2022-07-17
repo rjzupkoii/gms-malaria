@@ -16,9 +16,8 @@ function getEnvironmentalCheckbox(){
   return ui.Checkbox({
     label: 'Show Environmental Maps',
     onChange: function(checked) {
-      Map.layers().get(3).setShown(checked);  // Mean rainfall, CHIRPS/PENTAD
-      Map.layers().get(4).setShown(checked);  // Total rainfall, CHIRPS/PENTAD
-      Map.layers().get(5).setShown(checked);  // Mean temperature, MOD11A1.061
+      Map.layers().get(3).setShown(checked);  // Total rainfall, CHIRPS/PENTAD
+      Map.layers().get(4).setShown(checked);  // Mean temperature, MOD11A1.061
     },
     style: {
       position: 'top-right'
@@ -31,8 +30,8 @@ function getIntermediateCheckbox() {
   return ui.Checkbox({
     label: 'Show Intermediate Maps',
     onChange: function(checked) {
-      Map.layers().get(6).setShown(checked);  // A. dirus / Days Outside Bounds
-      Map.layers().get(7).setShown(checked);  // Landcover
+      Map.layers().get(5).setShown(checked);  // A. dirus / Days Outside Bounds
+      Map.layers().get(6).setShown(checked);  // Landcover
     },
     style: {
       position: 'top-right'
