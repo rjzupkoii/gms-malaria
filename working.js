@@ -48,4 +48,4 @@ Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', inter
 Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', environmental);
 Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', environmental);
 Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
-Map.addLayer(landsat, [], 'Landsat 8, 2020');
+Map.addLayer(landsat, visual.viz_gms, 'Landsat 8, 2020');
