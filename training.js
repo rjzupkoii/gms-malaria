@@ -13,7 +13,7 @@ var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Import other scripts
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
-var visual = require('users/rzupko/gms-malaria:imports/visualization_wip.js');
+var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
 // Load the and center the GMS and reference image
 var image = ml.getReferenceImage();
