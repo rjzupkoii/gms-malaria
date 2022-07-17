@@ -24,6 +24,7 @@ var showIntermediate = ui.Checkbox({
     Map.layers().get(5).setShown(checked);  // Landcover
   }
 });
+Map.add(showIntermediate);
 
 // UI element values
 var intermediate = false;
