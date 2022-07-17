@@ -90,27 +90,3 @@ exports.viz_trainingPalette = {
     'wheat',        // 21, Agricultural
     'deeppink'      // 22, Agricultural / Fallow [linen, Deprecated]
   ] };
-
-
-// Adds a layer to the map for each of the training data polygon categories defined.
-exports.addTrainingPolygons = function(polygons) {
-  layerStyles.forEach(function(item) {
-    styleTraining(polygons, item.class, item.type, item.color);  
-  });
-};
-
-// Add a layer to the map with the GMS outlined
-exports.visualizeGms = function() {
-  // Load the GMS borders and generate the outlines
-  var gms = shapefiles.getGms();
-  var empty = ee.Image().byte();
-  var outline = empty.paint({
-    featureCollection: gms,
-    color: 1,
-    width: 0.5,
-  });
-  
-  // Update the map
-  Map.centerObject(gms, 5);
-  Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
-};
