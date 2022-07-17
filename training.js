@@ -382,6 +382,9 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -505,6 +508,17 @@ var water =
               "class": 12,
               "type": "Vegetation",
               "system:index": "10"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[106.81449105463979, 14.386721775783577],
+                  [106.81449105463979, 14.385516255521654],
+                  [106.81564976893422, 14.385516255521654],
+                  [106.81564976893422, 14.386721775783577]]], null, false),
+            {
+              "class": 12,
+              "type": "Vegetation",
+              "system:index": "11"
             })]),
     scrub = 
     /* color: #8fbc8f */
