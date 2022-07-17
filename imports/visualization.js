@@ -61,7 +61,7 @@ exports.viz_trainingPalette = {
   max: 22, 
   palette: [
     'deeppink',     // 1, Burned [black, Deprecated]
-    'deeppink',    // 2, Snow
+    'aliceblue',    // 2, Snow
     'gray',         // 3, Shadow / occulted
     'deeppink', 
     'deeppink', 
