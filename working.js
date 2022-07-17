@@ -19,7 +19,7 @@ var minimum = 11.0;
 var maximum = 28.0;
 
 
-Map.add(gmsUi.showIntermediate());
+Map.add(gmsUi.getIntermediateCheckbox());
 
 // UI element values
 var intermediate = false;
