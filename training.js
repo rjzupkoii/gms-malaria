@@ -1251,7 +1251,7 @@ var water =
               "system:index": "9"
             })]),
     snow = 
-    /* color: #d9e8ff */
+    /* color: #f0f8ff */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1278,7 +1278,7 @@ var water =
                   [98.76301577318833, 26.769975939367452]]], null, false),
             {
               "type": "snow",
-              "class": 99,
+              "class": 2,
               "system:index": "0"
             }),
         ee.Feature(
@@ -1289,7 +1289,7 @@ var water =
                   [98.764217402827, 26.810430174157997]]], null, false),
             {
               "type": "snow",
-              "class": 99,
+              "class": 2,
               "system:index": "1"
             }),
         ee.Feature(
@@ -1300,7 +1300,7 @@ var water =
                   [98.71615221728013, 26.905991886696846]]], null, false),
             {
               "type": "snow",
-              "class": 99,
+              "class": 2,
               "system:index": "2"
             }),
         ee.Feature(
@@ -1311,7 +1311,7 @@ var water =
                   [98.77179476211198, 26.675160995643626]]], null, false),
             {
               "type": "snow",
-              "class": 99,
+              "class": 2,
               "system:index": "3"
             }),
         ee.Feature(
@@ -1322,7 +1322,7 @@ var water =
                   [98.78707262466081, 26.60427244768971]]], null, false),
             {
               "type": "snow",
-              "class": 99,
+              "class": 2,
               "system:index": "4"
             })]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
