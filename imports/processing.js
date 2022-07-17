@@ -41,7 +41,7 @@ exports.getMeanTemperature = function(aoi, year) {
   });
   
   // Reduce, clip, and return
-  return temperature.reduce(ee.Reducer.mean()).clip(aoi);
+  return temperature.reduce(ee.Reducer.mean()).clip(aoi).rename('mean_temperature');
 };
 
 // Get the number of days that the temperature is outside of the bounds, minimum <= temp <= maximum
