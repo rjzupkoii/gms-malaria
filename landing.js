@@ -88,13 +88,11 @@ function riskAssessment(landcover, habitat) {
 }
 
 var risk = riskAssessment(landcover, habitat);
-print(risk);
 
 // Add everything to the UI
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
 Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
 Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
 Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
-Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat', false);
-
-Map.addLayer(risk, [], 'A. dirus / Malaria Risk');
+Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat');
+Map.addLayer(risk, vis_riskPalette, 'A. dirus / Malaria Risk');
