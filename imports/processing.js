@@ -30,7 +30,7 @@ exports.getImages = function(indices, aoi, year) {
 
 // Get the mean temperature from the MOD11A1.006 dataset for the AOI and given year.
 exports.getMeanTemperature = function(aoi, year) {
-  var temperature = ee.ImageCollection('MODIS/.061/MOD11A1')
+  var temperature = ee.ImageCollection('MODIS/061/MOD11A1')
     .filterDate(year + '-01-01', year + '-12-31');
     
   // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
