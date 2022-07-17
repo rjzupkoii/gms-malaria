@@ -4,18 +4,19 @@
  * This page is intended to be used for training of the landcover classification
  * and testing of the assessment maps.
  */
-var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
-var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
-var processing = require('users/rzupko/gms-malaria:imports/processing.js');
+// var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
+// var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
+// var processing = require('users/rzupko/gms-malaria:imports/processing.js');
+
+var ml = require('users/rzupko/gms-malaria:imports/ml.js');
+
+// Get the 
 
 // Filter the USGS Landsat 8 Level 2, Collection 2, Tier 1 collection to the 
 // selected image for the proof of concept (125, 50, 2020-01-22); an 
 // alternative cloud-free image is (125, 51, 2014-01-05)
-var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
-  .filter(ee.Filter.and(
-    ee.Filter.eq('WRS_PATH', 125),
-    ee.Filter.eq('WRS_ROW', 50)))
-  .filterDate('2020-01-21', '2020-01-23').first();
+var image = ml.getReferenceImage();
+Map.addLayer(image, [], 'Refernece Image');
 //var results = processing.process(image);
 
 // By adding the Landsat and malaria results to image collections we have a 
