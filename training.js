@@ -17,6 +17,8 @@ var visual = require('users/rzupko/gms-malaria:imports/visualization_wip.js');
 // selected image for the proof of concept (125, 50, 2020-01-22); an 
 // alternative cloud-free image is (125, 51, 2014-01-05)
 var image = ml.getReferenceImage();
+
+Map.centerObject(image, 7);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
