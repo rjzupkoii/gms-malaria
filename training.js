@@ -9,6 +9,7 @@
 // var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
+var visual = requrie('users/rzupko/gms-malaria:visualization_wip.js');
 
 // Get the 
 
@@ -16,7 +17,9 @@ var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 // selected image for the proof of concept (125, 50, 2020-01-22); an 
 // alternative cloud-free image is (125, 51, 2014-01-05)
 var image = ml.getReferenceImage();
-Map.addLayer(image, [], 'Refernece Image');
+Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
+Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
+
 //var results = processing.process(image);
 
 // By adding the Landsat and malaria results to image collections we have a 
