@@ -17,7 +17,7 @@ exports.getClassifier = function() {
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
-    .filterDate('2020-01-21', '2020-01-23')
+    .filterDate('2020-01-01', '2020-12-31')
     .first();
 
   // Sample the labeled features
