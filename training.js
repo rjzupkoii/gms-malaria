@@ -1815,10 +1815,10 @@ var water =
 
 // Import the assets
 var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 // Import other scripts
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
-var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
 // Get the various shapefiles that are used for training data
 function getFeatures() {
