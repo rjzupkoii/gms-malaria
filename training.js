@@ -9,7 +9,7 @@
 // var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
-var visual = require('users/rzupko/gms-malaria:visualization_wip.js');
+var visual = require('users/rzupko/gms-malaria:imports/visualization_wip.js');
 
 // Get the 
 
