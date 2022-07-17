@@ -4,9 +4,6 @@
  * This page is intended to be used for training of the landcover classification
  * and testing of the assessment maps.
  */
-// var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
-// var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
-// var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Import the assets
 var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
