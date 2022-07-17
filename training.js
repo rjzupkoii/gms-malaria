@@ -49,6 +49,9 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -227,6 +230,17 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "15"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.77922503630492, 13.136072072381257],
+                  [103.77922503630492, 13.130388242666632],
+                  [103.78437487761352, 13.130388242666632],
+                  [103.78437487761352, 13.136072072381257]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "16"
             })]),
     forest = 
     /* color: #006400 */
@@ -432,6 +446,7 @@ var water =
             })]),
     vegetation = 
     /* color: #008000 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -619,6 +634,7 @@ var water =
             })]),
     scrub = 
     /* color: #8fbc8f */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1075,6 +1091,7 @@ var water =
             })]),
     barren = 
     /* color: #a52a2a */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1318,6 +1335,7 @@ var water =
             })]),
     development = 
     /* color: #ff0000 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1485,6 +1503,7 @@ var water =
             })]),
     snow = 
     /* color: #f0f8ff */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1560,6 +1579,7 @@ var water =
             })]),
     shadow = 
     /* color: #808080 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
