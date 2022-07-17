@@ -36,13 +36,13 @@ Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
 // Prepare the environmental and intermediate data needed
 var environmental = processing.getAnnualRainfall(gms, year);
 environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-// var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax).rename('bounds');
+var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
 // var landcover = ml.classify(landsat);
 
 // Add everything to the UI
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
 Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
-// Map.addLayer(intermediate, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
+Map.addLayer(intermediate, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
 // Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
 
 // // Classify the habitat based upon the inputs
