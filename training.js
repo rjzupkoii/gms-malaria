@@ -910,6 +910,7 @@ var water =
             })]),
     barren = 
     /* color: #a52a2a */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1248,6 +1249,81 @@ var water =
               "class": 20,
               "type": "Development",
               "system:index": "9"
+            })]),
+    snow = 
+    /* color: #d9e8ff */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.FeatureCollection(
+        [ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.76061251391098, 26.769975939367452],
+                  [98.76061251391098, 26.768136767903655],
+                  [98.76301577318833, 26.768136767903655],
+                  [98.76301577318833, 26.769975939367452]]], null, false),
+            {
+              "type": "snow",
+              "class": 99,
+              "system:index": "0"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.7616424821727, 26.810430174157997],
+                  [98.7616424821727, 26.808132024589916],
+                  [98.764217402827, 26.808132024589916],
+                  [98.764217402827, 26.810430174157997]]], null, false),
+            {
+              "type": "snow",
+              "class": 99,
+              "system:index": "1"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.71340563524888, 26.905991886696846],
+                  [98.71340563524888, 26.90293026381031],
+                  [98.71615221728013, 26.90293026381031],
+                  [98.71615221728013, 26.905991886696846]]], null, false),
+            {
+              "type": "snow",
+              "class": 99,
+              "system:index": "2"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.76921984145768, 26.675160995643626],
+                  [98.76921984145768, 26.672399928071112],
+                  [98.77179476211198, 26.672399928071112],
+                  [98.77179476211198, 26.675160995643626]]], null, false),
+            {
+              "type": "snow",
+              "class": 99,
+              "system:index": "3"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.7834677357448, 26.60427244768971],
+                  [98.7834677357448, 26.600435232949003],
+                  [98.78707262466081, 26.600435232949003],
+                  [98.78707262466081, 26.60427244768971]]], null, false),
+            {
+              "type": "snow",
+              "class": 99,
+              "system:index": "4"
             })]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 /*
@@ -1289,8 +1365,6 @@ var classified = image.select(ml.classifiedBands).classify(classifier);
 
 // Add the classified image to the map
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover');
-
-visual.visualizeGms();
 
 
 // TODO REMOVE THIS - OLD PROCESSING PIPEILINE CODE
