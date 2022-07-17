@@ -85,7 +85,7 @@ exports.viz_trainingPalette = {
   ] };
 
 // Simplified color palette for the training data
-exports.viz_trainingPalette = { 
+exports.viz_simpleLandcoverPalette = { 
   min: 1, 
   max: 22, 
   palette: [
