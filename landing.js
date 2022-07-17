@@ -38,7 +38,7 @@ var environmental = processing.getAnnualRainfall(gms, year).rename('rainfall');
 environmental = environmental.addBands(processing.getMeanTemperature(gms, year).rename('temperature'));
 var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax).rename('bounds');
 var landcover = ml.classify(landsat);
-intermediate = intermediate.addBands(().rename('landcover'));
+intermediate = intermediate.addBands(landcover.rename('landcover'));
 
 
 // Add everything to the UI
