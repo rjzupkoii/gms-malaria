@@ -74,4 +74,4 @@ Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. 
   // Merge the classifications and return
   var habitat = ee.Image(0).expression('primary + secondary + tertiary', {primary: primary, secondary: secondary, tertiary: tertiary});
 
-Map.addLayer(habitat, [], 'A. dirus / Prefered Habitat');
+Map.addLayer(habitat, [], 'A. dirus / Probable Habitat');
