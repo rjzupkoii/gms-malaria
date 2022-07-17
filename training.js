@@ -1,8 +1,22 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
 var water = 
     /* color: #003dff */
-    /* shown: false */
     /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
       {
         "type": "rectangle"
       },
@@ -144,6 +158,61 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "9"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.75084246136966, 24.841359638830678],
+                  [102.75084246136966, 24.83839981546329],
+                  [102.753245720647, 24.83839981546329],
+                  [102.753245720647, 24.841359638830678]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "10"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.00659062868887, 24.945317744898865],
+                  [103.00659062868887, 24.94251606326159],
+                  [103.00933721072012, 24.94251606326159],
+                  [103.00933721072012, 24.945317744898865]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "11"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.00418736941153, 24.90126171216192],
+                  [103.00418736941153, 24.899237558737955],
+                  [103.00641896731192, 24.899237558737955],
+                  [103.00641896731192, 24.90126171216192]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "12"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.99783589846426, 24.880707227361622],
+                  [102.99783589846426, 24.87837127399178],
+                  [103.00041081911856, 24.87837127399178],
+                  [103.00041081911856, 24.880707227361622]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "13"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.8963967484795, 24.572438766384323],
+                  [102.8963967484795, 24.561197976619134],
+                  [102.90669643109669, 24.561197976619134],
+                  [102.90669643109669, 24.572438766384323]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "14"
             })]),
     forest = 
     /* color: #006400 */
