@@ -4,10 +4,13 @@
  * This asset file contains data for various Anopheles genus mosquitoes.
  */
 
+// TODO Add the aestivation periods instead of the placeholder values
 exports.aDirus = {
   'species'  : 'A. dirus',
-  'rainfall' : 1500,
+  'rainfall' : 1500,          // Obsomer et al. 2012
   'tempMin'  : 11.0,
   'tempMean' : 20.0,
-  'tempMax'  : 28.0
+  'tempMax'  : 28.0,
+  'lifeExpectancy' : 
+  'aestivationMax' : 180
 };
