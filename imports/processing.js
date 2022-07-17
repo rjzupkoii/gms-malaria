@@ -14,7 +14,7 @@ exports.getAnnualRainfall = function(aoi, year) {
 };
 
 // Use raster algebra to score the best habitat
-function getHabitat(variables) {
+exports.getHabitat = function(variables) {
   // Primary habitat is completely within the environmental envelope
   // var primary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables);
     
