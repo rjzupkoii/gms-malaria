@@ -19,8 +19,7 @@ var minimum = 11.0;
 var maximum = 28.0;
 
 // Prepare the UI
-Map.add(gmsUi.getIntermediateCheckbox());
-Map.add(gmsUi.getEnvironmentalCheckbox());
+gmsUi.prepareUI();
 
 // Start by loading the classifier
 var classifier = ml.getClassifier();
