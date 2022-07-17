@@ -65,11 +65,14 @@ exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
   return temperature.reduce(ee.Reducer.sum()).toInt();  
 };
  
-// Mask for the cloud and cloud shadow bits
-var CLOUD_MASK = (1 << 3);
+
 
 // Mask the clouds out of the image
 exports.maskClouds = function(image) {
+  // Mask for the cloud and cloud shadow bits
+  var CLOUD_MASK = (1 << 3);  
+  
+  // Select the QA pixel, and mask if it is a cloud
   var qa = image.select('QA_PIXEL');
   var mask = qa.bitwiseAnd(CLOUD_MASK).eq(0);
   return image.updateMask(mask);  
