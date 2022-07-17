@@ -54,11 +54,13 @@ var habitat = processing.getHabitat({
 });
 
 function riskAssessment(landcover, habitat) {
-  // Generate the 1 km buffer based upon the land cover type, using cumulative 
-  // cost for the buffer isn't exactly the same as a buffer, but results in
-  // the same effect
+  // Generate the 1 km buffer based upon the land cover type, using cumulative cost 
+  // for the buffer isn't exactly the same as a buffer, but results in the same effect
+  
+  
+  
   var buffer = ee.Image(0).expression('landcover >= 20', {landcover: landcover});
-  buffer = ee.Image(1).cumulativeCost({
+  var buffer = ee.Image(1).cumulativeCost({
     source: buffer, 
     maxDistance: 1000,
   }).lt(1000);
@@ -87,7 +89,8 @@ function riskAssessment(landcover, habitat) {
   return ee.Image(0).expression('high + moderate + low', {high: high, moderate: moderate, low: low});  
 }
 
-var risk = riskAssessment(landcover, habitat);
+//var risk = riskAssessment(landcover, habitat);
+var risk = landcover.gte(20);
 
 // Add the enviornmental and intermediate data to the UI, note it is off by default
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
@@ -96,5 +99,5 @@ Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. 
 Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
 
 // Add the species and malaria risk layers
-Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat');
+Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat', false);
 Map.addLayer(risk, visual.vis_riskPalette, 'A. dirus / Malaria Risk');
