@@ -1,4 +1,9 @@
-
+/*
+ * ui.js
+ *
+ * This script contains various functions realted to setting up and working 
+ * with UI elements.
+ */
 
 // Return a checkbox that toggles environmental maps
 exports.getEnvironmentalCheckbox = function() {
