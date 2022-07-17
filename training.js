@@ -55,6 +55,12 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -255,6 +261,28 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "17"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.27574620106361, 13.806116759932848],
+                  [103.27574620106361, 13.802615994271969],
+                  [103.27986607411049, 13.802615994271969],
+                  [103.27986607411049, 13.806116759932848]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "18"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.31076512196205, 13.810784365716374],
+                  [103.31076512196205, 13.806950267819708],
+                  [103.3135117039933, 13.806950267819708],
+                  [103.3135117039933, 13.810784365716374]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "19"
             })]),
     forest = 
     /* color: #006400 */
