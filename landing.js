@@ -57,36 +57,29 @@ function riskAssessment(landcover, habitat) {
   // Generate the buffer based upon the land cover type, using cumulative cost  for the
   // buffer isn't exactly the same as a buffer, but results in the same effect
   var buffer = ee.Image(1).cumulativeCost({
-    source: landcover.gte(20),                // Development (20) or Agricultural (21)
-    maxDistance: 1500,                        // Obsomer et al. 2007, high density
+    source: landcover.gte(20),                  // Development (20) or Agricultural (21)
+    maxDistance: 1500,                          // Obsomer et al. 2007, "very high" density
   }).lt(1500);
-  var masked = habitat.updateMask(buffer);
+  var high = habitat.gt(0).and(landcover.mask(buffer).gte(20));
 
-  // High risk are areas where humans likely live along side mosquitos
-//  var high = ee.Image(0).expression('(landcover >= 20) && (habitat > 1)', {landcover: landcover, habitat: habitat});
-  var high = ee.Image(0).expression('masked > 1 ? 1 : 0', {masked: masked});      
-  
-  // Generate the 5 km buffer based upon the land cover type
-  buffer = ee.Image(0).expression('landcover >= 20', {landcover: landcover});
   buffer = ee.Image(1).cumulativeCost({
-    source: buffer, 
-    maxDistance: 5000,
+    source: landcover.gte(20), 
+    maxDistance: 5000,                        // Obsomer et al. 2007, moderate density
   }).lt(5000);
-  masked = habitat.updateMask(buffer);
+  var moderate = habitat.gt(0).and(landcover.mask(buffer).gte(20));
   
-  // Moderate risk is mosquito habitat with 5km of humans, 
-  // note ternary operator to force a value with the mask 
-  var moderate = ee.Image(0).expression('masked > 1 ? 1 : 0', {masked: masked});      
+  // Our base risk is when we are within the habitat window and forest/vegitation is present
+  var base = habitat.gt(0).and(landcover.eq(11).or(landcover.eq(12)));
   
-  // Low risk is mosquito habitat
-  var low = ee.Image(0).expression('habitat > 1', {habitat: habitat});
-  
-  // Return categorized risk
-  return ee.Image(0).expression('high + moderate + low', {high: high, moderate: moderate, low: low});  
+  // Return the total across the three layers
+  return ee.Image(0).expression('base + moderate + high', {
+    base: base,
+    high: high.gt(0).unmask(),
+    moderate: moderate.gt(0).unmask()
+  });
 }
 
-//var risk = riskAssessment(landcover, habitat);
-var risk = ;
+var risk = riskAssessment(landcover, habitat);
 
 // Add the enviornmental and intermediate data to the UI, note it is off by default
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
