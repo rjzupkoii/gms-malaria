@@ -20,8 +20,25 @@ exports.getFeatures = function() {
 
 var water = 
     /* color: #003dff */
-    /* shown: false */
     /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
       {
         "type": "rectangle"
       },
@@ -163,6 +180,72 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "9"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.75084246136966, 24.841359638830678],
+                  [102.75084246136966, 24.83839981546329],
+                  [102.753245720647, 24.83839981546329],
+                  [102.753245720647, 24.841359638830678]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "10"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.00659062868887, 24.945317744898865],
+                  [103.00659062868887, 24.94251606326159],
+                  [103.00933721072012, 24.94251606326159],
+                  [103.00933721072012, 24.945317744898865]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "11"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.00418736941153, 24.90126171216192],
+                  [103.00418736941153, 24.899237558737955],
+                  [103.00641896731192, 24.899237558737955],
+                  [103.00641896731192, 24.90126171216192]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "12"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.99783589846426, 24.880707227361622],
+                  [102.99783589846426, 24.87837127399178],
+                  [103.00041081911856, 24.87837127399178],
+                  [103.00041081911856, 24.880707227361622]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "13"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.66593266021425, 24.720084005547033],
+                  [102.66593266021425, 24.71868062213661],
+                  [102.66739178191835, 24.71868062213661],
+                  [102.66739178191835, 24.720084005547033]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "14"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.89024392228976, 24.49196022228503],
+                  [102.89024392228976, 24.48969508160173],
+                  [102.89290467363253, 24.48969508160173],
+                  [102.89290467363253, 24.49196022228503]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "15"
             })]),
     forest = 
     /* color: #006400 */
@@ -1254,7 +1337,6 @@ var water =
             })]),
     development = 
     /* color: #ff0000 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1276,6 +1358,9 @@ var water =
       },
       {
         "type": "polygon"
+      },
+      {
+        "type": "rectangle"
       },
       {
         "type": "rectangle"
@@ -1405,10 +1490,20 @@ var water =
               "class": 20,
               "type": "Development",
               "system:index": "9"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.60923808236872, 24.723425580378198],
+                  [102.60923808236872, 24.722782382217076],
+                  [102.61003201623713, 24.722782382217076],
+                  [102.61003201623713, 24.723425580378198]]], null, false),
+            {
+              "class": 20,
+              "type": "Development",
+              "system:index": "10"
             })]),
     snow = 
     /* color: #f0f8ff */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1502,6 +1597,9 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -1570,4 +1668,15 @@ var water =
               "name": "shadow",
               "class": 3,
               "system:index": "5"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.45992112872028, 26.403380994520028],
+                  [98.45992112872028, 26.401612802961335],
+                  [98.4620668959322, 26.401612802961335],
+                  [98.4620668959322, 26.403380994520028]]], null, false),
+            {
+              "name": "shadow",
+              "class": 3,
+              "system:index": "6"
             })]);
