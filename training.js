@@ -18,7 +18,7 @@ var visual = require('users/rzupko/gms-malaria:imports/visualization_wip.js');
 // Load the and center the GMS and reference image
 var image = ml.getReferenceImage();
 
-Map.centerObject(shapefiles.getGms(), 7);
+Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
