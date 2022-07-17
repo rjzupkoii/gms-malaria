@@ -87,7 +87,7 @@ function riskAssessment(landcover, habitat) {
   return ee.Image(0).expression('high + moderate + low', {high: high, moderate: moderate, low: low});  
 }
 
-var risk = risk
+var risk = riskAssessment(landcover, habitat);
 
 // Add everything to the UI
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
@@ -96,5 +96,4 @@ Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. 
 Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
 Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat', false);
 
-
-
+Map.addLayer(risk, [], 'A. dirus / Malaria Risk');
