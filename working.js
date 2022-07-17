@@ -22,6 +22,9 @@ var showIntermediate = ui.Checkbox({
   onChange: function(checked) {
     Map.layers().get(4).setShown(checked);  // A. dirus / Days Outside Bounds
     Map.layers().get(5).setShown(checked);  // Landcover
+  },
+  style: {
+    position: 'middle-right'
   }
 });
 Map.add(showIntermediate);
