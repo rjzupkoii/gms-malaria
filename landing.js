@@ -7,6 +7,7 @@
  */
  
 // Import the various assets that we need
+var features = require('users/rzupko/gms-malaria:assets/features.js');
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
