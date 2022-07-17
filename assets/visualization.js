@@ -79,7 +79,7 @@ exports.viz_trainingPalette = {
     'darkgreen',    // 11, Forest
     'green',        // 12, Vegetation
     'darkseagreen', // 13, Vegetation / Scrub
-    'brown',        // 14, Barren
+    'saddlebrown',  // 14, Barren
     'deeppink', 
     'deeppink', 
     'deeppink', 
