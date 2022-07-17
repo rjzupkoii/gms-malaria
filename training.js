@@ -8,17 +8,17 @@
 // var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 // var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
+// Import the assets
+var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+
+// Import other scripts
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization_wip.js');
 
-// Get the 
-
-// Filter the USGS Landsat 8 Level 2, Collection 2, Tier 1 collection to the 
-// selected image for the proof of concept (125, 50, 2020-01-22); an 
-// alternative cloud-free image is (125, 51, 2014-01-05)
+// Load the and center the GMS and reference image
 var image = ml.getReferenceImage();
 
-Map.centerObject(image, 10);
+Map.centerObject(shapefiles.getGms(), 7);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
