@@ -30,7 +30,7 @@ exports.getImages = function(indices, aoi, year) {
 
 // Get the mean temperature from the MOD11A1.006 dataset for the AOI and given year.
 exports.getMeanTemperature = function(aoi, year) {
-  var temperature = ee.ImageCollection('MODIS/061/MOD11A1')
+  var temperature = ee.ImageCollection('MODIS/.061/MOD11A1')
     .filterDate(year + '-01-01', year + '-12-31');
     
   // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
@@ -56,14 +56,13 @@ exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
     
   // Map an expression that sets zero if we are within bounds, one if not
   temperature = temperature.map(function(image) {
-    var count = ee.Image(0).expression('(kelvin < minimum) || (maximum < kelvin)',
+    return ee.Image(0).expression('(kelvin < minimum) || (maximum < kelvin)',
       { kelvin: image.select('LST_Day_1km'), minimum: minimum, maximum: maximum });
-    return count.rename('days_outside_bounds');
   });
   
   // Clip, sum, and return integers
   temperature = temperature.map(function(image) { return image.clip(aoi); });
-  return temperature.reduce(ee.Reducer.sum()).toInt();  
+  return temperature.reduce(ee.Reducer.sum()).toInt().rename('days_outside_bounds');  
 };
 
 // Mask the clouds out of the image
