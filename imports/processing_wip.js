@@ -22,7 +22,7 @@ exports.getImages = function(indices, aoi, year) {
       ee.Filter.eq('WRS_ROW', item.get(1))))
     .filterDate(year + '-01-01', year + '-12-31');
     return ee.Image(
-      image.map(maskClouds).max().clipToCollection(aoi));  
+      image.map(maskClouds).median().clipToCollection(aoi));  
   };
   return ee.ImageCollection(indices.map(load));
 };
