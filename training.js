@@ -1440,11 +1440,10 @@ Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
 
 /* Export the selections for feature training data. */
-exports.getFeatures = function() {
+function getFeatures() {
   return water
     .merge(forest).merge(vegetation).merge(scrub)
     .merge(agricultural).merge(fallow)
     .merge(barren).merge(burned)
     .merge(development);
 }
-
