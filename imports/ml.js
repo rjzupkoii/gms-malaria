@@ -45,8 +45,8 @@ exports.getReferenceImage = function() {
   // Kunming, Yunnan province, China
   var p129_r43 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
     .filter(ee.Filter.and(
-      ee.Filter.eq('WRS_PATH', 132),
-      ee.Filter.eq('WRS_ROW', 42)))
+      ee.Filter.eq('WRS_PATH', 129),
+      ee.Filter.eq('WRS_ROW', 43)))
     .filterDate('2020-01-01', '2020-12-31');
 
   var image = p125_r50.merge(p132_r42);
