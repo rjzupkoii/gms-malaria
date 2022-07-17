@@ -15,7 +15,7 @@ var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
-var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
+var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 // Placeholders, these will (eventually) be managed by the UI itself
 var year = '2020';
@@ -26,7 +26,7 @@ gmsUi.prepareUI();
 
 // Start by drawing the GMS
 var gms = shapefile.getGms();
-visual.visualizeGms();
+gmsUi.visualizeGms();
 
 // Next add the base Landsat layers
 var landsat = processing.getImages(gms_wrs2.indices, gms, year);
