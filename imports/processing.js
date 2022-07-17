@@ -63,6 +63,32 @@ exports.getMeanTemperature = function(aoi, year) {
   return temperature.reduce(ee.Reducer.mean()).clip(aoi).rename('mean_temperature');
 };
 
+exports.getRiskAssessment = function(landcover, habitat) {
+  // Generate the buffer based upon the land cover type, using cumulative cost  for the
+  // buffer isn't exactly the same as a buffer, but results in the same effect
+  var buffer = ee.Image(1).cumulativeCost({
+    source: landcover.gte(20),                  // Development (20) or Agricultural (21)
+    maxDistance: 1500,                          // Obsomer et al. 2007, "very high" density
+  }).lt(1500);
+  var high = habitat.gt(1).and(landcover.mask(buffer).gte(10));
+
+  buffer = ee.Image(1).cumulativeCost({
+    source: landcover.gte(20), 
+    maxDistance: 5000,                          // Obsomer et al. 2007, moderate density
+  }).lt(5000);
+  var moderate = habitat.gt(1).and(landcover.mask(buffer).gte(10));
+  
+  // Our base risk is when we are within the habitat window and forest/vegitation is present
+  var base = habitat.gt(0).and(landcover.eq(11).or(landcover.eq(12)));
+  
+  // Return the total across the three layers
+  return ee.Image(0).expression('base + moderate + high', {
+    base: base,
+    moderate: moderate.gt(0).unmask(),
+    high: high.gt(0).unmask()
+  });
+};
+
 // Get the number of days that the temperature is outside of the bounds, minimum <= temp <= maximum
 exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
   // Preform scaled conversion from C to K for the data set
