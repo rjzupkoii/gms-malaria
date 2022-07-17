@@ -45,11 +45,25 @@ Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, '
 Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
 // Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
 
-// Classify the habitat based upon the inputs
-  var variables = {
-    // Define the region
-    'region'             : gms,
+function getHabitat(variables) {
+  // Primary habitat is completely within the environmental envelope
+  var primary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables);
     
+  // Secondary is within the envelope for the life expectancy
+  var secondary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables);
+    
+  // Tertiary is within the envelope for aestivation
+  var tertiary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables);
+  
+  // Merge the classifications, highest sum is best habitat
+  var habitat = ee.Image(0).expression('primary + secondary + tertiary', {primary: primary, secondary: secondary, tertiary: tertiary});
+  
+  // Rename the band and return
+  return habitat.rename('scored_habitat');
+}
+
+// Classify the habitat based upon the inputs
+var habitat = getHabitat({
     // Raster data
     'totalRainfall'      : environmental.select('total_rainfall'),
     'meanTemperature'    : environmental.select('mean_temperature'),
@@ -60,18 +74,6 @@ Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. 
     'speciesTemperature' : species.tempMin,
     'speciesLife'        : species.lifeExpectancy,
     'aestivationMax'     : species.aestivationMax
-  };
-  
-  // Primary habitat is completely within the environmental envelope
-  var primary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables);
-    
-  // Secondary is within the envelope for the life expectancy
-  var secondary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables);
-    
-  // Tertiary is within the envelope for aestivation
-  var tertiary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables);
-  
-  // Merge the classifications and return
-  var habitat = ee.Image(0).expression('primary + secondary + tertiary', {primary: primary, secondary: secondary, tertiary: tertiary});
+  });
 
 Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat');
