@@ -18,17 +18,8 @@ var year = '2020';
 var minimum = 11.0;
 var maximum = 28.0;
 
-var showIntermediate = ui.Checkbox({
-  label: 'Show Intermediate Maps',
-  onChange: function(checked) {
-    Map.layers().get(4).setShown(checked);  // A. dirus / Days Outside Bounds
-    Map.layers().get(5).setShown(checked);  // Landcover
-  },
-  style: {
-    position: 'top-right'
-  }
-});
-Map.add(showIntermediate);
+
+Map.add(gmsUi.showIntermediate());
 
 // UI element values
 var intermediate = false;
