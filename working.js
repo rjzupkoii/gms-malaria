@@ -20,6 +20,7 @@ var maximum = 28.0;
 
 
 Map.add(gmsUi.getIntermediateCheckbox());
+Map.add(gmsUI.getEnvironmentalCheckbox());
 
 // UI element values
 var intermediate = false;
