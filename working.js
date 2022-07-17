@@ -45,8 +45,8 @@ var classified = landsat.map(function(image) {
 visual.visualizeGms();
 Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
 Map.addLayer(landsat, visual.viz_gms, 'Landsat 8, 2020');
-Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', environmental);
-Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', environmental);
+Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', false);
+Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', false);
 Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', intermediate);
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover', intermediate);
 
