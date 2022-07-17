@@ -1012,6 +1012,9 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -1190,6 +1193,17 @@ var water =
               "class": 14,
               "type": "Barren",
               "system:index": "15"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.7779621076869, 26.662360805717974],
+                  [98.7779621076869, 26.660673305252654],
+                  [98.78045119765272, 26.660673305252654],
+                  [98.78045119765272, 26.662360805717974]]], null, false),
+            {
+              "class": 14,
+              "type": "Barren",
+              "system:index": "16"
             })]),
     development = 
     /* color: #ff0000 */
