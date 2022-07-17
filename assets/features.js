@@ -1,4 +1,11 @@
-/* Export the selections for feature training data. */
+/*
+ * features.js
+ *
+ * This JavasScript file is primarly intended to be used for storing the
+ * various features that are used for training the landcover classifier.
+ */
+
+// Export the selections for feature training data.
 exports.getFeatures = function() {
   return water
     .merge(forest)
