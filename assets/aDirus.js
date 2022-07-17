@@ -1,10 +1,9 @@
 
 
 exports.aDirus = {
-  'species' : 'A. dirus',
-  
-  'tempMin' : 11.0,
+  'species'  : 'A. dirus',
+  'rainfall' : 1500,
+  'tempMin'  : 11.0,
   'tempMean' : 20.0,
-  'tempMax' : 28.0
-  
+  'tempMax'  : 28.0
 };
