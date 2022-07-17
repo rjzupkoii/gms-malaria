@@ -1,6 +1,7 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
 var water = 
     /* color: #003dff */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -146,6 +147,7 @@ var water =
             })]),
     forest = 
     /* color: #006400 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -347,6 +349,7 @@ var water =
             })]),
     vegetation = 
     /* color: #008000 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -492,6 +495,7 @@ var water =
             })]),
     scrub = 
     /* color: #8fbc8f */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -637,6 +641,7 @@ var water =
             })]),
     agricultural = 
     /* color: #f5deb3 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -819,6 +824,7 @@ var water =
             })]),
     fallow = 
     /* color: #faf0e6 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -859,7 +865,7 @@ var water =
                   [106.7888729582661, 14.759793680557006],
                   [106.7888729582661, 14.763445583108666]]], null, false),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "0"
             }),
@@ -870,7 +876,7 @@ var water =
                   [106.78363728626903, 14.773529495427631],
                   [106.78363728626903, 14.777513134305407]]], null, false),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "1"
             }),
@@ -881,7 +887,7 @@ var water =
                   [106.84235198645824, 14.854557251504966],
                   [106.84235198645824, 14.858124596746793]]], null, false),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "2"
             }),
@@ -892,7 +898,7 @@ var water =
                   [106.83960540442699, 14.872476343677278],
                   [106.83960540442699, 14.875960438837689]]], null, false),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "3"
             }),
@@ -906,7 +912,7 @@ var water =
                   [107.57903588991897, 13.764898594283817],
                   [107.5778342602803, 13.765482153112684]]]),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "4"
             }),
@@ -918,7 +924,7 @@ var water =
                   [107.57474435549514, 13.769066839686149],
                   [107.57315648775833, 13.767024408722456]]]),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "5"
             }),
@@ -929,7 +935,7 @@ var water =
                   [107.66778482180374, 13.797992414340495],
                   [107.66778482180374, 13.800909780539556]]], null, false),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "6"
             }),
@@ -946,7 +952,7 @@ var water =
                   [107.65624059420364, 13.818038151499191],
                   [107.65439523440139, 13.818079824832537]]]),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "7"
             }),
@@ -961,7 +967,7 @@ var water =
                   [107.62534154635208, 13.784089915682298],
                   [107.62096418123977, 13.780713859648857]]]),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "8"
             }),
@@ -972,12 +978,13 @@ var water =
                   [106.76128400545852, 14.769300573190613],
                   [106.76128400545852, 14.772703335512462]]], null, false),
             {
-              "class": 22,
+              "class": 21,
               "type": "Agricultural - Fallow",
               "system:index": "9"
             })]),
     barren = 
     /* color: #a52a2a */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1123,6 +1130,7 @@ var water =
             })]),
     development = 
     /* color: #ff0000 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1276,6 +1284,7 @@ var water =
             })]),
     burned = 
     /* color: #000000 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1415,8 +1424,9 @@ function getFeatures() {
     .merge(agricultural)
     .merge(fallow)
     .merge(barren)
-    .merge(burned)
-    .merge(development);
+    .merge(development)
+//    .merge(burned)
+    ;
 }
 
 // Load the and center the GMS and reference image
