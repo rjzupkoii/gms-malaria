@@ -1,7 +1,8 @@
 /*
  * processing_wip.js
  *
- * Work-in-progress replacement for the processing.js script.
+ * This script contains the functions related to the processing of the
+ * analysis pipeline.
  */
 
 // Get the annual rainfall from the CHIPS dataset for the given AOI and year.
