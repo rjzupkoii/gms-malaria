@@ -30,13 +30,17 @@ var species = mosquitoes.aDirus;
 
 // Begin loading all of the data 
 var gms = shapefile.getGms();
-var rainfall = processing.getAnnualRainfall(gms, year);
+var environmental = processing.getAnnualRainfall(gms, year).rename('annual_rainfal');
 var bounded = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
 var temperature = processing.getMeanTemperature(gms, year);
 var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 var classified = landsat.map(function(image) {
   return image.select(ml.classifiedBands).classify(classifier);
 });
+
+// Classify the habitat
+
+
 
 // Add everything to the UI
 visual.visualizeGms();
