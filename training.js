@@ -1422,6 +1422,24 @@ Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
+
+
+
+// Get the various shapefiles that are used for training data
+function getFeatures() {
+  return water
+    .merge(forest)
+    .merge(vegetation)
+    .merge(scrub)
+    .merge(agricultural)
+    .merge(fallow)
+    .merge(barren)
+    .merge(burned)
+    .merge(development);
+}
+
+
+// TODO REMOVE THIS - OLD PROCESSING PIPEILINE CODE
 //var results = processing.process(image);
 
 // By adding the Landsat and malaria results to image collections we have a 
@@ -1437,13 +1455,3 @@ Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 // visual.visualizeGms();
 // visual.visualizeResults(landsat, malaria, true);
 //exporting.queueExports(results);
-
-
-/* Export the selections for feature training data. */
-function getFeatures() {
-  return water
-    .merge(forest).merge(vegetation).merge(scrub)
-    .merge(agricultural).merge(fallow)
-    .merge(barren).merge(burned)
-    .merge(development);
-}
