@@ -569,6 +569,12 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -692,6 +698,28 @@ var water =
               "class": 13,
               "type": "Scrub",
               "system:index": "10"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.78890147985047, 26.766192016951717],
+                  [98.78890147985047, 26.76412287803327],
+                  [98.79173389257019, 26.76412287803327],
+                  [98.79173389257019, 26.766192016951717]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "11"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.79186263860291, 26.779755438594865],
+                  [98.79186263860291, 26.7784528074091],
+                  [98.79366508306092, 26.7784528074091],
+                  [98.79366508306092, 26.779755438594865]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "12"
             })]),
     agricultural = 
     /* color: #f5deb3 */
