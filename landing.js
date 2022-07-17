@@ -88,6 +88,7 @@ function riskAssessment(landcover, habitat) {
 }
 
 var risk = riskAssessment(landcover, habitat);
+print(risk);
 
 // Add everything to the UI
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
