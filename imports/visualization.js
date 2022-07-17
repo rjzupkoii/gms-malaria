@@ -47,11 +47,18 @@ exports.viz_temperature = {
   ]
 };
 
-// Color palette for habitat / risk visualization
+// Color palette for habitat visualization
 exports.viz_habitatPalette = { 
   min: 0, 
   max: 3, 
   palette: ['#bdbdbd', '#fee8c8', '#fdbb84', '#e34a33'] 
+};
+
+// Color palette for risk visulaiation
+exports.vis_riskPalette = {
+  min: 0,
+  max: 3,
+  palette: ['#abd9e9', '#ffffbf', '#fdae61', '#d7191c']
 };
 
 // Color palette for the training data, note that Deep
@@ -84,34 +91,6 @@ exports.viz_trainingPalette = {
     'deeppink'      // 22, Agricultural / Fallow [linen, Deprecated]
   ] };
 
-// Simplified color palette for the training data
-exports.viz_simpleLandcoverPalette = { 
-  min: 1, 
-  max: 22, 
-  palette: [
-    'deeppink',     // 1, Burned [black, Deprecated]
-    'aliceblue',    // 2, Snow
-    'gray',         // 3, Shadow / occulted
-    'deeppink', 
-    'deeppink', 
-    'deeppink', 
-    'deeppink', 
-    'deeppink', 
-    'deeppink',
-    'blue',         // 10, Water
-    'green',        // 11, Forest
-    'green',        // 12, Vegetation
-    'green',        // 13, Vegetation / Scrub
-    'brown',        // 14, Barren
-    'deeppink', 
-    'deeppink', 
-    'deeppink', 
-    'deeppink', 
-    'deeppink',
-    'red',          // 20, Development
-    'wheat',        // 21, Agricultural
-    'deeppink'      // 22, Agricultural / Fallow [linen, Deprecated]
-  ] };
 
 // Adds a layer to the map for each of the training data polygon categories defined.
 exports.addTrainingPolygons = function(polygons) {
@@ -135,27 +114,3 @@ exports.visualizeGms = function() {
   Map.centerObject(gms, 5);
   Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
 };
-
-// ---------------------------------------------------------------------------
-// Internal data and function(s)
-// ---------------------------------------------------------------------------
-
-// Training data and land cover classification visualizations
-var layerStyles = [
-  { 'class' : 1, 'type' : 'Burned / Fire', 'color' : 'black' },
-  { 'class' : 10, 'type' : 'Water', 'color' : 'blue' },
-  { 'class' : 11, 'type' : 'Forest', 'color' : 'darkgreen' },
-  { 'class' : 12, 'type' : 'Vegetation', 'color' : 'green' },
-  { 'class' : 13, 'type' : 'Vegetation / Scrub', 'color' : 'darkseagreen' },  
-  { 'class' : 14, 'type' : 'Barren', 'color' : 'brown' },
-  { 'class' : 20, 'type' : 'Development', 'color' : 'red' },
-  { 'class' : 21, 'type' : 'Agricultural', 'color' : 'wheat' },
-  { 'class' : 22, 'type' : 'Agricultural - Fallow', 'color' : 'linen' },
-];  
-
-function styleTraining(collection, value, label, color) {
-  var items = collection.filter(ee.Filter.eq('class', value));
-  items = items.style(color);
-  Map.addLayer(items, {}, 'Training - ' + label);
-}
-  
