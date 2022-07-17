@@ -1252,6 +1252,7 @@ var water =
             })]),
     snow = 
     /* color: #f0f8ff */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1323,6 +1324,81 @@ var water =
             {
               "type": "snow",
               "class": 2,
+              "system:index": "4"
+            })]),
+    shadow = 
+    /* color: #808080 */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.FeatureCollection(
+        [ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.81337034210532, 26.554496198501056],
+                  [98.81337034210532, 26.55249999546411],
+                  [98.8156019400057, 26.55249999546411],
+                  [98.8156019400057, 26.554496198501056]]], null, false),
+            {
+              "name": "shadow",
+              "class": 3,
+              "system:index": "0"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.81294118866293, 26.567854508704826],
+                  [98.81294118866293, 26.566165612942097],
+                  [98.81448614105551, 26.566165612942097],
+                  [98.81448614105551, 26.567854508704826]]], null, false),
+            {
+              "name": "shadow",
+              "class": 3,
+              "system:index": "1"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.82718908295004, 26.555954940278383],
+                  [98.82718908295004, 26.554265869155238],
+                  [98.82890569671957, 26.554265869155238],
+                  [98.82890569671957, 26.555954940278383]]], null, false),
+            {
+              "name": "shadow",
+              "class": 3,
+              "system:index": "2"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.73901786773995, 26.596101436942035],
+                  [98.73901786773995, 26.59425945839281],
+                  [98.74073448150948, 26.59425945839281],
+                  [98.74073448150948, 26.596101436942035]]], null, false),
+            {
+              "name": "shadow",
+              "class": 3,
+              "system:index": "3"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[98.73180808990791, 26.598096880246523],
+                  [98.73180808990791, 26.596408430484484],
+                  [98.7333530423005, 26.596408430484484],
+                  [98.7333530423005, 26.598096880246523]]], null, false),
+            {
+              "name": "shadow",
+              "class": 3,
               "system:index": "4"
             })]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
