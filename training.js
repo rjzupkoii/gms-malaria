@@ -717,8 +717,13 @@ var water =
             })]),
     scrub = 
     /* color: #8fbc8f */
-    /* shown: false */
     /* displayProperties: [
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
+      },
       {
         "type": "rectangle"
       },
@@ -902,6 +907,28 @@ var water =
               "class": 13,
               "type": "Scrub",
               "system:index": "12"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.30306076072706, 13.831698906567649],
+                  [103.30306076072706, 13.829948722519841],
+                  [103.3051206972505, 13.829948722519841],
+                  [103.3051206972505, 13.831698906567649]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "13"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.32460426353468, 13.836782699861697],
+                  [103.32460426353468, 13.83486587281301],
+                  [103.32632087730421, 13.83486587281301],
+                  [103.32632087730421, 13.836782699861697]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "14"
             })]),
     agricultural = 
     /* color: #f5deb3 */
