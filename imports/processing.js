@@ -9,8 +9,8 @@
 exports.getRainfall = function(aoi, year) {
   var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
     .filterDate(year + '-01-01', year + '-12-31');
-  var results = collection.reduce(ee.Reducer.sum()).rename('total');
-  results = results.addBand(collection.reduce(ee.Reducer.mean()).rename('total'));
+  var results = collection.reduce(ee.Reducer.sum()).rename('total_rainfall');
+  results = results.addBand(collection.reduce(ee.Reducer.mean()).rename('mean_rainfall'));
   return results.clip(aoi);
 };
 
