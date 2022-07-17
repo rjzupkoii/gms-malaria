@@ -6,7 +6,7 @@
  */
 
 // Get the mean and total annual rainfall from the CHIPS dataset for the given AOI and year.
-exports.getRainfall = function(aoi, year) {
+exports.getAnnualRainfall = function(aoi, year) {
   var collection = ee.ImageCollection('UCSB-CHG/CHIRPS/PENTAD')
     .filterDate(year + '-01-01', year + '-12-31');
   var results = collection.reduce(ee.Reducer.sum()).rename('total_rainfall');
