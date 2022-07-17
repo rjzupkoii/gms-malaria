@@ -25,7 +25,6 @@ var showIntermediate = ui.Checkbox({
 })
 
 // UI element values
-var environmental = false;
 var intermediate = false;
 
 // Start by loading the classifier
@@ -47,7 +46,7 @@ Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
 Map.addLayer(landsat, visual.viz_gms, 'Landsat 8, 2020');
 Map.addLayer(rainfall, visual.viz_rainfall, 'CHIRPS/PENTAD', false);
 Map.addLayer(temperature, visual.viz_temperature, 'MOD11A1.061', false);
-Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', intermediate);
-Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover', intermediate);
+Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
+Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover', false);
 
 
