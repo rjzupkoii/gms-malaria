@@ -49,6 +49,6 @@ exports.getReferenceImage = function() {
       ee.Filter.eq('WRS_ROW', 42)))
     .filterDate('2020-01-01', '2020-12-31');
 
-  var image = p125_r50.merge(p132_r42);
+  var image = p125_r50.merge(p132_r42).merge(p129_r43);
   return image.map(processing.maskClouds).median();  
 };
