@@ -1,5 +1,5 @@
 /*
- * processing_wip.js
+ * processing.js
  *
  * This script contains the functions related to the processing of the
  * analysis pipeline.
