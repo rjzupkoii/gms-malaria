@@ -1428,7 +1428,11 @@ Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 // Get the classifier
 var classifier = ml.getClassifier(getFeatures());
 
+// Classify the reference images
+var classified = image.select(ml.classifiedBands).classify(classifier);
 
+// Add the classified image to the map
+Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover');
 
 
 
