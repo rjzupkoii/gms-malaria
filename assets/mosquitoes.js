@@ -12,5 +12,5 @@ exports.aDirus = {
   'tempMean' : 20.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 180
+  'aestivationMax' : 212      //Lehmann et al. 2010
 };
