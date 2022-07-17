@@ -47,7 +47,15 @@ exports.viz_temperature = {
   ]
 };
 
-// 
+// Color palette for habitat / risk visualization
+exports.viz_habitatPalette = { 
+  min: 0, 
+  max: 3, 
+  palette: ['blue', 'yellow', 'orange', 'red'] 
+};
+
+// Color palette for the training data, note that deep
+// Pink is a sentinel value for invalid classifications
 exports.viz_trainingPalette = { 
   min: 1, 
   max: 22, 
@@ -75,8 +83,15 @@ exports.viz_trainingPalette = {
     'wheat',        // 21, Agricultural
     'linen'         // 22, Agricultural / Fallow
   ] };
-  
-// TODO Determine the best place for this function
+
+// Adds a layer to the map for each of the training data polygon categories defined.
+exports.addTrainingPolygons = function(polygons) {
+  layerStyles.forEach(function(item) {
+    styleTraining(polygons, item.class, item.type, item.color);  
+  });
+};
+
+// Add a layer to the map with the GMS outlined
 exports.visualizeGms = function() {
   // Load the GMS borders and generate the outlines
   var gms = shapefiles.getGms();
@@ -92,5 +107,26 @@ exports.visualizeGms = function() {
   Map.addLayer(outline, { palette: '#757575' }, 'Greater Mekong Subregion');
 };
 
+// ---------------------------------------------------------------------------
+// Internal data and function(s)
+// ---------------------------------------------------------------------------
 
+// Training data and land cover classification visualizations
+var layerStyles = [
+  { 'class' : 1, 'type' : 'Burned / Fire', 'color' : 'black' },
+  { 'class' : 10, 'type' : 'Water', 'color' : 'blue' },
+  { 'class' : 11, 'type' : 'Forest', 'color' : 'darkgreen' },
+  { 'class' : 12, 'type' : 'Vegetation', 'color' : 'green' },
+  { 'class' : 13, 'type' : 'Vegetation / Scrub', 'color' : 'darkseagreen' },  
+  { 'class' : 14, 'type' : 'Barren', 'color' : 'brown' },
+  { 'class' : 20, 'type' : 'Development', 'color' : 'red' },
+  { 'class' : 21, 'type' : 'Agricultural', 'color' : 'wheat' },
+  { 'class' : 22, 'type' : 'Agricultural - Fallow', 'color' : 'linen' },
+];  
+
+function styleTraining(collection, value, label, color) {
+  var items = collection.filter(ee.Filter.eq('class', value));
+  items = items.style(color);
+  Map.addLayer(items, {}, 'Training - ' + label);
+}
   
