@@ -10,12 +10,12 @@
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js');
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 // Import the various functional scripts
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
-var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 // Placeholders, these will (eventually) be managed by the UI itself
 var year = '2020';
