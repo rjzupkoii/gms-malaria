@@ -24,6 +24,12 @@ var species = mosquitoes.aDirus;
 // Prepare the UI
 gmsUi.prepareUI();
 
+var select = ui.Select({
+  items: ['A. baimaii', 'A. crascens', 'A. dirus'],
+  
+});
+
+
 // Start by drawing the GMS
 var gms = shapefile.getGms();
 gmsUi.visualizeGms();
