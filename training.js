@@ -1,7 +1,6 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
 var water = 
     /* color: #003dff */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -147,7 +146,6 @@ var water =
             })]),
     forest = 
     /* color: #006400 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -349,7 +347,6 @@ var water =
             })]),
     vegetation = 
     /* color: #008000 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -495,7 +492,6 @@ var water =
             })]),
     scrub = 
     /* color: #8fbc8f */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -641,7 +637,6 @@ var water =
             })]),
     agricultural = 
     /* color: #f5deb3 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -824,7 +819,6 @@ var water =
             })]),
     fallow = 
     /* color: #faf0e6 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -984,7 +978,6 @@ var water =
             })]),
     barren = 
     /* color: #a52a2a */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1130,7 +1123,6 @@ var water =
             })]),
     development = 
     /* color: #ff0000 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1284,7 +1276,6 @@ var water =
             })]),
     burned = 
     /* color: #000000 */
-    /* shown: false */
     /* displayProperties: [
       {
         "type": "rectangle"
@@ -1415,16 +1406,6 @@ var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 
-// Load the and center the GMS and reference image
-var image = ml.getReferenceImage();
-
-Map.centerObject(shapefiles.getGms(), 6);
-Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
-Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
-
-
-
-
 // Get the various shapefiles that are used for training data
 function getFeatures() {
   return water
@@ -1437,6 +1418,17 @@ function getFeatures() {
     .merge(burned)
     .merge(development);
 }
+
+// Load the and center the GMS and reference image
+var image = ml.getReferenceImage();
+Map.centerObject(shapefiles.getGms(), 6);
+Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
+Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
+
+// 
+
+
+
 
 
 // TODO REMOVE THIS - OLD PROCESSING PIPEILINE CODE
