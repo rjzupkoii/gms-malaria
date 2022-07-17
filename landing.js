@@ -37,7 +37,7 @@ Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
 var environmental = processing.getAnnualRainfall(gms, year).rename('rainfall');
 environmental = environmental.addBands(processing.getMeanTemperature(gms, year).rename('temperature'));
 var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax).rename('bounds');
-intermediate = intermediate.addBands(ml.classify(landsat).rename('landcover'));
+intermediate = intermediate.addBands((ml.classify(landsat)).rename('landcover'));
 
 
 // Add everything to the UI
