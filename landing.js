@@ -53,8 +53,7 @@ var habitat = processing.getHabitat({
     'aestivationMax'     : species.aestivationMax
 });
 
-
-
+// Prepare the risk assessment based upon the landcover and habitat
 var risk = processing.riskAssessment(landcover, habitat);
 
 // Add the enviornmental and intermediate data to the UI, note it is off by default
