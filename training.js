@@ -61,6 +61,9 @@ var water =
       },
       {
         "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       }
     ] */
     ee.FeatureCollection(
@@ -283,6 +286,17 @@ var water =
               "type": "water",
               "class": 10,
               "system:index": "19"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[104.04316550555237, 13.088440696396164],
+                  [104.04316550555237, 13.082086942238185],
+                  [104.04934531512268, 13.082086942238185],
+                  [104.04934531512268, 13.088440696396164]]], null, false),
+            {
+              "type": "water",
+              "class": 10,
+              "system:index": "20"
             })]),
     forest = 
     /* color: #006400 */
