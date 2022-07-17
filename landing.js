@@ -21,10 +21,6 @@ var visual = require('users/rzupko/gms-malaria:imports/visualization.js');
 // Placeholder, will be returned by the UI
 var year = '2020';
 
-// Placeholders, will be stored in assets per species
-var minimum = 11.0;
-var maximum = 28.0;
-
 // Prepare the UI
 gmsUi.prepareUI();
 
@@ -35,7 +31,7 @@ var species = mosquitoes.aDirus;
 // Begin loading all of the data 
 var gms = shapefile.getGms();
 var rainfall = processing.getAnnualRainfall(gms, year);
-var bounded = processing.getTemperatureBounds(gms, year, species.tempMin, maximum);
+var bounded = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
 var temperature = processing.getMeanTemperature(gms, year);
 var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 var classified = landsat.map(function(image) {
