@@ -12,7 +12,7 @@ exports.prepareUI = function() {
 };
 
 // Return a checkbox that toggles environmental maps
-function getEnvironmentalCheckbox{
+function getEnvironmentalCheckbox(){
   return ui.Checkbox({
     label: 'Show Environmental Maps',
     onChange: function(checked) {
@@ -23,7 +23,7 @@ function getEnvironmentalCheckbox{
       position: 'top-right'
     }
   });
-};
+}
 
 // Return a checkbox that toggles intermediate maps
 exports.getIntermediateCheckbox = function() {
