@@ -16,7 +16,7 @@ exports.classify = function(landsat) {
   var classified = landsat.map(function(image) {
     return image.select(exports.classifiedBands).classify(classifier);
   });  
-  return classified.toBands();
+  return classified.mosaic();
 };
 
 // Get the trained classifer that will be used to determine the landcover class
