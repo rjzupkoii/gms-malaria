@@ -1389,7 +1389,6 @@ function getFeatures() {
     .merge(vegetation)
     .merge(scrub)
     .merge(agricultural)
-    .merge(fallow)
     .merge(barren)
     .merge(development)
 //    .merge(burned)
