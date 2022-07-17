@@ -48,8 +48,14 @@ exports.getReferenceImage = function() {
       ee.Filter.eq('WRS_PATH', 129),
       ee.Filter.eq('WRS_ROW', 43)))
     .filterDate('2020-01-01', '2020-12-31');
+    
+  // Tonlé Sap
+  var p127_r51 = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+    .filter(ee.Filter.and(
+      ee.Filter.eq('WRS_PATH', 127),
+      ee.Filter.eq('WRS_ROW', 51)))
+    .filterDate('2020-01-01', '2020-12-31');    
 
-  var image = p125_r50.merge(p132_r42);
-  image = image.merge(p129_r43);
+  var image = p125_r50.merge(p132_r42).merge(p129_r43).merge(p127_r51);
   return image.map(processing.maskClouds).median();  
 };
