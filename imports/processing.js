@@ -13,6 +13,27 @@ exports.getAnnualRainfall = function(aoi, year) {
   return results.clip(aoi).rename('total_rainfall');
 };
 
+// Use raster algebra to score the best habitat
+function getHabitat(variables) {
+  // Primary habitat is completely within the environmental envelope
+  // var primary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables);
+    
+  // // Secondary is within the envelope for the life expectancy
+  // var secondary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables);
+    
+  // // Tertiary is within the envelope for aestivation
+  // var tertiary = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables);
+  
+  // Merge the classifications, highest sum is best habitat
+  var habitat = ee.Image(0).expression('primary + secondary + tertiary', {
+    primary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables), 
+    secondary:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables), 
+    tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables)});
+  
+  // Rename the band and return
+  return habitat.rename('scored_habitat');
+}
+
 // Get the collection of Landsat images that are constrained to the AOI.
 exports.getImages = function(indices, aoi, year) {
   var load = function(item) {
