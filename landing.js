@@ -39,11 +39,9 @@ environmental = environmental.addBands(processing.getMeanTemperature(gms, year).
 var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax).rename('bounds');
 var landcover = ml.classify(landsat);
 
-print(intermediate)
-
 
 // Add everything to the UI
 Map.addLayer(environmental.select('rainfall'), visual.viz_rainfall, 'Annual Rainfal, CHIRPS/PENTAD', false);
 Map.addLayer(environmental.select('temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
-Map.addLayer(bounded, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
-Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover', false);
+Map.addLayer(intermediate, visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
+Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
