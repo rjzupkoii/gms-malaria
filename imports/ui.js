@@ -37,7 +37,7 @@ exports.prepareUI = function() {
       ui.Label('Environmental Maps are used to assess the environmental suitablity for the selected species.'),
       getEnvironmentalCheckbox(),
       ui.Label(' '),
-      ui.Label('Intermediate Maps include the days outside the species envelope, and landcover for the current year.'),
+      ui.Label('Intermediate Maps include the days outside the species envelope, and landcover for the selected year.'),
       getIntermediateCheckbox(),
     ], 
     'flow', { 'width' : '250px' });
