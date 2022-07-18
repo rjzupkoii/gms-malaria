@@ -82,7 +82,6 @@ function getIntermediateCheckbox() {
 }
 
 // Return a select dropdown box that allows the species to be selected
-// TODO Generate the list of species in a more dynamic matter
 function getSpeciesSelect() {
   return ui.Select({
     items: ['A. baimaii', 'A. crascens', 'A. dirus'],
@@ -101,6 +100,7 @@ function getSpeciesSelect() {
   });
 }
 
+
 function getYearSlider() {
   return ui.Slider({
     min: 2013, max: new Date().getFullYear(), 
@@ -113,7 +113,8 @@ function getYearSlider() {
     onChange: function(value) {
       year = value;
       removeLayers(2, 8);
-      
+      addYear(year);
+      addSpecies(year, species);  
     }
   });
 }
