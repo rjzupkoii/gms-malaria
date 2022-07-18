@@ -82,7 +82,7 @@ function getSpeciesSelect() {
     items: ['A. baimaii', 'A. crascens', 'A. dirus'],
     value: 'A. dirus',
     style: {
-      width: '150px',
+      width: '225px',
     },
     onChange: function(value) {
       // TODO Get the year from the slider
