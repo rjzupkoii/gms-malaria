@@ -16,8 +16,8 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 // Global environmental and landcover variables
 var environmental = null, gms = null, landcover = null;
 
-// Placeholder for the year, should be pulled from the UI slider
-var year = '2020';
+// Global year and species variables, default values
+var year = 2020; species = mosquitoes.aDirus;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -51,7 +51,7 @@ exports.renderMaps = function() {
   visualizeGms();
   
   // Set the defaults
-  year = 2020; species = mosquitoes.aDirus;
+  year = 2020; species = ;
   
   // Add the default year and species to the map
   addYear(year);
