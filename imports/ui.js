@@ -103,7 +103,7 @@ function getSpeciesSelect() {
 // Return a select dropdown box that allows the year to be selected
 function getYearSlider() {
   return ui.Slider({
-    min: 2013, max: new Date().getFullYear(), 
+    min: 2014, max: new Date().getFullYear() - 1, 
     step: 1,
     value: 2020,
     style: {
