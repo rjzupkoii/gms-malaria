@@ -105,7 +105,7 @@ function getYearSlider() {
   return ui.Slider({
     min: 2014, max: new Date().getFullYear() - 1, 
     step: 1,
-    value: 2020,
+    value: year,
     style: {
       width: '225px',
       fontWeight: 'bold'
