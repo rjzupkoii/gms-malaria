@@ -23,7 +23,7 @@ var year = '2020';
 exports.prepareUI = function() {
   var toolPanel = ui.Panel([
       ui.Label('Greater Mekong Subregion: Malaria Risk Assessment',
-        { fontSize: '1.5em', weight: 'bold'}),
+        { fontSize: '1.5em', fontWeight: 'bold'}),
       getSpeciesSelect(),
       getEnvironmentalCheckbox(),
       getIntermediateCheckbox(),
