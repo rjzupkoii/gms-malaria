@@ -122,7 +122,7 @@ function getYearSlider() {
 // Remove the indicated layers from the map, by index
 function removeLayers(first, last) {
   var layers = Map.layers();
-  for (var ndx = 8; ndx >= 6; ndx--) {
+  for (var ndx = last; ndx >= first; ndx--) {
     var layer = layers.get(ndx);
     Map.remove(layer);
   }
