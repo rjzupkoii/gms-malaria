@@ -28,7 +28,7 @@ exports.prepareUI = function() {
   var toolPanel = ui.Panel([
       ui.Label('Greater Mekong Subregion: Malaria Risk Assessment',
         { fontSize: '1.5em', fontWeight: 'bold'}),
-      ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development.'),
+      ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development in the given year.'),
       getSpeciesSelect(),
       getYearSlider(),
       ui.Label(' '),
