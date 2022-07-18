@@ -91,9 +91,6 @@ function getSpeciesSelect() {
       width: '225px',
     },
     onChange: function(value) {
-      // TODO Get the year from the slider
-      var year = '2020';
-      
       removeLayers(6, 8);
       switch(value) {
         case 'A. baimaii': addSpecies(year, mosquitoes.aBaimaii); break;
