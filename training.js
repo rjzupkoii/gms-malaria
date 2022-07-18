@@ -1847,21 +1847,3 @@ var classified = image.select(ml.classifiedBands).classify(classifier);
 
 // Add the classified image to the map
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover');
-
-
-// TODO REMOVE THIS - OLD PROCESSING PIPEILINE CODE
-//var results = processing.process(image);
-
-// By adding the Landsat and malaria results to image collections we have a 
-// hook for future projects to use additional images additional images can
-// be appended to the collection via:
-//
-// landsat = landsat.merge(ee.ImageCollection.fromImages([image]));
-// malaria = malaria.merge(ee.ImageCollection.fromImages([results]));
-// var landsat = ee.ImageCollection.fromImages([image]);
-// var malaria = ee.ImageCollection.fromImages([results]);
-
-// Visualize and export the results of the proof of concept
-// visual.visualizeGms();
-// visual.visualizeResults(landsat, malaria, true);
-//exporting.queueExports(results);
