@@ -21,9 +21,14 @@ var year = '2020';
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
-  Map.add(getSpeciesSelect());
-  Map.add(getEnvironmentalCheckbox());  
-  Map.add(getIntermediateCheckbox());
+  var toolPanel = ui.Panel([
+      ui.Label('Greater Mekong Subregion: Malaria Risk Assessment'),
+      getSpeciesSelect(),
+      getEnvironmentalCheckbox(),
+      getIntermediateCheckbox(),
+    ], 
+    'flow', { 'width' : '200px' });
+  ui.root.widgets().add(toolPanel);
 };
 
 // Render the default selections (i.e., 2020, A. dirus) to the map
