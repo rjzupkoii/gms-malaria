@@ -5,7 +5,13 @@
  * with UI elements. Some of the functions (ex., addSpecies, addYear) are 
  * debatably processing related, but bulk of the work is UI driven.
  */
+var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
+var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js'); 
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
+
+var ml = require('users/rzupko/gms-malaria:imports/ml.js');
+var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Global environmental and landcover variables
 var environmental = null, gms = null, landcover = null;
