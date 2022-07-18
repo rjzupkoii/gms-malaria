@@ -53,9 +53,6 @@ function getEnvironmentalCheckbox(){
     onChange: function(checked) {
       Map.layers().get(3).setShown(checked);  // Total rainfall, CHIRPS/PENTAD
       Map.layers().get(4).setShown(checked);  // Mean temperature, MOD11A1.061
-    },
-    style: {
-      position: 'top-right'
     }
   });
 }
@@ -67,9 +64,6 @@ function getIntermediateCheckbox() {
     onChange: function(checked) {
       Map.layers().get(5).setShown(checked);  // A. dirus / Days Outside Bounds
       Map.layers().get(6).setShown(checked);  // Landcover
-    },
-    style: {
-      position: 'top-right'
     }
   });
 }
@@ -81,7 +75,7 @@ function getSpeciesSelect() {
     items: ['A. baimaii', 'A. crascens', 'A. dirus'],
     value: 'A. dirus',
     style: {
-      position: 'top-right',
+      width: '150px',
     },
     onChange: function(value) {
       // TODO Get the year from the slider
