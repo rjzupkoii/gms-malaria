@@ -17,6 +17,9 @@ var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
 
+// Placeholder for the year
+var year = '2020';
+
 // Prepare the UI
 gmsUi.prepareUI();
 
