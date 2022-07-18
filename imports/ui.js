@@ -100,7 +100,7 @@ function getSpeciesSelect() {
   });
 }
 
-
+// Return a select dropdown box that allows the year to be selected
 function getYearSlider() {
   return ui.Slider({
     min: 2013, max: new Date().getFullYear(), 
