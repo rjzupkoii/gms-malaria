@@ -80,7 +80,7 @@ function refresh(year, species) {
   
   // Anopheles genus specific data
   Map.addLayer(habitat, visual.viz_habitatPalette, 'Anopheles / Probable Habitat');
-  Map.addLayer(risk, visual.vis_riskPalette, 'Anopheles  / Malaria Risk');  
+  Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk');  
 }
 
 // Start by drawing the GMS
