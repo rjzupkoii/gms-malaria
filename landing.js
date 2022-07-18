@@ -91,9 +91,10 @@ refresh('2020', mosquitoes.aDirus);
 
 
 var layers = Map.layers();
-for (var ndx = 8; ndx > 6; ndx--) {
+for (var ndx = 8; ndx >= 6; ndx--) {
   var layer = layers.get(ndx);
   Map.remove(layer);
 }
 
+print(layers)
 
