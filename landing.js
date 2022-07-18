@@ -76,10 +76,10 @@ function refresh(year, species) {
   Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover', false);
   
   // Intermediate data for the Anopheles genus selected
-  Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'Anopheles / Days Outside Bounds', false);
+  Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds', false);
   
   // Anopheles genus specific data
-  Map.addLayer(habitat, visual.viz_habitatPalette, 'Anopheles / Probable Habitat');
+  Map.addLayer(habitat, visual.viz_habitatPalette, species.species + ' / Probable Habitat');
   Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk');  
 }
 
