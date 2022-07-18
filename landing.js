@@ -29,6 +29,7 @@ var select = ui.Select({
   onChange: function(value) {
     var year = '2020';
     
+    removeLayers(6, 8);
     switch(value) {
       case 'A. baimaii': refresh(year, mosquitoes.aBaimaii); break;
       case 'A. crascens': refresh(year, mosquitoes.aCrascens); break;
@@ -88,7 +89,6 @@ var gms = shapefile.getGms();
 gmsUi.visualizeGms();
 
 refresh('2020', mosquitoes.aDirus);
-
 
 function removeLayers(first, last) {
   var layers = Map.layers();
