@@ -50,9 +50,12 @@ exports.renderMaps = function() {
   gms = shapefile.getGms();
   visualizeGms();
   
+  // Set the defaults
+  year = 2020; species = mosquitoes.aDirus;
+  
   // Add the default year and species to the map
   addYear(year);
-  addSpecies(year, mosquitoes.aDirus);  
+  addSpecies(year, species);  
 };
 
 // ---------------------------------------------------------------------------
@@ -111,7 +114,9 @@ function getYearSlider() {
       fontWeight: 'bold'
     },
     onChange: function(value) {
-      alert(value);
+      year = value;
+      removeLayers(2, 8);
+      
     }
   });
 }
