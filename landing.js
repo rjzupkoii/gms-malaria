@@ -90,6 +90,7 @@ gmsUi.visualizeGms();
 
 refresh('2020', mosquitoes.aDirus);
 
+// Remove the indicated layers from the map, by index
 function removeLayers(first, last) {
   var layers = Map.layers();
   for (var ndx = 8; ndx >= 6; ndx--) {
