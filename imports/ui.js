@@ -103,8 +103,7 @@ function getSpeciesSelect() {
 
 function getYearSlider() {
   return ui.Slider({
-    min: 2013, 
-    max: 2022, 
+    min: 2013, max: 2022, 
     step: 1,
     value: 2020,
     style: {
