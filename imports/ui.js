@@ -109,6 +109,7 @@ function getYearSlider() {
     value: 2020,
     style: {
       width: '225px',
+      fontWeight: 'bold'
     },
     onChange: function(value) {
       alert(value);
