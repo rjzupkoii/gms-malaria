@@ -14,7 +14,7 @@ var environmental = null, gms = null, landcover = null;
 var year = '2020';
 
 // Calculate and add the species specific data to the map
-exports.addSpecies = function(year, species) {
+function addSpecies(year, species) {
   // Process the data that changes based upon the species selected
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
@@ -41,10 +41,10 @@ exports.addSpecies = function(year, species) {
   // Anopheles genus specific data
   Map.addLayer(habitat, visual.viz_habitatPalette, species.species + ' / Probable Habitat, ' + year);
   Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);  
-};
+}
 
 // Calculate and ddd the year specific data to the map
-exports.addYear = function(year) {
+ function addYear(year) {
   // Next add the base Landsat layers
   var landsat = processing.getImages(gms_wrs2.indices, gms, year);
   Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, ' + year + ' (CIR)', false);
@@ -59,7 +59,7 @@ exports.addYear = function(year) {
   Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
   Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)', false);
   Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year, false);
-};
+}
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
