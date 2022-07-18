@@ -46,11 +46,13 @@ var landsat = processing.getImages(gms_wrs2.indices, gms, year);
 Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
 Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
 
-// Prepare the environmental and intermediate data needed
+// Process the data that only changes based on the year
 var environmental = processing.getAnnualRainfall(gms, year);
 environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
 var landcover = ml.classify(landsat);
+
+// Process the data that changes based upon the species selected
+var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
 
 // Classify the habitat based upon the inputs
 var habitat = processing.getHabitat({
