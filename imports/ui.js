@@ -17,7 +17,7 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var environmental = null, gms = null, landcover = null;
 
 // Placeholder for the year, should be pulled from the UI slider
-var year = '2020';
+var year = '2015';
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
