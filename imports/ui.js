@@ -112,7 +112,7 @@ function getYearSlider() {
     },
     onChange: function(value) {
       year = value;
-      removeLayers(2, 8);
+      removeLayers(1, 8);
       addYear(year);
       addSpecies(year, species);  
     }
