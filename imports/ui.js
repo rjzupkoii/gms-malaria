@@ -30,6 +30,7 @@ exports.prepareUI = function() {
         { fontSize: '1.5em', fontWeight: 'bold'}),
       ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development.'),
       getSpeciesSelect(),
+      getYearSlider(),
       ui.Label(' '),
       ui.Label(' '),
       ui.Label(' '),
