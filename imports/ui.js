@@ -73,6 +73,7 @@ exports.renderMaps = function() {
   gms = shapefile.getGms();
   exports.visualizeGms();
   
+  // Add the default year and species to the map
   addYear(year);
   addSpecies(year, mosquitoes.aDirus);  
 };
