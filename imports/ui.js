@@ -21,6 +21,10 @@ var year = '2020';
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
+  // Disable drawing
+  Map.drawingTools().setShown(false);
+  
+  // Add the tool panel with the controls
   var toolPanel = ui.Panel([
       ui.Label('Greater Mekong Subregion: Malaria Risk Assessment',
         { fontSize: '1.5em', fontWeight: 'bold'}),
