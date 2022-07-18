@@ -39,7 +39,7 @@ var select = ui.Select({
 
 Map.add(select);
 
-function refreshSpecies(year, species) {
+function refresh(year, species) {
   // Next add the base Landsat layers
   var landsat = processing.getImages(gms_wrs2.indices, gms, year);
   Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
@@ -88,5 +88,12 @@ var gms = shapefile.getGms();
 gmsUi.visualizeGms();
 
 refresh('2020', mosquitoes.aDirus);
+
+
+var layers = Map.layers();
+for (ndx = 8; ndx > 6; ndx--) {
+  var layer = layers.get(ndx);
+  Map.remove(layer);
+}
 
 
