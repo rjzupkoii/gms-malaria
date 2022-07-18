@@ -55,9 +55,7 @@ Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total
 Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
 Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover', false);
 
-
 function refresh(year, species) {
-  
   // Process the data that changes based upon the species selected
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
