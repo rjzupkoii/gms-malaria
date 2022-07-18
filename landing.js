@@ -26,6 +26,10 @@ gmsUi.prepareUI();
 
 var select = ui.Select({
   items: ['A. baimaii', 'A. crascens', 'A. dirus'],
+  value: 'A. dirus',
+  style: {
+    position: 'top-right',
+  },
   onChange: function(value) {
     alert(value);
   }
@@ -65,12 +69,14 @@ var habitat = processing.getHabitat({
 // Prepare the risk assessment based upon the landcover and habitat
 var risk = processing.getRiskAssessment(landcover, habitat);
 
-// Add the enviornmental and intermediate data to the UI, note it is off by default
+// Base data that only needs to be done once for the year selected
 Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
 Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
-Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'A. dirus / Days Outside Bounds', false);
-Map.addLayer(landcover, visual.viz_trainingPalette, 'Landcover', false);
+Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover', false);
 
-// Add the species and malaria risk layers
-Map.addLayer(habitat, visual.viz_habitatPalette, 'A. dirus / Probable Habitat');
-Map.addLayer(risk, visual.vis_riskPalette, 'A. dirus / Malaria Risk');
+// Intermediate data for the Anopheles genus selected
+Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, 'Anopheles / Days Outside Bounds', false);
+
+// Anopheles genus specific data
+Map.addLayer(habitat, visual.viz_habitatPalette, 'Anopheles / Probable Habitat');
+Map.addLayer(risk, visual.vis_riskPalette, 'Anopheles  / Malaria Risk');
