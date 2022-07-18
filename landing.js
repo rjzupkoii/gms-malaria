@@ -39,7 +39,7 @@ var select = ui.Select({
 
 Map.add(select);
 
-function refresh(year, species) {
+function refreshSpecies(year, species) {
   // Next add the base Landsat layers
   var landsat = processing.getImages(gms_wrs2.indices, gms, year);
   Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
