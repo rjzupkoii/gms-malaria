@@ -71,7 +71,7 @@ exports.prepareUI = function() {
 exports.renderMaps = function() {
   // Next render the GMS, hold on to the shapefile
   gms = shapefile.getGms();
-  gmsUi.visualizeGms();
+  exports.visualizeGms();
   
   addYear(year);
   addSpecies(year, mosquitoes.aDirus);  
