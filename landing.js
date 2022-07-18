@@ -27,6 +27,7 @@ var select = ui.Select({
     position: 'top-right',
   },
   onChange: function(value) {
+    // TODO Get the year from the slider
     var year = '2020';
     
     removeLayers(6, 8);
