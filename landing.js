@@ -27,7 +27,13 @@ var select = ui.Select({
     position: 'top-right',
   },
   onChange: function(value) {
-    alert(value);
+    var year = '2020';
+    
+    switch(value) {
+      case 'A. baimaii': refresh(year, mosquitoes.aBaimaii); break;
+      case 'A. crascens': refresh(year, mosquitoes.aCrascens); break;
+      case 'A. dirus': refresh(year, mosquitoes.aDirus); break;
+    } 
   }
 });
 
