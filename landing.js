@@ -31,9 +31,9 @@ var select = ui.Select({
     
     removeLayers(6, 8);
     switch(value) {
-      case 'A. baimaii': refresh(year, mosquitoes.aBaimaii); break;
-      case 'A. crascens': refresh(year, mosquitoes.aCrascens); break;
-      case 'A. dirus': refresh(year, mosquitoes.aDirus); break;
+      case 'A. baimaii': addSpecies(year, mosquitoes.aBaimaii); break;
+      case 'A. crascens': addSpecies(year, mosquitoes.aCrascens); break;
+      case 'A. dirus': addSpecies(year, mosquitoes.aDirus); break;
     } 
   }
 });
@@ -55,7 +55,7 @@ Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total
 Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
 Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover', false);
 
-function refresh(year, species) {
+function addSpecies(year, species) {
   // Process the data that changes based upon the species selected
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
