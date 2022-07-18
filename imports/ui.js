@@ -50,9 +50,6 @@ exports.renderMaps = function() {
   gms = shapefile.getGms();
   visualizeGms();
   
-  // Set the defaults
-  year = 2020; species = ;
-  
   // Add the default year and species to the map
   addYear(year);
   addSpecies(year, species);  
