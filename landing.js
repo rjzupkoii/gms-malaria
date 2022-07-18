@@ -40,16 +40,23 @@ var select = ui.Select({
 
 Map.add(select);
 
+// Next add the base Landsat layers
+var landsat = processing.getImages(gms_wrs2.indices, gms, year);
+Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
+Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
+
+// Process the data that only changes based on the year
+var environmental = processing.getAnnualRainfall(gms, year);
+environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
+var landcover = ml.classify(landsat);
+
+// Base data that only needs to be done once for the year selected
+Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
+Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
+Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover', false);
+
+
 function refresh(year, species) {
-  // Next add the base Landsat layers
-  var landsat = processing.getImages(gms_wrs2.indices, gms, year);
-  Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, 2020 (CIR)', false);
-  Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, 2020');
-  
-  // Process the data that only changes based on the year
-  var environmental = processing.getAnnualRainfall(gms, year);
-  environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-  var landcover = ml.classify(landsat);
   
   // Process the data that changes based upon the species selected
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
@@ -70,11 +77,6 @@ function refresh(year, species) {
   
   // Prepare the risk assessment based upon the landcover and habitat
   var risk = processing.getRiskAssessment(landcover, habitat);
-  
-  // Base data that only needs to be done once for the year selected
-  Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, CHIRPS/PENTAD', false);
-  Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, MOD11A1.061', false);
-  Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover', false);
   
   // Intermediate data for the Anopheles genus selected
   Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds', false);
