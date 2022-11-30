@@ -34,11 +34,22 @@ exports.aDirus = {
   'aestivationMax' : 212      //Lehmann et al. 2010
 };
 
-exports.aScanloni = {
-  'species'  : 'A. scanloni',
+exports.aNemophilous = {
+  'species'  : 'A. nemophilous',
   'rainfall' : 1500,          // Obsomer et al. 2012
   'tempMin'  : 11.0,
   'tempMean' : 20.0,          
+  'tempMax'  : 28.0,
+  'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
+  'aestivationMax' : 212      //Lehmann et al. 2010
+};
+
+
+exports.aScanloni = {
+  'species'  : 'A. scanloni',
+  'rainfall' : 1500,          // Obsomer et al. 2012
+  'tempMin'  : 15.0,
+  'tempMean' : 26.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
   'aestivationMax' : 212      //Lehmann et al. 2010
