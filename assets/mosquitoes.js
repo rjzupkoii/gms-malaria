@@ -36,12 +36,12 @@ exports.aDirus = {
 
 exports.aNemophilous = {
   'species'  : 'A. nemophilous',
-  'rainfall' : 1500,          // Obsomer et al. 2012
-  'tempMin'  : 11.0,
+  'rainfall' : 1500,          // Placeholder - Obsomer et al. 2012
+  'tempMin'  : 14.0,
   'tempMean' : 20.0,          
-  'tempMax'  : 28.0,
+  'tempMax'  : 26.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      //Lehmann et al. 2010
+  'aestivationMax' : 212      // Lehmann et al. 2010
 };
 
 
