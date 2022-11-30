@@ -11,7 +11,7 @@ exports.aBaimaii = {
   'tempMean' : 20.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      //Lehmann et al. 2010
+  'aestivationMax' : 212      // Lehmann et al. 2010
 };
 
 exports.aCrascens = {
@@ -21,7 +21,7 @@ exports.aCrascens = {
   'tempMean' : 24.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      //Lehmann et al. 2010
+  'aestivationMax' : 212      // Lehmann et al. 2010
 };
 
 exports.aDirus = {
@@ -31,7 +31,7 @@ exports.aDirus = {
   'tempMean' : 20.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      //Lehmann et al. 2010
+  'aestivationMax' : 212      // Lehmann et al. 2010
 };
 
 exports.aNemophilous = {
