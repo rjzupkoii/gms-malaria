@@ -83,8 +83,14 @@ function getIntermediateCheckbox() {
 
 // Return a select dropdown box that allows the species to be selected
 function getSpeciesSelect() {
+  // Load the species names
+  var species = [];
+  for (var key in mosquitoes) {
+    species.push(mosquitoes[key].species);
+  }
+  
   return ui.Select({
-    items: ['A. baimaii', 'A. crascens', 'A. dirus'],
+    items: species,
     value: 'A. dirus',
     style: {
       width: '225px',
