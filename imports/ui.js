@@ -99,7 +99,7 @@ function getSpeciesSelect() {
       removeLayers(6, 8);
       for (var key in mosquitoes) {
         print(mosquitoes[key].species, mosquitoes[key].species.localeCompare(value));
-        if (mosquitoes[key].species.localeCompare(value)) {
+        if (mosquitoes[key].species.localeCompare(value) === 0) {
           addSpecies(year, mosquitoes[key]);
           print(value, mosquitoes[key].species);
           return;
