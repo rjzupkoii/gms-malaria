@@ -7,5 +7,8 @@
  */
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
 
-gmsUi.prepareUI();
-gmsUi.renderMaps();
+var mosquitos = require('/users/rzupko/gms-malaria:assets/mosquitoes.js');
+
+
+// gmsUi.prepareUI();
+// gmsUi.renderMaps();
