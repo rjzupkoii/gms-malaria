@@ -97,11 +97,21 @@ function getSpeciesSelect() {
     },
     onChange: function(value) {
       removeLayers(6, 8);
-      switch(value) {
-        case 'A. baimaii': addSpecies(year, mosquitoes.aBaimaii); break;
-        case 'A. crascens': addSpecies(year, mosquitoes.aCrascens); break;
-        case 'A. dirus': addSpecies(year, mosquitoes.aDirus); break;
-      } 
+      for (var key in mosquitoes) {
+        if (mosquitoes[key].species.localeCompare(value)) {
+          addSpecies(year, mosquitoes[key]);
+          return;
+        }
+      }
+      
+      // Since this is called from a UI element, this shouldn't happen
+      throw new Error('Unexpected error occured while processing UI event, received: '.concat(value));
+      
+      // switch(value) {
+      //   case 'A. baimaii': addSpecies(year, mosquitoes.aBaimaii); break;
+      //   case 'A. crascens': addSpecies(year, mosquitoes.aCrascens); break;
+      //   case 'A. dirus': addSpecies(year, mosquitoes.aDirus); break;
+      // } 
     }
   });
 }
