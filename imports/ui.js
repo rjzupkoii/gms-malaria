@@ -100,6 +100,7 @@ function getSpeciesSelect() {
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value)) {
           addSpecies(year, mosquitoes[key]);
+          print(value, mosquitoes[key].species);
           return;
         }
       }
