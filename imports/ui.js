@@ -17,7 +17,7 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var environmental = null, gms = null, landcover = null;
 
 // Global year and species variables, default values
-var year = 2020, species = mosquitoes.aDirus;
+var year = 2020, species = mosquitoes.aBaimaii;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -91,7 +91,7 @@ function getSpeciesSelect() {
   
   return ui.Select({
     items: speciesList,
-    value: 'A. dirus',
+    value: 'A. baimaii',
     style: {
       width: '225px',
     },
