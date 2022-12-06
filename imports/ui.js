@@ -91,7 +91,7 @@ function getSpeciesSelect() {
   
   return ui.Select({
     items: speciesList,
-    value: 'A. baimaii',
+    value: mosquitoes.aDirus.species,
     style: {
       width: '225px',
     },
