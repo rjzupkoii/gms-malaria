@@ -157,8 +157,7 @@ function addSpecies(year, species) {
       // Species data
       'speciesRainfall'    : species.rainfall,
       'speciesTemperature' : species.tempMin,
-      'speciesLife'        : species.lifeExpectancy,
-      'aestivationMax'     : species.aestivationMax
+      'speciesLife'        : species.lifeExpectancy
   });
   
   // Prepare the risk assessment based upon the landcover and habitat
