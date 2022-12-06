@@ -2,9 +2,8 @@
  * mosquitoes.js
  *
  * This asset file contains data for various Anopheles genus mosquitoes.
- * 
- * Members of the A. dirus species complex do not appear to ahve aestivation, 
- * value is left in place to allow expansion to the African context.
+ *
+ * Life expectancy is currently a placeholder value
  */
 
 exports.aBaimaii = {
@@ -13,8 +12,7 @@ exports.aBaimaii = {
   'tempMin'  : 12.5,
   'tempMean' : 24.0,          
   'tempMax'  : 28.0,
-  'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 0
+  'lifeExpectancy' : 31,
 };
 
 exports.aCrascens = {
