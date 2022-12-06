@@ -19,10 +19,10 @@ exports.getHabitat = function(variables) {
   // Merge the classifications, highest sum is best habitat
   var habitat = ee.Image(0).expression('primary + secondary + tertiary', {
     // Primary habitat is completely within the environmental envelope
-    primary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds == 0)', variables), 
+    primary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28)', variables), 
     
     // Secondary is within the envelope for the life expectancy
-    secondary:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables), 
+    secondary:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= (28 + speciesLife))', variables), 
     
     // Tertiary is within the envelope for aestivation
     tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= aestivationMax)', variables)
