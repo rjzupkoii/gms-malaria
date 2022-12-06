@@ -9,9 +9,9 @@
 
 exports.aBaimaii = {
   'species'  : 'A. baimaii',
-  'rainfall' : 1500,          // Obsomer et al. 2012
-  'tempMin'  : 11.0,
-  'tempMean' : 20.0,          
+  'rainfall' : 1200,
+  'tempMin'  : 12.5,
+  'tempMean' : 24.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
   'aestivationMax' : 0
