@@ -5,10 +5,11 @@
  * are being used by the application.
  */
 
-// Days outside bounds visualization for vectors
+// Days outside bounds visualization for vectors, 31 is used for the upper bound since
+// more than a month outside the bounds is going to be unsuitable for the species.
 exports.viz_bounds = {
   'min' : 0,
-  'max' : 366,
+  'max' : 31,
   'palette' : ['#2f942e', '#b9191e'],
 };
 
