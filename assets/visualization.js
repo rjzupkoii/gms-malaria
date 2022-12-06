@@ -50,7 +50,7 @@ exports.viz_temperature = {
 // Color palette for habitat visualization
 exports.viz_habitatPalette = { 
   min: 0, 
-  max: 3, 
+  max: 2, 
   palette: ['#bdbdbd', '#fee8c8', '#fdbb84', '#e34a33'] 
 };
 
