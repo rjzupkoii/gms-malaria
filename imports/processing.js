@@ -17,15 +17,13 @@ exports.getAnnualRainfall = function(aoi, year) {
 exports.getHabitat = function(variables) {
 
   // Merge the classifications, highest sum is best habitat
-  var habitat = ee.Image(0).expression('primary + secondary + tertiary', {
-    // Primary habitat is completely within the environmental envelope
-    primary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28)', variables), 
+  var habitat = ee.Image(0).expression('ideal + suitable', {
+    // Ideal habitat is completely within the environmental envelope, so the days outside the temperature bounds should
+    // be less than a month
+    ideal: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28)', variables), 
     
-    // Secondary is within the envelope for the life expectancy
-    secondary:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= (28 + speciesLife))', variables), 
-    
-    // Tertiary is within the envelope for aestivation
-    tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= aestivationMax)', variables)
+    // Suitable overlaps with the ideal habitat (i.e., days outside of bounds), but is within the life expectancy
+    suitable:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= (28 + speciesLife))', variables), 
   });
   
   // Rename the band and return
