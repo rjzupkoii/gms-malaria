@@ -26,12 +26,11 @@ exports.aCrascens = {
 
 exports.aDirus = {
   'species'  : 'A. dirus s.s.',
-  'rainfall' : 1500,          // Obsomer et al. 2012
+  'rainfall' : 1500,
   'tempMin'  : 12.5,
   'tempMean' : 24.0,          
   'tempMax'  : 26.0,
-  'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 0
+  'lifeExpectancy' : 31,
 };
 
 exports.aNemophilous = {
