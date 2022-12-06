@@ -25,7 +25,7 @@ exports.getHabitat = function(variables) {
     secondary:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= speciesLife)', variables), 
     
     // Tertiary is within the envelope for aestivation
-    tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds < aestivationMax)', variables)
+    tertiary: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= aestivationMax)', variables)
   });
   
   // Rename the band and return
