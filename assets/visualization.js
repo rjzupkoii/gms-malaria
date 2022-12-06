@@ -51,7 +51,7 @@ exports.viz_temperature = {
 exports.viz_habitatPalette = { 
   min: 0, 
   max: 2,
-  palette: ['#bdbdbd', '#fee8c8', '#fdbb84', '#e34a33'] 
+  palette: ['#bdbdbd', '#fee8c8', '#fdbb84'] 
 };
 
 // Color palette for risk visulaiation
