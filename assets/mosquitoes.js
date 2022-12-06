@@ -44,10 +44,9 @@ exports.aNemophilous = {
 
 exports.aScanloni = {
   'species'  : 'A. scanloni',
-  'rainfall' : 1500,          // Placeholder - Obsomer et al. 2012
+  'rainfall' : 1500,
   'tempMin'  : 15.0,
-  'tempMean' : 26.0,          
+  'tempMean' : 25.0,          
   'tempMax'  : 28.0,
-  'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 0
+  'lifeExpectancy' : 31,
 };
