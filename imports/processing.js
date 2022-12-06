@@ -51,12 +51,14 @@ exports.getImages = function(indices, aoi, year) {
 exports.getMeanTemperature = function(aoi, year) {
   var temperature = ee.ImageCollection('MODIS/061/MOD11A1')
     .filterDate(year + '-01-01', year + '-12-31');
-    
-  // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
+
   temperature = temperature.map(function(image) {
-    var kelvin = image.select('LST_Day_1km');
-    var celsius = ee.Image().expression('kelvin * 0.02 - 273.15', {kelvin: kelvin});
-    return celsius.rename('LST_Day_1km_celsius');
+    // Calcluate the daily mean from the daytime and nightime tempatures
+    var kelvin = image.expression('(b("LST_Day_1km") + b("LST_Night_1km")) / 2').rename('LST_Mean_1km');
+    
+    // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
+    var celsius = kelvin.expression('b("LST_Mean_1km") * 0.02 - 273.15');
+    return celsius.rename('LST_Mean_1km_celsius');
   });
   
   // Reduce, clip, and return
