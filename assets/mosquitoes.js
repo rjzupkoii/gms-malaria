@@ -24,16 +24,6 @@ exports.aCrascens = {
   'aestivationMax' : 212      // Lehmann et al. 2010
 };
 
-exports.aDirusSL = {
-  'species'  : 'A. dirus s.l.',
-  'rainfall' : 1500,          // Obsomer et al. 2012
-  'tempMin'  : 11.0,
-  'tempMean' : 23.0,          
-  'tempMax'  : 24.0,
-  'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      // Lehmann et al. 2010
-};
-
 exports.aDirusSS = {
   'species'  : 'A. dirus s.s.',
   'rainfall' : 1500,          // Obsomer et al. 2012
