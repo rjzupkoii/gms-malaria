@@ -17,12 +17,11 @@ exports.aBaimaii = {
 
 exports.aCrascens = {
   'species'  : 'A. crascens',
-  'rainfall' : 1200,          // Obsomer et al. 2012
-  'tempMin'  : 12.5,
-  'tempMean' : 24.0,          
+  'rainfall' : 2000,
+  'tempMin'  : 20.0,
+  'tempMean' : 25.0,          
   'tempMax'  : 28.0,
-  'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 0
+  'lifeExpectancy' : 31,
 };
 
 exports.aDirus = {
