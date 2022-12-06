@@ -2,6 +2,9 @@
  * mosquitoes.js
  *
  * This asset file contains data for various Anopheles genus mosquitoes.
+ * 
+ * Members of the A. dirus species complex do not appear to ahve aestivation, 
+ * value is left in place to allow expansion to the African context.
  */
 
 exports.aBaimaii = {
@@ -11,7 +14,7 @@ exports.aBaimaii = {
   'tempMean' : 20.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      // Lehmann et al. 2010
+  'aestivationMax' : 0
 };
 
 exports.aCrascens = {
@@ -21,7 +24,7 @@ exports.aCrascens = {
   'tempMean' : 24.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      // Lehmann et al. 2010
+  'aestivationMax' : 0
 };
 
 exports.aDirus = {
@@ -31,7 +34,7 @@ exports.aDirus = {
   'tempMean' : 24.0,          
   'tempMax'  : 26.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      // Lehmann et al. 2010
+  'aestivationMax' : 0
 };
 
 exports.aNemophilous = {
@@ -41,9 +44,8 @@ exports.aNemophilous = {
   'tempMean' : 20.0,          
   'tempMax'  : 26.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      // Lehmann et al. 2010
+  'aestivationMax' : 0
 };
-
 
 exports.aScanloni = {
   'species'  : 'A. scanloni',
@@ -52,5 +54,5 @@ exports.aScanloni = {
   'tempMean' : 26.0,          
   'tempMax'  : 28.0,
   'lifeExpectancy' : 31,      // Placeholder - Wikipedia -> CDC
-  'aestivationMax' : 212      // Lehmann et al. 2010
+  'aestivationMax' : 0
 };
