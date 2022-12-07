@@ -36,7 +36,21 @@ exports.getName = function(type) {
 // Return the approprate satellite type (i.e., Earth Engine collection) for the year provided.
 exports.getSatellite = function(year) {
   if (year > 2013) {
-    return exports.LandsatType.Landsat8;
+    return {
+      'collection' : 'LANDSAT/LC08/C02/T1_L2',
+      'bands' : ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'],
+      'name' : 'Landsat 8',
+      'viz_cir' : {
+        'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
+        'min' : 6100.692307692308,
+        'max' : 24248.428571428572
+      }, 
+      'viz_rgb' : {
+        'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
+        'min' : 6100.692307692308,
+        'max' : 24248.428571428572
+      }
+    };
   } else if (year > 2000) {
     return exports.LandsatType.Landsat7;
   }
