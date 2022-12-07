@@ -110,10 +110,11 @@ function getSpeciesSelect() {
   });
 }
 
-// Return a select dropdown box that allows the year to be selected
+// Return a select dropdown box that allows the year to be selected, note that we are constained by
+// the MODIS/061/MOD11A1 data set which runs from Feburary 2000 to present.
 function getYearSlider() {
   return ui.Slider({
-    min: 1999, max: new Date().getFullYear() - 1, 
+    min: 2001, max: new Date().getFullYear() - 1, 
     step: 1,
     value: year,
     style: {
