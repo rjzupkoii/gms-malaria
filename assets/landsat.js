@@ -21,6 +21,18 @@ exports.getBands = function(type) {
   throw new Error('Unknown Landsat type');  
 };
  
+// Get the human friendly name of the satellite
+exports.getName = function(type) {
+  if (type === exports.LandsatType.Landsat7) {
+    return 'Landsat 7';
+  } else if (type === exports.LandsatType.Landsat8) {
+    return 'Landsat 8';
+  }
+  
+  // Shouldn't get here if the enumeration is used
+  throw new Error('Unknown Landsat type');    
+};
+ 
 // Return the approprate satellite type (i.e., Earth Engine collection) for the year provided.
 exports.getSatellite = function(year) {
   if (year > 2013) {
