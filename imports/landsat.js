@@ -43,25 +43,3 @@ exports.getSatellite = function(year) {
   // Earlier satellites are not supported
   throw new Error('Landsat satellites prior to 2000 are not supported.');
 };
- 
-
- 
-// Get the RGB visulization for the Landsat satellite provided
-exports.getVisualizationRGB = function(type) {
-  if (type === exports.LandsatType.Landsat7) {
-    return {
-      'bands' : ['SR_B3', 'SR_B2', 'SR_B1'],
-      'min' : 6100.692307692308,
-      'max' : 24248.428571428572
-    };
-  } else if (type === exports.LandsatType.Landsat8) {
-    return {
-      'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
-      'min' : 6100.692307692308,
-      'max' : 24248.428571428572
-    };
-  } 
-  
-  // Shouldn't get here if the enumeration is used
-  throw new Error('Unknown Landsat type');
-};
