@@ -18,12 +18,13 @@ exports.classify = function(imagery, year) {
 
 // Get the trained classifer that will be used to determine the landcover class
 exports.getClassifier = function(features, year) {
-  // Get the satellite to use
+  // Get the satellite and bands to use
   var satellite = landsat.getSatellite(year);
+  var bands = landsat.getBands(satellite);
 
   // Sample the labeled features
   var image = exports.getReferenceImage(satellite);
-  var training = image.select(this.classifiedBands).sampleRegions({
+  var training = image.select(bands).sampleRegions({
     collection: features,
     properties: ['class'],
     scale: 30
