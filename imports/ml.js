@@ -23,6 +23,7 @@ exports.getClassifier = function(features, year) {
 
   // Sample the labeled features
   var image = exports.getReferenceImage(satellite);
+  print(image)
   var training = image.select(this.classifiedBands).sampleRegions({
     collection: features,
     properties: ['class'],
