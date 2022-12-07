@@ -1845,7 +1845,7 @@ Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
 // Get the classifier
-var classifier = getClassifier(getFeatures(), year);
+var classifier = ml.getClassifier(getFeatures(), year);
 
 // Classify the reference images
 var classified = image.select(landsat.getBands(satellite)).classify(classifier);
