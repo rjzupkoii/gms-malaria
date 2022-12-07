@@ -176,15 +176,15 @@ function addSpecies(year, species) {
 // Calculate and ddd the year specific data to the map
  function addYear(year) {
   // Next add the base Landsat layers
-  var satellite = landsate.getSatellite(year);
-  var landsat = processing.getImages(satellite, gms_wrs2.indices, gms, year);
-  Map.addLayer(landsat, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
-  Map.addLayer(landsat, satellite.viz_rgb, satellite.name + ', ' + year);
+  var satellite = landsat.getSatellite(year);
+  var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
+  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
+  Map.addLayer(imagery, satellite.viz_rgb, satellite.name + ', ' + year);
   
   // Process the data that only changes based on the year
   environmental = processing.getAnnualRainfall(gms, year);
   environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-  landcover = ml.classify(landsat, year);
+  landcover = ml.classify(imagery, year);
   
   // Base data that only needs to be done once for the year selected
   Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
