@@ -170,7 +170,7 @@ function addSpecies(year, species) {
   
   // Anopheles genus specific data
   Map.addLayer(habitat, visual.viz_habitatPalette, species.species + ' / Probable Habitat, ' + year);
-  Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);  
+  Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year, false);  
 }
 
 // Calculate and ddd the year specific data to the map
