@@ -1841,8 +1841,8 @@ var year = 2020;
 var satellite = landsat.getSatellite(year);
 var image = ml.getReferenceImage(satellite);
 Map.centerObject(shapefiles.getGms(), 6);
-Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
-Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
+Map.addLayer(image, landsat.getVisualizationRGB(satellite), 'Refernece Image (RGB)');
+Map.addLayer(image, landsat.getVisualizationCIR(satellite), 'Refernece Image (CIR)');
 
 // Get the classifier
 var classifier = ml.getClassifier(getFeatures(), year);
