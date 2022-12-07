@@ -31,10 +31,10 @@ exports.getHabitat = function(variables) {
 };
 
 // Get the collection of Landsat images that are constrained to the AOI.
-exports.getImages = function(indices, aoi, year) {
+exports.getImages = function(satellite, indices, aoi, year) {
   var load = function(item) {
     item = ee.List(item);
-    var image = ee.ImageCollection('LANDSAT/LE07/C02/T1_L2')
+    var image = ee.ImageCollection(satellite.collection)
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', item.get(0)),
       ee.Filter.eq('WRS_ROW', item.get(1))))
