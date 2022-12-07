@@ -18,13 +18,10 @@ exports.classify = function(imagery, year) {
 };
 
 // Get the trained classifer that will be used to determine the landcover class
-exports.getClassifier = function(features, year) {
-  // Get the satellite to use
-  var satellite = landsat.getSatellite(year);
-  
+exports.getClassifier = function(features, satellite) {
   // Sample the labeled features
-  var image = exports.getReferenceImage();
-  var training = image.select(this.classifiedBands).sampleRegions({
+  var image = exports.getReferenceImage(satellite);
+  var training = image.select(satellite.bands).sampleRegions({
     collection: features,
     properties: ['class'],
     scale: 30
@@ -34,14 +31,12 @@ exports.getClassifier = function(features, year) {
   return ee.Classifier.smileCart().train({
     features: training,
     classProperty: 'class',
-    inputProperties: this.classifiedBands
+    inputProperties: satellite.bands
   });  
 };
 
 // Load the reference image for classification
 exports.getReferenceImage = function(satellite) {
-  print(satellite)
-  
   // Orginal training data
   var p125_r50 = ee.ImageCollection(satellite.collection)
     .filter(ee.Filter.and(
