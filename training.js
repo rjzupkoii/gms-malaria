@@ -1835,7 +1835,7 @@ function getFeatures() {
 }
 
 // The year for the the imagery to use
-var year = 2002;
+var year = 2020;
 
 // Load the and center the GMS and reference image
 var satellite = landsat.getSatellite(year);
