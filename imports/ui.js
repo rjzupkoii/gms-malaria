@@ -184,7 +184,7 @@ function addSpecies(year, species) {
   // Process the data that only changes based on the year
   environmental = processing.getAnnualRainfall(gms, year);
   environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-  landcover = ml.classify(landsat);
+  landcover = ml.classify(landsat, year);
   
   // Base data that only needs to be done once for the year selected
   Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
