@@ -35,10 +35,10 @@ exports.getImages = function(satellite, indices, aoi, year) {
   var load = function(item) {
     item = ee.List(item);
     var image = ee.ImageCollection(satellite.collection)
-    .filter(ee.Filter.and(
-      ee.Filter.eq('WRS_PATH', item.get(0)),
-      ee.Filter.eq('WRS_ROW', item.get(1))))
-    .filterDate(year + '-01-01', year + '-12-31');
+      .filter(ee.Filter.and(
+        ee.Filter.eq('WRS_PATH', item.get(0)),
+        ee.Filter.eq('WRS_ROW', item.get(1))))
+      .filterDate(year + '-01-01', year + '-12-31');
     return ee.Image(
       image.map(exports.maskClouds).median().clipToCollection(aoi));  
   };
