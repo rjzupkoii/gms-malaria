@@ -9,6 +9,18 @@ exports.LandsatType = {
   Landsat8 : 'LANDSAT/LC08/C02/T1_L2',
 };
  
+// Return the classification bands to use for the satellite type indicated.
+exports.getBands = function(type) {
+  if (type === exports.LandsatType.Landsat7) {
+    return ['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B7'];
+  } else if (type === exports.LandsatType.Landsat8) {
+    return ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+  }
+  
+  // Shouldn't get here if the enumeration is used
+  throw new Error('Unknown Landsat type');  
+};
+ 
 // Return the approprate satellite type (i.e., Earth Engine collection) for the year provided.
 exports.getSatellite = function(year) {
   if (year > 2013) {
@@ -35,9 +47,10 @@ exports.getVisualizationCIR = function(type) {
       'min' : 6100.692307692308,
       'max' : 24248.428571428572
     };
-  } else {
-    throw new Error('Unknown Landsat type');
   }
+
+  // Shouldn't get here if the enumeration is used
+  throw new Error('Unknown Landsat type');
 }; 
  
 // Get the RGB visulization for the Landsat satellite provided
@@ -54,7 +67,8 @@ exports.getVisualizationRGB = function(type) {
       'min' : 6100.692307692308,
       'max' : 24248.428571428572
     };
-  } else {
-    throw new Error('Unknown Landsat type');
-  }
+  } 
+  
+  // Shouldn't get here if the enumeration is used
+  throw new Error('Unknown Landsat type');
 };
