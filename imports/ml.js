@@ -8,7 +8,8 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Landsat 8 bands that are used for classification, this needs to be
 // exposed so that the trainer UI can use it
-exports.classifiedBands = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+exports.classifiedBandsLS8 = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+exports.classifiedBandsLS7 = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
 
 // Return the classified landcover for the region provided
 exports.classify = function(landsat) {
