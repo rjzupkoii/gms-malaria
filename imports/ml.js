@@ -12,6 +12,7 @@ exports.classify = function(imagery, year) {
   var satellite = landsat.getSatellite(year);
   var classifier = exports.getClassifier(features.getFeatures(), satellite);  
   var classified = imagery.map(function(image) {
+    print(image)
     return image.select(exports.classifiedBands).classify(classifier);
   });  
   return classified.mosaic();
