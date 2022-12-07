@@ -1848,7 +1848,7 @@ Map.addLayer(image, satellite.viz_cir, 'Refernece Image (CIR)');
 var classifier = ml.getClassifier(getFeatures(), satellite);
 
 // Classify the reference images
-var classified = image.select(landsat.getBands(satellite)).classify(classifier);
+var classified = image.select(satellite.bands).classify(classifier);
 
 // Add the classified image to the map
 Map.addLayer(classified, visual.viz_trainingPalette, 'Landcover');
