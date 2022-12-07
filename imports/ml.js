@@ -23,7 +23,6 @@ exports.getClassifier = function(features, year) {
 
   // Sample the labeled features
   var image = exports.getReferenceImage(satellite);
-  print(image)
   var training = image.select(this.classifiedBands).sampleRegions({
     collection: features,
     properties: ['class'],
@@ -40,8 +39,6 @@ exports.getClassifier = function(features, year) {
 
 // Load the reference image for classification
 exports.getReferenceImage = function(satellite) {
-  print(satellite);
-  
   // Orginal training data
   var p125_r50 = ee.ImageCollection(satellite)
     .filter(ee.Filter.and(
