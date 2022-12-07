@@ -176,9 +176,10 @@ function addSpecies(year, species) {
 // Calculate and ddd the year specific data to the map
  function addYear(year) {
   // Next add the base Landsat layers
-  var landsat = processing.getImages(gms_wrs2.indices, gms, year);
-  Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 7, ' + year + ' (CIR)', false);
-  Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 7, ' + year);
+  var satellite = landsate.getSatellite(year);
+  var landsat = processing.getImages(satellite, gms_wrs2.indices, gms, year);
+  Map.addLayer(landsat, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
+  Map.addLayer(landsat, satellite.viz_rgb, satellite.name + ', ' + year);
   
   // Process the data that only changes based on the year
   environmental = processing.getAnnualRainfall(gms, year);
