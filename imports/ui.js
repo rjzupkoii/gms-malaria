@@ -53,7 +53,7 @@ exports.renderMaps = function() {
   
   // Add the default year and species to the map
   addYear(year);
-//  addSpecies(year, species);  
+  addSpecies(year, species);  
 };
 
 // ---------------------------------------------------------------------------
@@ -184,9 +184,6 @@ function addSpecies(year, species) {
   // Process the data that only changes based on the year
   environmental = processing.getAnnualRainfall(gms, year);
   environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-  
-  print(imagery)
-  print(year)
   landcover = ml.classify(imagery, year);
   
   // Base data that only needs to be done once for the year selected
