@@ -9,6 +9,9 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Return the classified landcover for the region provided
 exports.classify = function(imagery, year) {
+  var satellite = landsate.getSatellite(year);
+  print(satellite)
+  
   var classifier = exports.getClassifier(features.getFeatures(), year);  
   var classified = imagery.map(function(image) {
     return image.select(exports.classifiedBands).classify(classifier);
