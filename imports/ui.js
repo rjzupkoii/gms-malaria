@@ -113,7 +113,7 @@ function getSpeciesSelect() {
 // Return a select dropdown box that allows the year to be selected
 function getYearSlider() {
   return ui.Slider({
-    min: 2014, max: new Date().getFullYear() - 1, 
+    min: 1999, max: new Date().getFullYear() - 1, 
     step: 1,
     value: year,
     style: {
@@ -175,8 +175,8 @@ function addSpecies(year, species) {
  function addYear(year) {
   // Next add the base Landsat layers
   var landsat = processing.getImages(gms_wrs2.indices, gms, year);
-  Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 8, ' + year + ' (CIR)', false);
-  Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 8, ' + year);
+  Map.addLayer(landsat, visual.viz_gms_cir, 'Landsat 7, ' + year + ' (CIR)', false);
+  Map.addLayer(landsat, visual.viz_gms_rgb, 'Landsat 7, ' + year);
   
   // Process the data that only changes based on the year
   environmental = processing.getAnnualRainfall(gms, year);
