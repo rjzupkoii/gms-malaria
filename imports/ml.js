@@ -11,8 +11,6 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 exports.classify = function(imagery, year) {
   var satellite = landsat.getSatellite(year);
   var classifier = exports.getClassifier(features.getFeatures(), satellite);  
-  
-  print(imagery)
   var classified = imagery.map(function(image) {
     return image.select(exports.classifiedBands).classify(classifier);
   });  
