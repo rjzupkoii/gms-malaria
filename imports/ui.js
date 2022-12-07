@@ -53,7 +53,7 @@ exports.renderMaps = function() {
   
   // Add the default year and species to the map
   addYear(year);
-  addSpecies(year, species);  
+//  addSpecies(year, species);  
 };
 
 // ---------------------------------------------------------------------------
