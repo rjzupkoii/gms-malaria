@@ -58,5 +58,3 @@ exports.getVisualizationRGB = function(type) {
     throw new Error('Unknown Landsat type');
   }
 };
-
-
