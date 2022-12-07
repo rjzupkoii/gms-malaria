@@ -10,5 +10,11 @@ exports.LandsatType = {
 };
  
 exports.getVisualizationRGB = function(type) {
-  
-}
+  if (type == exports.LandsatType.Landsat7) {
+    
+  } else if (type == exports.LandsatType.Landsat8) {
+    
+  } else {
+    
+  }
+};
