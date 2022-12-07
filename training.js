@@ -1834,15 +1834,18 @@ function getFeatures() {
     .merge(development);
 }
 
+// The year for the the imagery to use
+var year = 2020;
+
 // Load the and center the GMS and reference image
-var satellite = landsat.getSatellite(2020);
+var satellite = landsat.getSatellite(year);
 var image = ml.getReferenceImage(satellite);
 Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
 
 // Get the classifier
-var classifier = ml.getClassifier(getFeatures());
+var classifier = ml.getClassifier(getFeatures(), year);
 
 // Classify the reference images
 var classified = image.select(ml.classifiedBands).classify(classifier);
