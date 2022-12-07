@@ -1815,6 +1815,7 @@ var water =
 
 // Import the assets
 var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+var landsat = require('users/rzupko/gms-malaria:assets/landsat.js');
 var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 // Import other scripts
@@ -1834,7 +1835,8 @@ function getFeatures() {
 }
 
 // Load the and center the GMS and reference image
-var image = ml.getReferenceImage();
+var satellite = landsat.getSatellite(2020);
+var image = ml.getReferenceImage(satellite);
 Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, visual.viz_gms_cir, 'Refernece Image (CIR)');
