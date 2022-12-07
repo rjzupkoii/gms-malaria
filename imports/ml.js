@@ -20,6 +20,7 @@ exports.classify = function(imagery, year) {
 exports.getClassifier = function(features, year) {
   // Get the satellite to use
   var satellite = landsat.getSatellite(year);
+  print(satellite)
   
   // Sample the labeled features
   var image = exports.getReferenceImage();
