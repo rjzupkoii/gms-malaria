@@ -20,10 +20,9 @@ exports.classify = function(imagery, year) {
 exports.getClassifier = function(features, year) {
   // Get the satellite to use
   var satellite = landsat.getSatellite(year);
-  print(satellite)
-  
+
   // Sample the labeled features
-  var image = exports.getReferenceImage();
+  var image = exports.getReferenceImage(satellite);
   var training = image.select(this.classifiedBands).sampleRegions({
     collection: features,
     properties: ['class'],
