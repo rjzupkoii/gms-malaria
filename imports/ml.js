@@ -34,7 +34,7 @@ exports.getClassifier = function(features, year) {
   return ee.Classifier.smileCart().train({
     features: training,
     classProperty: 'class',
-    inputProperties: this.classifiedBands
+    inputProperties: bands
   });  
 };
 
