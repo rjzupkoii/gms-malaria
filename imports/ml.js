@@ -17,7 +17,7 @@ exports.classify = function(imagery) {
 };
 
 // Get the trained classifer that will be used to determine the landcover class
-exports.getClassifier = function(features) {
+exports.getClassifier = function(features, year) {
   // Sample the labeled features
   var image = exports.getReferenceImage();
   var training = image.select(this.classifiedBands).sampleRegions({
