@@ -1839,6 +1839,7 @@ var year = 2020;
 
 // Load the and center the GMS and reference image
 var satellite = landsat.getSatellite(year);
+print(satellite);
 var image = ml.getReferenceImage(satellite);
 Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, visual.viz_gms_rgb, 'Refernece Image (RGB)');
