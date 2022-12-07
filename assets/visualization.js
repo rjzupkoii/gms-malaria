@@ -13,16 +13,16 @@ exports.viz_bounds = {
   'palette' : ['#2f942e', '#b9191e'],
 };
 
-// RGB vizualization for the GMS
+// RGB vizualization for the GMS, Landsat 7
 exports.viz_gms_rgb = {
-  'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
+  'bands' : ['SR_B3', 'SR_B2', 'SR_B1'],
   'min' : 6100.692307692308,
   'max' : 24248.428571428572
 };
 
-// CIR visualization for the GMS
+// CIR visualization for the GMS, Landsat 7
 exports.viz_gms_cir = {
-  'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
+  'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
   'min' : 7423.785454545455,
   'max' : 22769.123636363634
 };
