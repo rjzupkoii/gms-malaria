@@ -185,13 +185,11 @@ function addSpecies(year, species) {
   environmental = processing.getAnnualRainfall(gms, year);
   environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
   landcover = ml.classify(imagery, year);
-  var forest = landcover.updateMask(landcover.eq(11));
-  
+
   // Base data that only needs to be done once for the year selected
   Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
   Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)', false);
   Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year, false);
-  Map.addLayer(forest, {}, 'Probable Forest, ' + year);
 }
 
 // Add a layer to the map with the GMS outlined
