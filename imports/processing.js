@@ -34,7 +34,7 @@ exports.getHabitat = function(variables) {
 exports.getImages = function(indices, aoi, year) {
   var load = function(item) {
     item = ee.List(item);
-    var image = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')
+    var image = ee.ImageCollection('LANDSAT/LE07/C02/T1_L2')
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', item.get(0)),
       ee.Filter.eq('WRS_ROW', item.get(1))))
