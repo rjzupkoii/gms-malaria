@@ -40,7 +40,7 @@ exports.getClassifier = function(features, year) {
 // Load the reference image for classification
 exports.getReferenceImage = function(satellite) {
   // Orginal training data
-  var p125_r50 = ee.ImageCollection(satellite.decodeJSON())
+  var p125_r50 = ee.ImageCollection(satellite)
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
