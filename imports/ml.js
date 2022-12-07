@@ -35,7 +35,7 @@ exports.getClassifier = function(features) {
 };
 
 // Load the reference image for classification
-exports.getReferenceImage = function() {
+exports.getReferenceImage = function(type) {
   // Orginal training data
   var p125_r50 = ee.ImageCollection('LANDSAT/LE07/C02/T1_L2')
     .filter(ee.Filter.and(
