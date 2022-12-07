@@ -4,7 +4,7 @@
  * This script contains the data and functions related to machine leanring (ML).
  */
 var features = require('users/rzupko/gms-malaria:assets/features.js'); 
-var landsat = require('users/rzupko/gms-malaria:assets/landsat.js');
+var landsat = require('users/rzupko/gms-malaria:imports/landsat.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Return the classified landcover for the region provided
@@ -18,18 +18,12 @@ exports.classify = function(imagery, year) {
 
 // Get the trained classifer that will be used to determine the landcover class
 exports.getClassifier = function(features, year) {
-  // Get the satellite and bands to use
+  // Get the satellite to use
   var satellite = landsat.getSatellite(year);
-  var bands = landsat.getBands(satellite);
   
-  print(satellite)
-  print(bands)
-
   // Sample the labeled features
-  var image = exports.getReferenceImage(satellite);
-  print(image)
-  
-  var training = image.select(bands).sampleRegions({
+  var image = exports.getReferenceImage();
+  var training = image.select(this.classifiedBands).sampleRegions({
     collection: features,
     properties: ['class'],
     scale: 30
@@ -39,7 +33,7 @@ exports.getClassifier = function(features, year) {
   return ee.Classifier.smileCart().train({
     features: training,
     classProperty: 'class',
-    inputProperties: bands
+    inputProperties: this.classifiedBands
   });  
 };
 
