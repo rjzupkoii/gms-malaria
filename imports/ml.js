@@ -8,9 +8,9 @@ var landsat = require('users/rzupko/gms-malaria:assets/landsat.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 
 // Return the classified landcover for the region provided
-exports.classify = function(landsat) {
+exports.classify = function(imagery) {
   var classifier = exports.getClassifier(features.getFeatures());  
-  var classified = landsat.map(function(image) {
+  var classified = imagery.map(function(image) {
     return image.select(exports.classifiedBands).classify(classifier);
   });  
   return classified.mosaic();
