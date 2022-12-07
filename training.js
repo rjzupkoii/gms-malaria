@@ -1815,10 +1815,10 @@ var water =
 
 // Import the assets
 var shapefiles = require('users/rzupko/gms-malaria:assets/shapefiles.js');
-var landsat = require('users/rzupko/gms-malaria:assets/landsat.js');
 var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 // Import other scripts
+var landsat = require('users/rzupko/gms-malaria:imports/landsat.js');
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 
 // Get the various shapefiles that are used for training data
