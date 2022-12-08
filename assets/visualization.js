@@ -9,8 +9,8 @@
 // more than a month outside the bounds is going to be unsuitable for the species.
 exports.viz_bounds = {
   'min' : 0,
-  'max' : 31,
-  'palette' : ['#2f942e', '#b9191e'],
+  'max' : 61,
+  'palette' : ['#2f942e', '#f5f500', '#b9191e'],
 };
 
 // Rainfall visualization for the GMS
