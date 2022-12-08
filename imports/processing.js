@@ -94,7 +94,7 @@ exports.getRiskAssessment = function(landcover, habitat) {
   });
 };
 
-// Get the number of days that the temperature is outside of the bounds, minimum <= temp <= maximum
+// Get the number of days that the temperature is outside of the bounds, temp < minimum or maximum < temp
 exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
   // Preform scaled conversion from C to K for the data set
   minimum = (minimum + 273.15) / 0.02;  
