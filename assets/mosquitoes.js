@@ -20,8 +20,8 @@ exports.aCrascens = {
   'species'         : 'A. crascens',
   'rainfall'        : 2000,
   'tempMin'         : 20.0,
-  'tempMean'        : [25.0, 25.0],
-  'tempMeanSD'      : [0, 0.99],
+  'tempMean'        : [25.0, 26.0],
+  'tempMeanSD'      : [0, 1.0],
   'tempMax'         : 28.0,
   'lifeExpectancy'  : 31,
 };
