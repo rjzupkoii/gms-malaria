@@ -17,8 +17,7 @@ exports.getAnnualRainfall = function(aoi, year) {
 exports.getHabitat = function(variables) {
   // Find the possible habitat and then score it higher if the mean temperature is within bounds
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables);
-  habitat = habitat.expression('b(0) + ((b(0) == 1) && (landcover == 11))', variables);
-//  habitat = habitat.expression('b(0) + ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper))', variables);
+  habitat = habitat.expression('b(0) + ((b(0) == 1) && (landcover == 11) && ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables);
 
   // Rename the band and return
   return habitat.rename('scored_habitat');
