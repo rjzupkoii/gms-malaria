@@ -158,6 +158,7 @@ function addSpecies(year, species) {
       'totalRainfall'     : environmental.select('total_rainfall'),
       'meanTemperature'   : environmental.select('mean_temperature'),
       'daysOutsideBounds' : intermediate.select('days_outside_bounds'),
+      'landcover'         : landcover,
       
       // Species data
       'speciesRainfall'   : species.rainfall,
