@@ -16,7 +16,9 @@ exports.getAnnualRainfall = function(aoi, year) {
 // Use raster algebra to score the best habitat
 exports.getHabitat = function(variables) {
 
-  var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature)', variables);
+  var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall)', variables);
+
+  //var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature)', variables);
 
   // // Merge the classifications, highest sum is best habitat
   // var habitat = ee.Image(0).expression('ideal + suitable', {
