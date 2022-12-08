@@ -96,9 +96,7 @@ exports.getRiskAssessment = function(landcover, habitat) {
 
 // Get the number of days that the temperature is outside of the bounds, temp < minimum or maximum < temp
 exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
-  print(minimum)
-  print(maximum)
-  
+
   // Preform scaled conversion from C to K for the data set
   minimum = (minimum + 273.15) / 0.02;  
   maximum = (maximum + 273.15) / 0.02;  
@@ -109,7 +107,7 @@ exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
     
   // Map an expression that sets zero if we are within bounds, one if not
   temperature = temperature.map(function(image) {
-    return image.expression('maximum < b("LST_Day_1km")',
+    return image.expression('!(b("LST_Night_1km) < minimum && maximum < b("LST_Day_1km"))',
       { 'minimum': minimum, 'maximum': maximum });
   });
   
