@@ -149,6 +149,9 @@ function addSpecies(year, species) {
   // Process the data that changes based upon the species selected
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
+  // TODO Update this to be a proper slider, for now just use the lower bound
+  var sd = species.tempMeanSD[0];
+  
   // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
       // Raster data
@@ -158,8 +161,8 @@ function addSpecies(year, species) {
       
       // Species data
       'speciesRainfall'   : species.rainfall,
-      'speciesMeanLower'  : species.tempMean[0],
-      'speciesMeanUpper'  : species.tempMean[1],
+      'speciesMeanLower'  : species.tempMean[0] - sd,
+      'speciesMeanUpper'  : species.tempMean[1] + sd,
       'speciesLife'       : species.lifeExpectancy
   });
   
