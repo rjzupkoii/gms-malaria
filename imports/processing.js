@@ -27,7 +27,7 @@ exports.getHabitat = function(variables) {
   });
   
   var mask = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature)', variables);
-  habitat = habitat.mask(mask);
+  habitat = habitat.mask(mask).unmask();
   
   // Rename the band and return
   return habitat.rename('scored_habitat');
