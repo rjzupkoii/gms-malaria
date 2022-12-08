@@ -19,7 +19,7 @@ exports.getHabitat = function(variables) {
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables);
   
   // Improve the score if terrain has the approprate landcover and is within the mean annual temperature bounds
-  habitat = habitat.expression('b(0) + ((b(0) == 1) && (landcover == 11) && ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables);
+  habitat = habitat.expression('b(0) + ((b(0) == 1) && (landcover == 11 || landcover == 12) && ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables);
 
   // Rename the band and return
   return habitat.rename('scored_habitat');
