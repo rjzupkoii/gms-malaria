@@ -20,11 +20,14 @@ exports.getHabitat = function(variables) {
   var habitat = ee.Image(0).expression('ideal + suitable', {
     // Ideal habitat is completely within the environmental envelope, so the days outside the temperature bounds should
     // be less than a month
-    ideal: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28)', variables), 
+    ideal: ee.Image(0).expression('daysOutsideBounds <= 28', variables), 
     
     // Suitable overlaps with the ideal habitat (i.e., days outside of bounds), but is within the life expectancy
-    suitable:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= (28 + speciesLife))', variables), 
+    suitable:  ee.Image(0).expression('daysOutsideBounds <= (28 + speciesLife)', variables), 
   });
+  
+  var mask = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature)', variables);
+  habitat = habitat.mask(mask);
   
   // Rename the band and return
   return habitat.rename('scored_habitat');
