@@ -16,15 +16,17 @@ exports.getAnnualRainfall = function(aoi, year) {
 // Use raster algebra to score the best habitat
 exports.getHabitat = function(variables) {
 
-  // Merge the classifications, highest sum is best habitat
-  var habitat = ee.Image(0).expression('ideal + suitable', {
-    // Ideal habitat is completely within the environmental envelope, so the days outside the temperature bounds should
-    // be less than a month
-    ideal: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28)', variables), 
+  var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28) +  (daysOutsideBounds <= (28 + speciesLife))', variables);
+
+  // // Merge the classifications, highest sum is best habitat
+  // var habitat = ee.Image(0).expression('ideal + suitable', {
+  //   // Ideal habitat is completely within the environmental envelope, so the days outside the temperature bounds should
+  //   // be less than a month
+  //   ideal: ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= 28) +  (daysOutsideBounds <= (28 + speciesLife))', variables), 
     
-    // Suitable overlaps with the ideal habitat (i.e., days outside of bounds), but is within the life expectancy
-    suitable:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= (28 + speciesLife))', variables), 
-  });
+  //   // Suitable overlaps with the ideal habitat (i.e., days outside of bounds), but is within the life expectancy
+  //   suitable:  ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (meanTemperature >= speciesTemperature) && (daysOutsideBounds <= (28 + speciesLife))', variables), 
+  // });
   
   // Rename the band and return
   return habitat.rename('scored_habitat');
