@@ -40,8 +40,8 @@ exports.aScanloni = {
   'species'         : 'A. scanloni',
   'rainfall'        : 1500,
   'tempMin'         : 15.0,
-  'tempMeanLB'      : 25.0,          
-  'tempMeanUB'      : 26.0,     
+  'tempMean'        : [25.0, 27.0],
+  'tempMeanSD'      : [0, 2.0],
   'tempMax'         : 28.0,
   'lifeExpectancy'  : 31,
 };
