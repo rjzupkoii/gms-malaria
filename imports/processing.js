@@ -18,7 +18,7 @@ exports.getHabitat = function(variables) {
 
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)', 
     variables).rename('filtered');
-  habitat = habitat.expression('b("filtered") + (daysOutsideBounds <= 28)')
+  habitat = habitat.expression('b("filtered") + (daysOutsideBounds <= 28)');
 
   // Rename the band and return
   return habitat.rename('scored_habitat');
