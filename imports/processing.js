@@ -15,7 +15,7 @@ exports.getAnnualRainfall = function(aoi, year) {
 
 // Use raster algebra to score the best habitat
 exports.getHabitat = function(variables) {
-
+  // Find the possible habitat and then score it higher if the mean temperature is within bounds
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables);
   habitat = habitat.expression('b(0) + ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper))', variables);
 
