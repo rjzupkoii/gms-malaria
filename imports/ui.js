@@ -152,14 +152,15 @@ function addSpecies(year, species) {
   // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
       // Raster data
-      'totalRainfall'      : environmental.select('total_rainfall'),
-      'meanTemperature'    : environmental.select('mean_temperature'),
-      'daysOutsideBounds'  : intermediate.select('days_outside_bounds'),
+      'totalRainfall'     : environmental.select('total_rainfall'),
+      'meanTemperature'   : environmental.select('mean_temperature'),
+      'daysOutsideBounds' : intermediate.select('days_outside_bounds'),
       
       // Species data
-      'speciesRainfall'    : species.rainfall,
-      'speciesTemperature' : species.tempMin,
-      'speciesLife'        : species.lifeExpectancy
+      'speciesRainfall'   : species.rainfall,
+      'speciesMeanLower'  : species.tempMeanLB,
+      'speciesMeanUpper'  : species.tempMeanUB,
+      'speciesLife'       : species.lifeExpectancy
   });
   
   // Prepare the risk assessment based upon the landcover and habitat
