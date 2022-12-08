@@ -158,8 +158,8 @@ function addSpecies(year, species) {
       
       // Species data
       'speciesRainfall'   : species.rainfall,
-      'speciesMeanLower'  : species.tempMeanLB,
-      'speciesMeanUpper'  : species.tempMeanUB,
+      'speciesMeanLower'  : species.tempMean[0],
+      'speciesMeanUpper'  : species.tempMean[1],
       'speciesLife'       : species.lifeExpectancy
   });
   
