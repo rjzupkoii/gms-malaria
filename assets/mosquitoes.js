@@ -25,11 +25,12 @@ exports.aCrascens = {
 };
 
 exports.aDirus = {
-  'species'  : 'A. dirus s.s.',
-  'rainfall' : 1500,
-  'tempMin'  : 12.5,
-  'tempMean' : 24.0,          
-  'tempMax'  : 26.0,
+  'species'     : 'A. dirus s.s.',
+  'rainfall'    : 1500,
+  'tempMin'     : 12.5,
+  'tempMeanLB'  : 24.0,          
+  'tempMeanUB'  : 27.5,
+  'tempMax'     : 26.0,
   'lifeExpectancy' : 31,
 };
 
