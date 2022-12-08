@@ -110,7 +110,7 @@ exports.getTemperatureBounds = function(aoi, year, minimum, maximum) {
   // Map an expression that sets zero if we are within bounds, one if not
   temperature = temperature.map(function(image) {
     return image.expression('(b("LST_Day_1km") < minimum) || (maximum < b("LST_Day_1km"))',
-      { minimum: minimum, maximum: maximum });
+      { 'minimum': minimum, 'maximum': maximum });
   });
   
   // Clip, sum, and return integers
