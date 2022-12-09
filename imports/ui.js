@@ -22,7 +22,7 @@ var environmental = null, gms = null, landcover = null;
 var year = 2020, species = mosquitoes.aDirus;
 
 // Global legend panel element, default state
-var legend = null;
+var legend = null, toolPanel = null;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -30,7 +30,7 @@ exports.prepareUI = function() {
   Map.drawingTools().setShown(false);
   
   // Add the tool panel with the controls
-  var toolPanel = ui.Panel([
+  toolPanel = ui.Panel([
       ui.Label('Greater Mekong Subregion: Malaria Vector Risk Assessment',
         { fontSize: '1.5em', fontWeight: 'bold'}),
       ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development in the given year.'),
