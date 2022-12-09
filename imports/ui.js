@@ -81,9 +81,7 @@ function getLayerSelect() {
     style: {
       width: '225px',
     },
-    onChange: function(value) {
-      changeLayer(value, this);
-    }
+    onChange: changeLayer(this)
   });
 }
 
