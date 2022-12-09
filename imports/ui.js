@@ -168,6 +168,7 @@ function changeLayer(value) {
 
   // Add the new layer to the map
   Map.layers().add(layerList.get(value));
+  layerList.get(value).setShown(true);
   if (legend !== null) {
     Map.remove(legend);
   }
