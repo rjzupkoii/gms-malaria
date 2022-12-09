@@ -66,8 +66,8 @@ exports.renderMaps = function() {
   visualizeGms();
   
   // Add the default year and species to the map
-  addYear(year);
-  addSpecies(year, species);  
+  setEnvironment(year);
+  setSpecies(year, species);  
 };
 
 // ---------------------------------------------------------------------------
@@ -127,7 +127,7 @@ function getSpeciesSelect() {
       removeLayers(6, 8);
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
-          addSpecies(year, mosquitoes[key]);
+          setSpecies(year, mosquitoes[key]);
           return;
         }
       }
@@ -152,8 +152,8 @@ function getYearSlider() {
     onChange: function(value) {
       year = value;
       removeLayers(1, 8);
-      addYear(year);
-      addSpecies(year, species);  
+      setEnvironment(year);
+      setSpecies(year, species);  
     }
   });
 }
@@ -172,7 +172,7 @@ function removeLayers(first, last) {
 // ---------------------------------------------------------------------------
 
 // Calculate and add the species specific data to the map
-function addSpecies(year, species) {
+function setSpecies(year, species) {
   // Process the data that changes based upon the species selected
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
@@ -205,8 +205,8 @@ function addSpecies(year, species) {
   Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year, false);  
 }
 
-// Calculate and ddd the year specific data to the map
- function addYear(year) {
+// Calculate and add the year specific environment data to the map
+ function setEnvironment(year) {
   function addLayer(data, visualization, label) {
     // Get the select object for the environmental layers
     var panel = ui.root.widgets().get(1);   // Tool panel index
