@@ -49,14 +49,16 @@ exports.prepareUI = function() {
   ui.root.widgets().add(toolPanel);
   
   // Register the hook to detect the change in layer
-  ui.Map.DrawingTools.onLayerSelect(function(selected) {
-    print(selected);
-  });
+  ui.Map.DrawingTools.onLayerSelect(onLayerSelect);
   
   // Add the default legend
   legend = widgets.createColorBar('Days Outside Bounds', visual.viz_bounds);
   Map.add(legend);  
 };
+
+function onLayerSelect(selected) {
+  print(selected);
+}
 
 // Render the default selections (i.e., 2020, A. dirus) to the map
 exports.renderMaps = function() {
