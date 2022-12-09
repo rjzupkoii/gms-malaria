@@ -129,15 +129,6 @@ function getYearSlider() {
   });
 }
 
-// Remove the indicated layers from the map, by index
-function removeLayers(first, last) {
-  var layers = Map.layers();
-  for (var ndx = last; ndx >= first; ndx--) {
-    var layer = layers.get(ndx);
-    Map.remove(layer);
-  }
-}
-
 function reset() {
   // Clear any layers that are present
   for (var ndx = Map.layers().length() - 1; ndx >= 0; ndx--) {
