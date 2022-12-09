@@ -151,7 +151,9 @@ function removeLayers(first, last) {
 
 // Change the top-most layer that is displayed on that map
 function changeLayer(value) {
-  print(value);
+  // Start by removing the top-most layer
+  var layer = Map.layers().get(0);
+  Map.remove(layer);
 }
 
 // Calculate and add the species specific data to the map
