@@ -160,6 +160,12 @@ function addLayer(index, data, visualization, label) {
   layerList.set(label, ui.Map.Layer(data, visualization, label));
 }
 
+function selectLayer(index, value) {
+  var panel = ui.root.widgets().get(1);
+  var select = panel.widgets().get(index);   
+  select.setValue(value);
+}
+
 // Change the top-most layer that is displayed on that map
 function changeLayer(value) {
   // Start by removing the top-most layer
@@ -213,7 +219,7 @@ function setSpecies(year, species) {
   addLayer(SPECIES_INDEX, risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);
   
   // Select the default layer
-  ui.root.widgets().get(1).get(SPECIES_INDEX).setValue(selected);
+  selectLayer(SPECIES_INDEX, selected);
 }
 
 // Calculate and add the year specific environment data to the map
