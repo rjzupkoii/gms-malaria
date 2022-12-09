@@ -48,7 +48,7 @@ exports.prepareUI = function() {
       getLayerSelect(),
       ui.Label(' '),
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
-      ui.Label('Intermediate mpas used to assess the environmental suitability for the selected species.'),
+      ui.Label('Environmental conditions used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
     ], 
     'flow', { 'width' : '275px' });
@@ -163,9 +163,11 @@ function addLayer(index, data, visualization, label) {
 // Change the top-most layer that is displayed on that map
 function changeLayer(value) {
   // Start by removing the top-most layer
-  var index = Map.layers().length() - 1;
-  var layer = Map.layers().get(index);
-  Map.remove(layer);
+  if (Map.layers().length() !== 2) {
+    var index = Map.layers().length() - 1;
+    var layer = Map.layers().get(index);
+    Map.remove(layer);
+  }
 
   // Add the new layer to the map
   Map.layers().add(layerList.get(value));
