@@ -167,6 +167,7 @@ function addLayer(index, data, visualization, label) {
 
 // Change the top-most layer that is displayed on that map
 function changeLayer(value, object) {
+  print(value)
   print(object)
   
   // Start by removing the top-most layer
