@@ -140,7 +140,16 @@ function removeLayers(first, last) {
 }
 
 function reset() {
+  // Clear any layers that are present
+  for (var ndx = last; ndx >= first; ndx--) {
+    var layer = layers.get(ndx);
+    Map.remove(layer);
+  }
+  
+  // Clear the dictionary of layers
   layerList = new ui.data.ActiveDictionary();
+  
+  // Clear the select boxes
   var panel = ui.root.widgets().get(1);
   panel.widgets().get(SPECIES_INDEX).items().reset();
   panel.widgets().get(ENV_INDEX).items().reset();
