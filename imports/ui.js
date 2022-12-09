@@ -40,10 +40,10 @@ exports.prepareUI = function() {
       getYearSlider(),
       ui.Label(' '),
       ui.Label(' '),
-      ui.Label('Intermediate Maps include the days outside the species envelope, and landcover for the selected year.'),
+      ui.Label('Species Habitat Maps'),
       getLayerSelect(),
       ui.Label(' '),
-      ui.Label('Environmental Maps are used to assess the environmental suitability for the selected species.'),
+      ui.Label('Environmental maps are intermediate mpas used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
     ], 
     'flow', { 'width' : '250px' });
