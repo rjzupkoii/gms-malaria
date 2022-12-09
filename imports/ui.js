@@ -152,7 +152,7 @@ function removeLayers(first, last) {
 // Add a layer to the dictionary of possible layers and update the UI select
 function addLayer(index, data, visualization, label) {
   // Get the select object for the environmental layers
-  var panel = ui.root.widgets().get(1);   // Tool panel index
+  var panel = ui.root.widgets().get(1);
   var select = panel.widgets().get(index);   
   select.items().add(label);
   
@@ -208,8 +208,12 @@ function setSpecies(year, species) {
   addLayer(SPECIES_INDEX, intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds, ' + year);
   
   // Anopheles genus specific data
-  addLayer(SPECIES_INDEX, habitat, visual.viz_habitatPalette, species.species + ' / Probable Habitat, ' + year);
-  addLayer(SPECIES_INDEX, risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);  
+  var selected = species.species + ' / Probable Habitat, ' + year;
+  addLayer(SPECIES_INDEX, habitat, visual.viz_habitatPalette, selected);
+  addLayer(SPECIES_INDEX, risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);
+  
+  // Select the default layer
+  ui.root.widgets().get(1).get(SPECIES_INDEX).setValue(selected);
 }
 
 // Calculate and add the year specific environment data to the map
