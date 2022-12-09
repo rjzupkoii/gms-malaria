@@ -58,10 +58,6 @@ exports.prepareUI = function() {
   Map.add(legend);  
 };
 
-function onLayerSelect(selected) {
-  print(selected);
-}
-
 // Render the default selections (i.e., 2020, A. dirus) to the map
 exports.renderMaps = function() {
   // Next render the GMS, hold on to the shapefile
