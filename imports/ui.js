@@ -82,7 +82,7 @@ function getLayerSelect() {
       width: '225px',
     },
     onChange: function(value) {
-      changeLayer(value);
+      changeLayer(value, this);
     }
   });
 }
@@ -168,7 +168,9 @@ function addLayer(index, data, visualization, label) {
 }
 
 // Change the top-most layer that is displayed on that map
-function changeLayer(value) {
+function changeLayer(value, object) {
+  print(object)
+  
   // Start by removing the top-most layer
   if (Map.layers().length() > 2) {
     var index = Map.layers().length() - 1;
