@@ -5,6 +5,8 @@
  */
 
 exports.createColorBar = function(titleText, visualization) {
+  print(visualization)
+  
   // Prepare the title
   var title = ui.Label({
     value: titleText, 
