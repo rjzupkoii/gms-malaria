@@ -66,7 +66,7 @@ exports.renderMaps = function() {
   
   // Add the default year and species to the map
   addYear(year);
-  addSpecies(year, species);  
+//  addSpecies(year, species);  
 };
 
 // ---------------------------------------------------------------------------
@@ -196,7 +196,12 @@ function addSpecies(year, species) {
   // Next add the base Landsat layers
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
-  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
+  
+  var layer = ui.Map.GeometryLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)');
+  Map.drawingTools().layers().add(layer);
+
+  
+//  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
   Map.addLayer(imagery, satellite.viz_rgb, satellite.name + ', ' + year);
   
   // Process the data that only changes based on the year
