@@ -171,6 +171,11 @@ function removeLayers(first, last) {
 // Processing and UX related UI functions
 // ---------------------------------------------------------------------------
 
+// Change the top-most layer that is displayed on that map
+function changeLayer(value) {
+  print(value);
+}
+
 // Calculate and add the species specific data to the map
 function setSpecies(year, species) {
   // Process the data that changes based upon the species selected
@@ -234,10 +239,6 @@ function setSpecies(year, species) {
   addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
   addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
   addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
-}
-
-function changeLayer(value, caller) {
-  print(value);
 }
 
 // Add a layer to the map with the GMS outlined
