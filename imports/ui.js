@@ -49,7 +49,7 @@ exports.prepareUI = function() {
   ui.root.widgets().add(toolPanel);
   
   // Register the hook to detect the change in layer
-  DrawingTools.onLayerSelect(function(selected, widget) {
+  Map.drawingTools().onLayerSelect(function(selected, widget) {
     print('selected');
   });
   
