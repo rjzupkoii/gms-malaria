@@ -160,6 +160,7 @@ function addLayer(index, data, visualization, label) {
   layerList.set(label, ui.Map.Layer(data, visualization, label));
 }
 
+// Set the layer to display, will trigger the change event
 function selectLayer(index, value) {
   var panel = ui.root.widgets().get(1);
   var select = panel.widgets().get(index);   
