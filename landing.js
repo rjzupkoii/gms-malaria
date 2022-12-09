@@ -7,11 +7,5 @@
  */
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
 
-// gmsUi.prepareUI();
-// gmsUi.renderMaps();
-
-var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
-var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
-
-var panel = widgets.createColorBar('Days Outside Bounds', visual.viz_bounds);
-Map.add(panel);
+gmsUi.prepareUI();
+gmsUi.renderMaps();
