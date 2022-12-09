@@ -199,6 +199,7 @@ function addSpecies(year, species) {
   
   var layer = ui.Map.Layer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)');
   Map.layers().add(layer);
+  print(Map.layers());
 
   
 //  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
