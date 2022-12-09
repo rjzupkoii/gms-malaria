@@ -59,8 +59,7 @@ exports.prepareUI = function() {
 exports.renderMaps = function() {
   // Next render the GMS, hold on to the shapefile
   gms = shapefile.getGms();
-  visualizeGms();
-  
+
   // Add the default year and species to the map
   setEnvironment(year);
   setSpecies(year, species);  
@@ -207,12 +206,13 @@ function setSpecies(year, species) {
     layerList.set(label, ui.Map.Layer(data, visualization, label));
   }
    
-  // Next add the base Landsat layers
+  // Add the base Landsat layers
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
-  
-  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
   Map.addLayer(imagery, satellite.viz_rgb, satellite.name + ', ' + year);
+  
+  // Add the GMS outlines on top of it
+  visualizeGms();
   
   // Process the data that only changes based on the year
   environmental = processing.getAnnualRainfall(gms, year);
