@@ -20,7 +20,7 @@ var SPECIES_INDEX = 7;    // Species layers selection index
 var ENV_INDEX = 11;       // Environmental layers selection index
 
 // Global environmental and landcover variables
-var environmental = null, gms = null, landcover = null;
+var environmental = null, gms = shapefile.getGms(), landcover = null;
 
 // Global year and species variables, default values
 var year = 2020, species = mosquitoes.aDirus;
@@ -60,12 +60,8 @@ exports.prepareUI = function() {
   });
 };
 
-// Render the default selections (i.e., 2020, A. dirus) to the map
+// Render the map with the UI selections (or defualts)
 exports.renderMaps = function() {
-  // Next render the GMS, hold on to the shapefile
-  gms = shapefile.getGms();
-
-  // Add the default year and species to the map
   setEnvironment(year);
   setSpecies(year, species);  
 };
