@@ -144,6 +144,17 @@ function removeLayers(first, last) {
 // Processing and UX related UI functions
 // ---------------------------------------------------------------------------
 
+// Add a layer to the dictionary of possible layers and update the UI select
+function addLayer(index, data, visualization, label) {
+  // Get the select object for the environmental layers
+  var panel = ui.root.widgets().get(1);   // Tool panel index
+  var select = panel.widgets().get(index);   
+  select.items().add(label);
+  
+  // Add the layer to the list of known layers
+  layerList.set(label, ui.Map.Layer(data, visualization, label));
+}
+
 // Change the top-most layer that is displayed on that map
 function changeLayer(value) {
   // Start by removing the top-most layer
@@ -196,15 +207,7 @@ function setSpecies(year, species) {
 
 // Calculate and add the year specific environment data to the map
  function setEnvironment(year) {
-  function addLayer(data, visualization, label) {
-    // Get the select object for the environmental layers
-    var panel = ui.root.widgets().get(1);   // Tool panel index
-    var select = panel.widgets().get(10);   // Environmental layers selection index
-    select.items().add(label);
-    
-    // Add the layer to the list of known layers
-    layerList.set(label, ui.Map.Layer(data, visualization, label));
-  }
+  var INDEX = 10; // Environmental layers selection index
    
   // Add the base Landsat layers
   var satellite = landsat.getSatellite(year);
