@@ -95,6 +95,22 @@ function getIntermediateCheckbox() {
   });
 }
 
+function getEnvironmentSelect() {
+  return ui.Select({
+    style: {
+      width: '225px',
+    },
+    onChange: function(value) {
+      selectCallback(value, this);
+    }
+  });
+}
+
+function selectCallback(value, caller) {
+  print(value);
+  print(caller);
+}
+
 // Return a select dropdown box that allows the species to be selected
 function getSpeciesSelect() {
   // Load the species names
@@ -209,9 +225,6 @@ function addSpecies(year, species) {
   updateLayers(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
   updateLayers(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
   updateLayers(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
-  // Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
-  // Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)', false);
-  // Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year, false);
 }
 
 function updateLayers(data, visualization, label) {
