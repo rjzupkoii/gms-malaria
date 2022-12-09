@@ -21,8 +21,8 @@ var environmental = null, gms = null, landcover = null;
 // Global year and species variables, default values
 var year = 2020, species = mosquitoes.aDirus;
 
-// Global legend panel element, default state
-var legend = null, toolPanel = null;
+// Global UI elements that we need access to after creation
+var environmentSelect = null, speciesSelect = null, legend = null;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
