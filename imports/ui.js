@@ -97,7 +97,7 @@ function getSpeciesSelect() {
       width: '250px',
     },
     onChange: function(value) {
-      removeLayers(6, 8);
+//      removeLayers(6, 8);
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
           species = mosquitoes[key];
