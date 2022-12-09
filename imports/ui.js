@@ -154,7 +154,9 @@ function changeLayer(value) {
 
   // Add the new layer to the map
   Map.layers().add(layerList.get(value));
-  Map.remove(legend);
+  if (legend !== null) {
+    Map.remove(legend);
+  }
   legend = widgets.createColorBar(value, layerList.get(value).getVisParams());
   Map.add(legend);  
 }
