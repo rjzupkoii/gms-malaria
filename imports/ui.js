@@ -156,6 +156,8 @@ function changeLayer(value) {
   var layer = Map.layers().get(index);
   Map.remove(layer);
   
+  print(layers[value]);
+  
   // Add the new layer to the map
   Map.layers().add(layers[value]);
 }
