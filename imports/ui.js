@@ -44,7 +44,7 @@ exports.prepareUI = function() {
       getIntermediateCheckbox(),
       ui.Label(' '),
       ui.Label('Environmental Maps are used to assess the environmental suitability for the selected species.'),
-      getEnvironmentSelect(),
+      getLayerSelect(),
     ], 
     'flow', { 'width' : '250px' });
   ui.root.widgets().add(toolPanel);
