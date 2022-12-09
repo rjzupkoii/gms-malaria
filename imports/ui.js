@@ -152,7 +152,8 @@ function removeLayers(first, last) {
 // Change the top-most layer that is displayed on that map
 function changeLayer(value) {
   // Start by removing the top-most layer
-  var layer = Map.layers().get(0);
+  var index = Map.layers().length() - 1;
+  Map.layers().get(index);
   Map.remove(layer);
 }
 
