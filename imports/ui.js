@@ -144,7 +144,7 @@ function removeLayers(first, last) {
 }
 
 function reset() {
-  layerList.reset();
+  layerList = new ui.data.ActiveDictionary();
   var panel = ui.root.widgets().get(1);
   panel.widgets().get(SPECIES_INDEX).items().reset();
   panel.widgets().get(ENV_INDEX).items().reset();
