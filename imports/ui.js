@@ -53,10 +53,6 @@ exports.prepareUI = function() {
   Map.drawingTools().onLayerSelect(function(selected, widget) {
     print('selected');
   });
-
-  // Add the default legend
-  legend = widgets.createColorBar('Days Outside Bounds', visual.viz_bounds);
-  Map.add(legend);  
 };
 
 // Render the default selections (i.e., 2020, A. dirus) to the map
@@ -158,6 +154,9 @@ function changeLayer(value) {
 
   // Add the new layer to the map
   Map.layers().add(layerList.get(value));
+  Map.remove(legend);
+  legend = widgets.createColorBar(value, layerList.get(value).getVisParams());
+  Map.add(legend);  
 }
 
 // Calculate and add the species specific data to the map
