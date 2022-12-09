@@ -15,6 +15,9 @@ var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
+// UI control index constants
+var ENV_INDEX = 11;       // Environmental layers selection index
+
 // Global environmental and landcover variables
 var environmental = null, gms = null, landcover = null;
 
@@ -43,7 +46,8 @@ exports.prepareUI = function() {
       ui.Label('Species Habitat Maps', {fontWeight: 'bold'}),
       getLayerSelect(),
       ui.Label(' '),
-      ui.Label('Environmental maps are intermediate mpas used to assess the environmental suitability for the selected species.'),
+      ui.Label('Environmental Maps', {fontWeight: 'bold'}),
+      ui.Label('Intermediate mpas used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
     ], 
     'flow', { 'width' : '275px' });
@@ -207,8 +211,6 @@ function setSpecies(year, species) {
 
 // Calculate and add the year specific environment data to the map
  function setEnvironment(year) {
-  var INDEX = 10; // Environmental layers selection index
-   
   // Add the base Landsat layers
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
@@ -223,9 +225,9 @@ function setSpecies(year, species) {
   landcover = ml.classify(imagery, year);
 
   // Base data that only needs to be done once for the year selected
-  addLayer(INDEX, environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
-  addLayer(INDEX, environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
-  addLayer(INDEX, landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
+  addLayer(ENV_INDEX, environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
+  addLayer(ENV_INDEX, environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
+  addLayer(ENV_INDEX, landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
 }
 
 // Add a layer to the map with the GMS outlined
