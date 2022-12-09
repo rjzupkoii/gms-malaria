@@ -24,6 +24,8 @@ var year = 2020, species = mosquitoes.aDirus;
 // Global UI elements that we need access to after creation
 var legend = null;
 
+var layers = new Map();
+
 // Prepare the initial UI state
 exports.prepareUI = function() {
   // Disable drawing
@@ -233,7 +235,9 @@ function addLayer(data, visualization, label) {
   var select = panel.widgets().get(10);   // Environmental layers selection index
   select.items().add(label);
   
-  print(select.items());
+  layers.set(label, layer);
+  print(layers);
+
 }
 
 // Add a layer to the map with the GMS outlined
