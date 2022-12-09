@@ -34,7 +34,7 @@ exports.createColorBar = function(titleText, palette, min, max) {
     widgets: [title, colorBar, labels],
     style: {position: 'bottom-center', padding: '8px 15px'},
   });    
-}
+};
 
 function makeColorBarParams(palette) {
   return {
