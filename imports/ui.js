@@ -38,13 +38,11 @@ exports.prepareUI = function() {
       getYearSlider(),
       ui.Label(' '),
       ui.Label(' '),
+      ui.Label('Intermediate Maps include the days outside the species envelope, and landcover for the selected year.'),
+      getIntermediateCheckbox(),
       ui.Label(' '),
       ui.Label('Environmental Maps are used to assess the environmental suitability for the selected species.'),
       getEnvironmentSelect(),
-//      getEnvironmentalCheckbox(),
-      ui.Label(' '),
-      ui.Label('Intermediate Maps include the days outside the species envelope, and landcover for the selected year.'),
-      getIntermediateCheckbox(),
     ], 
     'flow', { 'width' : '250px' });
   ui.root.widgets().add(toolPanel);
