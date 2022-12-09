@@ -197,12 +197,7 @@ function addSpecies(year, species) {
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
   
-  var layer = ui.Map.Layer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)');
-  Map.layers().add(layer);
-  print(Map.layers());
-
-  
-//  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
+  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
   Map.addLayer(imagery, satellite.viz_rgb, satellite.name + ', ' + year);
   
   // Process the data that only changes based on the year
