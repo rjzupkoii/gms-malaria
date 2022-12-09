@@ -231,6 +231,8 @@ function addLayer(data, visualization, label) {
   
   var panel = ui.root.widgets().get(1);   // Tool panel index
   var select = panel.widgets().get(10);   // Environmental layers selection index
+  select.items().add(label);
+  
   print(select.items());
 }
 
