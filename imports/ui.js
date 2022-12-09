@@ -16,6 +16,7 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // UI control index constants
+var SPECIES_INDEX = 7;    // Species layers selection index
 var ENV_INDEX = 11;       // Environmental layers selection index
 
 // Global environmental and landcover variables
@@ -202,11 +203,11 @@ function setSpecies(year, species) {
   var risk = processing.getRiskAssessment(landcover, habitat);
   
   // Intermediate data for the Anopheles genus selected
-  Map.addLayer(intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds, ' + year, false);
+  addLayer(SPECIES_INDEX, intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds, ' + year);
   
   // Anopheles genus specific data
-  Map.addLayer(habitat, visual.viz_habitatPalette, species.species + ' / Probable Habitat, ' + year);
-  Map.addLayer(risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year, false);  
+  addLayer(SPECIES_INDEX, habitat, visual.viz_habitatPalette, species.species + ' / Probable Habitat, ' + year);
+  addLayer(SPECIES_INDEX, risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);  
 }
 
 // Calculate and add the year specific environment data to the map
