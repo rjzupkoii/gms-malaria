@@ -21,8 +21,8 @@ var environmental = null, gms = null, landcover = null;
 // Global year and species variables, default values
 var year = 2020, species = mosquitoes.aDirus;
 
-// Global legend panel element, default state
-var legend = null;
+// Global UI elements, default state
+var environmentSelect = null, legend = null;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -226,9 +226,10 @@ function addSpecies(year, species) {
   updateLayers(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
 }
 
-function updateLayers(data, visualization, label) {
+function addLayers(type, data, visualization, label) {
   var layer = ui.Map.Layer(data, visualization, label);  
-  print(layer.getName())
+  
+  
 }
 
 // Add a layer to the map with the GMS outlined
