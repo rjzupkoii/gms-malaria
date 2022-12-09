@@ -141,9 +141,11 @@ function removeLayers(first, last) {
 
 function reset() {
   // Clear any layers that are present
-  for (var ndx = Map.layers().length(); ndx >= 0; ndx--) {
-    var layer = Map.layers().get(ndx);
-    Map.remove(layer);
+  if (Map.layers().length() > 0) {
+    for (var ndx = Map.layers().length(); ndx >= 0; ndx--) {
+      var layer = Map.layers().get(ndx);
+      Map.remove(layer);
+    }
   }
   
   // Clear the dictionary of layers
