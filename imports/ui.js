@@ -95,7 +95,7 @@ function getIntermediateCheckbox() {
 }
 
 function getEnvironmentSelect() {
-  return ui.Select({
+  environmentSelect = ui.Select({
     style: {
       width: '225px',
     },
@@ -103,6 +103,7 @@ function getEnvironmentSelect() {
       selectCallback(value, this);
     }
   });
+  return environmentSelect;
 }
 
 function selectCallback(value, caller) {
