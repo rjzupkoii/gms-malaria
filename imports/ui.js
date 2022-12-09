@@ -226,7 +226,7 @@ function addSpecies(year, species) {
   addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
 }
 
-function addLayer(type, data, visualization, label) {
+function addLayer(data, visualization, label) {
   var layer = ui.Map.Layer(data, visualization, label);  
   
   print(ui.root.widgets())
