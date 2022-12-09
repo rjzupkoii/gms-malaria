@@ -62,6 +62,7 @@ exports.prepareUI = function() {
 
 // Render the map with the UI selections (or defualts)
 exports.renderMaps = function() {
+  reset();
   setEnvironment(year);
   setSpecies(year, species);  
 };
@@ -99,7 +100,8 @@ function getSpeciesSelect() {
       removeLayers(6, 8);
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
-          setSpecies(year, mosquitoes[key]);
+          species = mosquitoes[key];
+          exports.renderMaps();
           return;
         }
       }
@@ -123,9 +125,7 @@ function getYearSlider() {
     },
     onChange: function(value) {
       year = value;
-      reset();
-      setEnvironment(year);
-      setSpecies(year, species);  
+      exports.renderMaps();
     }
   });
 }
