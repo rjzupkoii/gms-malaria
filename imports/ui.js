@@ -24,7 +24,7 @@ var year = 2020, species = mosquitoes.aDirus;
 // Global UI elements that we need access to after creation
 var legend = null;
 
-var layers = new ui.data.ActiveDictionary();
+var layerList = new ui.data.ActiveDictionary();
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -157,7 +157,7 @@ function changeLayer(value) {
   Map.remove(layer);
 
   // Add the new layer to the map
-  for (var key in layers) {
+  for (var key in layerList) {
     print(key)
     if (key.localeCompare(value) === 0) {
       Map.layers().add(layers[key]);
@@ -212,7 +212,7 @@ function setSpecies(year, species) {
     select.items().add(label);
     
     // Add the layer to the list of known layers
-    layers.set(label, ui.Map.Layer(data, visualization, label));
+    layerList.set(label, ui.Map.Layer(data, visualization, label));
   }
    
   // Next add the base Landsat layers
