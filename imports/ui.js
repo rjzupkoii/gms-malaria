@@ -46,7 +46,7 @@ exports.prepareUI = function() {
       ui.Label('Environmental maps are intermediate mpas used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
     ], 
-    'flow', { 'width' : '250px' });
+    'flow', { 'width' : '275px' });
   ui.root.widgets().add(toolPanel);
   
   // Register the hook to detect the change in layer
