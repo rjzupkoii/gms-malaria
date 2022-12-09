@@ -230,7 +230,7 @@ function addSpecies(year, species) {
 function addLayer(data, visualization, label) {
   var layer = ui.Map.Layer(data, visualization, label);  
   
-  environmentSelect.items.add(data.getName());
+  environmentSelect.items.add(label);
 }
 
 // Add a layer to the map with the GMS outlined
