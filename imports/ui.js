@@ -213,7 +213,6 @@ function setSpecies(year, species) {
     
     // Add the layer to the list of known layers
     layers.set(label, ui.Map.Layer(data, visualization, label));
-    print(layers);
   }
    
   // Next add the base Landsat layers
