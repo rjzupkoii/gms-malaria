@@ -26,7 +26,7 @@ exports.createColorBar = function(titleText, visualization) {
       ui.Label(
           (visualization.max / 2),
           {margin: '4px 8px', textAlign: 'center', stretch: 'horizontal'}),
-      ui.Label(max, {margin: '4px 8px'})
+      ui.Label(visualization.max, {margin: '4px 8px'})
     ],
     layout: ui.Panel.Layout.flow('horizontal')
   });
