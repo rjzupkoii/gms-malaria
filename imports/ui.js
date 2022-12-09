@@ -22,7 +22,7 @@ var environmental = null, gms = null, landcover = null;
 var year = 2020, species = mosquitoes.aDirus;
 
 // Global UI elements that we need access to after creation
-var environmentSelect = null, speciesSelect = null, legend = null;
+var legend = null;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
