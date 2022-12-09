@@ -155,11 +155,7 @@ function changeLayer(value) {
   var index = Map.layers().length() - 1;
   var layer = Map.layers().get(index);
   Map.remove(layer);
-  
-  print(layers)
-  print(value);
-  print(layers[value]);
-  
+
   // Add the new layer to the map
   for (var key in layers) {
     if (key.localeCompare(value) === 0) {
