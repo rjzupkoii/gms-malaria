@@ -187,7 +187,7 @@ function changeLayer(value) {
     var panel = ui.root.widgets().get(1);
     var select = panel.widgets().get(index);
     if (select.getValue() !== value) {
-      select.setValue('', false);
+      select.setValue(null, false);
     }
   }
   clear(SPECIES_INDEX, value);
