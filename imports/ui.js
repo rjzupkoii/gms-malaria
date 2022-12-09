@@ -216,7 +216,7 @@ function addSpecies(year, species) {
 
 function updateLayers(data, visualization, label) {
   var layer = ui.Map.Layer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');  
-  print(layer)
+  print(layer.getName())
 }
 
 // Add a layer to the map with the GMS outlined
