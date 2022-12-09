@@ -221,12 +221,12 @@ function addSpecies(year, species) {
   landcover = ml.classify(imagery, year);
 
   // Base data that only needs to be done once for the year selected
-  updateLayers(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
-  updateLayers(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
-  updateLayers(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
+  addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
+  addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
+  addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
 }
 
-function addLayers(type, data, visualization, label) {
+function addLayer(type, data, visualization, label) {
   var layer = ui.Map.Layer(data, visualization, label);  
   
   print(ui.root.widgets())
