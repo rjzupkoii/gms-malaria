@@ -207,7 +207,7 @@ function addSpecies(year, species) {
 
   // Base data that only needs to be done once for the year selected
   updateLayers(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
-//  Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
+  // Map.addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)', false);
   // Map.addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)', false);
   // Map.addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year, false);
 }
