@@ -198,7 +198,7 @@ function addSpecies(year, species) {
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
   
   var layer = ui.Map.Layer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)');
-  Map.drawingTools().layers().add(layer);
+  Map.drawingTools().layers().set(0, layer);
 
   
 //  Map.addLayer(imagery, satellite.viz_cir, satellite.name + ', ' + year + ' (CIR)', false);
