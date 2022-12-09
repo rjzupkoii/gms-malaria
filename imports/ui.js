@@ -145,6 +145,13 @@ function removeLayers(first, last) {
   }
 }
 
+// Set the layer to display, will trigger the change event
+function selectLayer(index, value) {
+  var panel = ui.root.widgets().get(1);
+  var select = panel.widgets().get(index);   
+  select.setValue(value);
+}
+
 // ---------------------------------------------------------------------------
 // Processing and UX related UI functions
 // ---------------------------------------------------------------------------
@@ -158,13 +165,6 @@ function addLayer(index, data, visualization, label) {
   
   // Add the layer to the list of known layers
   layerList.set(label, ui.Map.Layer(data, visualization, label));
-}
-
-// Set the layer to display, will trigger the change event
-function selectLayer(index, value) {
-  var panel = ui.root.widgets().get(1);
-  var select = panel.widgets().get(index);   
-  select.setValue(value);
 }
 
 // Change the top-most layer that is displayed on that map
