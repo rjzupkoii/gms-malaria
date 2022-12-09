@@ -230,7 +230,9 @@ function addSpecies(year, species) {
 function addLayer(data, visualization, label) {
   var layer = ui.Map.Layer(data, visualization, label);  
   
-  environmentSelect.items.add(label);
+  var panel = ui.root.widgets().get(1);   // Tool panel index
+  var select = panel.widgets().get(10);   // Environmental layers selection index
+  print(select.items());
 }
 
 // Add a layer to the map with the GMS outlined
