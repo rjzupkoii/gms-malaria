@@ -210,6 +210,17 @@ function addSpecies(year, species) {
 
 // Calculate and ddd the year specific data to the map
  function addYear(year) {
+  function addLayer(data, visualization, label) {
+    // Get the select object for the environmental layers
+    var panel = ui.root.widgets().get(1);   // Tool panel index
+    var select = panel.widgets().get(10);   // Environmental layers selection index
+    select.items().add(label);
+    
+    // Add the layer to the list of known layers
+    layers.set(label, ui.Map.Layer(data, visualization, label));
+    print(layers);
+  }
+   
   // Next add the base Landsat layers
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
@@ -222,22 +233,12 @@ function addSpecies(year, species) {
   environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
   landcover = ml.classify(imagery, year);
 
+  function addLayer(data, visuali)
+
   // Base data that only needs to be done once for the year selected
   addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
   addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
   addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
-}
-
-function addLayer(data, visualization, label) {
-  var layer = ui.Map.Layer(data, visualization, label);  
-  
-  var panel = ui.root.widgets().get(1);   // Tool panel index
-  var select = panel.widgets().get(10);   // Environmental layers selection index
-  select.items().add(label);
-  
-  layers.set(label, layer);
-  print(layers);
-
 }
 
 // Add a layer to the map with the GMS outlined
