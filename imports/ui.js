@@ -96,6 +96,7 @@ function getIntermediateCheckbox() {
   });
 }
 
+// Return an empty layer select
 function getLayerSelect() {
   return ui.Select({
     placeholder: 'Select a layer...',
@@ -103,13 +104,9 @@ function getLayerSelect() {
       width: '225px',
     },
     onChange: function(value) {
-      selectCallback(value);
+      changeLayer(value);
     }
   });
-}
-
-function selectCallback(value, caller) {
-  print(value);
 }
 
 // Return a select dropdown box that allows the species to be selected
@@ -237,6 +234,10 @@ function addSpecies(year, species) {
   addLayer(environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
   addLayer(environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
   addLayer(landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
+}
+
+function changeLayer(value, caller) {
+  print(value);
 }
 
 // Add a layer to the map with the GMS outlined
