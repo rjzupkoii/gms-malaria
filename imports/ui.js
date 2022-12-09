@@ -74,28 +74,6 @@ exports.renderMaps = function() {
 // Strictly UI related functions
 // ---------------------------------------------------------------------------
 
-// Return a checkbox that toggles environmental maps
-function getEnvironmentalCheckbox(){
-  return ui.Checkbox({
-    label: 'Show Environmental Maps',
-    onChange: function(checked) {
-      Map.layers().get(3).setShown(checked);  // Total rainfall, CHIRPS/PENTAD
-      Map.layers().get(4).setShown(checked);  // Mean temperature, MOD11A1.061
-    }
-  });
-}
-
-// Return a checkbox that toggles intermediate maps
-function getIntermediateCheckbox() {
-  return ui.Checkbox({
-    label: 'Show Intermediate Maps',
-    onChange: function(checked) {
-      Map.layers().get(5).setShown(checked);  // A. dirus / Days Outside Bounds
-      Map.layers().get(6).setShown(checked);  // Landcover
-    }
-  });
-}
-
 // Return an empty layer select
 function getLayerSelect() {
   return ui.Select({
@@ -121,7 +99,7 @@ function getSpeciesSelect() {
     items: speciesList,
     value: mosquitoes.aDirus.species,
     style: {
-      width: '225px',
+      width: '250px',
     },
     onChange: function(value) {
       removeLayers(6, 8);
@@ -146,7 +124,7 @@ function getYearSlider() {
     step: 1,
     value: year,
     style: {
-      width: '225px',
+      width: '250px',
       fontWeight: 'bold'
     },
     onChange: function(value) {
