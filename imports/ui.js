@@ -24,7 +24,7 @@ var year = 2020, species = mosquitoes.aDirus;
 // Global UI elements that we need access to after creation
 var legend = null;
 
-var layers = new Map();
+var layers = new ui.data.ActiveDictionary();
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
