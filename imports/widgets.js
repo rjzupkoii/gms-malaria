@@ -13,7 +13,7 @@ exports.createColorBar = function(titleText, palette, min, max) {
   // Prepare the color bar
   var colorBar = ui.Thumbnail({
     image: ee.Image.pixelLonLat().select(0),
-    params: makeColorBarParams(vis.palette),
+    params: makeColorBarParams(palette),
     style: {stretch: 'horizontal', margin: '0px 8px', maxHeight: '24px'},
   });
   
