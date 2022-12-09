@@ -4,7 +4,7 @@
  * Generalized UI widgets.
  */
 
-exports.createColorBar = function(titleText, palette, min, max) {
+exports.createColorBar = function(titleText, visualization) {
   // Prepare the title
   var title = ui.Label({
     value: titleText, 
@@ -13,16 +13,16 @@ exports.createColorBar = function(titleText, palette, min, max) {
   // Prepare the color bar
   var colorBar = ui.Thumbnail({
     image: ee.Image.pixelLonLat().select(0),
-    params: makeColorBarParams(palette),
+    params: makeColorBarParams(visualization.palette),
     style: {stretch: 'horizontal', margin: '0px 8px', maxHeight: '24px'},
   });
   
   // Prepare the legend labels
   var labels = ui.Panel({
     widgets: [
-      ui.Label(min, {margin: '4px 8px'}),
+      ui.Label(visualization.min, {margin: '4px 8px'}),
       ui.Label(
-          (max / 2),
+          (visualization.max / 2),
           {margin: '4px 8px', textAlign: 'center', stretch: 'horizontal'}),
       ui.Label(max, {margin: '4px 8px'})
     ],
