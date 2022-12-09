@@ -96,21 +96,20 @@ function getIntermediateCheckbox() {
   });
 }
 
-function getEnvironmentSelect() {
+function getLayerSelect() {
   return ui.Select({
     placeholder: 'Select a layer...',
     style: {
       width: '225px',
     },
     onChange: function(value) {
-      selectCallback(value, this);
+      selectCallback(value);
     }
   });
 }
 
 function selectCallback(value, caller) {
   print(value);
-  print(caller);
 }
 
 // Return a select dropdown box that allows the species to be selected
