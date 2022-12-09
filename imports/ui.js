@@ -13,12 +13,16 @@ var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 var landsat = require('users/rzupko/gms-malaria:imports/landsat.js');
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
+var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // Global environmental and landcover variables
 var environmental = null, gms = null, landcover = null;
 
 // Global year and species variables, default values
 var year = 2020, species = mosquitoes.aDirus;
+
+// Global legend panel element, default state
+var legend = null;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -43,6 +47,10 @@ exports.prepareUI = function() {
     ], 
     'flow', { 'width' : '250px' });
   ui.root.widgets().add(toolPanel);
+  
+  // Add the default legend
+  legend = widgets.createColorBar('Days Outside Bounds', visual.viz_bounds);
+  Map.add(legend);  
 };
 
 // Render the default selections (i.e., 2020, A. dirus) to the map
