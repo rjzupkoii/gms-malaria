@@ -40,7 +40,7 @@ exports.prepareUI = function() {
       getYearSlider(),
       ui.Label(' '),
       ui.Label(' '),
-      ui.Label('Species Habitat Maps'),
+      ui.Label('Species Habitat Maps', {fontWeight: 'bold'}),
       getLayerSelect(),
       ui.Label(' '),
       ui.Label('Environmental maps are intermediate mpas used to assess the environmental suitability for the selected species.'),
