@@ -49,7 +49,7 @@ exports.prepareUI = function() {
   ui.root.widgets().add(toolPanel);
   
   // Register the hook to detect the change in layer
-  ui.Map.DrawingTools.onLayerSelect(onLayerSelect);
+  ui.Map.DrawingTools.onLayerSelect = onLayerSelect;
   
   // Add the default legend
   legend = widgets.createColorBar('Days Outside Bounds', visual.viz_bounds);
