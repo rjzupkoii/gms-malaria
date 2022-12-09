@@ -180,7 +180,18 @@ function changeLayer(value) {
     Map.remove(legend);
   }
   legend = widgets.createColorBar(value, layerList.get(value).getVisParams());
-  Map.add(legend);  
+  Map.add(legend);
+  
+  // Clear any selected item that isn't the value we were passed
+  function clear(index, value) {
+    var panel = ui.root.widgets().get(1);
+    var select = panel.widgets().get(index);
+    if (select.getValue() !== value) {
+      select.setValue('', false);
+    }
+  }
+  clear(SPECIES_INDEX, value);
+  clear(ENV_INDEX, value);
 }
 
 // Calculate and add the species specific data to the map
