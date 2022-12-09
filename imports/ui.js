@@ -98,6 +98,7 @@ function getIntermediateCheckbox() {
 
 function getEnvironmentSelect() {
   return ui.Select({
+    placeholder: 'Select a layer...',
     style: {
       width: '225px',
     },
