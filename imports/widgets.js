@@ -20,11 +20,11 @@ exports.createColorBar = function(titleText, palette, min, max) {
   // Prepare the legend labels
   var labels = ui.Panel({
     widgets: [
-      ui.Label(vis.min, {margin: '4px 8px'}),
+      ui.Label(min, {margin: '4px 8px'}),
       ui.Label(
-          (vis.max / 2),
+          (max / 2),
           {margin: '4px 8px', textAlign: 'center', stretch: 'horizontal'}),
-      ui.Label(vis.max, {margin: '4px 8px'})
+      ui.Label(max, {margin: '4px 8px'})
     ],
     layout: ui.Panel.Layout.flow('horizontal')
   });
