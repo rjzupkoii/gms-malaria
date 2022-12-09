@@ -143,6 +143,13 @@ function removeLayers(first, last) {
   }
 }
 
+function reset() {
+  layerList.reset();
+  var panel = ui.root.widgets().get(1);
+  panel.widgets().get(SPECIES_INDEX).items().reset();
+  panel.widgets().get(ENV_INDEX).items().reset();
+}
+
 // Set the layer to display, will trigger the change event
 function selectLayer(index, value) {
   var panel = ui.root.widgets().get(1);
