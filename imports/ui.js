@@ -156,19 +156,8 @@ function changeLayer(value) {
   var layer = Map.layers().get(index);
   Map.remove(layer);
 
-  print(layerList)
-
   // Add the new layer to the map
-  for (var key in layerList) {
-    print(key)
-    if (key.localeCompare(value) === 0) {
-      Map.layers().add(layers[key]);
-      return;
-    }
-  }  
-  
-  // Since this is called from a UI element, this shouldn't happen
-  throw new Error('Unexpected error occured while processing UI event, received: '.concat(value));
+  Map.layers().add(layerList.get(value));
 }
 
 // Calculate and add the species specific data to the map
