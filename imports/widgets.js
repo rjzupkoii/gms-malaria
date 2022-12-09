@@ -4,7 +4,7 @@
  * Generalized UI widgets.
  */
 
-function createColorBar(titleText, palette, min, max) {
+exports.createColorBar = function(titleText, palette, min, max) {
   // Prepare the title
   var title = ui.Label({
     value: titleText, 
