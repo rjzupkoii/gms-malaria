@@ -50,7 +50,7 @@ exports.prepareUI = function() {
   
   // Register the hook to detect the change in layer
   Map.drawingTools().onLayerSelect(function(selected) {
-    print(selected);
+    print('selected');
   });
   
   // Add the default legend
