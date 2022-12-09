@@ -52,10 +52,7 @@ exports.prepareUI = function() {
   Map.drawingTools().onLayerSelect(function(selected, widget) {
     print('selected');
   });
-    Map.drawingTools().onLayerAdd(function(selected, widget) {
-    print('added');
-  });
-  
+
   // Add the default legend
   legend = widgets.createColorBar('Days Outside Bounds', visual.viz_bounds);
   Map.add(legend);  
