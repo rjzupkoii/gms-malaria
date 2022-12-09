@@ -142,7 +142,7 @@ function removeLayers(first, last) {
 function reset() {
   // Clear any layers that are present
   if (Map.layers().length() > 0) {
-    for (var ndx = Map.layers().length(); ndx >= 0; ndx--) {
+    for (var ndx = Map.layers().length() - 1; ndx >= 0; ndx--) {
       print(ndx)
       var layer = Map.layers().get(ndx);
       Map.remove(layer);
