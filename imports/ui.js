@@ -25,9 +25,10 @@ var environmental = null, gms = shapefile.getGms(), landcover = null;
 // Global year and species variables, default values
 var year = 2020, species = mosquitoes.aDirus;
 
-// Global UI elements that we need access to after creation
+// Global element that we need access to after creation
 var legend = null;
 
+// Global list of all of the layers that are created for the UI
 var layerList = null;
 
 // Prepare the initial UI state
@@ -97,7 +98,6 @@ function getSpeciesSelect() {
       width: '250px',
     },
     onChange: function(value) {
-//      removeLayers(6, 8);
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
           species = mosquitoes[key];
@@ -105,7 +105,6 @@ function getSpeciesSelect() {
           return;
         }
       }
-      
       // Since this is called from a UI element, this shouldn't happen
       throw new Error('Unexpected error occured while processing UI event, received: '.concat(value));
     }
