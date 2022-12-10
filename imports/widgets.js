@@ -4,7 +4,7 @@
  * Generalized UI widgets.
  */
 
-// Create and return a color bar lenged control
+// Create and return a color bar legend control
 exports.createColorBar = function(titleText, visualization) {
   // Prepare the title
   var title = ui.Label({
@@ -46,4 +46,32 @@ function makeColorBarParams(palette) {
     max: 1,
     palette: palette,
   };
+}
+
+// Create and return a discrete legend control
+// 
+// titleText - The title of the legend
+// categories - An ee.Dictionary object that contains the label (key) and color code (value)
+exports.createDiscreteLegend = function(titleText, categories) {
+  
+};
+
+function makeRow(color, name) {
+  var colorBox = ui.Label({
+    style: {color: '#ffffff',
+      backgroundColor: color,
+      padding: '10px',
+      margin: '0 0 4px 0',
+    }
+  });
+  var description = ui.Label({
+    value: name,
+    style: {
+      margin: '0px 0 4px 6px',
+    }
+  }); 
+  return ui.Panel({
+    widgets: [colorBox, description],
+    layout: ui.Panel.Layout.Flow('horizontal')}
+  );
 }
