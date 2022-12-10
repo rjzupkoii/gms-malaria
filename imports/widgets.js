@@ -4,6 +4,7 @@
  * Generalized UI widgets.
  */
 
+// Create and return a color bar lenged control
 exports.createColorBar = function(titleText, visualization) {
   // Prepare the title
   var title = ui.Label({
