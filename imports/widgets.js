@@ -53,7 +53,25 @@ function makeColorBarParams(palette) {
 // titleText - The title of the legend
 // categories - An ee.Dictionary object that contains the label (key) and color code (value)
 exports.createDiscreteLegend = function(titleText, categories) {
+  // Create the panel and add the legend
+  var panel = ui.Panel({
+    style: {
+      position: 'middle-left',
+      padding: '8px 15px'
+    }});
+  panel.add(ui.Label({
+    value: titleText,
+    style: {
+      fontWeight: 'bold',
+      fontSize: '16px',
+      margin: '0px 0 4px 0px'
+    }}));
   
+  // Add the categories and return
+  for (var key in categories) {
+    panel.add(makeRow(categories[key], key));
+  }
+  return panel;
 };
 
 function makeRow(color, name) {
