@@ -33,7 +33,7 @@ exports.createColorBar = function(titleText, visualization) {
   // Prepare the panel to be returned
   return ui.Panel({
     widgets: [title, colorBar, labels],
-    style: {position: 'bottom-center', padding: '8px 15px'},
+    style: { position: 'bottom-center', padding: '8px 15px' },
   });    
 };
 
@@ -55,10 +55,7 @@ function makeColorBarParams(palette) {
 exports.createDiscreteLegend = function(titleText, categories) {
   // Create the panel and add the legend
   var panel = ui.Panel({
-    style: {
-      position: 'middle-left',
-      padding: '8px 15px'
-    }});
+    style: { position: 'bottom-center', padding: '8px 15px' }});
   panel.add(ui.Label({
     value: titleText,
     style: {
