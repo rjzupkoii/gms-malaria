@@ -204,7 +204,8 @@ function getLegend(value) {
     return widgets.createDiscreteLegend('Probable Habitat', uiux.ui_habitat_legend);
   }
   
-  // widgets.createColorBar(value, layerList.get(value).getVisParams());
+  // All others are color bars
+  return widgets.createColorBar(value, layerList.get(value).getVisParams());
 }
 
 
