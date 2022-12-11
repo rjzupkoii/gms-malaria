@@ -199,8 +199,12 @@ function changeLayer(value) {
 
 function getLegend(value) {
   print(value)
+  // TODO Kind of a factory pattern, but we need a better way to do this
+  if (value.includes('Probable Habitat')) {
+    return widgets.createDiscreteLegend('Probable Habitat', uiux.ui_habitat_legend);
+  }
+  
   // widgets.createColorBar(value, layerList.get(value).getVisParams());
-  // var legend = widgets.createDiscreteLegend('Testing', uiux.ui_habitat_legend);
 }
 
 
