@@ -9,13 +9,13 @@ exports.createColorBar = function(titleText, visualization) {
   // Prepare the title
   var title = ui.Label({
     value: titleText, 
-    style: {fontWeight: 'bold', textAlign: 'center', stretch: 'horizontal'}});
+    style: { fontWeight: 'bold', textAlign: 'center', stretch: 'horizontal' }});
 
   // Prepare the color bar
   var colorBar = ui.Thumbnail({
     image: ee.Image.pixelLonLat().select(0),
     params: makeColorBarParams(visualization.palette),
-    style: {stretch: 'horizontal', margin: '0px 8px', maxHeight: '24px'},
+    style: { stretch: 'horizontal', margin: '0px 8px', maxHeight: '24px' },
   });
   
   // Prepare the legend labels
@@ -24,7 +24,7 @@ exports.createColorBar = function(titleText, visualization) {
       ui.Label(visualization.min, {margin: '4px 8px'}),
       ui.Label(
           (visualization.max / 2),
-          {margin: '4px 8px', textAlign: 'center', stretch: 'horizontal'}),
+          { margin: '4px 8px', textAlign: 'center', stretch: 'horizontal' }),
       ui.Label(visualization.max, {margin: '4px 8px'})
     ],
     layout: ui.Panel.Layout.flow('horizontal')
@@ -58,11 +58,7 @@ exports.createDiscreteLegend = function(titleText, categories) {
     style: { position: 'bottom-center', padding: '8px 15px' }});
   panel.add(ui.Label({
     value: titleText,
-    style: {
-      fontWeight: 'bold',
-      fontSize: '16px',
-      margin: '0px 0 4px 0px'
-    }}));
+    style: { fontWeight: 'bold', fontSize: '16px', margin: '0px 0 4px 0px' }}));
   
   // Add the categories and return
   for (var key in categories) {
@@ -72,9 +68,6 @@ exports.createDiscreteLegend = function(titleText, categories) {
 };
 
 function makeRow(color, name) {
-  print('makeRow')
-  print(color)
-  print(name)
   var colorBox = ui.Label({
     style: {color: '#ffffff',
       backgroundColor: color,
@@ -84,9 +77,7 @@ function makeRow(color, name) {
   });
   var description = ui.Label({
     value: name,
-    style: {
-      margin: '0px 0 4px 6px',
-    }
+    style: { margin: '0px 0 4px 6px', }
   }); 
   return ui.Panel({
     widgets: [colorBox, description],
