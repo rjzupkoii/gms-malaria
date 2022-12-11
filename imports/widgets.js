@@ -76,6 +76,8 @@ exports.createDiscreteLegend = function(titleText, categories) {
 
 function makeRow(color, name) {
   print('makeRow')
+  print(color)
+  print(name)
   var colorBox = ui.Label({
     style: {color: '#ffffff',
       backgroundColor: color,
