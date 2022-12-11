@@ -200,7 +200,7 @@ function changeLayer(value) {
 function getLegend(value) {
   print(value)
   // TODO Kind of a factory pattern, but we need a better way to do this
-  if (value.includes('Probable Habitat')) {
+  if (String(value).includes('Probable Habitat')) {
     return widgets.createDiscreteLegend(value, uiux.ui_habitat_legend);
   }
   
