@@ -51,7 +51,7 @@ function makeColorBarParams(palette) {
 // Create and return a discrete legend control
 // 
 // titleText - The title of the legend
-// categories - An ee.Dictionary object that contains the label (key) and color code (value)
+// categories - A dictionary object that contains the label (key) and color code (value)
 exports.createDiscreteLegend = function(titleText, categories) {
   // Create the panel and add the legend
   var panel = ui.Panel({
@@ -68,14 +68,8 @@ exports.createDiscreteLegend = function(titleText, categories) {
     }}));
   
   // Add the categories and return
-  print(categories.keys())
-  for (var ndx = 0; ndx < categories.keys().length(); ndx++) {
-    print(categories.get(categories.keys()[ndx]))
-  }
-  
-  for (var key in categories.keys()) {
-    print(key)
-    panel.add(makeRow(categories.get(key), key));
+  for (var key in categories) {
+    panel.add(makeRow(categories[key], key));
   }
   return panel;
 };
