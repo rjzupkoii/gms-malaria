@@ -11,6 +11,11 @@ exports.ui_discrete = {
     'Potential'  : '#fee8c8',
     'Suitable'   : '#fdbb84'
   },
-  
+  'Malaria Risk' : {
+    'Minimal'   : '#abd9e9',
+    'Low'       : '#ffffbf',
+    'Moderate'  : '#fdae61',
+    'High'      : '#d7191c'
+  },
   
 };
