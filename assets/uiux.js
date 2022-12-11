@@ -5,3 +5,8 @@
  * for now, translations of UI elements would be placed here.
  */
  
+exports.ui_habitat_legend = ee.Dictionary({
+  'Unsuitable' : '#bdbdbd',
+  'Potential'  : '#fee8c8',
+  'Suitable'   : '#fdbb84'
+});
