@@ -17,5 +17,15 @@ exports.ui_discrete = {
     'Moderate'  : '#fdae61',
     'High'      : '#d7191c'
   },
-  
+  'Classified Landcover' : {
+    'Snow'                : 'aliceblue',
+    'Shadow / Occulted'   : 'gray',
+    'Water'               : 'blue',
+    'Forest'              : 'darkgreen',
+    'Vegetation'          : 'green',
+    'Vegetation / Scrub'  : 'darkseagreen',
+    'Barren'              : 'saddlebrown',
+    'Developed'           : 'red',
+    'Agricultural'        : 'wheat'
+  }
 };
