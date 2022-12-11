@@ -53,8 +53,6 @@ function makeColorBarParams(palette) {
 // titleText - The title of the legend
 // categories - An ee.Dictionary object that contains the label (key) and color code (value)
 exports.createDiscreteLegend = function(titleText, categories) {
-  print(categories)
-  
   // Create the panel and add the legend
   var panel = ui.Panel({
     style: {
