@@ -55,7 +55,7 @@ function makeColorBarParams(palette) {
 exports.createDiscreteLegend = function(titleText, categories) {
   // Create the panel and add the legend
   var panel = ui.Panel({
-    style: { position: 'bottom-center', padding: '8px 15px' }});
+    style: { position: 'bottom-left', padding: '8px 15px' }});
   panel.add(ui.Label({
     value: titleText,
     style: { fontWeight: 'bold', fontSize: '16px', margin: '0px 0 4px 0px' }}));
