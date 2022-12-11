@@ -8,6 +8,7 @@
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js');
 var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js'); 
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
+var uiux = require('users/rzupko/gms-malaria:assets/uiux.js');
 var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
 var landsat = require('users/rzupko/gms-malaria:imports/landsat.js');
@@ -181,7 +182,7 @@ function changeLayer(value) {
   if (legend !== null) {
     Map.remove(legend);
   }
-  legend = widgets.createColorBar(value, layerList.get(value).getVisParams());
+  legend = getLegend(value);
   Map.add(legend);
   
   // Clear any selected item that isn't the value we were passed
@@ -195,6 +196,13 @@ function changeLayer(value) {
   clear(SPECIES_INDEX, value);
   clear(ENV_INDEX, value);
 }
+
+function getLegend(value) {
+  print(value)
+  // widgets.createColorBar(value, layerList.get(value).getVisParams());
+  // var legend = widgets.createDiscreteLegend('Testing', uiux.ui_habitat_legend);
+}
+
 
 // Calculate and add the species specific data to the map
 function setSpecies(year, species) {
