@@ -5,8 +5,12 @@
  * for now, translations of UI elements would be placed here.
  */
  
-exports.ui_habitat_legend = {
-  'Unsuitable' : '#bdbdbd',
-  'Potential'  : '#fee8c8',
-  'Suitable'   : '#fdbb84'
+exports.ui_discrete = {
+  'Probable Habitat' : {
+    'Unsuitable' : '#bdbdbd',
+    'Potential'  : '#fee8c8',
+    'Suitable'   : '#fdbb84'
+  },
+  
+  
 };
