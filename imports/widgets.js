@@ -33,7 +33,7 @@ exports.createColorBar = function(titleText, visualization) {
   // Prepare the panel to be returned
   return ui.Panel({
     widgets: [title, colorBar, labels],
-    style: { position: 'bottom-center', padding: '8px 15px' },
+    style: { position: 'bottom-left', padding: '8px 15px' },
   });    
 };
 
