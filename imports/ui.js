@@ -199,12 +199,14 @@ function changeLayer(value) {
 
 function getLegend(value) {
   print(value)
-
-  // TODO Kind of a factory pattern, but we need a better way to do this
-  if (value.indexOf('Probable Habitat') > -1) {
-    return widgets.createDiscreteLegend(value, uiux.ui_habitat_legend);
-  }
   
+  // Is this a discrete legend?
+  for (var key in uiux.ui_discrete) {
+    if (value.indexOf(key) > -1) {
+      return widgets.createDiscreteLegend(value, uiux.ui_discrete[key]);
+    }
+  }
+
   // All others are color bars
   return widgets.createColorBar(value, layerList.get(value).getVisParams());
 }
