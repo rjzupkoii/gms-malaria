@@ -68,9 +68,9 @@ exports.createDiscreteLegend = function(titleText, categories) {
     }}));
   
   // Add the categories and return
-  for (var key in categories) {
+  for (var key in categories.keys()) {
     print(key)
-    panel.add(makeRow(categories[key], key));
+    panel.add(makeRow(categories.get(key), key));
   }
   return panel;
 };
