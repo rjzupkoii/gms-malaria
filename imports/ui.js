@@ -198,7 +198,7 @@ function changeLayer(value) {
 }
 
 function getLegend(value) {
-  print(value.indexOf('test'))
+  print(value.indexOf('Probable Habitat'))
   print(String(value))
   print('testing'.includes('test'))
   // TODO Kind of a factory pattern, but we need a better way to do this
