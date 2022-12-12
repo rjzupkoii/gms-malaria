@@ -16,16 +16,15 @@ exports.aBaimaii = {
   'lifeExpectancy'  : 31,
 };
 
-// TODO Detemrine the proper ranges
-// exports.aCrascens = {
-//   'species'         : 'A. crascens',
-//   'rainfall'        : 2000,
-//   'tempMin'         : 20.0,
-//   'tempMean'        : [25.0, 26.0],
-//   'tempMeanSD'      : [0, 1.0],
-//   'tempMax'         : 28.0,
-//   'lifeExpectancy'  : 31,
-// };
+exports.aCrascens = {
+  'species'         : 'A. crascens',
+  'rainfall'        : 2000,
+  'tempMin'         : 20.0,
+  'tempMean'        : [25.0, 27.0], // 1c less than maximum
+  'tempMeanSD'      : [0, 1.0],
+  'tempMax'         : 28.0,
+  'lifeExpectancy'  : 31,
+};
 
 exports.aDirus = {
   'species'         : 'A. dirus s.l.',
@@ -47,13 +46,12 @@ exports.aDirus = {
   'lifeExpectancy'  : 31,
 };
 
-// TODO Detemrine the proper ranges
-// exports.aScanloni = {
-//   'species'         : 'A. scanloni',
-//   'rainfall'        : 1500,
-//   'tempMin'         : 15.0,
-//   'tempMean'        : [25.0, 27.0],
-//   'tempMeanSD'      : [0, 2.0],
-//   'tempMax'         : 28.0,
-//   'lifeExpectancy'  : 31,
-// };
+exports.aScanloni = {
+  'species'         : 'A. scanloni',
+  'rainfall'        : 1500,
+  'tempMin'         : 15.0,
+  'tempMean'        : [26.0, 27.0], // 1c less than maximum
+  'tempMeanSD'      : [0, 2.0],
+  'tempMax'         : 28.0,
+  'lifeExpectancy'  : 31,
+};
