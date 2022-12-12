@@ -28,7 +28,7 @@ var g_year = new Date().getFullYear() - 1;
 var g_species = mosquitoes.aDirus;
 
 // Global element that we need access to after creation
-var legend = null;
+var ui_legend = null;
 
 // Global list of all of the layers that are created for the UI
 var layerList = null;
@@ -195,11 +195,11 @@ function changeLayer(value) {
 
   // Add the new layer to the map
   Map.layers().add(layerList.get(value));
-  if (legend !== null) {
-    Map.remove(legend);
+  if (ui_legend !== null) {
+    Map.remove(ui_legend);
   }
-  legend = getLegend(value);
-  Map.add(legend);
+  ui_legend = getLegend(value);
+  Map.add(ui_legend);
   
   // Clear any selected item that isn't the value we were passed
   function clear(index, value) {
