@@ -239,14 +239,14 @@ function setSpecies(year, species) {
   // Prepare the risk assessment based upon the landcover and habitat
   var risk = processing.getRiskAssessment(landcover, habitat);
   
-  // Intermediate data for the Anopheles genus selected
-  addLayer(SPECIES_INDEX, intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds, ' + year);
-  
   // Anopheles genus specific data
   var selected = species.species + ' / Probable Habitat, ' + year;
   addLayer(SPECIES_INDEX, habitat, visual.viz_habitatPalette, selected);
   addLayer(SPECIES_INDEX, risk, visual.vis_riskPalette, species.species + ' / Malaria Risk, ' + year);
   
+  // Intermediate data for the Anopheles genus selected
+  addLayer(SPECIES_INDEX, intermediate.select('days_outside_bounds'), visual.viz_bounds, species.species + ' / Days Outside Bounds, ' + year);
+
   // Select the default layer
   selectLayer(SPECIES_INDEX, selected);
 }
