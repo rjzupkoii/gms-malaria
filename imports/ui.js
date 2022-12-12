@@ -17,8 +17,8 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // UI control index constants
-var SPECIES_INDEX = 7;    // Species layers selection index
-var ENV_INDEX = 11;       // Environmental layers selection index
+var SPECIES_INDEX = 8;    // Species layers selection index
+var ENV_INDEX = 12;       // Environmental layers selection index
 
 // Global environmental and landcover variables
 var environmental = null, gms = shapefile.getGms(), landcover = null;
@@ -47,10 +47,11 @@ exports.prepareUI = function() {
       ui.Label(' '),
       ui.Label(' '),
       ui.Label('Species Habitat Maps', {fontWeight: 'bold'}),
+      ui.Label('Species habitat maps descibe the likely habitat for the species, and possible risk for malaria tranmission.'),
       getLayerSelect(),
       ui.Label(' '),
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
-      ui.Label('Environmental conditions used to assess the environmental suitability for the selected species.'),
+      ui.Label('Environmental condition maps are used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
     ], 
     'flow', { 'width' : '275px' });
