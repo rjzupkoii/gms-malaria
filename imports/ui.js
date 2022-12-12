@@ -20,11 +20,11 @@ var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 var SPECIES_INDEX = 8;    // Species layers selection index
 var ENV_INDEX = 12;       // Environmental layers selection index
 
-// Global environmental and landcover rasters
-var environmental = null, landcover = null;
-
 // Global list of all of the layers that are created for the UI
 var g_layerList = null;
+
+// Global environmental and landcover rasters
+var g_environmental = null, g_landcover = null;
 
 // Global year and species variables, default values
 var g_year = new Date().getFullYear() - 1;
