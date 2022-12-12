@@ -24,7 +24,8 @@ var ENV_INDEX = 12;       // Environmental layers selection index
 var environmental = null, gms = shapefile.getGms(), landcover = null;
 
 // Global year and species variables, default values
-var year = new Date().getFullYear(), species = mosquitoes.aDirus;
+var g_year = new Date().getFullYear() - 1;
+var g_species = mosquitoes.aDirus;
 
 // Global element that we need access to after creation
 var legend = null;
@@ -66,8 +67,8 @@ exports.prepareUI = function() {
 // Render the map with the UI selections (or defualts)
 exports.renderMaps = function() {
   reset();
-  setEnvironment(year);
-  setSpecies(year, species);  
+  setEnvironment(g_year);
+  setSpecies(g_year, g_species);  
 };
 
 // ---------------------------------------------------------------------------
@@ -117,9 +118,9 @@ function getSpeciesSelect() {
 // the MODIS/061/MOD11A1 data set which runs from Feburary 2000 to present.
 function getYearSlider() {
   return ui.Slider({
-    min: 2001, max: year, 
+    min: 2001, max: g_year, 
     step: 1,
-    value: year,
+    value: g_year,
     style: {
       width: '250px',
       fontWeight: 'bold'
