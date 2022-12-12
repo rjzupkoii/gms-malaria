@@ -20,8 +20,8 @@ var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 var SPECIES_INDEX = 8;    // Species layers selection index
 var ENV_INDEX = 12;       // Environmental layers selection index
 
-// Global environmental and landcover variables
-var environmental = null, gms = shapefile.getGms(), landcover = null;
+// Global environmental and landcover rasters
+var environmental = null, landcover = null;
 
 // Global year and species variables, default values
 var g_year = new Date().getFullYear() - 1;
@@ -216,6 +216,7 @@ function changeLayer(value) {
 // Calculate and add the species specific data to the map
 function setSpecies(year, species) {
   // Process the data that changes based upon the species selected
+  var gms = shapefile.getGms();
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
   // TODO Update this to be a proper slider, for now just use the lower bound
@@ -254,6 +255,7 @@ function setSpecies(year, species) {
 // Calculate and add the year specific environment data to the map
  function setEnvironment(year) {
   // Add the base Landsat layers
+  var gms = shapefile.getGms();
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
   Map.addLayer(imagery, satellite.viz_rgb, satellite.name + ', ' + year);
