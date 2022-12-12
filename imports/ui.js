@@ -267,9 +267,9 @@ function setSpecies(year, species) {
   landcover = ml.classify(imagery, year);
 
   // Base data that only needs to be done once for the year selected
-  addLayer(ENV_INDEX, environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
-  addLayer(ENV_INDEX, environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
   addLayer(ENV_INDEX, landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
+  addLayer(ENV_INDEX, environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
+  addLayer(ENV_INDEX, environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
 }
 
 // Add a layer to the map with the GMS outlined
