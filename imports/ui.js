@@ -72,7 +72,7 @@ exports.renderMaps = function() {
 };
 
 // ---------------------------------------------------------------------------
-// Strictly UI related functions
+// Strictly UI widget related functions
 // ---------------------------------------------------------------------------
 
 // Return an empty layer select
@@ -84,6 +84,19 @@ function getLayerSelect() {
     },
     onChange: changeLayer
   });
+}
+
+// Get the correct legend to display given the selected map label
+function getLegend(value) {
+  // Is this a discrete legend?
+  for (var key in uiux.ui_discrete) {
+    if (value.indexOf(key) > -1) {
+      return widgets.createDiscreteLegend(value, uiux.ui_discrete[key]);
+    }
+  }
+
+  // All others are color bars
+  return widgets.createColorBar(value, layerList.get(value).getVisParams());
 }
 
 // Return a select dropdown box that allows the species to be selected
@@ -132,6 +145,7 @@ function getYearSlider() {
   });
 }
 
+// Reset any dynamic aspects of the UI
 function reset() {
   // Clear any layers that are present
   for (var ndx = Map.layers().length() - 1; ndx >= 0; ndx--) {
@@ -197,18 +211,6 @@ function changeLayer(value) {
   }
   clear(SPECIES_INDEX, value);
   clear(ENV_INDEX, value);
-}
-
-function getLegend(value) {
-  // Is this a discrete legend?
-  for (var key in uiux.ui_discrete) {
-    if (value.indexOf(key) > -1) {
-      return widgets.createDiscreteLegend(value, uiux.ui_discrete[key]);
-    }
-  }
-
-  // All others are color bars
-  return widgets.createColorBar(value, layerList.get(value).getVisParams());
 }
 
 // Calculate and add the species specific data to the map
