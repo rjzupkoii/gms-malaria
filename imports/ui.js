@@ -24,7 +24,7 @@ var ENV_INDEX = 12;       // Environmental layers selection index
 var environmental = null, gms = shapefile.getGms(), landcover = null;
 
 // Global year and species variables, default values
-var year = 2020, species = mosquitoes.aDirus;
+var year = new Date().getFullYear(), species = mosquitoes.aDirus;
 
 // Global element that we need access to after creation
 var legend = null;
