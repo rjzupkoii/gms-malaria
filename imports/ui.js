@@ -17,8 +17,8 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // UI control index constants
-const SPECIES_INDEX = 8;    // Species layers selection index
-const ENV_INDEX = 12;       // Environmental layers selection index
+var SPECIES_INDEX = 8;    // Species layers selection index
+var ENV_INDEX = 12;       // Environmental layers selection index
 
 // Global list of all of the layers that are created for the UI
 var g_layerList = null;
