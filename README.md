@@ -1,9 +1,12 @@
 Greater Mekong Subregion - Malaria Risk Assessment
 --
 
-Google Earth Engine App for assessing potential *Plasmodium falciparum* malaria risk based upon remotely sensed data and climate modeling.
+[Google Earth Engine](https://earthengine.google.com/) App for assessing potential *Plasmodium falciparum* malaria risk based upon remotely sensed data and climate modeling.
 
 ---
+
+## Development Conventions
+Due to Googel Earth Engine being JavaScript based, it may be necessary to use globally scoped variables within a source file. While this should generally be avoided as much as possible, when globals are necessary they should be prefixed with `g_` so as to avoid scoping issues (ex., `var g_example = 42;`). Unless it is a UI element in which case the prefix `ui_` should be used instead. Constant values should be defined using UPPER CASE (ex., `var THE_ANSWER = 42;`) and the `const` keyword should be used if supported. 
 
 ## Development Restrictions
 The development of this project requires two remote repositories to be configured. The first is the repository that resides on [GitHub](https://github.com/) which allows access to project management functionality, and the second is within the [Google Earth Engine](https://earthengine.google.com/) ecosystem and resides at [Google Source](https://opensource.google/) under the [earthengine.googlesource.com](https://earthengine.googlesource.com/) subdomain. Due to code residing on Google Source, there are significant size restrictions in place on the project:
