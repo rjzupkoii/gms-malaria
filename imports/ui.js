@@ -23,15 +23,15 @@ var ENV_INDEX = 12;       // Environmental layers selection index
 // Global environmental and landcover rasters
 var environmental = null, landcover = null;
 
+// Global list of all of the layers that are created for the UI
+var g_layerList = null;
+
 // Global year and species variables, default values
 var g_year = new Date().getFullYear() - 1;
 var g_species = mosquitoes.aDirus;
 
 // Global element that we need access to after creation
 var ui_legend = null;
-
-// Global list of all of the layers that are created for the UI
-var layerList = null;
 
 // Prepare the initial UI state
 exports.prepareUI = function() {
@@ -96,7 +96,7 @@ function getLegend(value) {
   }
 
   // All others are color bars
-  return widgets.createColorBar(value, layerList.get(value).getVisParams());
+  return widgets.createColorBar(value, g_layerList.get(value).getVisParams());
 }
 
 // Return a select dropdown box that allows the species to be selected
@@ -154,7 +154,7 @@ function reset() {
   }
 
   // Clear the dictionary of layers
-  layerList = new ui.data.ActiveDictionary();
+  g_layerList = new ui.data.ActiveDictionary();
   
   // Clear the select boxes
   var panel = ui.root.widgets().get(1);
@@ -181,7 +181,7 @@ function addLayer(index, data, visualization, label) {
   select.items().add(label);
   
   // Add the layer to the list of known layers
-  layerList.set(label, ui.Map.Layer(data, visualization, label));
+  g_layerList.set(label, ui.Map.Layer(data, visualization, label));
 }
 
 // Change the top-most layer that is displayed on that map
@@ -194,7 +194,7 @@ function changeLayer(value) {
   }
 
   // Add the new layer to the map
-  Map.layers().add(layerList.get(value));
+  Map.layers().add(g_layerList.get(value));
   if (ui_legend !== null) {
     Map.remove(ui_legend);
   }
