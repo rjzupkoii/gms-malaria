@@ -103,7 +103,7 @@ function getSpeciesSelect() {
     onChange: function(value) {
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
-          species = mosquitoes[key];
+          g_species = mosquitoes[key];
           exports.renderMaps();
           return;
         }
