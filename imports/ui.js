@@ -211,7 +211,6 @@ function getLegend(value) {
   return widgets.createColorBar(value, layerList.get(value).getVisParams());
 }
 
-
 // Calculate and add the species specific data to the map
 function setSpecies(year, species) {
   // Process the data that changes based upon the species selected
