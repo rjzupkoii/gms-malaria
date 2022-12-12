@@ -126,7 +126,7 @@ function getYearSlider() {
       fontWeight: 'bold'
     },
     onChange: function(value) {
-      year = value;
+      g_year = value;
       exports.renderMaps();
     }
   });
