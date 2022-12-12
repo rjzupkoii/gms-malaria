@@ -199,8 +199,6 @@ function changeLayer(value) {
 }
 
 function getLegend(value) {
-  print(value)
-  
   // Is this a discrete legend?
   for (var key in uiux.ui_discrete) {
     if (value.indexOf(key) > -1) {
