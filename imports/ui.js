@@ -225,10 +225,10 @@ function setSpecies(year, species) {
   // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
       // Raster data
-      'totalRainfall'     : environmental.select('total_rainfall'),
-      'meanTemperature'   : environmental.select('mean_temperature'),
+      'totalRainfall'     : g_environmental.select('total_rainfall'),
+      'meanTemperature'   : g_environmental.select('mean_temperature'),
       'daysOutsideBounds' : intermediate.select('days_outside_bounds'),
-      'landcover'         : landcover,
+      'landcover'         : g_landcover,
       
       // Species data
       'speciesRainfall'   : species.rainfall,
@@ -238,7 +238,7 @@ function setSpecies(year, species) {
   });
   
   // Prepare the risk assessment based upon the landcover and habitat
-  var risk = processing.getRiskAssessment(landcover, habitat);
+  var risk = processing.getRiskAssessment(g_landcover, habitat);
   
   // Anopheles genus specific data
   var selected = species.species + ' / Probable Habitat, ' + year;
@@ -264,14 +264,14 @@ function setSpecies(year, species) {
   visualizeGms();
   
   // Process the data that only changes based on the year
-  environmental = processing.getAnnualRainfall(gms, year);
-  environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
-  landcover = ml.classify(imagery, year);
+  g_environmental = processing.getAnnualRainfall(gms, year);
+  g_environmental = g_environmental.addBands(processing.getMeanTemperature(gms, year));
+  g_landcover = ml.classify(imagery, year);
 
   // Base data that only needs to be done once for the year selected
-  addLayer(ENV_INDEX, landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
-  addLayer(ENV_INDEX, environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
-  addLayer(ENV_INDEX, environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
+  addLayer(ENV_INDEX, g_landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
+  addLayer(ENV_INDEX, g_environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
+  addLayer(ENV_INDEX, g_environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
 }
 
 // Add a layer to the map with the GMS outlined
