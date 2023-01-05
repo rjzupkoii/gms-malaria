@@ -250,6 +250,12 @@ function setSpecies(year, species) {
 
   // Select the default layer
   selectLayer(SPECIES_INDEX, selected);
+  
+  Export.image.toDrive({
+    image: intermediate.select('days_outside_bounds'), 
+    description: 'GMS_test', 
+    folder: 'ee-gms'
+  });
 }
 
 // Calculate and add the year specific environment data to the map
