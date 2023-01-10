@@ -5,12 +5,18 @@
  * for exporting large data sets to Google Drive. 
  */
 
-exports.exportIntermediate = function(intermediate) {
+
+// Create the export tasks for the environmental files. These are created based
+// upon the species, but don't have 
+exports.exportEnvironmental = function(intermediate) {
+  
+  // Days outside of temperature bounds
   Export.image.toDrive({
     image: intermediate.select('days_outside_bounds'), 
     region: gms,
     description: 'GMS_test', 
     folder: 'ee-gms',
+    fileNamePrefix: 'days_outside_',
     maxPixels: 1e10
   });  
 };
