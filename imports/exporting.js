@@ -5,6 +5,17 @@
  * for exporting large data sets to Google Drive. 
  */
 
+exports.exportIntermediate = function(intermediate) {
+  Export.image.toDrive({
+    image: intermediate.select('days_outside_bounds'), 
+    region: gms,
+    description: 'GMS_test', 
+    folder: 'ee-gms',
+    maxPixels: 1e10
+  });  
+};
+
+
 exports.queueExports = function(results) {
   // Land cover classification, this must be it's own image since it's 
   // classified data
