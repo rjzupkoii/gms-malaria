@@ -6,12 +6,11 @@
  */
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
-// Create the export tasks for the environmental files. These may vary based
-// upon the year and species
+// Create the export tasks for the environmental files. Filenames will be prefixed
+// with the year and the species as needed.
 exports.exportEnvironmental = function(environmental, year, species) {
   print(year);
   print(species);
-
 
   var gms = shapeifle.getGms();
   
@@ -21,19 +20,23 @@ exports.exportEnvironmental = function(environmental, year, species) {
     region: gms,
     description: 'GMS_test', 
     folder: 'ee-gms',
-    fileNamePrefix: 'days_outside_',
+    fileNamePrefix: year + '_' + species + '_' + 'days_outside_',
     maxPixels: 1e10
   });
+};
+
+//
+exports.exportLandcover = function(landcover, year) {
+  var filename = year + '_landcover_';
   
-  // Landcover classifications
   Export.image.toDrive({
-    image: environmental.select('days_outside_bounds'), 
+    image: landcover,
     region: gms,
-    description: 'GMS_test', 
+    description: filename, 
     folder: 'ee-gms',
-    fileNamePrefix: 'days_outside_',
+    fileNamePrefix: filename,
     maxPixels: 1e10
-  });  
+  });    
 };
 
 
