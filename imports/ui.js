@@ -283,7 +283,7 @@ function setSpecies(year, species) {
   
   // Create the export tasks
   storage.exportEnvironmental(g_environmental, g_year);
-  storage.exportRaster(g_landcover, g_year + '_landcover_');
+  storage.exportRaster(g_landcover, g_year + '_landcover');
 }
 
 // Add a layer to the map with the GMS outlined
