@@ -10,7 +10,7 @@ var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Create the export tasks for the environmental files.
 exports.exportEnvironmental = function(environmental, year) {
-  var gms = shapeifle.getGms();
+  var gms = shapefile.getGms();
   
   Export.image.toDrive({
     image: environmental.select('mean_temperature'), 
