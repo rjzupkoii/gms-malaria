@@ -4,11 +4,16 @@
  * This script contains various library functions that are indned to be used
  * for exporting large data sets to Google Drive. 
  */
-
+var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
 // Create the export tasks for the environmental files. These may vary based
 // upon the year and species
-exports.exportEnvironmental = function(environmental) {
+exports.exportEnvironmental = function(environmental, year, species) {
+  print(year);
+  print(species);
+
+
+  var gms = shapeifle.getGms();
   
   // Days outside of temperature bounds
   Export.image.toDrive({
@@ -20,7 +25,15 @@ exports.exportEnvironmental = function(environmental) {
     maxPixels: 1e10
   });
   
-  // Landcover classifications, th
+  // Landcover classifications
+  Export.image.toDrive({
+    image: environmental.select('days_outside_bounds'), 
+    region: gms,
+    description: 'GMS_test', 
+    folder: 'ee-gms',
+    fileNamePrefix: 'days_outside_',
+    maxPixels: 1e10
+  });  
 };
 
 
