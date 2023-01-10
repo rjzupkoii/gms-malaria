@@ -3,7 +3,8 @@
  *
  * This script contains various library functions that are intended to be used
  * for exporting large data sets to Google Drive. Note that some of the code
- here is very redundent, but 
+ * here is very redundent, but the assumption is that over time there will be a 
+ * fair degree of difference between indivdiual export tasks.
  */
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
@@ -32,14 +33,12 @@ exports.exportEnvironmental = function(environmental, year) {
 
 // Create the export task for the landcover.
 exports.exportLandcover = function(landcover, year) {
-  var filename = year + '_landcover_';
-  
   Export.image.toDrive({
     image: landcover,
     region: shapefile.getGms(),
-    description: filename, 
+    description: year + '_landcover', 
     folder: 'ee-gms',
-    fileNamePrefix: filename,
+    fileNamePrefix: year + '_landcover_',
     maxPixels: 1e10
   });    
 };
