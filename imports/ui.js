@@ -254,8 +254,8 @@ function setSpecies(year, species) {
   
   // Create the export tasks
   storage.exportRaster(intermediate.select('days_outside_bounds'), g_year + '_' + species.species.replace(' ', '_') + '_days_outside_bounds');
-  storage.exportRaster(habitat, g_year + '_' + species.species + '_habitat');
-  storage.exportRaster(risk, g_year + '_' + species.species + '_risk');
+  // storage.exportRaster(habitat, g_year + '_' + species.species + '_habitat');
+  // storage.exportRaster(risk, g_year + '_' + species.species + '_risk');
 }
 
 // Calculate and add the year specific environment data to the map
