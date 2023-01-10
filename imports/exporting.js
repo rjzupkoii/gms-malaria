@@ -44,3 +44,15 @@ exports.exportLandcover = function(landcover, year) {
     maxPixels: 1e10
   });    
 };
+
+// Create the export task for the raster using the given description.
+exports.exportRaster = function(raster, description) {
+  Export.image.toDrive({
+    image: raster,
+    region: shapefile.getGms(),
+    description: description, 
+    folder: 'ee-gms',
+    fileNamePrefix: description + '_',
+    maxPixels: 1e10
+  });      
+};
