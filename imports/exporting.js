@@ -33,6 +33,8 @@ exports.exportEnvironmental = function(environmental, year) {
 
 // Create the export task for the raster using the given description.
 exports.exportRaster = function(raster, description) {
+  print(description)
+  
   Export.image.toDrive({
     image: raster,
     region: shapefile.getGms(),
