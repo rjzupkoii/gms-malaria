@@ -33,7 +33,7 @@ exports.exportEnvironmental = function(environmental, year) {
 
 // Create the export task for the raster using the given description.
 exports.exportRaster = function(raster, description) {
-  print(description)
+  print(description.replace(' ', '_'))
   
   Export.image.toDrive({
     image: raster,
