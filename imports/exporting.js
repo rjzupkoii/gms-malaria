@@ -37,7 +37,7 @@ exports.exportLandcover = function(landcover, year) {
   
   Export.image.toDrive({
     image: landcover,
-    region: gms,
+    region: shapefile.getGms(),
     description: filename, 
     folder: 'ee-gms',
     fileNamePrefix: filename,
