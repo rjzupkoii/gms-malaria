@@ -253,8 +253,8 @@ function setSpecies(year, species) {
   selectLayer(SPECIES_INDEX, selected);
   
   // Create the export tasks
-  var name = species.species.replace(' ', '_');
-  name = name.replace('.', '');
+  var name = species.species.replace(/ /g, '_');
+  name = name.replace(/./g, '');
   print(name)
   storage.exportRaster(intermediate.select('days_outside_bounds'), g_year + '_' + name + '_days_outside_bounds');
   // storage.exportRaster(habitat, g_year + '_' + species.species + '_habitat');
