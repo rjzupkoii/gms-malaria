@@ -38,7 +38,7 @@ exports.exportRaster = function(raster, description) {
     region: shapefile.getGms(),
     description: description, 
     folder: 'ee-gms',
-    fileNamePrefix: description + '_',
+    fileNamePrefix: description.replace(' ', '_'),
     maxPixels: 1e10
   });      
 };
