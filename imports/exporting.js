@@ -6,19 +6,21 @@
  */
 
 
-// Create the export tasks for the environmental files. These are created based
-// upon the species, but don't have 
-exports.exportEnvironmental = function(intermediate) {
+// Create the export tasks for the environmental files. These may vary based
+// upon the year and species
+exports.exportEnvironmental = function(environmental) {
   
   // Days outside of temperature bounds
   Export.image.toDrive({
-    image: intermediate.select('days_outside_bounds'), 
+    image: environmental.select('days_outside_bounds'), 
     region: gms,
     description: 'GMS_test', 
     folder: 'ee-gms',
     fileNamePrefix: 'days_outside_',
     maxPixels: 1e10
-  });  
+  });
+  
+  // Landcover classifications, th
 };
 
 
