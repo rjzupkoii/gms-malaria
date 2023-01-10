@@ -253,6 +253,7 @@ function setSpecies(year, species) {
   
   Export.image.toDrive({
     image: intermediate.select('days_outside_bounds'), 
+    region: gms,
     description: 'GMS_test', 
     folder: 'ee-gms',
     maxPixels: 1e10
