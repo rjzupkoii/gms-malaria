@@ -11,7 +11,7 @@ var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 var uiux = require('users/rzupko/gms-malaria:assets/uiux.js');
 var visual = require('users/rzupko/gms-malaria:assets/visualization.js');
 
-var exporting = requrie('users/rzupko/gms-malaria:imports/exporting.js');
+var exporting = require('users/rzupko/gms-malaria:imports/exporting.js');
 var landsat = require('users/rzupko/gms-malaria:imports/landsat.js');
 var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
@@ -275,7 +275,8 @@ function setSpecies(year, species) {
   addLayer(ENV_INDEX, g_environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
   
   // Create the export tasks
-  
+  exportEnvironmental(g_environmental, g_year);
+  exportLandcover(g_landcover, g_year);
 }
 
 // Add a layer to the map with the GMS outlined
