@@ -251,6 +251,11 @@ function setSpecies(year, species) {
 
   // Select the default layer
   selectLayer(SPECIES_INDEX, selected);
+  
+  // Create the export tasks
+  storage.exportRaster(intermediate.select('days_outside_bounds'), g_year + '_' + species.species + '_days_outside_bounds');
+  storage.exportRaster(habitat, g_year + '_' + species.species + '_habitat');
+  storage.exportRaster(risk, g_year + '_' + species.species + '_risk');
 }
 
 // Calculate and add the year specific environment data to the map
@@ -276,7 +281,7 @@ function setSpecies(year, species) {
   
   // Create the export tasks
   storage.exportEnvironmental(g_environmental, g_year);
-  storage.exportLandcover(g_landcover, g_year);
+  storage.exportRaster(g_landcover, g_year + '_landcover_');
 }
 
 // Add a layer to the map with the GMS outlined
