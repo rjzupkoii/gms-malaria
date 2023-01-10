@@ -6,11 +6,8 @@
  */
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 
-// Create the export tasks for the environmental files, filenames will be
-// prefixed with the year
+// Create the export tasks for the environmental files.
 exports.exportEnvironmental = function(environmental, year) {
-  print(year);
-
   var gms = shapeifle.getGms();
   
   Export.image.toDrive({
@@ -32,7 +29,7 @@ exports.exportEnvironmental = function(environmental, year) {
   });
 };
 
-//
+// Create the export task for the landcover.
 exports.exportLandcover = function(landcover, year) {
   var filename = year + '_landcover_';
   
