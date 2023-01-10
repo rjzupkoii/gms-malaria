@@ -31,20 +31,6 @@ exports.exportEnvironmental = function(environmental, year) {
   });
 };
 
-// Create the export task for the landcover.
-exports.exportLandcover = function(landcover, year) {
-  var filename = year + '_landcover_';
-  
-  Export.image.toDrive({
-    image: landcover,
-    region: shapefile.getGms(),
-    description: filename, 
-    folder: 'ee-gms',
-    fileNamePrefix: filename,
-    maxPixels: 1e10
-  });    
-};
-
 // Create the export task for the raster using the given description.
 exports.exportRaster = function(raster, description) {
   Export.image.toDrive({
