@@ -55,7 +55,7 @@ exports.prepareUI = function() {
       ui.Label('Environmental condition maps are used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
       ui.Label(' '),
-      ui.Label('')
+      ui.Label(' ')
     ], 
     'flow', { 'width' : '300px' });
   ui.root.widgets().add(toolPanel);
