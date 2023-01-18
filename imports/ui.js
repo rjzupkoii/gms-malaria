@@ -41,7 +41,7 @@ exports.prepareUI = function() {
   
   // Add the tool panel with the controls
   var toolPanel = ui.Panel([
-      ui.Label('Greater Mekong Subregion: Malaria Vector Risk Assessment',
+      ui.Label('Greater Mekong Subregion:<br /> Malaria Vector Risk Assessment',
         { fontSize: '1.5em', fontWeight: 'bold'}),
       ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development in the given year.'),
       getSpeciesSelect(),
