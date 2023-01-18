@@ -230,7 +230,7 @@ function setSpecies(year, species) {
       
       // Species data
       'speciesRainfall'   : species.rainfall,
-      'speciesLife'       : species.lifeExpectancy
+      'speciesLife'       : species.lifeExpectancy,
   
       // Use the lower bound of the SD for the UI, the Python scripts will interogate the full range    
       'speciesMeanLower'  : species.tempMean[0] - species.tempMeanSD[0],
