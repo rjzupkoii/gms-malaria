@@ -45,8 +45,7 @@ exports.prepareUI = function() {
       ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development in the given year.'),
       getSpeciesSelect(),
       getYearSlider(),
-      ui.Label(' '),
-      ui.Label(' '),
+      ui.Label(' '), ui.Label(' '),
       ui.Label('Species Habitat Maps', {fontWeight: 'bold'}),
       ui.Label('Species habitat maps descibe the likely habitat for the species, and possible risk for malaria tranmission.'),
       getLayerSelect(),
@@ -54,8 +53,7 @@ exports.prepareUI = function() {
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
       ui.Label('Environmental condition maps are used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
-      ui.Label(' '),
-      ui.Label(' '),
+      ui.Label(' '), ui.Label(' '), ui.Label(' '),
       ui.Label('This Earth Engine App is part of a research project at the Center for Infectious Disease Dynamics (CIDD), Pennsylvania State University. Data sources, source code, and project documentation can be found on GitHub.')
     ], 
     'flow', { 'width' : '375px' });
