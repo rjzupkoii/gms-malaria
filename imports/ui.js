@@ -81,9 +81,7 @@ exports.renderMaps = function() {
 function getLayerSelect() {
   return ui.Select({
     placeholder: 'Select a layer...',
-    style: {
-      width: '350px',
-    },
+    style: { width: '350px', },
     onChange: changeLayer
   });
 }
@@ -112,9 +110,7 @@ function getSpeciesSelect() {
   return ui.Select({
     items: speciesList,
     value: mosquitoes.aDirus.species,
-    style: {
-      width: '250px',
-    },
+    style: { width: '350px', },
     onChange: function(value) {
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
