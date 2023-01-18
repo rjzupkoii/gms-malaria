@@ -138,7 +138,7 @@ function getTemperatureSlider(min, max) {
       fontWeight: 'bold'
     },
     onChange: function(value) {
-      print(value)
+      print(value);
     }
   });
 }
