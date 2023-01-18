@@ -57,7 +57,7 @@ exports.prepareUI = function() {
       ui.Label(' '),
       ui.Label(' ')
     ], 
-    'flow', { 'width' : '325px' });
+    'flow', { 'width' : '400px' });
   ui.root.widgets().add(toolPanel);
   
   // Register the hook to detect the change in layer
