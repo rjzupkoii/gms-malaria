@@ -53,7 +53,7 @@ exports.prepareUI = function() {
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
       ui.Label('Environmental condition maps are used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
-      ui.Label(' '), ui.Label(' '), ui.Label(' '),
+      ui.Label(' '), ui.Label(' '), ui.Label(' '), ui.Label(' '), ui.Label(' '),
       ui.Label('This Earth Engine App is part of a research project at the Center for Infectious Disease Dynamics (CIDD), Pennsylvania State University. Data sources, source code, and project documentation can be found on GitHub.'),
       ui.Label('GMS Malaria at GitHub').setUrl('https://github.com/rjzupkoii/gms-malaria'),
     ], 
