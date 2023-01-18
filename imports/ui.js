@@ -59,7 +59,7 @@ exports.prepareUI = function() {
     'flow', { 'width' : '375px' });
   var link = ui.Label('GMS Malaria at GitHub');
   link.targetUrl('https://github.com/rjzupkoii/gms-malaria');
-  
+  toolPanel.add(link);
   ui.root.widgets().add(toolPanel);
   
   // Register the hook to detect the change in layer
