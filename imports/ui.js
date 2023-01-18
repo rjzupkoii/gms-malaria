@@ -18,8 +18,8 @@ var storage = require('users/rzupko/gms-malaria:imports/exporting.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // UI control index constants
-var SPECIES_INDEX = 8;    // Species layers selection index
-var ENV_INDEX = 12;       // Environmental layers selection index
+var SPECIES_INDEX = 7;    // Species layers selection index
+var ENV_INDEX = 11;       // Environmental layers selection index
 
 // Global list of all of the layers that are created for the UI
 var g_layerList = null;
@@ -45,7 +45,7 @@ exports.prepareUI = function() {
       ui.Label('Risk assessment is based upon environmental envelope for the Anopheles species selected and proximity to human development in the given year.'),
       getSpeciesSelect(),
       getYearSlider(),
-      ui.Label(' '), ui.Label(' '),
+      ui.Label(' '),
       ui.Label('Species Habitat Maps', {fontWeight: 'bold'}),
       ui.Label('Species habitat maps descibe the likely habitat for the species, and possible risk for malaria tranmission.'),
       getLayerSelect(),
@@ -53,7 +53,7 @@ exports.prepareUI = function() {
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
       ui.Label('Environmental condition maps are used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
-      ui.Label(' '), ui.Label(' '), ui.Label(' '), ui.Label(' '), ui.Label(' '),
+      ui.Label(' '), ui.Label(' '),
       ui.Label('This Earth Engine App is part of a research project at the Center for Infectious Disease Dynamics (CIDD), Pennsylvania State University. Data sources, source code, and project documentation can be found on GitHub.'),
       ui.Label('GMS Malaria at GitHub').setUrl('https://github.com/rjzupkoii/gms-malaria'),
     ], 
