@@ -128,21 +128,6 @@ function getSpeciesSelect() {
   });
 }
 
-function getTemperatureSlider(min, max) {
-  return ui.Slider({
-    min: min, max: max,
-    step: 0.1, 
-    value: min,
-    style: {
-      width: '250px',
-      fontWeight: 'bold'
-    },
-    onChange: function(value) {
-      print(value);
-    }
-  });
-}
-
 // Return a select dropdown box that allows the year to be selected, note that we are constained by
 // the MODIS/061/MOD11A1 data set which runs from Feburary 2000 to present.
 function getYearSlider() {
@@ -235,9 +220,8 @@ function setSpecies(year, species) {
   var gms = shapefile.getGms();
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
-  // TODO Update this to be a proper slider, for now just use the lower bound
+  // Use the lower bound of the SD for the UI, the Python scripts will interogate the full range
   var sd = species.tempMeanSD[0];
-  print(species.tempMeanSD)
   
   // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
