@@ -59,11 +59,6 @@ exports.prepareUI = function() {
     ], 
     'flow', { 'width' : '375px' });
   ui.root.widgets().add(toolPanel);
-  
-  // Register the hook to detect the change in layer
-  Map.drawingTools().onLayerSelect(function(selected, widget) {
-    print('selected');
-  });
 };
 
 // Render the map with the UI selections (or defualts)
