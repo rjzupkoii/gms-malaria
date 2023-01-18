@@ -129,13 +129,9 @@ function getSpeciesSelect() {
 // the MODIS/061/MOD11A1 data set which runs from Feburary 2000 to present.
 function getYearSlider() {
   return ui.Slider({
-    min: 2001, max: g_year, 
-    step: 1,
+    min: 2001, max: g_year,  step: 1,
     value: g_year,
-    style: {
-      width: '250px',
-      fontWeight: 'bold'
-    },
+    style: { width: '350px', fontWeight: 'bold' },
     onChange: function(value) {
       g_year = value;
       exports.renderMaps();
