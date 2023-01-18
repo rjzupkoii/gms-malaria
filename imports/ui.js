@@ -82,7 +82,7 @@ function getLayerSelect() {
   return ui.Select({
     placeholder: 'Select a layer...',
     style: {
-      width: '225px',
+      width: '350px',
     },
     onChange: changeLayer
   });
