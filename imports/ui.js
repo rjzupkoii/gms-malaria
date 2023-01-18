@@ -222,6 +222,7 @@ function setSpecies(year, species) {
   
   // TODO Update this to be a proper slider, for now just use the lower bound
   var sd = species.tempMeanSD[0];
+  print(species.tempMeanSD)
   
   // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
