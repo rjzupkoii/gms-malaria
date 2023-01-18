@@ -220,9 +220,6 @@ function setSpecies(year, species) {
   var gms = shapefile.getGms();
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
   
-  // Use the lower bound of the SD for the UI, the Python scripts will interogate the full range
-  var sd = species.tempMeanSD[0];
-  
   // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
       // Raster data
@@ -233,9 +230,11 @@ function setSpecies(year, species) {
       
       // Species data
       'speciesRainfall'   : species.rainfall,
-      'speciesMeanLower'  : species.tempMean[0] - sd,
-      'speciesMeanUpper'  : species.tempMean[1] + sd,
       'speciesLife'       : species.lifeExpectancy
+  
+      // Use the lower bound of the SD for the UI, the Python scripts will interogate the full range    
+      'speciesMeanLower'  : species.tempMean[0] - species.tempMeanSD[0],
+      'speciesMeanUpper'  : species.tempMean[1] + species.tempMeanSD[0],
   });
   
   // Prepare the risk assessment based upon the landcover and habitat
