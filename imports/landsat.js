@@ -35,18 +35,17 @@ landsat8 = {
    
 // Properties for Landsat 8 data
 landsat7 = {
-      'collection' : 'LANDSAT/LE07/C02/T1_L2',
-      'bands' : ['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B7'],
-      'name' : 'Landsat 7',
-      'viz_cir' : {
-        'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
-        'min' : 6100.692307692308,
-        'max' : 24248.428571428572
-      },
-      'viz_rgb' : {
-        'bands' : ['SR_B3', 'SR_B2', 'SR_B1'],
-        'min' : 6100.692307692308,
-        'max' : 24248.428571428572
-      }
-    };
-  };
+  'collection' : 'LANDSAT/LE07/C02/T1_L2',
+  'bands' : ['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B7'],
+  'name' : 'Landsat 7',
+  'viz_cir' : {
+    'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
+    'min' : 6100.692307692308,
+    'max' : 24248.428571428572
+  },
+  'viz_rgb' : {
+    'bands' : ['SR_B3', 'SR_B2', 'SR_B1'],
+    'min' : 6100.692307692308,
+    'max' : 24248.428571428572
+  }
+};
