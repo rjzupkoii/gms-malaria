@@ -1,7 +1,7 @@
 /*
  * ui.js
  *
- * This script contains various functions realted to setting up and working 
+ * This script contains various functions related to setting up and working 
  * with UI elements. Some of the functions (ex., addSpecies, addYear) are 
  * debatably processing related, but bulk of the work is UI driven.
  */
@@ -47,7 +47,7 @@ exports.prepareUI = function() {
       getYearSlider(),
       ui.Label(' '),
       ui.Label('Species Habitat Maps', {fontWeight: 'bold'}),
-      ui.Label('Species habitat maps descibe the likely habitat for the species, and possible risk for malaria tranmission.'),
+      ui.Label('Species habitat maps describe the likely habitat for the species, and possible risk for malaria transmission.'),
       getLayerSelect(),
       ui.Label(' '),
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
@@ -61,7 +61,7 @@ exports.prepareUI = function() {
   ui.root.widgets().add(toolPanel);
 };
 
-// Render the map with the UI selections (or defualts)
+// Render the map with the UI selections (or defaults)
 exports.renderMaps = function() {
   reset();
   setEnvironment(g_year);
@@ -115,13 +115,13 @@ function getSpeciesSelect() {
         }
       }
       // Since this is called from a UI element, this shouldn't happen
-      throw new Error('Unexpected error occured while processing UI event, received: '.concat(value));
+      throw new Error('Unexpected error occurred while processing UI event, received: '.concat(value));
     }
   });
 }
 
-// Return a select dropdown box that allows the year to be selected, note that we are constained by
-// the MODIS/061/MOD11A1 data set which runs from Feburary 2000 to present.
+// Return a select dropdown box that allows the year to be selected, note that we are constrained by
+// the MODIS/061/MOD11A1 data set which runs from February 2000 to present.
 function getYearSlider() {
   return ui.Slider({
     min: 2001, max: g_year,  step: 1,
@@ -220,7 +220,7 @@ function setSpecies(year, species) {
       'speciesRainfall'   : species.rainfall,
       'speciesLife'       : species.lifeExpectancy,
   
-      // Use the lower bound of the SD for the UI, the Python scripts will interogate the full range    
+      // Use the lower bound of the SD for the UI, the Python scripts will interrogate the full range    
       'speciesMeanLower'  : species.tempMean[0] - species.tempMeanSD[0],
       'speciesMeanUpper'  : species.tempMean[1] + species.tempMeanSD[0],
   });
@@ -266,7 +266,7 @@ function setSpecies(year, species) {
   // Base data that only needs to be done once for the year selected
   addLayer(ENV_INDEX, g_landcover, visual.viz_trainingPalette, 'Classified Landcover, ' + year);
   addLayer(ENV_INDEX, g_environmental.select('mean_temperature'), visual.viz_temperature, 'Mean Temperature, ' + year + ' (MOD11A1.061)');
-  addLayer(ENV_INDEX, g_environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfal, ' + year + ' (CHIRPS/PENTAD)');
+  addLayer(ENV_INDEX, g_environmental.select('total_rainfall'), visual.viz_rainfall, 'Total Annual Rainfall, ' + year + ' (CHIRPS/PENTAD)');
   
   // Create the export tasks
   storage.exportEnvironmental(g_environmental, g_year);

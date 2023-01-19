@@ -1,10 +1,10 @@
 /*
  * exporting.js
  *
- * This script contains various library functions that are indned to be used
+ * This script contains various library functions that are intended to be used
  * for exporting large data sets to Google Drive. However, for more complex
  * operations the intent is for Python to be used for automation and these 
- * exports to be used for validation of the underlying funtions.
+ * exports to be used for validation of the underlying functions.
  */
 var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
 

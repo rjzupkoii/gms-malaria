@@ -1,7 +1,7 @@
 /*
  * ml.js
  *
- * This script contains the data and functions related to machine leanring (ML).
+ * This script contains the data and functions related to machine learning (ML).
  */
 var features = require('users/rzupko/gms-malaria:assets/features.js'); 
 var landsat = require('users/rzupko/gms-malaria:imports/landsat.js');
@@ -17,7 +17,7 @@ exports.classify = function(imagery, year) {
   return classified.mosaic();
 };
 
-// Get the trained classifer that will be used to determine the landcover class
+// Get the trained classifier that will be used to determine the landcover class
 exports.getClassifier = function(features, satellite) {
   // Sample the labeled features
   var image = exports.getReferenceImage(satellite);
@@ -37,14 +37,14 @@ exports.getClassifier = function(features, satellite) {
 
 // Load the reference image for classification
 exports.getReferenceImage = function(satellite) {
-  // Orginal training data
+  // Original training data
   var p125_r50 = ee.ImageCollection(satellite.collection)
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 125),
       ee.Filter.eq('WRS_ROW', 50)))
     .filterDate('2020-01-01', '2020-12-31');
     
-  // Mountainus terrain 
+  // Mountainous terrain 
   var p132_r42 = ee.ImageCollection(satellite.collection)
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 132),
