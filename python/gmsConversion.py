@@ -10,8 +10,9 @@ import pathlib
 
 def convert():
     if not os.path.exists('temp'): os.makedirs('temp')
-    for file in [ '../assets/features.js', '../assets/gms_wrs2_swaths.js', '../assets/shapefiles.js', ]:
-        output = file.replace('../assets', 'temp').replace('.js', '.py')
+    for file in [ '../assets/features.js', '../assets/gms_wrs2_swaths.js', '../assets/shapefiles.js', '../imports/landsat.js' ]:
+        output = file.replace('../assets', 'temp').replace('../imports', 'temp')
+        output = output.replace('.js', '.py')
         convert_file(file, output)
 
 
@@ -49,6 +50,14 @@ def convert_file(input, output):
                 snippet = python[first:index]
                 python = python.replace(snippet, snippet.replace(' ', ''))
             start = index + 1
+    
+    # Remove the leading function
+    if 'landsat.js' in input:
+        # NOTE that we are making a lot of assumptions about the layout fo the file here
+        start = python.find('def')
+        end = python.find('landsat8 =')
+        snippet = python[start:end]
+        python = python.replace(snippet, '')
 
     # Save our data and clean-up
     with open(output, 'w') as out:
