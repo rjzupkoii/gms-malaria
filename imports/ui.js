@@ -22,7 +22,7 @@ var SPECIES_INDEX = 7;        // Species layers selection index
 var ENV_INDEX = 11;           // Environmental layers selection index
 
 var PANEL_WIDTH = '27em';     // Width of the main panel
-var CONTROL_WIDTH = '26em';   // Width of select controls
+var CONTROL_WIDTH = '25em';   // Width of select controls
 
 // Global list of all of the layers that are created for the UI
 var g_layerList = null;
