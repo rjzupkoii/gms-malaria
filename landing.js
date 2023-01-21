@@ -7,7 +7,5 @@
  */
 var gmsUi = require('users/rzupko/gms-malaria:imports/ui.js');
 
-print(window.screen.availWidth);
-
-// gmsUi.prepareUI();
-// gmsUi.renderMaps();
+gmsUi.prepareUI();
+gmsUi.renderMaps();
