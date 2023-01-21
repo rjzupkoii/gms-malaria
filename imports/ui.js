@@ -18,11 +18,11 @@ var storage = require('users/rzupko/gms-malaria:imports/exporting.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // UI control index constants
-var SPECIES_INDEX = 7;    // Species layers selection index
-var ENV_INDEX = 11;       // Environmental layers selection index
+var SPECIES_INDEX = 7;        // Species layers selection index
+var ENV_INDEX = 11;           // Environmental layers selection index
 
-var PANEL_WIDTH = '27em';   // Width of the main panel
-var SELECT_WIDTH = '26em';  // Width of select controls
+var PANEL_WIDTH = '27em';     // Width of the main panel
+var CONTROL_WIDTH = '26em';   // Width of select controls
 
 // Global list of all of the layers that are created for the UI
 var g_layerList = null;
