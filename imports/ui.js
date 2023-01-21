@@ -18,8 +18,11 @@ var storage = require('users/rzupko/gms-malaria:imports/exporting.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
 // UI control index constants
-var SPECIES_INDEX = 7;    // Species layers selection index
-var ENV_INDEX = 11;       // Environmental layers selection index
+var SPECIES_INDEX = 7;        // Species layers selection index
+var ENV_INDEX = 11;           // Environmental layers selection index
+
+var PANEL_WIDTH = '27em';     // Width of the main panel
+var CONTROL_WIDTH = '25em';   // Width of select controls
 
 // Global list of all of the layers that are created for the UI
 var g_layerList = null;
@@ -57,7 +60,7 @@ exports.prepareUI = function() {
       ui.Label('This Earth Engine App is part of a research project at the Center for Infectious Disease Dynamics (CIDD), Pennsylvania State University. Data sources, source code, and project documentation can be found on GitHub.'),
       ui.Label('GMS Malaria at GitHub').setUrl('https://github.com/rjzupkoii/gms-malaria'),
     ], 
-    'flow', { 'width' : '375px' });
+    'flow', { 'width' : PANEL_WIDTH });
   ui.root.widgets().add(toolPanel);
 };
 
@@ -76,7 +79,7 @@ exports.renderMaps = function() {
 function getLayerSelect() {
   return ui.Select({
     placeholder: 'Select a layer...',
-    style: { width: '350px', },
+    style: { width: CONTROL_WIDTH, },
     onChange: changeLayer
   });
 }
@@ -105,7 +108,7 @@ function getSpeciesSelect() {
   return ui.Select({
     items: speciesList,
     value: mosquitoes.aDirus.species,
-    style: { width: '350px', },
+    style: { width: CONTROL_WIDTH, },
     onChange: function(value) {
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
@@ -126,7 +129,7 @@ function getYearSlider() {
   return ui.Slider({
     min: 2001, max: g_year,  step: 1,
     value: g_year,
-    style: { width: '350px', fontWeight: 'bold' },
+    style: { width: CONTROL_WIDTH, fontWeight: 'bold' },
     onChange: function(value) {
       g_year = value;
       exports.renderMaps();
