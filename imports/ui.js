@@ -79,7 +79,7 @@ exports.renderMaps = function() {
 function getLayerSelect() {
   return ui.Select({
     placeholder: 'Select a layer...',
-    style: { width: SELECT_WIDTH, },
+    style: { width: CONTROL_WIDTH, },
     onChange: changeLayer
   });
 }
@@ -108,7 +108,7 @@ function getSpeciesSelect() {
   return ui.Select({
     items: speciesList,
     value: mosquitoes.aDirus.species,
-    style: { width: SELECT_WIDTH, },
+    style: { width: CONTROL_WIDTH, },
     onChange: function(value) {
       for (var key in mosquitoes) {
         if (mosquitoes[key].species.localeCompare(value) === 0) {
@@ -129,7 +129,7 @@ function getYearSlider() {
   return ui.Slider({
     min: 2001, max: g_year,  step: 1,
     value: g_year,
-    style: { width: SELECT_WIDTH, fontWeight: 'bold' },
+    style: { width: CONTROL_WIDTH, fontWeight: 'bold' },
     onChange: function(value) {
       g_year = value;
       exports.renderMaps();
