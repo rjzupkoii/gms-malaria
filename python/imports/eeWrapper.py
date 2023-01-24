@@ -1,10 +1,11 @@
-# processing.py
+# gmsEEWrapper.py
 #
-# This script warps all of the relevant Earth Engine functionality.
-import gmsConversion
+# This script warps all of the relevant Earth Engine functionality so that it  
+# can be easily invoked by the iterate function in the main gmsMalaria script.
+import imports.jsConversion as jsConversion
 import sys
 
-class gmsProcessing:
+class gmsEEWrapper:
     # Shapefiles
     shp_gms = None
     
@@ -27,7 +28,7 @@ class gmsProcessing:
     # Initialize the connection to Earth Engine and load any additional data we need
     def init(self):
         # Parse the Earth Engine Javascript files
-        gmsConversion.convert()
+        jsConversion.convert()
 
         # Initialize the library, this can take a couple seconds
         sys.stdout.write("Initializing Earth Engine...")
@@ -59,6 +60,9 @@ class gmsProcessing:
         import temp.landsat as landsat
         if self.year > 2013: self.json_satellite = landsat.landsat8
         else: self.json_satellite = landsat.landsat7
+
+        # Get the imagery for the year
+        
         
 
     def queue(self, scalar):

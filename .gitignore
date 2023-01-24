@@ -1,4 +1,4 @@
 .vscode
 
 python/temp/
-python/__pycache__/
+**/__pycache__/

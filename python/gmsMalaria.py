@@ -2,29 +2,32 @@
 
 # gmsMalaria.py
 #
-# This Python script uses the Earth Engine Python API to queue batch jobs using
-# the same algorithm that is contained in the JavaScript files. 
+# This Python script is the main entry point for the batch processing of 
+# imagery data in the Greater Mekong Subregion (GMS). It's written in a 
+# semi-general manner so that it can be expanded to cover other parts of the 
+# world, but conceptually is very tied to the original JavaScript code run via
+# https://code.earthengine.google.com/ or as an Earth Engine App.
 # 
 # NOTE: This script assumes that authentication has already been handled by 
 # prior to being run.
-import gmsConversion
-from gmsProcessing import gmsProcessing
+import imports.jsConversion as conversion
+import imports.eeWrapper as ee
 
 
-def iterate(processor):
+def iterate(wrapper):
     # Load common objects for this function    
-    mosquitoes = gmsConversion.load_mosquitoes()
+    mosquitoes = conversion.load_mosquitoes()
 
     # Iterate over each year 
     for year in range(2001, 2022 + 1):
-        processor.set_year(year)
+        wrapper.set_year(year)
 
         # Iterate over each type of mosquito
         for key in mosquitoes:
 
             # Reset the zeroed flag and set the vector
             zeroed = False
-            processor.set_vector(mosquitoes[key])
+            wrapper.set_vector(mosquitoes[key])
 
             # Iterate over each increment for the standard deviation
             minima = int(mosquitoes[key]['tempMeanSD'][0] * 100)
@@ -34,20 +37,20 @@ def iterate(processor):
                 if value == 0: zeroed = True
 
                 # Queue the job
-                processor.queue(value / 100.0)
+                wrapper.queue(value / 100.0)
 
             # If we didn't encounter a zero scalar, then queue a last job so we can get a baseline
-            if not zeroed: processor.queue(0.0)
+            if not zeroed: wrapper.queue(0.0)
 
 
 def main():    
     # Prepare the processor
-    processor = gmsProcessing()
-    processor.init()
+    wrapper = ee.gmsEEWrapper()
+    wrapper.init()
 
     # Start queuing the jobs
-    iterate(processor)
-    print("Queued Jobs: ", processor.get_count())
+    iterate(wrapper)
+    print("Queued Jobs: ", wrapper.get_count())
 
 
 if __name__ == '__main__':
