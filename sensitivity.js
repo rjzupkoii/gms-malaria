@@ -5,10 +5,22 @@
  */
 var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js');
 
+// Generate the list of years and itterte on it
 var years = generateList(2001, 2022, 1);
 for (var ndx in years) {
+  
+  // Iterate on all of the mosquitoes
   for (var key in mosquitoes) {
-    print(years[ndx], mosquitoes[key].species);
+    
+    // Generate the list of deviations to test for sensitivity
+    var mosquito = mosquitoes[key];
+    var deviations = generateList(mosquito.tempMeanSD[0], mosquito.tempMeanSD[1], 0.25);
+    if (deviations[0] !== 0) {
+      deviations.push(0.0);
+    }
+    for (var ndy in deviations) {
+      print(years[ndx], mosquitoes[key].species, deviations[ndy]);
+    }
   }
 }
 
