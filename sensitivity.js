@@ -41,6 +41,7 @@ function generateList(first, last, step) {
   return result;
 }
 
+// Queue the processing job
 function queueJob(year, mosquito, deviation) {
   print(year, mosquito.species, deviation);
 }
