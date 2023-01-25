@@ -19,7 +19,7 @@ for (var ndx in years) {
       deviations.push(0.0);
     }
     for (var ndy in deviations) {
-      queueJob(years[ndx], mosquitoes[key].species, deviations[ndy]);
+      queueJob(years[ndx], mosquitoes[key], deviations[ndy]);
     }
   }
 }
