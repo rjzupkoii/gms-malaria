@@ -5,21 +5,28 @@
  */
 var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js');
 
-// Generate the list of years and itterte on it
-var years = generateList(2001, 2022, 1);
-for (var ndx in years) {
-  
-  // Iterate on all of the mosquitoes
-  for (var key in mosquitoes) {
+generateJobs()
+
+
+// Main entry point for the script, generates the full list of jobs to be 
+// run on Earth Engine to conduct the sensitivity analysis.
+function generateJobs() {
+  // Generate the list of years and itterte on it
+  var years = generateList(2001, 2022, 1);
+  for (var ndx in years) {
     
-    // Generate the list of deviations to test for sensitivity
-    var mosquito = mosquitoes[key];
-    var deviations = generateList(mosquito.tempMeanSD[0], mosquito.tempMeanSD[1], 0.25);
-    if (deviations[0] !== 0) {
-      deviations.push(0.0);
-    }
-    for (var ndy in deviations) {
-      queueJob(years[ndx], mosquitoes[key], deviations[ndy]);
+    // Iterate on all of the mosquitoes
+    for (var key in mosquitoes) {
+      
+      // Generate the list of deviations to test for sensitivity
+      var mosquito = mosquitoes[key];
+      var deviations = generateList(mosquito.tempMeanSD[0], mosquito.tempMeanSD[1], 0.25);
+      if (deviations[0] !== 0) {
+        deviations.push(0.0);
+      }
+      for (var ndy in deviations) {
+        queueJob(years[ndx], mosquitoes[key], deviations[ndy]);
+      }
     }
   }
 }
