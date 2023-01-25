@@ -19,7 +19,7 @@ for (var ndx in years) {
       deviations.push(0.0);
     }
     for (var ndy in deviations) {
-      print(years[ndx], mosquitoes[key].species, deviations[ndy]);
+      queueJob(years[ndx], mosquitoes[key].species, deviations[ndy]);
     }
   }
 }
@@ -32,4 +32,8 @@ function generateList(first, last, step) {
     result.push(first);
   }
   return result;
+}
+
+function queueJob(year, mosquito, deviation) {
+  print(year, mosquito.species, deviation);
 }
