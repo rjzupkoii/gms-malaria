@@ -5,7 +5,7 @@
  */
 var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js');
 
-generateJobs()
+generateJobs();
 
 
 // Main entry point for the script, generates the full list of jobs to be 
