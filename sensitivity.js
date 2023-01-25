@@ -12,7 +12,7 @@ for (var ndx in years) {
   }
 }
 
-// Generate the full 
+// Generate a list from the start value to the end value, inclusive by the given step
 function generateList(first, last, step) {
   var result = [first];
   while (first < last) {
