@@ -82,10 +82,8 @@ function queueVectorJob(year, species, deviation) {
   environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
   var landcover = ml.classify(imagery, year);
 
-  // Prepare the rasters that are affected by the standard deviation
+  // Prepare the rasters that are specific to the vector
   var intermediate = processing.getTemperatureBounds(gms, year, species.tempMin, species.tempMax);
-  
-  // Classify the habitat based upon the inputs
   var habitat = processing.getHabitat({
       // Raster data
       'totalRainfall'     : environmental.select('total_rainfall'),
@@ -97,18 +95,19 @@ function queueVectorJob(year, species, deviation) {
       'speciesRainfall'   : species.rainfall,
       'speciesLife'       : species.lifeExpectancy,
   
-      // Use the lower bound of the SD for the UI, the sensitivity script will interoage the full range
+      // Apply the devation value supplied
       'speciesMeanLower'  : species.tempMean[0] - deviation,
       'speciesMeanUpper'  : species.tempMean[1] + deviation,
   });
-  
-  // Prepare the risk assessment based upon the landcover and habitat
   var risk = processing.getRiskAssessment(landcover, habitat);
   
-  // Create the export tasks
+  // Update the strings to comply with the export filename constraints
   var name = species.species.replace(/ /g, '_');
   name = name.replace(/\./g, '');
-  storage.exportRaster(intermediate.select('days_outside_bounds'), year + '_' + name + '_days_outside_bounds');
-  storage.exportRaster(habitat, year + '_' + name + '_habitat');
-  storage.exportRaster(risk, year + '_' + name + '_risk');  
+  var sd = deviation.toString().replace('.', '-');
+  
+  // Create the export tasks
+  storage.exportRaster(intermediate.select('days_outside_bounds'), year + '_' + name + '_' + sd + '_days_outside_bounds');
+  storage.exportRaster(habitat, year + '_' + name + '_' + sd + '_habitat');
+  storage.exportRaster(risk, year + '_' + name + '_' + sd + '_risk');  
 }
