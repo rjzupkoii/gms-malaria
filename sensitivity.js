@@ -21,6 +21,7 @@ function generateJobs() {
   // Generate the list of years and itterte on it
   var years = generateList(2001, 2022, 1);
   for (var ndx in years) {
+    queueEnvironmentalJob(years[ndx]);
     
     // Iterate on all of the mosquitoes
     for (var key in mosquitoes) {
