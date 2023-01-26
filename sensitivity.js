@@ -20,6 +20,8 @@ generateJobs(year);
 // Main entry point for the script, generates the full list of jobs to be 
 // run on Earth Engine to conduct the sensitivity analysis.
 function generateJobs(year) {
+  var count = 0;
+  
   // Iterate on all of the mosquitoes
   for (var key in mosquitoes) {
 
@@ -33,8 +35,10 @@ function generateJobs(year) {
     // Iterate on the list of deviations
     for (var ndy in deviations) {
       queueVectorJob(year, mosquitoes[key], deviations[ndy]);
+      count++;
     }
   }
+  print('Tasks Created:' + count);
 }
 
 // Generate a list from the start value to the end value, inclusive by the step
