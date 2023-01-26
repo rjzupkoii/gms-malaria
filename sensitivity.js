@@ -12,6 +12,8 @@ var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var storage = require('users/rzupko/gms-malaria:imports/exporting.js');
 
+
+// NOTE that we are limiting things to a single year to reduce the overhead
 var year = 2001;
 queueEnvironmentalJob(year);
 generateJobs(year);
