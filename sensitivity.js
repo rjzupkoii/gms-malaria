@@ -12,7 +12,7 @@ var ml = require('users/rzupko/gms-malaria:imports/ml.js');
 var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var storage = require('users/rzupko/gms-malaria:imports/exporting.js');
 
-generateJobs();
+generateJobs(2001);
 
 
 // Main entry point for the script, generates the full list of jobs to be 
