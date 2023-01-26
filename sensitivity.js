@@ -34,11 +34,8 @@ function generateJobs() {
       }
       for (var ndy in deviations) {
         queueVectorJob(years[ndx], mosquitoes[key], deviations[ndy]);
-        break;
       }
-      break;
     }
-    break;
   }
 }
 
