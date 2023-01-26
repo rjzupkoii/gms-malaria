@@ -1,4 +1,4 @@
-/*
+3/*
  * sensitivity.js
  *
  * Script to queue the processing tasks for sensivity analysis.
@@ -41,7 +41,10 @@ function generateList(first, last, step) {
   return result;
 }
 
-// Queue the processing job
+// Queue the processing job.
+//
+// NOTE this isn't the most efficent way of generating the jobs, but it does keep
+// all of the server-side functinality in the same place.
 function queueJob(year, mosquito, deviation) {
   print(year, mosquito.species, deviation);
 }
