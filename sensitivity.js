@@ -34,8 +34,11 @@ function generateJobs() {
       }
       for (var ndy in deviations) {
         queueVectorJob(years[ndx], mosquitoes[key], deviations[ndy]);
+        break;
       }
+      break;
     }
+    break;
   }
 }
 
@@ -59,12 +62,12 @@ function queueEnvironmentalJob(year) {
   var satellite = landsat.getSatellite(year);
   var imagery = processing.getImages(satellite, gms_wrs2.indices, gms, year);
   var environmental = processing.getAnnualRainfall(gms, year);
-  environmental = g_environmental.addBands(processing.getMeanTemperature(gms, year));
+  environmental = environmental.addBands(processing.getMeanTemperature(gms, year));
   var landcover = ml.classify(imagery, year);
 
   // Create the export tasks
-  storage.exportEnvironmental(g_environmental, g_year);
-  storage.exportRaster(g_landcover, g_year + '_landcover');  
+  storage.exportEnvironmental(environmental, year);
+  storage.exportRaster(landcover, year + '_landcover');  
 }
 
 // Queue the batch processing jobs that are specific to the vector.
@@ -100,12 +103,12 @@ function queueVectorJob(year, species, deviation) {
   });
   
   // Prepare the risk assessment based upon the landcover and habitat
-  var risk = processing.getRiskAssessment(g_landcover, habitat);
+  var risk = processing.getRiskAssessment(landcover, habitat);
   
   // Create the export tasks
   var name = species.species.replace(/ /g, '_');
   name = name.replace(/\./g, '');
-  storage.exportRaster(intermediate.select('days_outside_bounds'), g_year + '_' + name + '_days_outside_bounds');
-  storage.exportRaster(habitat, g_year + '_' + name + '_habitat');
-  storage.exportRaster(risk, g_year + '_' + name + '_risk');  
+  storage.exportRaster(intermediate.select('days_outside_bounds'), year + '_' + name + '_days_outside_bounds');
+  storage.exportRaster(habitat, year + '_' + name + '_habitat');
+  storage.exportRaster(risk, year + '_' + name + '_risk');  
 }
