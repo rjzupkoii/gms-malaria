@@ -18,7 +18,7 @@ exports.getHabitat = function(variables) {
   // Find the terrain that is within the basic bounds for the species
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables);
   
-  // Improve the score if terrain has the approprate landcover (forest or heavy vegetation)
+  // Improve the score if terrain has the appropriate landcover (forest or heavy vegetation)
   // and is within the mean annual temperature bounds
   habitat = habitat.expression('b(0) + \
     ((b(0) == 1) && \
@@ -51,7 +51,7 @@ exports.getMeanTemperature = function(aoi, year) {
     .filterDate(year + '-01-01', year + '-12-31');
 
   temperature = temperature.map(function(image) {
-    // Calcluate the daily mean from the daytime and nightime tempatures
+    // Calculate the daily mean from the daytime and nighttime temperatures
     var kelvin = image.expression('(b("LST_Day_1km") + b("LST_Night_1km")) / 2').rename('LST_Mean_1km');
     
     // Scaled value in K must be converted to C, result = DN * 0.02 - 273.15
@@ -78,7 +78,7 @@ exports.getRiskAssessment = function(landcover, habitat) {
   }).lt(5000);
   var moderate = habitat.gt(1).and(landcover.mask(buffer).gte(10));
   
-  // Our base risk is when we are within the habitat window and forest/vegitation is present
+  // Our base risk is when we are within the habitat window and forest/vegetation is present
   var base = habitat.gt(0).and(landcover.eq(11).or(landcover.eq(12)));
   
   // Return the total across the three layers

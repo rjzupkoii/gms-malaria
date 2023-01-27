@@ -40,7 +40,7 @@ exports.viz_habitatPalette = {
   palette: ['#bdbdbd', '#fee8c8', '#fdbb84'] 
 };
 
-// Color palette for risk visulaiation
+// Color palette for risk visualization
 exports.vis_riskPalette = {
   min: 0,
   max: 3,

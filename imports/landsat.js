@@ -4,7 +4,7 @@
  * Wrapper for the Landsat imagery since both Landsat 7 and Landsat 8 are supported.
  */
  
-// Return the approprate satellite type (i.e., Earth Engine collection) for the year provided.
+// Return the appropriate satellite type (i.e., Earth Engine collection) for the year provided.
 exports.getSatellite = function(year) {
   if (year > 2013) {
     return landsat8;
