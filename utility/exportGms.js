@@ -34,6 +34,18 @@ gc = gc.map(function(item) {
   }).filter(ee.Filter.equals('geometry_type', 'Polygon'));
 polygons = polygons.merge(gc);
 
+// Load the GMS borders and generate the outlines
+var empty = ee.Image().byte();
+var outline = empty.paint({
+  featureCollection: polygons,
+  color: 1,
+  width: 0.5,
+});
+
+// Update the map as a visual check
+Map.centerObject(polygons, 6);
+Map.addLayer(outline, { palette: '#1e00ff' }, 'Greater Mekong Subregion');
+
 // Queue the task for the export
 Export.table.toDrive({
   collection: polygons,
