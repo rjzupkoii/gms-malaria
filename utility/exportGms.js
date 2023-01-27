@@ -37,6 +37,7 @@ polygons = polygons.merge(gc);
 // Queue the task for the export
 Export.table.toDrive({
   collection: polygons,
+  folder: 'ee-gms',
   description: 'greater_mekong_subregion',
   fileFormat: 'SHP'
 });
