@@ -4,7 +4,7 @@
  * This script is intended to export the shapefiles used to define the GMS region. Since the geometry is a bit complicated
  * this takes a bit of extra effort.
  */
-
+var shapefile = require('users/rzupko/gms-malaria:assets/shapefiles.js');
  
 // Get the geometry of the countries
 var gms = shapefile.getGms();
