@@ -14,10 +14,10 @@ gms = gms.map(function(item) {
   return ee.Feature(item).set('geometry_type', ee.Feature(item).geometry().type()); 
 });
 
-// Filter out the simple polygons
+// Label and filter out the polygons
 var polygons = gms.map(function (item) { 
-      return ee.Feature(item).set('geometry_type', ee.Feature(item).geometry().type()); })
-    .filter(ee.Filter.or(
+    return ee.Feature(item).set('geometry_type', ee.Feature(item).geometry().type()); 
+  }).filter(ee.Filter.or(
       ee.Filter.equals('geometry_type', 'Polygon'),
       ee.Filter.equals('geometry_type', 'MultiPolygon')));
 polygons = ee.FeatureCollection(polygons);
@@ -29,10 +29,9 @@ var features = gc.map(function(item) {
    return ee.Feature(ee.Geometry(item));
 });
 var gc = ee.FeatureCollection(features);
-gc = gc.map(function(item) {
-  return ee.Feature(item).set('geometry_type', ee.Feature(item).geometry().type()); 
-});
-gc = gc.filter(ee.Filter.equals('geometry_type', 'Polygon'));
+gc = gc.map(function(item) { 
+    return ee.Feature(item).set('geometry_type', ee.Feature(item).geometry().type()); 
+  }).filter(ee.Filter.equals('geometry_type', 'Polygon'));
 polygons = polygons.merge(gc);
 
 // Queue the task for the export
