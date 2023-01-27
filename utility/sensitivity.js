@@ -1,7 +1,7 @@
 /*
  * sensitivity.js
  *
- * Script to queue the processing tasks for sensivity analysis.
+ * Script to queue the processing tasks for sensitivity analysis.
  */
 var gms_wrs2 = require('users/rzupko/gms-malaria:assets/gms_wrs2_swaths.js'); 
 var mosquitoes = require('users/rzupko/gms-malaria:assets/mosquitoes.js');
@@ -55,8 +55,8 @@ function generateList(first, last, step) {
 
 // Queue the batch processing jobs that are specific to the environment.
 //
-// NOTE this isn't the most efficent way of generating the jobs, but it does keep
-// all of the server-side functinality in the same place.
+// NOTE this isn't the most efficient way of generating the jobs, but it does keep
+// all of the server-side functionality in the same place.
 function queueEnvironmentalJob(year) {
   // Prepare the initial rasters used to assess the vector
   var gms = shapefile.getGms();
@@ -96,7 +96,7 @@ function queueVectorJob(year, species, deviation) {
       'speciesRainfall'   : species.rainfall,
       'speciesLife'       : species.lifeExpectancy,
   
-      // Apply the devation value supplied
+      // Apply the deviation value supplied
       'speciesMeanLower'  : species.tempMean[0] - deviation,
       'speciesMeanUpper'  : species.tempMean[1] + deviation,
   });
