@@ -10,49 +10,69 @@
 # 
 # NOTE: This script assumes that authentication has already been handled by 
 # prior to being run.
+import argparse
+import datetime
+import os
 import sys
 
-import imports.jsConversion as conversion
-import imports.eeWrapper as eeWrapper
 
-
-def iterate(wrapper):
-    # Load common objects for this function    
-    mosquitoes = conversion.load_mosquitoes()
-    years = range(2001, 2022 + 1)
+def iterate(wrapper, year):
+    # Load the analysis to be run
+    import imports.jsConversion as conversion
+    mosquitoes = conversion.load_mosquitoes()    
+    analysis, size = generate_analysis(mosquitoes)
 
     # Prepare the progress bar
-    status = 0
-    progressBar(status, len(years) * len(mosquitoes))
+    status = 0; size += 1
+    progressBar(status, size)
 
-    # Iterate over each year 
-    for year in years:
-        wrapper.set_year(year)
-        wrapper.queue_environment()
+    # Start by setting the year
+    wrapper.set_year(year)
+    wrapper.queue_environment()
 
-        # Iterate over each type of mosquito
-        for key in mosquitoes:
+    # Update the progress bar, note we just want to indicate progress so it 
+    # doesn't have to be accurate
+    status += 1
+    progressBar(status, size)
 
-            # Reset the zeroed flag and set the vector
-            zeroed = False
-            wrapper.set_vector(mosquitoes[key])
-
-            # Iterate over each increment for the standard deviation
-            minima = int(mosquitoes[key]['tempMeanSD'][0] * 100)
-            maxima = int(mosquitoes[key]['tempMeanSD'][1] * 100)
-            for value in range(minima, maxima + 1, 25):
-                # Check to see if the range includes zero
-                if value == 0: zeroed = True
-
-                # Queue the job
-                wrapper.queue_vector(value / 100.0)
-
-            # If we didn't encounter a zero scalar, then queue a last job so we can get a baseline
-            if not zeroed: wrapper.set_vector(0.0)
-
+    # Iterate through the analysis set
+    for key in analysis:
+        wrapper.set_vector(mosquitoes[key])
+        for scalar in analysis[key]:
+            wrapper.queue_vector(scalar)
+            
             # Note the progress
             status += 1
-            progressBar(status, len(years) * len(mosquitoes))
+            progressBar(status, size)
+
+
+# Generate the sensitivity analysis tasks for the mosquitoes can be loaded 
+def generate_analysis(mosquitoes = None):
+
+    # Load the mosquitoes from the JavaScript if we weren't provided them this
+    # gives a bit of flexibility for command line processing
+    if mosquitoes is None:
+        import imports.jsConversion as conversion
+        mosquitoes = conversion.load_mosquitoes()
+
+    analysis = {}; size = 0
+    for key in mosquitoes:
+        analysis[key] = []
+
+        # Iterate over each increment for the standard deviation
+        minima = int(mosquitoes[key]['tempMeanSD'][0] * 100)
+        maxima = int(mosquitoes[key]['tempMeanSD'][1] * 100)
+        for value in range(minima, maxima + 1, 25):
+            analysis[key].append(value / 100.0)
+        
+        # Append the zero value if one is not present
+        if analysis[key][0] != 0:
+            analysis[key].insert(0, 0.0)
+
+        # Update the total size
+        size += len(analysis[key])
+
+    return analysis, size
 
 
 # Progress bar for console applications
@@ -70,15 +90,27 @@ def progressBar(current, total, barLength = 20):
         print ("\rProgress: [{0}] {1}%".format('-' * barLength, int(round(percent * 100))))
 
 
-def main():   
+def main(args):   
     # Prepare the processor
+    import imports.eeWrapper as eeWrapper
     wrapper = eeWrapper.gmsEEWrapper()
     wrapper.init()
 
     # Start queuing the jobs
-    iterate(wrapper)
+    iterate(wrapper, int(args.year))
     print("Queued Jobs: ", wrapper.get_count())
 
 
 if __name__ == '__main__':
-    main()
+    # Parse the parameters
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-y', action='store', dest='year', required=True, help='The year to run the sensitivity analysis for')
+    args = parser.parse_args()
+
+    # Verify the parameters
+    year = int(args.year)
+    if year < 2001 or year > (datetime.date.today().year - 1):
+        print('The year must be an integer between 2001 and {} inclusive.'.format((datetime.date.today().year - 1)))
+        sys.exit(os.EX_USAGE)
+
+    main(args)

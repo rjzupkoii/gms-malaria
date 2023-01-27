@@ -13,10 +13,10 @@ def classify(classifier, imagery, satellite):
 
 
 def export(raster, region, description):
-    image = raster.clip(region)
-    task = ee.batch.Export.image.toDrive(image, **{
+    task = ee.batch.Export.image.toDrive(raster, **{
         'description': description,
         'fileNamePrefix' : description.replace(' ', '_'),
+        'region' : region.geometry(),
         'maxPixels' : 1e10,
         'scale': 1000,
         'fileFormat': 'GeoTIFF'

@@ -19,10 +19,10 @@ class gmsEEWrapper:
     # Constructor
     def __init__(self): pass
 
-    # Return the count of queued jobs
+    # Return the count of queued tasks
     def get_count(self): return self.count
 
-    # Reset the current count of queued jobs
+    # Reset the current count of queued tasks
     def reset_count(self): self.count = 0
 
     # Set the vector to use
@@ -51,8 +51,8 @@ class gmsEEWrapper:
     # Set the year of the study and update any derived values
     def set_year(self, year): 
         # Make sure the year is valid
-        if year < 2000: 
-            raise Exception('Year must be greater or equal to 2000, got: {}'.format(year))
+        if year < 2001: 
+            raise Exception('Year must be greater or equal to 2001, got: {}'.format(year))
         self.year = year
 
         # Set the satellite to use
@@ -69,22 +69,26 @@ class gmsEEWrapper:
         import temp.gms_wrs2_swaths as indices
         self.imagery = eeProcessing.get_imagery(self.satellite, indices.indices, self.gms, self.year)
 
-        # Prepare the generic jobs for the year
+        # Prepare the generic tasks for the year
         self.landcover = eeProcessing.classify(self.classifier, self.imagery, self.satellite)
         self.environmental = eeProcessing.get_environmental(self.gms, self.year)
         
 
-    # Queue the processing jobs related to the environment, this requires that the year be set
+    # Queue the processing tasks related to the environment, this requires that the year be set
     def queue_environment(self):
         # Verify the current status
         if self.year is None:
-            raise Exception('The year must be set prior to queuing environment jobs')
+            raise Exception('The year must be set prior to queuing environment tasks')
         
-        # Start the jobs
-        eeProcessing.export(self.landcover, self.gms, str(self.year) + '_landcover' + '_python')
-        eeProcessing.export(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall' + '_python')
-        eeProcessing.export(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature' + '_python')
-        self.count += 3
+        # Start the tasks
+        TASKS = 3
+        eeProcessing.export(self.landcover, self.gms, str(self.year) + '_landcover')
+        eeProcessing.export(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall')
+        eeProcessing.export(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature')
+        
+        # Update the count, return the total tasks queued
+        self.count += TASKS
+        return TASKS
 
 
     # TODO Complete this function, for now just return
