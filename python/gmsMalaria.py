@@ -10,16 +10,23 @@
 # 
 # NOTE: This script assumes that authentication has already been handled by 
 # prior to being run.
+import sys
+
 import imports.jsConversion as conversion
-import imports.eeWrapper as ee
+import imports.eeWrapper as eeWrapper
 
 
 def iterate(wrapper):
     # Load common objects for this function    
     mosquitoes = conversion.load_mosquitoes()
+    years = range(2001, 2022 + 1)
+
+    # Prepare the progress bar
+    status = 0
+    progressBar(status, len(years) * len(mosquitoes))
 
     # Iterate over each year 
-    for year in range(2001, 2022 + 1):
+    for year in years:
         wrapper.set_year(year)
         wrapper.queue_environment()
 
@@ -43,10 +50,29 @@ def iterate(wrapper):
             # If we didn't encounter a zero scalar, then queue a last job so we can get a baseline
             if not zeroed: wrapper.set_vector(0.0)
 
+            # Note the progress
+            status += 1
+            progressBar(status, len(years) * len(mosquitoes))
 
-def main():    
+
+# Progress bar for console applications
+#
+# Adopted from https://stackoverflow.com/a/37630397/1185
+def progressBar(current, total, barLength = 20):
+    percent = float(current) / total
+    arrow = '-' * int(round(percent * barLength)-1) + '>'
+    spaces = ' ' * (barLength - len(arrow))
+
+    if int(percent) != 1:
+        sys.stdout.write("\rProgress: [{0}] {1}%".format(arrow + spaces, int(round(percent * 100))))
+        sys.stdout.flush()
+    else:
+        print ("\rProgress: [{0}] {1}%".format('-' * barLength, int(round(percent * 100))))
+
+
+def main():   
     # Prepare the processor
-    wrapper = ee.gmsEEWrapper()
+    wrapper = eeWrapper.gmsEEWrapper()
     wrapper.init()
 
     # Start queuing the jobs

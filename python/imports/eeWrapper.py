@@ -81,16 +81,16 @@ class gmsEEWrapper:
             raise Exception('The year must be set prior to queuing environment jobs')
         
         # Start the jobs
-        
-        # TODO Fix the bug in this part of the code!
-        # eeProcessing.export(self.landcover, self.gms, str(self.year) + '_landcover' + '_python')
-
+        eeProcessing.export(self.landcover, self.gms, str(self.year) + '_landcover' + '_python')
         eeProcessing.export(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall' + '_python')
         eeProcessing.export(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature' + '_python')
         self.count += 3
 
 
+    # TODO Complete this function, for now just return
     def queue_vector(self, deviation):
+        return
+        
         # Make sure we have a vector
         if self.vector is None: 
             raise Exception('The vector must be set before setting the deviation')

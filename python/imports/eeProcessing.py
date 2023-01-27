@@ -1,3 +1,7 @@
+# eeProcessing.py
+#
+# This module contains Python approximations of the functions in exporting.js,
+# ml.js, processing.js, and ui.js
 import ee
 
 
@@ -9,34 +13,35 @@ def classify(classifier, imagery, satellite):
 
 
 def export(raster, region, description):
-    task = ee.batch.Export.image.toDrive(
-        raster,
-        region = region.geometry(),
-        description = description,
-        fileNamePrefix = description.replace(' ', '_'),
-        maxPixels = 1e10
-    )
+    task = ee.batch.Export.image.toDrive(raster, **{
+        'region' : region.geometry(),
+        'description': description,
+        'fileNamePrefix' : description.replace(' ', '_'),
+        'maxPixels' : 1e10
+    })
     task.start()
 
 
 def get_classifier(satellite):
-    # Load the features
-    import temp.features as features
-
     # Sample the labeled features
-    image = get_reference_images(satellite);
-    training = image.select(satellite['bands']).sampleRegions(
-            collection = features.getFeatures(),
-            properties = ['class'],
-            scale = 30
-        )
+    import temp.features as features
+    reference = get_reference_images(satellite)
+    labels = features.getFeatures()   
+    training = reference.select(satellite['bands']).sampleRegions(
+        **{
+            'collection' : labels,
+            'properties' : ['class'], 
+            'scale' : 30
+        })
 
     # Make a CART classifier, train it, and return the object
-    return ee.Classifier.smileCart().train(
-            features = training,
-            classProperty = 'class',
-            inputProperties = satellite['bands']
-        )
+    trained = ee.Classifier.smileCart().train(
+        **{
+            'features' : training,
+            'classProperty' : 'class',
+            'inputProperties' : satellite['bands']
+        })
+    return trained
 
 
 # NOTE Combination of getAnnualRainfall and getMeanTemperature
@@ -76,7 +81,7 @@ def get_habitat(variables):
         ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables)
 
     # Rename the band and return
-    return habitat.rename('scored_habitat');    
+    return habitat.rename('scored_habitat')
 
 
 def get_imagery(satellite, indices, aoi, year):
@@ -86,9 +91,9 @@ def get_imagery(satellite, indices, aoi, year):
             ee.Filter.And(
                 ee.Filter.eq('WRS_PATH', item.get(0)),
                 ee.Filter.eq('WRS_ROW', item.get(1)))
-            ).filterDate(str(year) + '-01-01', str(year) + '-12-31');
+            ).filterDate(str(year) + '-01-01', str(year) + '-12-31')
         return ee.Image(image.map(mask_clouds).median().clipToCollection(aoi))
-    return ee.ImageCollection(indices.map(load));    
+    return ee.ImageCollection(indices.map(load))
 
 
 def get_reference_images(satellite):
@@ -97,31 +102,31 @@ def get_reference_images(satellite):
         ee.Filter.And(
             ee.Filter.eq('WRS_PATH', 125),
             ee.Filter.eq('WRS_ROW', 50))
-        ).filterDate('2020-01-01', '2020-12-31');
+        ).filterDate('2020-01-01', '2020-12-31')
 
     # Mountainous terrain 
     p132_r42 = ee.ImageCollection(satellite['collection']).filter(
         ee.Filter.And(
             ee.Filter.eq('WRS_PATH', 132),
             ee.Filter.eq('WRS_ROW', 42))
-        ).filterDate('2020-01-01', '2020-12-31');
+        ).filterDate('2020-01-01', '2020-12-31')
 
     # Kunming, Yunnan province, China
     p129_r43 = ee.ImageCollection(satellite['collection']).filter(
         ee.Filter.And(
             ee.Filter.eq('WRS_PATH', 129),
             ee.Filter.eq('WRS_ROW', 43))
-        ).filterDate('2020-01-01', '2020-12-31');
+        ).filterDate('2020-01-01', '2020-12-31')
 
     # Tonlé Sap
     p127_r51 = ee.ImageCollection(satellite['collection']).filter(
         ee.Filter.And(
             ee.Filter.eq('WRS_PATH', 127),
             ee.Filter.eq('WRS_ROW', 51))
-        ).filterDate('2020-01-01', '2020-12-31');    
+        ).filterDate('2020-01-01', '2020-12-31')
 
     image = p125_r50.merge(p132_r42).merge(p129_r43).merge(p127_r51)
-    return image.map(mask_clouds).median();  
+    return image.map(mask_clouds).median() 
 
 
 def get_temperature_bounds(aoi, year, minimum, maximum):
@@ -133,8 +138,8 @@ def get_temperature_bounds(aoi, year, minimum, maximum):
     def clip(image): return image.clip(aoi)
 
     # Preform scaled conversion from C to K for the data set
-    minimum = (minimum + 273.15) / 0.02;  
-    maximum = (maximum + 273.15) / 0.02;  
+    minimum = (minimum + 273.15) / 0.02
+    maximum = (maximum + 273.15) / 0.02
 
     # Load the data set
     temperature = ee.ImageCollection('MODIS/061/MOD11A1').filterDate(str(year) + '-01-01', str(year) + '-12-31')
@@ -154,4 +159,4 @@ def mask_clouds(image):
     # Select the QA pixel, and mask if it is a cloud
     qa = image.select('QA_PIXEL')
     mask = qa.bitwiseAnd(CLOUD_MASK).eq(0)
-    return image.updateMask(mask);  
+    return image.updateMask(mask)

@@ -42,15 +42,21 @@ def convert_file(input, output):
 
     # Remove leading whitespaces from assignments
     if 'features.js' in input:
+        # Remove the leading whitespace before values, and the comma following 
+        # the end of the ee.FeatureCollection definition
         start = 0
         while python.find('=', start) > -1:
             index = python.find('=', start)
             first = python.rfind(',', start, index)
             if first != -1:
                 snippet = python[first:index]
-                python = python.replace(snippet, snippet.replace(' ', ''))
+                python = python.replace(snippet, snippet.replace(' ', '').replace(',', ''))
             start = index + 1
-    
+
+        # null is mapped to {}, but should be None
+        python = python.replace('{}', 'None')
+
+
     # Remove the leading function
     if 'landsat.js' in input:
         # NOTE that we are making a lot of assumptions about the layout fo the file here
