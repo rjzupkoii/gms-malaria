@@ -12,6 +12,15 @@ from dateutil import parser as dateparser
 import keys.secrets as secrets
 
 
+def cancel_task(tasks):
+    import ee
+    start_ee()
+
+    for task in tasks.split(','):
+        print('Canceling task {}'.format(task))
+        ee.data.cancelTask(task)
+
+
 def delete_file(file):
     # Download the file and move to the directory
     print("Deleting {}...".format(file['title']))
@@ -42,17 +51,19 @@ def list_files(directory, delete):
     print("done!")
 
     # Process the files
+    action = False
     for file in files:
         # Check if there are actions to perform first
         if directory is not None: 
             download_file(directory, file)
-            continue
+            action = True
         if delete is True:
             delete_file(file)
-            continue
+            action = True
                 
         # Otherwise just display the file info
-        print('{}\t{}\t{}'.format(file['createdDate'], file['fileSize'], file['title']))
+        if not action:
+            print('{}\t{}\t{}'.format(file['createdDate'], file['fileSize'], file['title']))
 
 
 def list_tasks(limit):
@@ -69,14 +80,19 @@ def list_tasks(limit):
     # List the operations
     count = 0
     for op in ee.data.listOperations():
-        # Parse the common items
+        # Start the message string
         message = op['metadata']['description']
 
         # Parse the state specific items
         if 'error' in op:
-            status = STATUS_CODE.format(ERROR, 'ERROR', CLEAR)
-            message += '\n' + ' '*22 + op['error']['message'].replace('\n', ' ')
-            start = dateparser.parse(op['metadata']['startTime'])
+            # Filter the data shown for cancelled jobs
+            if 'Cancelled' in op['error']['message']:
+                status = STATUS_CODE.format(ERROR, 'CANCELLED', CLEAR)
+            else:
+                status = STATUS_CODE.format(ERROR, 'ERROR', CLEAR)
+                message += '\n' + ' '*22 + op['error']['message'].replace('\n', ' ')
+
+            start = dateparser.parse(op['metadata']['createTime'])
             end = dateparser.parse(op['metadata']['endTime'])
             usage = (end - start).seconds
             
@@ -91,7 +107,10 @@ def list_tasks(limit):
                     end = dateparser.parse(op['metadata']['updateTime'])
                     usage = (end - start).seconds
             else: 
-                usage = op['metadata']['batchEecuUsageSeconds']    
+                start = dateparser.parse(op['metadata']['startTime'])
+                end = dateparser.parse(op['metadata']['endTime'])
+                usage = (end - start).seconds
+                message += ', {} EECU-seconds'.format(round(op['metadata']['batchEecuUsageSeconds'], 2))
                 code = SUCCESS
             status = STATUS_CODE.format(code, state, CLEAR)
             
@@ -99,11 +118,12 @@ def list_tasks(limit):
         m, s = divmod(usage, 60)
         h, m = divmod(m, 60)
         time = '{:02d}:{:02d}:{:02d}'.format(int(h), int(m), int(s))        
-        print('{} [{}]: {}, {}'.format(status, time, op['name'], message))
+        print('{} [{}]: {}, {}'.format(status, time, op['name'].split('/')[-1], message))
 
         # Break if we hit the limit
         count += 1
         if count > limit: break
+
 
 def start_drive():
     from pydrive.auth import GoogleAuth
@@ -130,15 +150,18 @@ def start_ee():
 
 def main(args):
     limit = int(args.limit)
-    if args.tasks:
-        list_tasks(limit)
+    if args.cancel:
+        cancel_task(args.cancel)
     if args.files:
         list_files(args.directory, args.delete)
+    if args.tasks:
+        list_tasks(limit)
 
 
 if __name__ == '__main__':
     # Parse the parameters
     parser = argparse.ArgumentParser()
+    parser.add_argument('-c', action='store', dest='cancel', help='Cancel the given task')
     parser.add_argument('-d', action='store', dest='directory', help='Download files to the given directory')
     parser.add_argument('-f', action='store_true', dest='files', help='List the files stored with the service account')
     parser.add_argument('-l', action='store', dest='limit', default=sys.maxsize, help='Set a limit for the number of values returned')
@@ -147,7 +170,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Exit with help if there is nothing to do
-    if not args.files and not args.tasks:
+    if not args.files and not args.tasks and not args.cancel:
         parser.print_help()
         sys.exit(0)
     
