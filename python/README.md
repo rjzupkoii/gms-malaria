@@ -26,4 +26,9 @@ sudo apt-get update && sudo apt-get install google-cloud-cli
 
 # Continue configuration of gCloud CLI
 gcloud init
+
+# Continue configuration of Earth Engine
+earthengine authenticate
 ```
+
+
