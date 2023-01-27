@@ -67,6 +67,5 @@ exports.getReferenceImage = function(satellite) {
 
   var image = p125_r50.merge(p132_r42).merge(p129_r43).merge(p127_r51);
   image = image.map(processing.maskClouds).median();  
-  print(image);
   return image;
 };
