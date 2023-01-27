@@ -4,11 +4,34 @@
 #
 # Various minor functions to work with the data from Google.
 import argparse
+import os
 import sys
+
+from dateutil import parser as dateparser
 
 import keys.secrets as secrets
 
-def list_files():
+
+def delete_file(file):
+    # Download the file and move to the directory
+    print("Deleting {}...".format(file['title']))
+    file.Delete()
+
+
+def download_file(directory, file):
+    # Make sure the directory exists
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    # Download the file and move to the directory
+    sys.stdout.write("Downloading {}...".format(file['title']))
+    sys.stdout.flush()
+    file.GetContentFile(file['title'], mimetype = file['mimeType'])
+    os.rename(file['title'], 'images/{}'.format(file['title']))
+    print("done!")
+
+
+def list_files(directory, delete):
     # Start Google Drive
     drive = start_drive()
 
@@ -18,14 +41,18 @@ def list_files():
     files = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
     print("done!")
 
-    # Display the list of files
+    # Process the files
     for file in files:
+        # Check if there are actions to perform first
+        if directory is not None: 
+            download_file(directory, file)
+            continue
+        if delete is True:
+            delete_file(file)
+            continue
+                
+        # Otherwise just display the file info
         print('{}\t{}\t{}'.format(file['createdDate'], file['fileSize'], file['title']))
-        
-        # TODO Finish writing the code to process the files
-        if '.tif' in file['title']:
-            file.GetContentFile(file['title'], mimetype="image/tiff")
-            file.Delete()
 
 
 def list_tasks(limit):
@@ -42,16 +69,38 @@ def list_tasks(limit):
     # List the operations
     count = 0
     for op in ee.data.listOperations():
+        # Parse the common items
+        message = op['metadata']['description']
+
+        # Parse the state specific items
         if 'error' in op:
             status = STATUS_CODE.format(ERROR, 'ERROR', CLEAR)
-            message = op['error']['message'].replace('\n', ' ')
-            print('{}: {}, {}\n{}{}'.format(status, op['name'], op['metadata']['description'], ' '*11, message))
+            message += '\n' + ' '*22 + op['error']['message'].replace('\n', ' ')
+            start = dateparser.parse(op['metadata']['startTime'])
+            end = dateparser.parse(op['metadata']['endTime'])
+            usage = (end - start).seconds
+            
         else:
             state = op['metadata']['state']
-            code = SUCCESS
-            if state in ('PENDING', 'RUNNING'): code = PENDING
+            if state in ('PENDING', 'RUNNING'):
+                code = PENDING
+                if state == 'PENDING':
+                    usage = 0                
+                if state == 'RUNNING':
+                    print(op)
+                    start = dateparser.parse(op['metadata']['startTime'])
+                    end = dateparser.parse(op['metadata']['updateTime'])
+                    usage = (end - start).seconds
+            else: 
+                usage = op['metadata']['batchEecuUsageSeconds']    
+                code = SUCCESS
             status = STATUS_CODE.format(code, state, CLEAR)
-            print('{}: {}, {}'.format(status, op['name'], op['metadata']['description']))
+            
+        # Parse out the usage to get the approximate running time
+        m, s = divmod(usage, 60)
+        h, m = divmod(m, 60)
+        time = '{:02d}:{:02d}:{:02d}'.format(int(h), int(m), int(s))        
+        print('{} [{}]: {}, {}'.format(status, time, op['name'], message))
 
         # Break if we hit the limit
         count += 1
@@ -85,15 +134,17 @@ def main(args):
     if args.tasks:
         list_tasks(limit)
     if args.files:
-        list_files()
+        list_files(args.directory, args.delete)
 
 
 if __name__ == '__main__':
     # Parse the parameters
     parser = argparse.ArgumentParser()
+    parser.add_argument('-d', action='store', dest='directory', help='Download files to the given directory')
     parser.add_argument('-f', action='store_true', dest='files', help='List the files stored with the service account')
     parser.add_argument('-l', action='store', dest='limit', default=sys.maxsize, help='Set a limit for the number of values returned')
-    parser.add_argument('-t', action='store_true', dest='tasks', help='The status of tasks')
+    parser.add_argument('-t', action='store_true', dest='tasks', help='The status of tasks submitted to Earth Engine')
+    parser.add_argument('--rm', action='store_true', dest='delete', help='Delete files stored with the service account')
     args = parser.parse_args()
 
     # Exit with help if there is nothing to do
