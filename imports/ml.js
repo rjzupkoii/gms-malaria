@@ -66,6 +66,5 @@ exports.getReferenceImage = function(satellite) {
     .filterDate('2020-01-01', '2020-12-31');    
 
   var image = p125_r50.merge(p132_r42).merge(p129_r43).merge(p127_r51);
-  image = image.map(processing.maskClouds).median();  
-  return image;
+  return image.map(processing.maskClouds).median();  
 };
