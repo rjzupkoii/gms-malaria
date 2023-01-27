@@ -82,19 +82,18 @@ class gmsEEWrapper:
         
         # Start the tasks
         TASKS = 3
-        eeProcessing.export(self.landcover, self.gms, str(self.year) + '_landcover')
-        eeProcessing.export(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall')
-        eeProcessing.export(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature')
+        eeProcessing.export_raster(self.landcover, self.gms, str(self.year) + '_landcover')
+        eeProcessing.export_raster(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall')
+        eeProcessing.export_raster(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature')
         
         # Update the count, return the total tasks queued
         self.count += TASKS
         return TASKS
 
 
-    # TODO Complete this function, for now just return
+    # Queue the processing tasks related to the vector for the given deviation,
+    # this requires that the year and vector be set
     def queue_vector(self, deviation):
-        return
-        
         # Make sure we have a vector
         if self.vector is None: 
             raise Exception('The vector must be set before setting the deviation')
@@ -104,7 +103,7 @@ class gmsEEWrapper:
         maxima = self.vector['tempMax']
         temperature = eeProcessing.get_temperature_bounds(self.gms, self.year, minima, maxima)
 
-        # Classify the habitat based upon the inputs
+        # Classify the habitat and risk based upon the inputs
         habitat = eeProcessing.get_habitat({
             # Raster data
             'totalRainfall'     : self.environmental.select('total_rainfall'),
@@ -120,3 +119,15 @@ class gmsEEWrapper:
             'speciesMeanLower'  : self.vector['tempMean'][0] - deviation,
             'speciesMeanUpper'  : self.vector['tempMean'][1] + deviation,
         })
+        risk = eeProcessing.get_risk(self.landcover, habitat)
+
+        # Start the tasks
+        TASKS = 3
+        prefix = '{}_{}_{}'.format(self.year, self.vector['species'].replace(' ', '_').replace('.', ''), deviation)
+        eeProcessing.export_raster(temperature.select('days_outside_bounds'), self.gms, prefix + '_days_outside_bounds')
+        eeProcessing.export_raster(habitat, self.gms, prefix + '_habitat')
+        eeProcessing.export_raster(risk, self.gms, prefix + '_risk')
+        
+        # Update the count, return the total tasks queued
+        self.count += TASKS
+        return TASKS

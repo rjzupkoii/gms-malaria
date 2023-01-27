@@ -12,7 +12,7 @@ def classify(classifier, imagery, satellite):
     return classified.mosaic()
 
 
-def export(raster, region, description):
+def export_raster(raster, region, description):
     task = ee.batch.Export.image.toDrive(raster, **{
         'description': description,
         'fileNamePrefix' : description.replace(' ', '_'),
@@ -69,12 +69,38 @@ def get_environmental(aoi, year):
     return get_rainfall().addBands(get_temperature())
 
 
+def get_risk(landcover, habitat):
+    # Generate the buffer based upon the land cover type, using cumulative cost  for the
+    # buffer isn't exactly the same as a buffer, but results in the same effect
+    buffer = ee.Image(1).cumulativeCost(**{
+                'source': landcover.gte(20),                  # Development (20) or Agricultural (21)
+                'maxDistance': 1500,                          # Obsomer et al. 2007, "very high" density
+            }).lt(1500)
+    high = habitat.gt(1).And(landcover.mask(buffer).gte(10))
+
+    buffer = ee.Image(1).cumulativeCost(**{
+                'source': landcover.gte(20), 
+                'maxDistance': 5000,                          # Obsomer et al. 2007, moderate density
+            }).lt(5000)
+    moderate = habitat.gt(1).And(landcover.mask(buffer).gte(10))
+
+    # Our base risk is when we are within the habitat window and forest/vegetation is present
+    base = habitat.gt(0).And(landcover.eq(11).Or(landcover.eq(12)))
+
+    # Return the total across the three layers
+    return ee.Image(0).expression('base + moderate + high', {
+                'base': base,
+                'moderate': moderate.gt(0).unmask(),
+                'high': high.gt(0).unmask()
+            });    
+
+
 def get_habitat(variables):
     # Find the terrain that is within the basic bounds for the species
     habitat = ee.Image(0).expression(
         '(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables)
 
-    # Improve the score if terrain has the approprate landcover (forest or heavy vegetation)
+    # Improve the score if terrain has the appropriate landcover (forest or heavy vegetation)
     # and is within the mean annual temperature bounds
     habitat = habitat.expression(
         'b(0) + \
