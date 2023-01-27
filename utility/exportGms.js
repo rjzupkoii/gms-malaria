@@ -31,15 +31,13 @@ var features = gc.map(function(item) {
 var gc = ee.FeatureCollection(features);
 gc = gc.map(function(item) {
   return ee.Feature(item).set('geometry_type', ee.Feature(item).geometry().type()); 
-})
+});
 gc = gc.filter(ee.Filter.equals('geometry_type', 'Polygon'));
 polygons = polygons.merge(gc);
-print(polygons)
 
-
-// This export will break due to mixed geometry types
+// Queue the task for the export
 Export.table.toDrive({
   collection: polygons,
-  description: 'country_polygons',
+  description: 'greater_mekong_subregion',
   fileFormat: 'SHP'
 });
