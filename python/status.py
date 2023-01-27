@@ -87,7 +87,6 @@ def list_tasks(limit):
                 if state == 'PENDING':
                     usage = 0                
                 if state == 'RUNNING':
-                    print(op)
                     start = dateparser.parse(op['metadata']['startTime'])
                     end = dateparser.parse(op['metadata']['updateTime'])
                     usage = (end - start).seconds
