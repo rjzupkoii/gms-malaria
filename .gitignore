@@ -2,4 +2,5 @@
 
 python/temp/
 **/__pycache__/
+**/images/
 **/keys/
