@@ -21,6 +21,7 @@ def iterate(wrapper):
     # Iterate over each year 
     for year in range(2001, 2022 + 1):
         wrapper.set_year(year)
+        wrapper.queue_environment()
 
         # Iterate over each type of mosquito
         for key in mosquitoes:
@@ -37,10 +38,10 @@ def iterate(wrapper):
                 if value == 0: zeroed = True
 
                 # Queue the job
-                wrapper.queue(value / 100.0)
+                wrapper.queue_vector(value / 100.0)
 
             # If we didn't encounter a zero scalar, then queue a last job so we can get a baseline
-            if not zeroed: wrapper.queue(0.0)
+            if not zeroed: wrapper.set_vector(0.0)
 
 
 def main():    
