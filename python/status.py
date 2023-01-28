@@ -36,7 +36,7 @@ def download_file(directory, file):
     sys.stdout.write("Downloading {}...".format(file['title']))
     sys.stdout.flush()
     file.GetContentFile(file['title'], mimetype = file['mimeType'])
-    os.rename(file['title'], 'images/{}'.format(file['title']))
+    os.rename(file['title'], '{}/{}'.format(directory, file['title']))
     print("done!")
 
 
@@ -63,7 +63,7 @@ def list_files(directory, delete):
                 
         # Otherwise just display the file info
         if not action:
-            print('{}\t{}\t{}'.format(file['createdDate'], file['fileSize'], file['title']))
+            print('{}  {: >6} MB  {}'.format(file['createdDate'], round(int(file['fileSize']) / 1e6, 2), file['title']))
 
 
 def list_tasks(limit):
