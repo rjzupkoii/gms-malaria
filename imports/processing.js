@@ -23,21 +23,15 @@ exports.getHabitat = function(variables) {
   // and is within the mean annual temperature bounds
   if (variables.speciesMeanLower == variables.speciesMeanUpper) {
       habitat = habitat.expression('b(0) + \
-    ((b(0) == 1) && \
-    (landcover == 11 || landcover == 12) && \
-    (((speciesMeanLower == speciesMeanUpper) && (meanTemperature >= speciesMeanLower)) || \
-     ((speciesMeanLower != speciesMeanUpper) && (speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper))))'
-  , variables);
+        ((b(0) == 1) && \
+         (landcover == 11 || landcover == 12) && \
+         (meanTemperature >= speciesMeanLower))', variables);
   } else {
       habitat = habitat.expression('b(0) + \
-    ((b(0) == 1) && \
-    (landcover == 11 || landcover == 12) && \
-    (((speciesMeanLower == speciesMeanUpper) && (meanTemperature >= speciesMeanLower)) || \
-     ((speciesMeanLower != speciesMeanUpper) && (speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper))))'
-  , variables);
+        ((b(0) == 1) && \
+         (landcover == 11 || landcover == 12) && \
+         ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables);
   }
-
-
 
   // Rename the band and return
   return habitat.rename('scored_habitat');
