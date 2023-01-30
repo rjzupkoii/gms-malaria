@@ -18,7 +18,6 @@ exports.getHabitat = function(variables) {
   // Find the terrain that is within the basic bounds for the species
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables);
   
-    
   // Improve the score if terrain has the appropriate landcover (forest or heavy vegetation)
   // and is within the mean annual temperature bounds
   if (variables.speciesMeanLower == variables.speciesMeanUpper) {
