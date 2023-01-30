@@ -20,7 +20,7 @@ exports.aCrascens = {
   'species'         : 'A. crascens',
   'rainfall'        : 2000,
   'tempMin'         : 20.0,
-  'tempMean'        : [25.0, 25.0], // 1c less than maximum
+  'tempMean'        : [25.0, 25.0], // > 25
   'tempMeanSD'      : [0, 1.0],
   'tempMax'         : 28.0,
   'lifeExpectancy'  : 31,
@@ -50,7 +50,7 @@ exports.aScanloni = {
   'species'         : 'A. scanloni',
   'rainfall'        : 1500,
   'tempMin'         : 15.0,
-  'tempMean'        : [26.0, 27.0], // 1c less than maximum
+  'tempMean'        : [26.0, 26.0], // > 26
   'tempMeanSD'      : [0, 2.0],
   'tempMax'         : 28.0,
   'lifeExpectancy'  : 31,
