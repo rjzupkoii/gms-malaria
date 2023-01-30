@@ -102,11 +102,16 @@ def get_habitat(variables):
 
     # Improve the score if terrain has the appropriate landcover (forest or heavy vegetation)
     # and is within the mean annual temperature bounds
-    habitat = habitat.expression(
-        'b(0) + \
+    if (variables.speciesMeanLower == variables.speciesMeanUpper):
+        habitat = habitat.expression('b(0) + \
         ((b(0) == 1) && \
-        (landcover == 11 || landcover == 12) && \
-        ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables)
+         (landcover == 11 || landcover == 12) && \
+         (meanTemperature >= speciesMeanLower))', variables)
+    else:
+        habitat = habitat.expression('b(0) + \
+        ((b(0) == 1) && \
+         (landcover == 11 || landcover == 12) && \
+         ((speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper)))', variables)
 
     # Rename the band and return
     return habitat.rename('scored_habitat')

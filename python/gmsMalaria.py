@@ -7,9 +7,6 @@
 # semi-general manner so that it can be expanded to cover other parts of the 
 # world, but conceptually is very tied to the original JavaScript code run via
 # https://code.earthengine.google.com/ or as an Earth Engine App.
-# 
-# NOTE: This script assumes that authentication has already been handled by 
-# prior to being run.
 import argparse
 import datetime
 import os
