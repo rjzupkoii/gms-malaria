@@ -106,6 +106,10 @@ def list_tasks(limit):
                     start = dateparser.parse(op['metadata']['startTime'])
                     end = dateparser.parse(op['metadata']['updateTime'])
                     usage = (end - start).seconds
+            elif state == 'CANCELLING':
+                code = ERROR
+                end = dateparser.parse(op['metadata']['updateTime'])
+                usage = (end - start).seconds
             else: 
                 start = dateparser.parse(op['metadata']['startTime'])
                 end = dateparser.parse(op['metadata']['endTime'])
