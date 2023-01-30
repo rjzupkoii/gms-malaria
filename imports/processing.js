@@ -18,14 +18,26 @@ exports.getHabitat = function(variables) {
   // Find the terrain that is within the basic bounds for the species
   var habitat = ee.Image(0).expression('(totalRainfall >= speciesRainfall) && (daysOutsideBounds <= 30)', variables);
   
+    
   // Improve the score if terrain has the appropriate landcover (forest or heavy vegetation)
   // and is within the mean annual temperature bounds
-  habitat = habitat.expression('b(0) + \
+  if (speciesMeanLower == speciesMeanUpper) {
+      habitat = habitat.expression('b(0) + \
     ((b(0) == 1) && \
     (landcover == 11 || landcover == 12) && \
     (((speciesMeanLower == speciesMeanUpper) && (meanTemperature >= speciesMeanLower)) || \
      ((speciesMeanLower != speciesMeanUpper) && (speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper))))'
   , variables);
+  } else {
+      habitat = habitat.expression('b(0) + \
+    ((b(0) == 1) && \
+    (landcover == 11 || landcover == 12) && \
+    (((speciesMeanLower == speciesMeanUpper) && (meanTemperature >= speciesMeanLower)) || \
+     ((speciesMeanLower != speciesMeanUpper) && (speciesMeanLower <= meanTemperature) && (meanTemperature <= speciesMeanUpper))))'
+  , variables);
+  }
+
+
 
   // Rename the band and return
   return habitat.rename('scored_habitat');
