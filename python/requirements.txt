@@ -2,4 +2,6 @@ google-api-python-client
 earthengine-api
 gcloud
 geemap
+imageio
+numpy
 pydrive
