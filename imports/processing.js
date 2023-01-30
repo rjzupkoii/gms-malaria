@@ -21,7 +21,7 @@ exports.getHabitat = function(variables) {
     
   // Improve the score if terrain has the appropriate landcover (forest or heavy vegetation)
   // and is within the mean annual temperature bounds
-  if (speciesMeanLower == speciesMeanUpper) {
+  if (variables.speciesMeanLower == variables.speciesMeanUpper) {
       habitat = habitat.expression('b(0) + \
     ((b(0) == 1) && \
     (landcover == 11 || landcover == 12) && \
