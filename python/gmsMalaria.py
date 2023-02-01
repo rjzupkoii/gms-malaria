@@ -66,12 +66,12 @@ def iterate(wrapper, year):
     mosquitoes = conversion.load_mosquitoes()    
     analysis, size = generate_analysis(mosquitoes)
 
-    # Prepare the progress bar
+    # Initialize and prepare the progress bar
+    wrapper.init()
     status = 0; size += 1
     progressBar(status, size)
 
     # Start by setting the year
-    wrapper.init()
     wrapper.set_year(year)
     wrapper.queue_environment()
 
