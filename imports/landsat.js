@@ -21,7 +21,7 @@ var landsat8 = {
   'collection' : 'LANDSAT/LC08/C02/T1_L2',
   'bands' : ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'],
   'name' : 'Landsat 8',
-  'viz_agg' : {
+  'viz_agriculture' : {
     'bands' : ['SR_B6', 'SR_B5', 'SR_B2'],
     'min' : 7423.785454545455,
     'max' : 22769.123636363634
@@ -43,6 +43,11 @@ var landsat7 = {
   'collection' : 'LANDSAT/LE07/C02/T1_L2',
   'bands' : ['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B7'],
   'name' : 'Landsat 7',
+  'viz_agriculture' : {
+    'bands' : ['SR_B5', 'SR_B4', 'SR_B1'],
+    'min' : 7423.785454545455,
+    'max' : 22769.123636363634
+  },  
   'viz_cir' : {
     'bands' : ['SR_B4', 'SR_B3', 'SR_B2'],
     'min' : 6100.692307692308,
