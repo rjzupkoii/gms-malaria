@@ -18,7 +18,10 @@ exports.getFeatures = function() {
     .merge(development);
 };
 
-var water = /* color: #003dff */ee.FeatureCollection(
+var water = 
+    /* color: #003dff */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[107.21256207058285, 15.04320626350342],
@@ -408,7 +411,10 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 11,
               "system:index": "13"
             })]),
-    vegetation = /* color: #008000 */ee.FeatureCollection(
+    vegetation = 
+    /* color: #008000 */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[106.23295240175923, 14.207837478045171],
@@ -585,7 +591,60 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "type": "Vegetation",
               "system:index": "15"
             })]),
-    scrub = /* color: #8fbc8f */ee.FeatureCollection(
+    scrub = 
+    /* color: #8fbc8f */
+    /* shown: false */
+    /* displayProperties: [
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[106.13779184523486, 13.864735663878157],
@@ -750,9 +809,21 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 13,
               "type": "Scrub",
               "system:index": "14"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.79642708480853, 12.88684717205301],
+                  [103.79642708480853, 12.879149522246577],
+                  [103.80415184677142, 12.879149522246577],
+                  [103.80415184677142, 12.88684717205301]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "15"
             })]),
     agricultural = 
     /* color: #f5deb3 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "polygon"
@@ -819,6 +890,12 @@ var water = /* color: #003dff */ee.FeatureCollection(
       },
       {
         "type": "polygon"
+      },
+      {
+        "type": "rectangle"
+      },
+      {
+        "type": "rectangle"
       },
       {
         "type": "rectangle"
@@ -1156,10 +1233,88 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 21,
               "type": "Agricultural",
               "system:index": "26"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.29895871241301, 15.573455660118434],
+                  [102.29895871241301, 15.56965236376693],
+                  [102.30316441614836, 15.56965236376693],
+                  [102.30316441614836, 15.573455660118434]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "27"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.86914045401723, 15.659595352706932],
+                  [102.86914045401723, 15.654388660622763],
+                  [102.87411863394887, 15.654388660622763],
+                  [102.87411863394887, 15.659595352706932]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "28"
             })]),
     barren = 
-    /* color: #a52a2a */
+    /* color: #822121 */
     /* shown: false */
+    /* displayProperties: [
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "rectangle"
+      }
+    ] */
     ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
@@ -1347,6 +1502,17 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 14,
               "type": "Barren",
               "system:index": "16"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.12874635414492, 24.44075457233954],
+                  [103.12874635414492, 24.438254087857466],
+                  [103.13226541237246, 24.438254087857466],
+                  [103.13226541237246, 24.44075457233954]]], null, false),
+            {
+              "class": 14,
+              "type": "Barren",
+              "system:index": "17"
             })]),
     development = 
     /* color: #ff0000 */
