@@ -1640,6 +1640,7 @@ var image = ml.getReferenceImage(satellite);
 Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, satellite.viz_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, satellite.viz_cir, 'Refernece Image (CIR)');
+Map.addLayer(image, satellite.viz_agriculture, 'Reference Image (Agriculture)');
 
 // Get the classifier
 var classifier = ml.getClassifier(getFeatures(), satellite);
