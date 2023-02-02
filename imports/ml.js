@@ -58,14 +58,14 @@ exports.getReferenceImage = function(satellite) {
       ee.Filter.eq('WRS_ROW', 43)))
     .filterDate('2020-01-01', '2020-12-31');
     
-  // Tonlé Sap
+  // Tonlé Sap, Cambodia
   var p127_r51 = ee.ImageCollection(satellite.collection)
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 127),
       ee.Filter.eq('WRS_ROW', 51)))
     .filterDate('2020-01-01', '2020-12-31');
     
-  // 
+  // Khon Kaen, Thailand
   var p128_r49 = ee.ImageCollection(satellite.collection)
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 128),
