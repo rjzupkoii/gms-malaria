@@ -62,7 +62,7 @@ exports.prepareUI = function() {
       ui.Label(' '), ui.Label(' '),
       ui.Label('This Earth Engine App is part of a research project at the Center for Infectious Disease Dynamics (CIDD), Pennsylvania State University. Data sources, source code, and project documentation can be found on GitHub.'),
       ui.Label('GMS Malaria at GitHub').setUrl('https://github.com/rjzupkoii/gms-malaria'),
-      ui.Label('Deployed ' + )
+      ui.Label('Deployed ' + DEPLOYED);
     ], 
     'flow', { 'width' : PANEL_WIDTH });
   ui.root.widgets().add(toolPanel);
