@@ -1,5 +1,8 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
-var water = /* color: #003dff */ee.FeatureCollection(
+var water = 
+    /* color: #003dff */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[107.21256207058285, 15.04320626350342],
@@ -389,7 +392,10 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 11,
               "system:index": "13"
             })]),
-    vegetation = /* color: #008000 */ee.FeatureCollection(
+    vegetation = 
+    /* color: #008000 */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[106.23295240175923, 14.207837478045171],
@@ -566,7 +572,10 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "type": "Vegetation",
               "system:index": "15"
             })]),
-    scrub = /* color: #8fbc8f */ee.FeatureCollection(
+    scrub = 
+    /* color: #8fbc8f */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[106.13779184523486, 13.864735663878157],
@@ -731,6 +740,17 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 13,
               "type": "Scrub",
               "system:index": "14"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.79642708480853, 12.88684717205301],
+                  [103.79642708480853, 12.879149522246577],
+                  [103.80415184677142, 12.879149522246577],
+                  [103.80415184677142, 12.88684717205301]]], null, false),
+            {
+              "class": 13,
+              "type": "Scrub",
+              "system:index": "15"
             })]),
     agricultural = 
     /* color: #f5deb3 */
@@ -1000,10 +1020,145 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 21,
               "type": "Agricultural",
               "system:index": "21"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.8985177632223, 13.420864065528063],
+                  [102.8985177632223, 13.416272249027415],
+                  [102.90486923416957, 13.416272249027415],
+                  [102.90486923416957, 13.420864065528063]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "22"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.94911629796499, 13.515864380908411],
+                  [102.94911629796499, 13.507185045551447],
+                  [102.9582143509435, 13.507185045551447],
+                  [102.9582143509435, 13.515864380908411]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "23"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.34613361645675, 13.702159867959073],
+                  [103.34613361645675, 13.696822977702475],
+                  [103.35179844189621, 13.696822977702475],
+                  [103.35179844189621, 13.702159867959073]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "24"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.39188137341476, 13.684480955018989],
+                  [103.39188137341476, 13.681478743487943],
+                  [103.39454212475754, 13.681478743487943],
+                  [103.39454212475754, 13.684480955018989]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "25"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.15894933313209, 12.718542517038713],
+                  [103.15894933313209, 12.713016627336374],
+                  [103.16564412683326, 12.713016627336374],
+                  [103.16564412683326, 12.718542517038713]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "26"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.29895871241301, 15.573455660118434],
+                  [102.29895871241301, 15.56965236376693],
+                  [102.30316441614836, 15.56965236376693],
+                  [102.30316441614836, 15.573455660118434]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "27"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[102.86914045401723, 15.659595352706932],
+                  [102.86914045401723, 15.654388660622763],
+                  [102.87411863394887, 15.654388660622763],
+                  [102.87411863394887, 15.659595352706932]]], null, false),
+            {
+              "class": 21,
+              "type": "Agricultural",
+              "system:index": "28"
             })]),
     barren = 
-    /* color: #a52a2a */
-    /* shown: false */
+    /* color: #a0522d */
+    /* displayProperties: [
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "polygon"
+      },
+      {
+        "type": "rectangle"
+      }
+    ] */
     ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
@@ -1191,6 +1346,28 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 14,
               "type": "Barren",
               "system:index": "16"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.12874635414492, 24.44075457233954],
+                  [103.12874635414492, 24.438254087857466],
+                  [103.13226541237246, 24.438254087857466],
+                  [103.13226541237246, 24.44075457233954]]], null, false),
+            {
+              "class": 14,
+              "type": "Barren",
+              "system:index": "17"
+            }),
+        ee.Feature(
+            ee.Geometry.Polygon(
+                [[[103.15066727892217, 24.381578503399712],
+                  [103.15066727892217, 24.379233201598854],
+                  [103.15435799852666, 24.379233201598854],
+                  [103.15435799852666, 24.381578503399712]]], null, false),
+            {
+              "class": 14,
+              "type": "Barren",
+              "system:index": "18"
             })]),
     development = 
     /* color: #ff0000 */
@@ -1503,6 +1680,7 @@ var image = ml.getReferenceImage(satellite);
 Map.centerObject(shapefiles.getGms(), 6);
 Map.addLayer(image, satellite.viz_rgb, 'Refernece Image (RGB)');
 Map.addLayer(image, satellite.viz_cir, 'Refernece Image (CIR)');
+Map.addLayer(image, satellite.viz_agriculture, 'Reference Image (Agriculture)');
 
 // Get the classifier
 var classifier = ml.getClassifier(getFeatures(), satellite);
