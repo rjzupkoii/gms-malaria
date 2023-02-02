@@ -17,6 +17,9 @@ var processing = require('users/rzupko/gms-malaria:imports/processing.js');
 var storage = require('users/rzupko/gms-malaria:imports/exporting.js');
 var widgets = require('users/rzupko/gms-malaria:imports/widgets.js');
 
+// Date that the UI was deployed
+var DEPLOYED = '2023-02-02';
+
 // UI control index constants
 var SPECIES_INDEX = 7;        // Species layers selection index
 var ENV_INDEX = 11;           // Environmental layers selection index
@@ -56,9 +59,10 @@ exports.prepareUI = function() {
       ui.Label('Environmental Maps', {fontWeight: 'bold'}),
       ui.Label('Environmental condition maps are used to assess the environmental suitability for the selected species.'),
       getLayerSelect(),
-      ui.Label(' '), ui.Label(' '),
+      ui.Label(' '), ui.Label(' '), ui.Label(' '),
       ui.Label('This Earth Engine App is part of a research project at the Center for Infectious Disease Dynamics (CIDD), Pennsylvania State University. Data sources, source code, and project documentation can be found on GitHub.'),
       ui.Label('GMS Malaria at GitHub').setUrl('https://github.com/rjzupkoii/gms-malaria'),
+      ui.Label('Deployed ' + DEPLOYED),
     ], 
     'flow', { 'width' : PANEL_WIDTH });
   ui.root.widgets().add(toolPanel);
