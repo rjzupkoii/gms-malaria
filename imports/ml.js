@@ -63,8 +63,15 @@ exports.getReferenceImage = function(satellite) {
     .filter(ee.Filter.and(
       ee.Filter.eq('WRS_PATH', 127),
       ee.Filter.eq('WRS_ROW', 51)))
-    .filterDate('2020-01-01', '2020-12-31');    
-
-  var image = p125_r50.merge(p132_r42).merge(p129_r43).merge(p127_r51);
+    .filterDate('2020-01-01', '2020-12-31');
+    
+  // 
+  var p128_r49 = ee.ImageCollection(satellite.collection)
+    .filter(ee.Filter.and(
+      ee.Filter.eq('WRS_PATH', 128),
+      ee.Filter.eq('WRS_ROW', 49)))
+    .filterDate('2020-01-01', '2020-12-31');
+  
+  var image = p125_r50.merge(p132_r42).merge(p129_r43).merge(p127_r51).merge(p128_r49);
   return image.map(processing.maskClouds).median();  
 };
