@@ -1,5 +1,8 @@
 /**** Start of imports. If edited, may not auto-convert in the playground. ****/
-var water = /* color: #003dff */ee.FeatureCollection(
+var water = 
+    /* color: #003dff */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[107.21256207058285, 15.04320626350342],
@@ -389,7 +392,10 @@ var water = /* color: #003dff */ee.FeatureCollection(
               "class": 11,
               "system:index": "13"
             })]),
-    vegetation = /* color: #008000 */ee.FeatureCollection(
+    vegetation = 
+    /* color: #008000 */
+    /* shown: false */
+    ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[106.23295240175923, 14.207837478045171],
@@ -568,6 +574,7 @@ var water = /* color: #003dff */ee.FeatureCollection(
             })]),
     scrub = 
     /* color: #8fbc8f */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "polygon"
@@ -797,6 +804,7 @@ var water = /* color: #003dff */ee.FeatureCollection(
             })]),
     agricultural = 
     /* color: #f5deb3 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "polygon"
@@ -1231,6 +1239,7 @@ var water = /* color: #003dff */ee.FeatureCollection(
             })]),
     barren = 
     /* color: #822121 */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "polygon"
