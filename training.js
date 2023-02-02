@@ -1100,6 +1100,7 @@ var water =
             })]),
     barren = 
     /* color: #a0522d */
+    /* shown: false */
     /* displayProperties: [
       {
         "type": "polygon"
