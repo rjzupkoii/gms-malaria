@@ -25,7 +25,6 @@ var landsat8 = {
     'bands' : ['SR_B6', 'SR_B5', 'SR_B2'],
     'min' : 7423.785454545455,
     'max' : 22769.123636363634
-
   },
   'viz_cir' : {
     'bands' : ['SR_B5', 'SR_B4', 'SR_B3'],
