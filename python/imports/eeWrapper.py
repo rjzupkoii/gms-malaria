@@ -14,7 +14,7 @@ class gmsEEWrapper:
     environmental = None; landcover = None; satellite = None
 
     # Other private variables variables
-    vector = None; year = None; count = 0
+    vector = None; year = None; scale = None; count = 0
 
     # Constructor
     def __init__(self): pass
@@ -24,6 +24,12 @@ class gmsEEWrapper:
 
     # Reset the current count of queued tasks
     def reset_count(self): self.count = 0
+
+    # Set the scale to use for exports, in meters
+    def set_scale(self, scale): 
+        if scale <= 0:
+            raise Exception('The scale must be greater than zero meters, got: {}'.format(scale))
+        self.scale = scale
 
     # Set the vector to use
     def set_vector(self, vector): self.vector = vector
@@ -79,12 +85,15 @@ class gmsEEWrapper:
         # Verify the current status
         if self.year is None:
             raise Exception('The year must be set prior to queuing environment tasks')
+        # Verify the current scale status
+        if self.scale is None:
+            raise Exception('The scale must be set prior to queuing environment tasks')
         
         # Start the tasks
         TASKS = 3
-        eeProcessing.export_raster(self.landcover, self.gms, str(self.year) + '_landcover')
-        eeProcessing.export_raster(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall')
-        eeProcessing.export_raster(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature')
+        eeProcessing.export_raster(self.landcover, self.gms, str(self.year) + '_landcover', self.scale)
+        eeProcessing.export_raster(self.environmental.select('total_rainfall'), self.gms, str(self.year) + '_total_rainfall', self.scale)
+        eeProcessing.export_raster(self.environmental.select('mean_temperature'), self.gms, str(self.year) + '_mean_temperature', self.scale)
         
         # Update the count, return the total tasks queued
         self.count += TASKS
@@ -124,9 +133,9 @@ class gmsEEWrapper:
         # Start the tasks
         TASKS = 3
         prefix = '{}_{}_{}'.format(self.year, self.vector['species'].replace(' ', '_').replace('.', ''), deviation)
-        eeProcessing.export_raster(temperature.select('days_outside_bounds'), self.gms, prefix + '_days_outside_bounds')
-        eeProcessing.export_raster(habitat, self.gms, prefix + '_habitat')
-        eeProcessing.export_raster(risk, self.gms, prefix + '_risk')
+        eeProcessing.export_raster(temperature.select('days_outside_bounds'), self.gms, prefix + '_days_outside_bounds', self.scale)
+        eeProcessing.export_raster(habitat, self.gms, prefix + '_habitat', self.scale)
+        eeProcessing.export_raster(risk, self.gms, prefix + '_risk', self.scale)
         
         # Update the count, return the total tasks queued
         self.count += TASKS

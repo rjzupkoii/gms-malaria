@@ -12,13 +12,13 @@ def classify(classifier, imagery, satellite):
     return classified.mosaic()
 
 
-def export_raster(raster, region, description):
+def export_raster(raster, region, description, scale):
     task = ee.batch.Export.image.toDrive(raster, **{
         'description': description,
         'fileNamePrefix' : description.replace(' ', '_'),
         'region' : region.geometry(),
         'maxPixels' : 1e10,
-        'scale': 1000,
+        'scale': scale,
         'fileFormat': 'GeoTIFF'
     })
     task.start()

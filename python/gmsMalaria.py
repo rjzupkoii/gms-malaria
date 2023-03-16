@@ -60,7 +60,7 @@ def generate_missing(mosquitoes, path, year):
     return prefixes
 
 
-def iterate(wrapper, year):
+def iterate(wrapper, year, scale):
     # Load the analysis to be run
     import imports.jsConversion as conversion
     mosquitoes = conversion.load_mosquitoes()    
@@ -71,7 +71,8 @@ def iterate(wrapper, year):
     status = 0; size += 1
     progressBar(status, size)
 
-    # Start by setting the year
+    # Start by setting the scale and year
+    wrapper.set_scale(scale)
     wrapper.set_year(year)
     wrapper.queue_environment()
 
@@ -91,7 +92,7 @@ def iterate(wrapper, year):
             progressBar(status, size)
 
 
-def iterate_missing(wrapper, path, year):
+def iterate_missing(wrapper, path, year, scale):
     # Load the analysis to be run
     import imports.jsConversion as conversion
     mosquitoes = conversion.load_mosquitoes()
@@ -102,10 +103,11 @@ def iterate_missing(wrapper, path, year):
         print('No jobs are missing from {}'.format(path))
         return
 
-    # We've got missing jobs, start by setting the year
+    # We've got missing jobs, start by setting the year and scale
     wrapper.init()
+    wrapper.set_scale(scale)
     wrapper.set_year(year)
-
+    
     # Prepare the status bar
     status = 0
     progressBar(status, len(jobs.keys()))
@@ -128,9 +130,9 @@ def main(args):
     
     # Start queuing the jobs
     if args.missing:
-        iterate_missing(wrapper, args.missing, int(args.year))
+        iterate_missing(wrapper, args.missing, int(args.year), int(args.scale))
     else:
-        iterate(wrapper, int(args.year))    
+        iterate(wrapper, int(args.year), int(args.scale))    
     print("Queued Jobs: ", wrapper.get_count())
 
 
@@ -138,13 +140,17 @@ if __name__ == '__main__':
     # Parse the parameters
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', action='store', dest='missing', help='Find the missing results in the given directory')
+    parser.add_argument('-s', action='store', dest='scale', default=1000, help='The scale, in meters, to run the sensitivity analysis for default 1000')
     parser.add_argument('-y', action='store', dest='year', required=True, help='The year to run the sensitivity analysis for')
     args = parser.parse_args()
-
+    
     # Verify the parameters
     year = int(args.year)
     if year < 2001 or year > (datetime.date.today().year - 1):
         print('The year must be an integer between 2001 and {} inclusive.'.format((datetime.date.today().year - 1)))
+        sys.exit(os.EX_USAGE)
+    if int(args.scale) <= 0:
+        print('The scale must be an integer that is greater than zero.')
         sys.exit(os.EX_USAGE)
 
     main(args)
