@@ -10,6 +10,16 @@ import os
 
 from imports.progress import progressBar
 
+LANDCOVER = {2: 'Snow',
+             3: 'Shadow',
+             10: 'Water',
+             11: 'Forest',
+             12: 'Vegetation',
+             13: 'Vegetation / Scrub',
+             14: 'Barren',
+             20: 'Development',
+             21: 'Agricultural'}
+
 HABITAT_INDEX = 2
 RISK_INDEX = 3
 
@@ -20,7 +30,7 @@ def main(args):
     progressBar(count, file_count)
 
     # Scan all of the files in the directory
-    habitat = {}; risk = {}
+    habitat = {}; risk = {}; landcover = {}
     for path, subdirs, files in os.walk(args.path):
         for file in files:
             # Update the count first
@@ -31,21 +41,25 @@ def main(args):
                 continue
 
             # Skip files not related to species
-            if any(value in file for value in ['landcover', 'temperature', 'rainfall']):
+            if any(value in file for value in ['temperature', 'rainfall']):
                 continue
 
             # Prepare for analysis
             filename = os.path.join(path, file)
-            
+
             # TODO Process days outside of bounds
             if 'outside_bounds' in file:
                 continue
 
+            # Process the landcover
+            elif 'landcover' in file:
+                landcover_update(landcover, file, filename)
+
             # Process summary other summary files
-            if 'habitat' in file:
-                simple_update(habitat, file, filename, HABITAT_INDEX)
+            elif 'habitat' in file:
+                summary_update(habitat, file, filename, HABITAT_INDEX)
             elif 'risk' in file:
-                simple_update(risk, file, filename, RISK_INDEX)
+                summary_update(risk, file, filename, RISK_INDEX)
 
             # Update the progress bar
             progressBar(count, file_count)
@@ -53,9 +67,11 @@ def main(args):
     # Make sure we show the final progress bar
     progressBar(file_count, file_count)
 
-    save(habitat, 'out/habitat.csv')
+    save_landcover(landcover, 'out/landcover.csv')
+    print('Saved landcover.csv!')
+    save_summary(habitat, 'out/habitat.csv')
     print('Saved habitat.csv!')
-    save(risk, 'out/risk.csv')
+    save_summary(risk, 'out/risk.csv')
     print('Saved risk.csv!')
     
 
@@ -71,8 +87,28 @@ def parse(filename):
     return int(filename[0]), name.rstrip(), float(filename[ndx])
 
 
+# Save the landcover data in the dictionary to the filename provided
+def save_landcover(data, filename):
+    header = False
+
+    with open(filename, 'w') as out:
+        for key in LANDCOVER:
+            landcover_class = LANDCOVER[key]
+
+            # Only write the header once, but make sure we have all of the years
+            if not header:
+                out.write('Landcover,{}\n'.format(','.join(str(year) for year in sorted(data[landcover_class].keys()))))
+                header = True
+            
+            # Parse the values for the years and write them
+            values = []
+            for year in sorted(data[landcover_class].keys()):
+                values.append(str(data[landcover_class][year]))
+            out.write('{},{}\n'.format(landcover_class, ','.join(values)))
+
+
 # Save the data in the dictionary to the filename provided
-def save(data, filename):
+def save_summary(data, filename):
     header = False
 
     with open(filename, 'w') as out:
@@ -91,9 +127,21 @@ def save(data, filename):
                 out.write('{},{},{}\n'.format(species, deviation, ','.join(values)))
 
 
+def landcover_update(dictionary, name, filename):
+    # Load the relevant data
+    year = name.split('_')[0]
+    summary = summarize(filename)
+    
+    # Save the data to the dictionary
+    for key in LANDCOVER.keys():
+        landcover_class = LANDCOVER[key]
+        if landcover_class not in dictionary:
+            dictionary[landcover_class] = {}
+        dictionary[landcover_class][year] = summary[key]
+
 # Update the dictionary supplied with the counts from the given files
-def simple_update(dictionary, name, filename, index):
-    # Load the relaxant data
+def summary_update(dictionary, name, filename, index):
+    # Load the relevant data
     year, species, deviation = parse(name)
     summary = summarize(filename)
 
