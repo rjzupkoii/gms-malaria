@@ -77,6 +77,9 @@ def list_tasks(limit):
     import ee
     start_ee()
     
+    # Counts of what's happening
+    pending = 0; running = 0; finished = 0
+
     # List the operations
     count = 0
     for op in ee.data.listOperations():
@@ -101,11 +104,13 @@ def list_tasks(limit):
             if state in ('PENDING', 'RUNNING'):
                 code = PENDING
                 if state == 'PENDING':
-                    usage = 0                
+                    usage = 0         
+                    pending += 1       
                 if state == 'RUNNING':
                     start = dateparser.parse(op['metadata']['startTime'])
                     end = dateparser.parse(op['metadata']['updateTime'])
                     usage = (end - start).seconds
+                    running += 1
             elif state == 'CANCELLING':
                 code = ERROR
                 end = dateparser.parse(op['metadata']['updateTime'])
@@ -116,6 +121,7 @@ def list_tasks(limit):
                 usage = (end - start).seconds
                 message += ', {} EECU-seconds'.format(round(op['metadata']['batchEecuUsageSeconds'], 2))
                 code = SUCCESS
+                finished += 1
             status = STATUS_CODE.format(code, state, CLEAR)
             
         # Parse out the usage to get the approximate running time
@@ -127,6 +133,9 @@ def list_tasks(limit):
         # Break if we hit the limit
         count += 1
         if count > limit: break
+
+    # Print the final stats
+    print('\nSUMMARY : Running: {}, Pending: {}, Finished: {}'.format(running, pending, finished))
 
 
 def start_drive():
