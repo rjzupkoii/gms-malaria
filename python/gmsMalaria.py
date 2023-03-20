@@ -149,8 +149,12 @@ if __name__ == '__main__':
     if year < 2001 or year > (datetime.date.today().year - 1):
         print('The year must be an integer between 2001 and {} inclusive.'.format((datetime.date.today().year - 1)))
         sys.exit(os.EX_USAGE)
-    if int(args.scale) <= 0:
-        print('The scale must be an integer that is greater than zero.')
+    try:
+        if int(args.scale) <= 0:
+            print('The scale must be an integer that is greater than zero.')
+            sys.exit(os.EX_USAGE)
+    except ValueError as ex:
+        print('The value provided for the scale, {}, is not a valid integer'.format(args.scale))
         sys.exit(os.EX_USAGE)
 
     main(args)

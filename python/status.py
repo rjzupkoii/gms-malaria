@@ -125,14 +125,14 @@ def list_tasks(limit):
             status = STATUS_CODE.format(code, state, CLEAR)
             
         # Parse out the usage to get the approximate running time
-        m, s = divmod(usage, 60)
-        h, m = divmod(m, 60)
-        time = '{:02d}:{:02d}:{:02d}'.format(int(h), int(m), int(s))        
-        print('{} [{}]: {}, {}'.format(status, time, op['name'].split('/')[-1], message))
+        if count < limit:
+            m, s = divmod(usage, 60)
+            h, m = divmod(m, 60)
+            time = '{:02d}:{:02d}:{:02d}'.format(int(h), int(m), int(s))        
+            print('{} [{}]: {}, {}'.format(status, time, op['name'].split('/')[-1], message))
 
-        # Break if we hit the limit
+        # Update the count
         count += 1
-        if count > limit: break
 
     # Print the final stats
     print('\nSUMMARY : Running: {}, Pending: {}, Finished: {}'.format(running, pending, finished))
