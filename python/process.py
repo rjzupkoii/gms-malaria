@@ -145,13 +145,17 @@ def summary_update(dictionary, name, filename, index):
     year, species, deviation = parse(name)
     summary = summarize(filename)
 
-    # Save the data to the dictionary
+    # Prepare the dictionary if the keys are not present
     if species not in dictionary:
         dictionary[species] = {}
     if deviation not in dictionary[species]:
         dictionary[species][deviation] = {}
-    dictionary[species][deviation][year] = summary[index]
 
+    # Save the data to the dictionary, note that the index may not be present
+    if index not in summary:
+        dictionary[species][deviation][year] = 0
+    else:    
+        dictionary[species][deviation][year] = summary[index]
 
 # Perform a raster summary fo the file provided
 def summarize(filename):
@@ -168,7 +172,7 @@ def summarize(filename):
 if __name__ == '__main__':
     # Parse the arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('-p', action='store', dest='path', required=True, help='The path fo the folder to parse')
+    parser.add_argument('-p', action='store', dest='path', required=True, help='The path of the folder to parse')
     args = parser.parse_args()
 
     # Make sure out output directory exists
