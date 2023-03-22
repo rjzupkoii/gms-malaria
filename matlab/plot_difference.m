@@ -39,22 +39,8 @@ function [] = habitat_heatmap(filename, scaling, title, out)
     % Calculate the percent difference
     pd = ((comp - ref) ./ ref) * 100.0;  
     
-    % Plot the heatmap
-    h = heatmap(pd);
-    caxis([-max(max(abs(pd))) max(max(abs(pd)))]);
-    h.Colormap = [flipud(h.Colormap); h.Colormap];
-    h.CellLabelFormat = '%0.3f%%';
-    h.XDisplayLabels = years;
-    h.YDisplayLabels = deviations;
-    h.Title = title;
-
-    % Save the heatmap
-    graphic = gca;
-    graphic.FontSize = 12;
-    set(gcf, 'Position',  [0, 0, 2560, 1440]);
-    print('-dpng', '-r300', out);
-    clf;
-    close;
+    % Plot and save
+    save_heatmap(pd, years, deviations, title, out);
 end
 
 function [] = landcover_heatmap(filename, scaling, title, out)    
@@ -78,13 +64,18 @@ function [] = landcover_heatmap(filename, scaling, title, out)
     % Calculate the percent difference
     pd = ((comp - ref) ./ ref) * 100.0;  
     
+    % Plot and save
+    save_heatmap(pd, years, LABELS, title, out);
+end
+
+function [] = save_heatmap(data, xlabels, ylabels, title, out)
     % Plot the heatmap
-    h = heatmap(pd);
-    caxis([-max(max(abs(pd))) max(max(abs(pd)))]);
+    h = heatmap(data);
+    caxis([-max(max(abs(data))) max(max(abs(data)))]);
     h.Colormap = [flipud(h.Colormap); h.Colormap];
     h.CellLabelFormat = '%0.3f%%';
-    h.XDisplayLabels = years;
-    h.YDisplayLabels = LABELS;
+    h.XDisplayLabels = xlabels;
+    h.YDisplayLabels = ylabels;
     h.Title = title;
 
     % Save the heatmap
@@ -93,5 +84,5 @@ function [] = landcover_heatmap(filename, scaling, title, out)
     set(gcf, 'Position',  [0, 0, 2560, 1440]);
     print('-dpng', '-r300', out);
     clf;
-    close;    
-end
+    close;
+end    
