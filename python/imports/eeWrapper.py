@@ -112,6 +112,56 @@ class gmsEEWrapper:
         maxima = self.vector['tempMax']
         temperature = eeProcessing.get_temperature_bounds(self.gms, self.year, minima, maxima)
 
+        # Determine the correct pathway based upon if we are dealing with a range or greater-than clause
+        if self.vector['tempMean'][0] == self.vector['tempMean'][1]:
+            # The values are the same, so we are dealing with a greater-than clause
+            return self.__queue_vector_greater_than(deviation, temperature)
+        else:
+            # The values are different, so we are dealing with a range
+            return self.__queue_vector_range(deviation, temperature)
+
+
+    def __queue_vector_greater_than(self, deviation, temperature):
+        TASK_TYPE = ['minus', 'plus']
+        TASK_MULTIPLIER = [-1, 1]
+
+        tasks = 0
+        for ndx in [0, 1]:
+            # Classify the habitat and risk based upon the inputs
+            mean = self.vector['tempMean'][0] + (TASK_MULTIPLIER[ndx] * deviation)
+            habitat = eeProcessing.get_habitat({
+                # Raster data
+                'totalRainfall'     : self.environmental.select('total_rainfall'),
+                'meanTemperature'   : self.environmental.select('mean_temperature'),
+                'daysOutsideBounds' : temperature.select('days_outside_bounds'),
+                'landcover'         : self.landcover,
+
+                # Species data
+                'speciesRainfall'   : self.vector['rainfall'],
+                'speciesLife'       : self.vector['lifeExpectancy'],
+
+                # Set the upper and lower bound to be the same since this is a range  
+                'speciesMeanLower'  : mean,
+                'speciesMeanUpper'  : mean,
+            })
+            risk = eeProcessing.get_risk(self.landcover, habitat)
+
+            # Prepare the prefix
+            prefix = '{}_{}_{}{}'.format(self.year, self.vector['species'].replace(' ', '_').replace('.', ''), TASK_TYPE[ndx], deviation)
+
+            # Start the tasks
+            BASE_TASKS = 3
+            eeProcessing.export_raster(temperature.select('days_outside_bounds'), self.gms, prefix + '_days_outside_bounds', self.scale)
+            eeProcessing.export_raster(habitat, self.gms, prefix + '_habitat', self.scale)
+            eeProcessing.export_raster(risk, self.gms, prefix + '_risk', self.scale)
+            tasks += BASE_TASKS
+        
+        # Update the count, return the total tasks queued
+        self.count += tasks
+        return tasks
+    
+
+    def __queue_vector_range(self, deviation, temperature):
         # Classify the habitat and risk based upon the inputs
         habitat = eeProcessing.get_habitat({
             # Raster data
@@ -124,7 +174,7 @@ class gmsEEWrapper:
             'speciesRainfall'   : self.vector['rainfall'],
             'speciesLife'       : self.vector['lifeExpectancy'],
 
-            # Use the lower bound of the SD for the UI, the Python scripts will interrogate the full range    
+            # Update the upper and lower bounds of the range    
             'speciesMeanLower'  : self.vector['tempMean'][0] - deviation,
             'speciesMeanUpper'  : self.vector['tempMean'][1] + deviation,
         })
