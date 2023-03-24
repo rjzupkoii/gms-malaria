@@ -5,12 +5,12 @@
 clear;
 
 % Create the heatmaps for the habitat
-habitat_heatmap( '../python/out/2-5km_habitat.csv', 2.5 * 2.5, 'Habitat (1km vs 2.5km)', 'habitat vs. 2.5km.png');
-habitat_heatmap( '../python/out/5km_habitat.csv', 5 * 5, 'Habitat (1km vs 5km)', 'habitat vs. 5km.png');
+habitat_heatmap( '../python/out/2-5km_habitat.csv', 2.5 * 2.5, 'Habitat (1 sq.km vs 6.25 sq.km)', 'habitat vs. 2.5km.png');
+habitat_heatmap( '../python/out/5km_habitat.csv', 5 * 5, 'Habitat (1 sq.km vs 25 sq.km)', 'habitat vs. 5km.png');
 
 % Create the heatmaps for the landcover
-landcover_heatmap( '../python/out/2-5km_landcover.csv', 2.5 * 2.5, 'Landcover (1km vs 2.5km)', 'landcover vs. 2.5km.png');
-landcover_heatmap( '../python/out/5km_landcover.csv', 5 * 5, 'Landcover (1km vs 5km)', 'landcover vs. 5km.png');
+landcover_heatmap( '../python/out/2-5km_landcover.csv', 2.5 * 2.5, 'Landcover (1 sq.km vs 6.25 sq.km)', 'landcover vs. 2.5km.png');
+landcover_heatmap( '../python/out/5km_landcover.csv', 5 * 5, 'Landcover (1 sq.km vs 25 sq.km)', 'landcover vs. 5km.png');
 
 function [] = habitat_heatmap(filename, scaling, title, out)
     % Load the data for 1km
