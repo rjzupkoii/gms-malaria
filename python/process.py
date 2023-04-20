@@ -77,14 +77,25 @@ def main(args):
 
 # Parse the filename string to get the year, species, and deviation
 def parse(filename):
+    def cast_float(value):
+        try:
+            value = value.replace('minus', '-')
+            value = value.replace('plus', '')
+            value = float(value)
+            return value, True
+        except ValueError:
+            return None, False
+
     name = ''
     filename = filename.split('_')
     for ndx in range(1, len(filename)):
-        if filename[ndx].replace('.', '').isdigit(): break
+        # Replace plus / minus if present
+        value, check = cast_float(filename[ndx])
+        if check: break
         name += filename[ndx] + ' '
     
     # Year, species, deviation
-    return int(filename[0]), name.rstrip(), float(filename[ndx])
+    return int(filename[0]), name.rstrip(), value
 
 
 # Save the landcover data in the dictionary to the filename provided
@@ -180,6 +191,3 @@ if __name__ == '__main__':
 
     # Defer to main for processing
     main(args)
-
-
-
